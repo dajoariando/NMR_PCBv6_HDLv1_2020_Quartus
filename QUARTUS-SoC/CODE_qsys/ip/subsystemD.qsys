@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<system name="$${FILENAME}">
+ <component
+   name="$${FILENAME}"
+   displayName="$${FILENAME}"
+   version="1.0"
+   description=""
+   tags=""
+   categories="" />
+ <parameter name="bonusData"><![CDATA[bonusData 
+{
+   element dac
+   {
+      datum _sortIndex
+      {
+         value = "1";
+         type = "int";
+      }
+   }
+   element i2c
+   {
+      datum _sortIndex
+      {
+         value = "0";
+         type = "int";
+      }
+   }
+}
+]]></parameter>
+ <parameter name="clockCrossingAdapter" value="HANDSHAKE" />
+ <parameter name="device" value="5CSEMA5F31C6" />
+ <parameter name="deviceFamily" value="Cyclone V" />
+ <parameter name="deviceSpeedGrade" value="6" />
+ <parameter name="fabricMode" value="QSYS" />
+ <parameter name="generateLegacySim" value="false" />
+ <parameter name="generationId" value="0" />
+ <parameter name="globalResetBus" value="false" />
+ <parameter name="hdlLanguage" value="VERILOG" />
+ <parameter name="hideFromIPCatalog" value="false" />
+ <parameter name="lockedInterfaceDefinition" value="" />
+ <parameter name="maxAdditionalLatency" value="1" />
+ <parameter name="projectName" value="" />
+ <parameter name="sopcBorderPoints" value="false" />
+ <parameter name="systemHash" value="0" />
+ <parameter name="testBenchDutName" value="" />
+ <parameter name="timeStamp" value="0" />
+ <parameter name="useTestBenchNamingPattern" value="false" />
+ <instanceScript></instanceScript>
+ <interface name="dac_clk" internal="dac.clk" type="clock" dir="end" />
+ <interface name="dac_external" internal="dac.external" type="conduit" dir="end" />
+ <interface name="dac_irq" internal="dac.irq" type="interrupt" dir="end" />
+ <interface name="dac_reset" internal="dac.reset" type="reset" dir="end" />
+ <interface
+   name="dac_spi_control_port"
+   internal="dac.spi_control_port"
+   type="avalon"
+   dir="end" />
+ <interface name="i2c_clock" internal="i2c.clock" type="clock" dir="end" />
+ <interface name="i2c_csr" internal="i2c.csr" type="avalon" dir="end" />
+ <interface
+   name="i2c_i2c_serial"
+   internal="i2c.i2c_serial"
+   type="conduit"
+   dir="end" />
+ <interface
+   name="i2c_interrupt_sender"
+   internal="i2c.interrupt_sender"
+   type="interrupt"
+   dir="end" />
+ <interface
+   name="i2c_reset_sink"
+   internal="i2c.reset_sink"
+   type="reset"
+   dir="end" />
+ <module name="dac" kind="altera_avalon_spi" version="16.1" enabled="1">
+  <parameter name="avalonSpec" value="2.0" />
+  <parameter name="clockPhase" value="0" />
+  <parameter name="clockPolarity" value="1" />
+  <parameter name="dataWidth" value="24" />
+  <parameter name="disableAvalonFlowControl" value="false" />
+  <parameter name="inputClockRate" value="0" />
+  <parameter name="insertDelayBetweenSlaveSelectAndSClk" value="false" />
+  <parameter name="insertSync" value="false" />
+  <parameter name="lsbOrderedFirst" value="false" />
+  <parameter name="masterSPI" value="true" />
+  <parameter name="numberOfSlaves" value="1" />
+  <parameter name="syncRegDepth" value="2" />
+  <parameter name="targetClockRate" value="128000" />
+  <parameter name="targetSlaveSelectToSClkDelay" value="0.0" />
+ </module>
+ <module name="i2c" kind="altera_avalon_i2c" version="16.1" enabled="1">
+  <parameter name="FIFO_DEPTH" value="256" />
+  <parameter name="USE_AV_ST" value="0" />
+  <parameter name="clockRate" value="0" />
+ </module>
+ <interconnectRequirement for="$system" name="qsys_mm.clockCrossingAdapter" value="HANDSHAKE" />
+ <interconnectRequirement for="$system" name="qsys_mm.enableEccProtection" value="FALSE" />
+ <interconnectRequirement for="$system" name="qsys_mm.insertDefaultSlave" value="FALSE" />
+ <interconnectRequirement for="$system" name="qsys_mm.maxAdditionalLatency" value="1" />
+</system>

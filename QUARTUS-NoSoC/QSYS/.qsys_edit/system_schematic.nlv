@@ -1,0 +1,55 @@
+# # File gsaved with Nlview version 6.3.8  2013-12-19 bk=1.2992 VDI=34 GEI=35
+# 
+preplace inst system.system_console.b2p_adapter -pg 1
+preplace inst system.parameters_0.pulse_90deg -pg 1
+preplace inst system.parameters_0.clk_0 -pg 1
+preplace inst system.system_console -pg 1 -lvl 2 -y 410
+preplace inst system.pll_reconfig_0 -pg 1 -lvl 3 -y 140
+preplace inst system.parameters_0.delay_t1 -pg 1
+preplace inst system.parameters_0.pulse_t1 -pg 1
+preplace inst system.parameters_0.init_delay -pg 1
+preplace inst system.system_console.p2b_adapter -pg 1
+preplace inst system.system_console.fifo -pg 1
+preplace inst system.system_console.jtag_phy_embedded_in_jtag_master -pg 1
+preplace inst system.parameters_0.delay_sig -pg 1
+preplace inst system.system_console.clk_src -pg 1
+preplace inst system.system_console.p2b -pg 1
+preplace inst system.parameters_0.delay_nosig -pg 1
+preplace inst system.parameters_0.samples_per_echo -pg 1
+preplace inst system.parameters_0 -pg 1 -lvl 3 -y 780
+preplace inst system.nmr_sys_pll -pg 1 -lvl 2 -y 60
+preplace inst system.dac_preamp -pg 1 -lvl 3 -y 630
+preplace inst system.system_console.transacto -pg 1
+preplace inst system.system_console.timing_adt -pg 1
+preplace inst system.parameters_0.echoes_per_scan -pg 1
+preplace inst system.system_console.b2p -pg 1
+preplace inst system.parameters_0.pulse_180deg -pg 1
+preplace inst system.clk_in -pg 1 -lvl 1 -y 400
+preplace inst system.I2C_EXT -pg 1 -lvl 3 -y 260
+preplace inst system -pg 1 -lvl 1 -y 40 -regy -20
+preplace inst system.system_console.clk_rst -pg 1
+preplace inst system.led -pg 1 -lvl 3 -y 390
+preplace inst system.I2C_INT -pg 1 -lvl 3 -y 500
+preplace netloc EXPORT<net_container>system</net_container>(SLAVE)system.dac_preamp,(SLAVE)dac_preamp.external) 1 0 3 NJ 660 NJ 660 NJ
+preplace netloc EXPORT<net_container>system</net_container>(SLAVE)system.i2c_int,(SLAVE)I2C_INT.i2c_serial) 1 0 3 NJ 570 NJ 570 NJ
+preplace netloc EXPORT<net_container>system</net_container>(SLAVE)parameters_0.pulse_180deg_external_connection,(SLAVE)system.pulse_180deg) 1 0 3 NJ 1090 NJ 1090 NJ
+preplace netloc EXPORT<net_container>system</net_container>(SLAVE)system.pulse_90deg,(SLAVE)parameters_0.pulse_90deg_external_connection) 1 0 3 NJ 1050 NJ 1050 NJ
+preplace netloc EXPORT<net_container>system</net_container>(SLAVE)I2C_EXT.i2c_serial,(SLAVE)system.i2c_ext) 1 0 3 NJ 290 NJ 290 NJ
+preplace netloc EXPORT<net_container>system</net_container>(SLAVE)system.delay_sig,(SLAVE)parameters_0.delay_sig_external_connection) 1 0 3 NJ 850 NJ 850 NJ
+preplace netloc FAN_OUT<net_container>system</net_container>(SLAVE)system_console.clk,(SLAVE)nmr_sys_pll.refclk,(SLAVE)I2C_EXT.clock,(SLAVE)dac_preamp.clk,(SLAVE)parameters_0.clk,(MASTER)clk_in.clk,(SLAVE)led.clk,(SLAVE)I2C_INT.clock,(SLAVE)pll_reconfig_0.mgmt_clk) 1 1 2 340 510 700
+preplace netloc EXPORT<net_container>system</net_container>(SLAVE)parameters_0.pulse_t1_external_connection,(SLAVE)system.pulse_t1) 1 0 3 NJ 1010 NJ 1010 NJ
+preplace netloc EXPORT<net_container>system</net_container>(SLAVE)system.clk,(SLAVE)clk_in.clk_in) 1 0 1 NJ
+preplace netloc EXPORT<net_container>system</net_container>(SLAVE)system.samples_per_echo,(SLAVE)parameters_0.samples_per_echo_external_connection) 1 0 3 NJ 1150 NJ 1150 NJ
+preplace netloc EXPORT<net_container>system</net_container>(SLAVE)clk_in.clk_in_reset,(SLAVE)system.reset) 1 0 1 NJ
+preplace netloc EXPORT<net_container>system</net_container>(SLAVE)parameters_0.init_delay_external_connection,(SLAVE)system.init_delay) 1 0 3 NJ 970 NJ 970 NJ
+preplace netloc EXPORT<net_container>system</net_container>(SLAVE)parameters_0.delay_nosig_external_connection,(SLAVE)system.delay_nosig) 1 0 3 NJ 810 NJ 810 NJ
+preplace netloc POINT_TO_POINT<net_container>system</net_container>(SLAVE)pll_reconfig_0.reconfig_to_pll,(SLAVE)nmr_sys_pll.reconfig_to_pll) 1 1 2 340 50 680
+preplace netloc EXPORT<net_container>system</net_container>(SLAVE)parameters_0.echoes_per_scan_external_connection,(SLAVE)system.echoes_per_scan) 1 0 3 NJ 930 NJ 930 NJ
+preplace netloc FAN_OUT<net_container>system</net_container>(SLAVE)dac_preamp.reset,(SLAVE)I2C_INT.reset_sink,(SLAVE)parameters_0.reset,(SLAVE)I2C_EXT.reset_sink,(MASTER)clk_in.clk_reset,(SLAVE)system_console.clk_reset,(SLAVE)led.reset,(SLAVE)pll_reconfig_0.mgmt_reset,(SLAVE)nmr_sys_pll.reset) 1 1 2 320 490 720
+preplace netloc POINT_TO_POINT<net_container>system</net_container>(SLAVE)pll_reconfig_0.reconfig_from_pll,(SLAVE)nmr_sys_pll.reconfig_from_pll) 1 1 2 320 30 740
+preplace netloc FAN_OUT<net_container>system</net_container>(SLAVE)I2C_INT.csr,(SLAVE)parameters_0.samples_per_echo_s1,(MASTER)system_console.master,(SLAVE)parameters_0.delay_nosig_s1,(SLAVE)led.s1,(SLAVE)parameters_0.echoes_per_scan_s1,(SLAVE)pll_reconfig_0.mgmt_avalon_slave,(SLAVE)parameters_0.pulse_180deg_s1,(SLAVE)parameters_0.delay_t1_s1,(SLAVE)parameters_0.pulse_t1_s1,(SLAVE)parameters_0.delay_sig_s1,(SLAVE)I2C_EXT.csr,(SLAVE)parameters_0.init_delay_s1,(SLAVE)parameters_0.pulse_90deg_s1,(SLAVE)dac_preamp.spi_control_port) 1 2 1 660
+preplace netloc EXPORT<net_container>system</net_container>(MASTER)system.nmr_sys_pll_outclk0,(MASTER)nmr_sys_pll.outclk0) 1 2 2 NJ 90 NJ
+preplace netloc EXPORT<net_container>system</net_container>(SLAVE)system.led,(SLAVE)led.external_connection) 1 0 3 NJ 310 NJ 310 NJ
+preplace netloc EXPORT<net_container>system</net_container>(SLAVE)parameters_0.delay_t1_external_connection,(SLAVE)system.delay_t1) 1 0 3 NJ 890 NJ 890 NJ
+levelinfo -pg 1 0 110 1250
+levelinfo -hier system 120 150 460 950 1100
