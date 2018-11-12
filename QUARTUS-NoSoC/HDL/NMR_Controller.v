@@ -13,8 +13,8 @@ module NMR_Controller
 )
 (
 	// control signals
-	input 	START,
-	output 	FSMSTAT,
+	input 	START /* synthesis keep = 1 */,
+	output 	FSMSTAT /* synthesis keep = 1 */,
 	
 	// nmr parameters
 	input [PULSE_AND_DELAY_WIDTH-1:0]	T1_PULSE180,
@@ -40,7 +40,7 @@ module NMR_Controller
 	
 	// data output
 	output [ADC_DATA_WIDTH-1:0] ADC_OUT_DATA,
-	output ADC_DATA_VALID,
+	output ADC_DATA_VALID /* synthesis keep = 1 */,
 	
 	// system signals
 	input PULSEPROG_CLK,
@@ -48,9 +48,9 @@ module NMR_Controller
 	input RESET
 );
 
-	wire ACQ_WND;
+	wire ACQ_WND /* synthesis keep = 1 */;
 	wire ACQ_EN;
-	wire START_SYNC;
+	wire START_SYNC /* synthesis keep = 1 */;
 	
 	CDC_Input_Synchronizer
 	#(

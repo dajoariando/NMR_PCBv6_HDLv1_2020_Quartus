@@ -47,7 +47,7 @@ set_output_delay -min -clock clk_vga -1.519 [get_ports VGA_B*]
 set_output_delay -max -clock clk_vga 0.215 [get_ports VGA_BLANK]
 set_output_delay -min -clock clk_vga -1.485 [get_ports VGA_BLANK]
 
-
+set_clock_groups -asynchronous -group {clock_50_0 } -group { u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk } 
 
 # tsu/th constraints
 

@@ -263,12 +263,13 @@ module NMR_PULSE_PROGRAM
 	assign TX_CLK_X = TX_CLK_X_CNT[1]; // phase 0
 	assign TX_CLK_Y = TX_CLK_Y_CNT[1]; // phase 90
 	
-	// switch TX clock output
+	// switch TX clock output (phase cycling by pulse-90)
 	wire TX_OUT_X_phcyc; // phase cycling output signal 
 	wire TX_OUT_P_int; // internal tx_p after selected by phase (switching between 0 and 90 degrees input pulse)
 	assign TX_OUT_X_phcyc = PHASE_CYC ? TX_CLK_X : ~TX_CLK_X;
 	assign TX_OUT_P_int = PHASE ?  TX_CLK_Y : TX_OUT_X_phcyc;
 	assign TX_OUT_P = OUT_EN ? TX_OUT_P_int : 1'b0;
 	assign TX_OUT_N = OUT_EN ? ~TX_OUT_P_int : 1'b0;
+
 
 endmodule

@@ -8,11 +8,13 @@ function r = downconvert(s,k,tE,Df,Sf,a,b)
     T = 1/Sf;
     t = linspace(k*tE,k*tE+T*(length(s)-1),length(s));
 	
-	% compute the signal frequency
-	Ds = Df - Sf;
+	% compute the signal frequency: only for ADC freq below Nyquist rate
+	% Ds = Df - Sf;
 	
-	sReal = s' .* cos(2*pi*Ds*t);
-    sImag = s' .* sin(2*pi*Ds*t);
+	%sReal = s' .* cos(2*pi*Ds*t);
+    sReal = s' .* cos(2*pi*Df*t);
+    %sImag = s' .* sin(2*pi*Ds*t);
+    sImag = s' .* sin(2*pi*Df*t);
 		
 
     %n = 3; Wn = 0.008;

@@ -42,7 +42,7 @@ module DE1_SOC_Linux_FB(
 	inout			FPGA_I2C_SDAT,
 
 	// GPIO
-	inout	[35:0]	GPIO_0,
+	// output	[35:0]	GPIO_0,
 	inout	[35:0]	GPIO_1,
  
 
@@ -435,6 +435,31 @@ module DE1_SOC_Linux_FB(
 		.switches_export	(SW)                            //                    switches.export
 	);
 	
+	
+	
+	// Clock Domain Crossing!!!
+	reg	[PULSE_AND_DELAY_WIDTH-1:0]		pulse_90deg_reg;
+	reg	[PULSE_AND_DELAY_WIDTH-1:0]		pulse_180deg_reg;
+	reg	[PULSE_AND_DELAY_WIDTH-1:0]		delay_nosig_reg;
+	reg	[PULSE_AND_DELAY_WIDTH-1:0]		delay_sig_reg;
+	reg	[PULSE_AND_DELAY_WIDTH-1:0]		pulse_t1_reg;
+	reg	[PULSE_AND_DELAY_WIDTH-1:0]		delay_t1_reg;
+	reg	[SAMPLES_PER_ECHO_WIDTH-1:0]	samples_per_echo_reg;
+	reg	[ECHOES_PER_SCAN_WIDTH-1:0]		echoes_per_scan_reg;
+	reg	[ADC_INIT_DELAY_WIDTH-1:0]		init_delay_reg;
+	always @(posedge pulseprog_clk)
+	begin
+		pulse_90deg_reg      <= pulse_90deg;
+		pulse_180deg_reg     <= pulse_180deg;
+		delay_nosig_reg      <= delay_nosig;
+		delay_sig_reg        <= delay_sig;
+		pulse_t1_reg         <= pulse_t1;
+		delay_t1_reg         <= delay_t1;
+		samples_per_echo_reg <= samples_per_echo;
+		echoes_per_scan_reg  <= echoes_per_scan;
+		init_delay_reg       <= init_delay;
+	end
+	
 	NMR_Controller
 	#(
 		.PULSE_AND_DELAY_WIDTH 	(PULSE_AND_DELAY_WIDTH),
@@ -453,15 +478,15 @@ module DE1_SOC_Linux_FB(
 		.FSMSTAT	(fsmstat),
 		
 		// nmr parameters
-		.T1_PULSE180		(pulse_t1),
-		.T1_DELAY			(delay_t1),
-		.PULSE90			(pulse_90deg),
-		.DELAY_NO_ACQ		(delay_nosig),
-		.PULSE180			(pulse_180deg),
-		.DELAY_WITH_ACQ		(delay_sig),
-		.ECHO_PER_SCAN		(echoes_per_scan),	// echo per scan integer number
-		.SAMPLES_PER_ECHO	(samples_per_echo),
-		.ADC_INIT_DELAY		(init_delay), 
+		.T1_PULSE180		(pulse_t1_reg),
+		.T1_DELAY			(delay_t1_reg),
+		.PULSE90			(pulse_90deg_reg),
+		.DELAY_NO_ACQ		(delay_nosig_reg),
+		.PULSE180			(pulse_180deg_reg),
+		.DELAY_WITH_ACQ		(delay_sig_reg),
+		.ECHO_PER_SCAN		(echoes_per_scan_reg),	// echo per scan integer number
+		.SAMPLES_PER_ECHO	(samples_per_echo_reg),
+		.ADC_INIT_DELAY		(init_delay_reg), 
 		
 		// nmr rf tx-output (differential)
 		.RF_OUT_P			(nmr_rfout_p),
@@ -547,10 +572,7 @@ module DE1_SOC_Linux_FB(
 	assign LEDR[6] = phase_cycle;
 	assign LEDR[7] = fsmstat;
 	assign LEDR[8] = nmr_controller_reset;
-	
-	assign GPIO_0[0] = fsm_start;
-	assign GPIO_0[1] = fsmstat;
-	
+		
 endmodule
 
  
