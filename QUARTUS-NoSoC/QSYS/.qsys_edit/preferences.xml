@@ -3,12 +3,13 @@
  <debug showDebugMenu="0" />
  <systemtable filter="All Interfaces">
   <columns>
-   <connections preferredWidth="143" />
+   <connections preferredWidth="63" />
    <irq preferredWidth="34" />
   </columns>
  </systemtable>
- <library expandedCategories="Library,Project" />
+ <library
+   expandedCategories="Library/DSP/Filters,Project,Library/DSP/Video and Image Processing,Library,Library/DSP" />
  <window width="1296" height="1000" x="-8" y="-8" />
- <generation block_symbol_file="0" />
+ <generation block_symbol_file="0" simulation="VERILOG" />
  <hdlexample language="VERILOG" />
 </preferences>

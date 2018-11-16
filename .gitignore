@@ -44,6 +44,8 @@ timing/
 
 
 QUARTUS-NoSoC/simulation/modelsim/*
+QUARTUS-NoSoC/DELETEME
+QUARTUS-NoSoC/*.log
 QUARTUS-SoC/simulation/modelsim/*
 QUARTUS-SoC/.qsys_edit/
 QUARTUS-SoC/CODE_qsys/!OLD_QSYS/
