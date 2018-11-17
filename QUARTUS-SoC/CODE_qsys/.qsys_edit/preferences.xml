@@ -3,7 +3,7 @@
  <debug showDebugMenu="0" />
  <systemtable filter="All Interfaces">
   <columns>
-   <connections preferredWidth="559" />
+   <connections preferredWidth="527" />
    <irq preferredWidth="47" />
    <export preferredWidth="188" />
    <name preferredWidth="155" />
@@ -16,7 +16,7 @@
    <frequency preferredWidth="417" />
   </columns>
  </clocktable>
- <window width="1296" height="1000" x="-8" y="-8" />
+ <window width="1616" height="1176" x="-1608" y="-8" />
  <library expandedCategories="Project,Library" />
  <hdlexample language="VERILOG" />
  <generation
