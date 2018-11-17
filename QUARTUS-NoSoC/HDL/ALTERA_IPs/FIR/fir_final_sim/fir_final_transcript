@@ -1,0 +1,1507 @@
+# Reading C:/intelFPGA/17.1/modelsim_ase/tcl/vsim/pref.tcl
+# do top_run_msim_rtl_vhdl.do
+# if {[file exists rtl_work]} {
+# 	vdel -lib rtl_work -all
+# }
+# vlib rtl_work
+# vmap work rtl_work
+# Model Technology ModelSim - Intel FPGA Edition vmap 10.5b Lib Mapping Utility 2016.10 Oct  5 2016
+# vmap work rtl_work 
+# Copying C:/intelFPGA/17.1/modelsim_ase/win32aloem/../modelsim.ini to modelsim.ini
+# Modifying modelsim.ini
+# 
+# vlog -vlog01compat -work work +incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/HDL {D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/HDL/NMR_PULSE_PROGRAM.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:14:31 on Nov 13,2018
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/HDL" D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/HDL/NMR_PULSE_PROGRAM.v 
+# -- Compiling module NMR_PULSE_PROGRAM
+# 
+# Top level modules:
+# 	NMR_PULSE_PROGRAM
+# End time: 16:14:31 on Nov 13,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work work +incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/HDL {D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/HDL/NMR_Controller.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:14:31 on Nov 13,2018
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/HDL" D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/HDL/NMR_Controller.v 
+# -- Compiling module NMR_Controller
+# 
+# Top level modules:
+# 	NMR_Controller
+# End time: 16:14:31 on Nov 13,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work work +incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/HDL {D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/HDL/CDC_Input_Synchronizer.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:14:31 on Nov 13,2018
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/HDL" D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/HDL/CDC_Input_Synchronizer.v 
+# -- Compiling module CDC_Input_Synchronizer
+# 
+# Top level modules:
+# 	CDC_Input_Synchronizer
+# End time: 16:14:31 on Nov 13,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work work +incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/HDL {D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/HDL/ADC_LTC1746_DRV.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:14:31 on Nov 13,2018
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/HDL" D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/HDL/ADC_LTC1746_DRV.v 
+# -- Compiling module ADC_LTC1746_DRV
+# 
+# Top level modules:
+# 	ADC_LTC1746_DRV
+# End time: 16:14:31 on Nov 13,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work work +incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/HDL {D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/HDL/ADC_ACQ_WINGEN.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:14:31 on Nov 13,2018
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/HDL" D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/HDL/ADC_ACQ_WINGEN.v 
+# -- Compiling module ADC_ACQ_WINGEN
+# 
+# Top level modules:
+# 	ADC_ACQ_WINGEN
+# End time: 16:14:31 on Nov 13,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work work +incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/HDL/ALTERA_IPs {D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/HDL/ALTERA_IPs/altiobuf.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:14:32 on Nov 13,2018
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/HDL/ALTERA_IPs" D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/HDL/ALTERA_IPs/altiobuf.v 
+# -- Compiling module altiobuf_iobuf_bidir_bmo
+# -- Compiling module altiobuf
+# 
+# Top level modules:
+# 	altiobuf
+# End time: 16:14:32 on Nov 13,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work work +incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC {D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/top.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:14:32 on Nov 13,2018
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC" D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/top.v 
+# -- Compiling module top
+# 
+# Top level modules:
+# 	top
+# End time: 16:14:32 on Nov 13,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlib system
+# ** Warning: (vlib-34) Library already exists at "system".
+# vmap system system
+# Model Technology ModelSim - Intel FPGA Edition vmap 10.5b Lib Mapping Utility 2016.10 Oct  5 2016
+# vmap system system 
+# Modifying modelsim.ini
+# vlog -vlog01compat -work system +incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis {D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/system.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:14:32 on Nov 13,2018
+# vlog -reportprogress 300 -vlog01compat -work system "+incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis" D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/system.v 
+# -- Compiling module system
+# 
+# Top level modules:
+# 	system
+# End time: 16:14:32 on Nov 13,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work system +incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules {D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/altera_reset_controller.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:14:32 on Nov 13,2018
+# vlog -reportprogress 300 -vlog01compat -work system "+incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules" D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/altera_reset_controller.v 
+# -- Compiling module altera_reset_controller
+# 
+# Top level modules:
+# 	altera_reset_controller
+# End time: 16:14:32 on Nov 13,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work system +incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules {D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/altera_reset_synchronizer.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:14:33 on Nov 13,2018
+# vlog -reportprogress 300 -vlog01compat -work system "+incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules" D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/altera_reset_synchronizer.v 
+# -- Compiling module altera_reset_synchronizer
+# 
+# Top level modules:
+# 	altera_reset_synchronizer
+# End time: 16:14:33 on Nov 13,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work system +incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules {D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/system_mm_interconnect_0.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:14:33 on Nov 13,2018
+# vlog -reportprogress 300 -vlog01compat -work system "+incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules" D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/system_mm_interconnect_0.v 
+# -- Compiling module system_mm_interconnect_0
+# 
+# Top level modules:
+# 	system_mm_interconnect_0
+# End time: 16:14:33 on Nov 13,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work system +incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules {D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/system_mm_interconnect_0_avalon_st_adapter.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:14:33 on Nov 13,2018
+# vlog -reportprogress 300 -vlog01compat -work system "+incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules" D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/system_mm_interconnect_0_avalon_st_adapter.v 
+# -- Compiling module system_mm_interconnect_0_avalon_st_adapter
+# 
+# Top level modules:
+# 	system_mm_interconnect_0_avalon_st_adapter
+# End time: 16:14:33 on Nov 13,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work system +incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules {D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/system_mm_interconnect_0_monitor_system_console_master.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:14:33 on Nov 13,2018
+# vlog -reportprogress 300 -vlog01compat -work system "+incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules" D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/system_mm_interconnect_0_monitor_system_console_master.v 
+# -- Compiling module system_mm_interconnect_0_monitor_system_console_master
+# 
+# Top level modules:
+# 	system_mm_interconnect_0_monitor_system_console_master
+# End time: 16:14:33 on Nov 13,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work system +incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules {D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/system_mm_interconnect_0_monitor_system_console_master_mm_interconnect_2.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:14:34 on Nov 13,2018
+# vlog -reportprogress 300 -vlog01compat -work system "+incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules" D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/system_mm_interconnect_0_monitor_system_console_master_mm_interconnect_2.v 
+# -- Compiling module system_mm_interconnect_0_monitor_system_console_master_mm_interconnect_2
+# 
+# Top level modules:
+# 	system_mm_interconnect_0_monitor_system_console_master_mm_interconnect_2
+# End time: 16:14:34 on Nov 13,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work system +incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules {D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/system_mm_interconnect_0_monitor_system_console_master_mm_interconnect_1.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:14:34 on Nov 13,2018
+# vlog -reportprogress 300 -vlog01compat -work system "+incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules" D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/system_mm_interconnect_0_monitor_system_console_master_mm_interconnect_1.v 
+# -- Compiling module system_mm_interconnect_0_monitor_system_console_master_mm_interconnect_1
+# 
+# Top level modules:
+# 	system_mm_interconnect_0_monitor_system_console_master_mm_interconnect_1
+# End time: 16:14:34 on Nov 13,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work system +incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules {D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/system_mm_interconnect_0_monitor_system_console_master_mm_interconnect_0.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:14:34 on Nov 13,2018
+# vlog -reportprogress 300 -vlog01compat -work system "+incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules" D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/system_mm_interconnect_0_monitor_system_console_master_mm_interconnect_0.v 
+# -- Compiling module system_mm_interconnect_0_monitor_system_console_master_mm_interconnect_0
+# 
+# Top level modules:
+# 	system_mm_interconnect_0_monitor_system_console_master_mm_interconnect_0
+# End time: 16:14:34 on Nov 13,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work system +incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules {D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/system_mm_interconnect_0_monitor_system_console_master_pm.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:14:34 on Nov 13,2018
+# vlog -reportprogress 300 -vlog01compat -work system "+incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules" D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/system_mm_interconnect_0_monitor_system_console_master_pm.v 
+# -- Compiling module system_mm_interconnect_0_monitor_system_console_master_pm
+# 
+# Top level modules:
+# 	system_mm_interconnect_0_monitor_system_console_master_pm
+# End time: 16:14:34 on Nov 13,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work system +incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules {D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/altera_throughput_tap_xlate.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:14:34 on Nov 13,2018
+# vlog -reportprogress 300 -sv -work system "+incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules" D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/altera_throughput_tap_xlate.sv 
+# -- Compiling module altera_throughput_tap_xlate
+# 
+# Top level modules:
+# 	altera_throughput_tap_xlate
+# End time: 16:14:34 on Nov 13,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work system +incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules {D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/altera_avalon_throughput_monitor.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:14:35 on Nov 13,2018
+# vlog -reportprogress 300 -vlog01compat -work system "+incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules" D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/altera_avalon_throughput_monitor.v 
+# -- Compiling module altera_avalon_throughput_monitor
+# 
+# Top level modules:
+# 	altera_avalon_throughput_monitor
+# End time: 16:14:35 on Nov 13,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work system +incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules {D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/altera_pmon_count_csr.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:14:35 on Nov 13,2018
+# vlog -reportprogress 300 -vlog01compat -work system "+incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules" D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/altera_pmon_count_csr.v 
+# -- Compiling module altera_pmon_count_csr
+# 
+# Top level modules:
+# 	altera_pmon_count_csr
+# End time: 16:14:35 on Nov 13,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work system +incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules {D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/altera_pmon_counters.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:14:35 on Nov 13,2018
+# vlog -reportprogress 300 -vlog01compat -work system "+incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules" D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/altera_pmon_counters.v 
+# -- Compiling module altera_pmon_counters
+# 
+# Top level modules:
+# 	altera_pmon_counters
+# End time: 16:14:35 on Nov 13,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work system +incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules {D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/altera_avalon_sc_fifo.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:14:35 on Nov 13,2018
+# vlog -reportprogress 300 -vlog01compat -work system "+incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules" D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/altera_avalon_sc_fifo.v 
+# -- Compiling module altera_avalon_sc_fifo
+# 
+# Top level modules:
+# 	altera_avalon_sc_fifo
+# End time: 16:14:35 on Nov 13,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work system +incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules {D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/system_system_console.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:14:35 on Nov 13,2018
+# vlog -reportprogress 300 -vlog01compat -work system "+incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules" D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/system_system_console.v 
+# -- Compiling module system_system_console
+# 
+# Top level modules:
+# 	system_system_console
+# End time: 16:14:35 on Nov 13,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work system +incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules {D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/altera_avalon_packets_to_master.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:14:35 on Nov 13,2018
+# vlog -reportprogress 300 -vlog01compat -work system "+incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules" D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/altera_avalon_packets_to_master.v 
+# -- Compiling module altera_avalon_packets_to_master
+# -- Compiling module packets_to_fifo
+# -- Compiling module fifo_buffer_single_clock_fifo
+# -- Compiling module fifo_buffer_scfifo_with_controls
+# -- Compiling module fifo_buffer
+# -- Compiling module fifo_to_packet
+# -- Compiling module packets_to_master
+# 
+# Top level modules:
+# 	altera_avalon_packets_to_master
+# End time: 16:14:36 on Nov 13,2018, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work system +incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules {D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/altera_avalon_st_packets_to_bytes.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:14:36 on Nov 13,2018
+# vlog -reportprogress 300 -vlog01compat -work system "+incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules" D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/altera_avalon_st_packets_to_bytes.v 
+# -- Compiling module altera_avalon_st_packets_to_bytes
+# 
+# Top level modules:
+# 	altera_avalon_st_packets_to_bytes
+# End time: 16:14:36 on Nov 13,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work system +incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules {D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/altera_avalon_st_bytes_to_packets.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:14:36 on Nov 13,2018
+# vlog -reportprogress 300 -vlog01compat -work system "+incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules" D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/altera_avalon_st_bytes_to_packets.v 
+# -- Compiling module altera_avalon_st_bytes_to_packets
+# 
+# Top level modules:
+# 	altera_avalon_st_bytes_to_packets
+# End time: 16:14:36 on Nov 13,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work system +incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules {D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/altera_avalon_st_jtag_interface.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:14:36 on Nov 13,2018
+# vlog -reportprogress 300 -vlog01compat -work system "+incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules" D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/altera_avalon_st_jtag_interface.v 
+# -- Compiling module altera_avalon_st_jtag_interface
+# 
+# Top level modules:
+# 	altera_avalon_st_jtag_interface
+# End time: 16:14:36 on Nov 13,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work system +incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules {D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/altera_jtag_dc_streaming.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:14:36 on Nov 13,2018
+# vlog -reportprogress 300 -vlog01compat -work system "+incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules" D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/altera_jtag_dc_streaming.v 
+# -- Compiling module altera_jtag_control_signal_crosser
+# -- Compiling module altera_jtag_src_crosser
+# -- Compiling module altera_jtag_dc_streaming
+# 
+# Top level modules:
+# 	altera_jtag_dc_streaming
+# End time: 16:14:36 on Nov 13,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work system +incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules {D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/altera_jtag_sld_node.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:14:36 on Nov 13,2018
+# vlog -reportprogress 300 -vlog01compat -work system "+incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules" D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/altera_jtag_sld_node.v 
+# -- Compiling module altera_jtag_sld_node
+# 
+# Top level modules:
+# 	altera_jtag_sld_node
+# End time: 16:14:37 on Nov 13,2018, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work system +incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules {D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/altera_jtag_streaming.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:14:37 on Nov 13,2018
+# vlog -reportprogress 300 -vlog01compat -work system "+incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules" D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/altera_jtag_streaming.v 
+# -- Compiling module altera_jtag_streaming
+# 
+# Top level modules:
+# 	altera_jtag_streaming
+# End time: 16:14:37 on Nov 13,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work system +incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules {D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/altera_avalon_st_clock_crosser.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:14:37 on Nov 13,2018
+# vlog -reportprogress 300 -vlog01compat -work system "+incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules" D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/altera_avalon_st_clock_crosser.v 
+# -- Compiling module altera_avalon_st_clock_crosser
+# 
+# Top level modules:
+# 	altera_avalon_st_clock_crosser
+# End time: 16:14:37 on Nov 13,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work system +incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules {D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/altera_std_synchronizer_nocut.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:14:37 on Nov 13,2018
+# vlog -reportprogress 300 -vlog01compat -work system "+incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules" D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/altera_std_synchronizer_nocut.v 
+# -- Compiling module altera_std_synchronizer_nocut
+# 
+# Top level modules:
+# 	altera_std_synchronizer_nocut
+# End time: 16:14:37 on Nov 13,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work system +incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules {D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/altera_avalon_st_idle_remover.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:14:37 on Nov 13,2018
+# vlog -reportprogress 300 -vlog01compat -work system "+incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules" D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/altera_avalon_st_idle_remover.v 
+# -- Compiling module altera_avalon_st_idle_remover
+# 
+# Top level modules:
+# 	altera_avalon_st_idle_remover
+# End time: 16:14:37 on Nov 13,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work system +incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules {D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/altera_avalon_st_idle_inserter.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:14:37 on Nov 13,2018
+# vlog -reportprogress 300 -vlog01compat -work system "+incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules" D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/altera_avalon_st_idle_inserter.v 
+# -- Compiling module altera_avalon_st_idle_inserter
+# 
+# Top level modules:
+# 	altera_avalon_st_idle_inserter
+# End time: 16:14:37 on Nov 13,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work system +incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules {D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/altera_pll_reconfig_top.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:14:37 on Nov 13,2018
+# vlog -reportprogress 300 -vlog01compat -work system "+incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules" D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/altera_pll_reconfig_top.v 
+# -- Compiling module altera_pll_reconfig_top
+# 
+# Top level modules:
+# 	altera_pll_reconfig_top
+# End time: 16:14:37 on Nov 13,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work system +incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules {D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/altera_pll_reconfig_core.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:14:38 on Nov 13,2018
+# vlog -reportprogress 300 -vlog01compat -work system "+incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules" D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/altera_pll_reconfig_core.v 
+# -- Compiling module altera_pll_reconfig_core
+# ** Warning: D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/altera_pll_reconfig_core.v(62): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+# -- Compiling module self_reset
+# -- Compiling module dprio_mux
+# -- Compiling module fpll_dprio_init
+# -- Compiling module dyn_phase_shift
+# -- Compiling module generic_lcell_comb
+# 
+# Top level modules:
+# 	altera_pll_reconfig_core
+# End time: 16:14:38 on Nov 13,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 1
+# vlog -vlog01compat -work system +incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules {D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/system_parameters_0.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:14:38 on Nov 13,2018
+# vlog -reportprogress 300 -vlog01compat -work system "+incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules" D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/system_parameters_0.v 
+# -- Compiling module system_parameters_0
+# 
+# Top level modules:
+# 	system_parameters_0
+# End time: 16:14:38 on Nov 13,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work system +incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules {D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/system_parameters_0_samples_per_echo.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:14:38 on Nov 13,2018
+# vlog -reportprogress 300 -vlog01compat -work system "+incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules" D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/system_parameters_0_samples_per_echo.v 
+# -- Compiling module system_parameters_0_samples_per_echo
+# 
+# Top level modules:
+# 	system_parameters_0_samples_per_echo
+# End time: 16:14:38 on Nov 13,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work system +incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules {D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/system_parameters_0_delay_t1.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:14:38 on Nov 13,2018
+# vlog -reportprogress 300 -vlog01compat -work system "+incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules" D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/system_parameters_0_delay_t1.v 
+# -- Compiling module system_parameters_0_delay_t1
+# 
+# Top level modules:
+# 	system_parameters_0_delay_t1
+# End time: 16:14:38 on Nov 13,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work system +incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules {D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/system_parameters_0_delay_nosig.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:14:38 on Nov 13,2018
+# vlog -reportprogress 300 -vlog01compat -work system "+incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules" D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/system_parameters_0_delay_nosig.v 
+# -- Compiling module system_parameters_0_delay_nosig
+# 
+# Top level modules:
+# 	system_parameters_0_delay_nosig
+# End time: 16:14:38 on Nov 13,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work system +incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules {D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/system_nmr_sys_pll.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:14:39 on Nov 13,2018
+# vlog -reportprogress 300 -vlog01compat -work system "+incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules" D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/system_nmr_sys_pll.v 
+# -- Compiling module system_nmr_sys_pll
+# 
+# Top level modules:
+# 	system_nmr_sys_pll
+# End time: 16:14:39 on Nov 13,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work system +incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules {D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/system_led.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:14:39 on Nov 13,2018
+# vlog -reportprogress 300 -vlog01compat -work system "+incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules" D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/system_led.v 
+# -- Compiling module system_led
+# 
+# Top level modules:
+# 	system_led
+# End time: 16:14:39 on Nov 13,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work system +incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules {D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/altsource_probe_top.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:14:39 on Nov 13,2018
+# vlog -reportprogress 300 -vlog01compat -work system "+incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules" D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/altsource_probe_top.v 
+# -- Compiling module altsource_probe_top
+# 
+# Top level modules:
+# 	altsource_probe_top
+# End time: 16:14:39 on Nov 13,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work system +incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules {D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/system_dac_preamp.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:14:39 on Nov 13,2018
+# vlog -reportprogress 300 -vlog01compat -work system "+incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules" D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/system_dac_preamp.v 
+# -- Compiling module system_dac_preamp
+# 
+# Top level modules:
+# 	system_dac_preamp
+# End time: 16:14:39 on Nov 13,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work system +incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules {D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/altera_avalon_i2c.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:14:39 on Nov 13,2018
+# vlog -reportprogress 300 -vlog01compat -work system "+incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules" D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/altera_avalon_i2c.v 
+# -- Compiling module altera_avalon_i2c
+# 
+# Top level modules:
+# 	altera_avalon_i2c
+# End time: 16:14:39 on Nov 13,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work system +incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules {D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/altera_avalon_i2c_csr.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:14:40 on Nov 13,2018
+# vlog -reportprogress 300 -vlog01compat -work system "+incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules" D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/altera_avalon_i2c_csr.v 
+# -- Compiling module altera_avalon_i2c_csr
+# 
+# Top level modules:
+# 	altera_avalon_i2c_csr
+# End time: 16:14:40 on Nov 13,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work system +incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules {D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/altera_avalon_i2c_clk_cnt.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:14:40 on Nov 13,2018
+# vlog -reportprogress 300 -vlog01compat -work system "+incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules" D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/altera_avalon_i2c_clk_cnt.v 
+# -- Compiling module altera_avalon_i2c_clk_cnt
+# 
+# Top level modules:
+# 	altera_avalon_i2c_clk_cnt
+# End time: 16:14:40 on Nov 13,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work system +incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules {D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/altera_avalon_i2c_condt_det.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:14:40 on Nov 13,2018
+# vlog -reportprogress 300 -vlog01compat -work system "+incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules" D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/altera_avalon_i2c_condt_det.v 
+# -- Compiling module altera_avalon_i2c_condt_det
+# 
+# Top level modules:
+# 	altera_avalon_i2c_condt_det
+# End time: 16:14:40 on Nov 13,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work system +incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules {D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/altera_avalon_i2c_condt_gen.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:14:40 on Nov 13,2018
+# vlog -reportprogress 300 -vlog01compat -work system "+incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules" D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/altera_avalon_i2c_condt_gen.v 
+# -- Compiling module altera_avalon_i2c_condt_gen
+# 
+# Top level modules:
+# 	altera_avalon_i2c_condt_gen
+# End time: 16:14:40 on Nov 13,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work system +incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules {D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/altera_avalon_i2c_fifo.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:14:40 on Nov 13,2018
+# vlog -reportprogress 300 -vlog01compat -work system "+incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules" D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/altera_avalon_i2c_fifo.v 
+# -- Compiling module altera_avalon_i2c_fifo
+# 
+# Top level modules:
+# 	altera_avalon_i2c_fifo
+# End time: 16:14:40 on Nov 13,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work system +incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules {D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/altera_avalon_i2c_mstfsm.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:14:40 on Nov 13,2018
+# vlog -reportprogress 300 -vlog01compat -work system "+incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules" D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/altera_avalon_i2c_mstfsm.v 
+# -- Compiling module altera_avalon_i2c_mstfsm
+# 
+# Top level modules:
+# 	altera_avalon_i2c_mstfsm
+# End time: 16:14:41 on Nov 13,2018, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work system +incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules {D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/altera_avalon_i2c_rxshifter.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:14:41 on Nov 13,2018
+# vlog -reportprogress 300 -vlog01compat -work system "+incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules" D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/altera_avalon_i2c_rxshifter.v 
+# -- Compiling module altera_avalon_i2c_rxshifter
+# 
+# Top level modules:
+# 	altera_avalon_i2c_rxshifter
+# End time: 16:14:41 on Nov 13,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work system +incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules {D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/altera_avalon_i2c_txshifter.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:14:41 on Nov 13,2018
+# vlog -reportprogress 300 -vlog01compat -work system "+incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules" D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/altera_avalon_i2c_txshifter.v 
+# -- Compiling module altera_avalon_i2c_txshifter
+# 
+# Top level modules:
+# 	altera_avalon_i2c_txshifter
+# End time: 16:14:41 on Nov 13,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work system +incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules {D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/altera_avalon_i2c_spksupp.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:14:41 on Nov 13,2018
+# vlog -reportprogress 300 -vlog01compat -work system "+incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules" D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/altera_avalon_i2c_spksupp.v 
+# -- Compiling module altera_avalon_i2c_spksupp
+# 
+# Top level modules:
+# 	altera_avalon_i2c_spksupp
+# End time: 16:14:41 on Nov 13,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -vlog01compat -work system +incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules {D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/altera_avalon_i2c_txout.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:14:41 on Nov 13,2018
+# vlog -reportprogress 300 -vlog01compat -work system "+incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules" D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/altera_avalon_i2c_txout.v 
+# -- Compiling module altera_avalon_i2c_txout
+# 
+# Top level modules:
+# 	altera_avalon_i2c_txout
+# End time: 16:14:41 on Nov 13,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work system +incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules {D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/system_mm_interconnect_0_avalon_st_adapter_error_adapter_0.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:14:41 on Nov 13,2018
+# vlog -reportprogress 300 -sv -work system "+incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules" D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/system_mm_interconnect_0_avalon_st_adapter_error_adapter_0.sv 
+# -- Compiling module system_mm_interconnect_0_avalon_st_adapter_error_adapter_0
+# 
+# Top level modules:
+# 	system_mm_interconnect_0_avalon_st_adapter_error_adapter_0
+# End time: 16:14:42 on Nov 13,2018, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# vlog -sv -work system +incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules {D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/altera_merlin_slave_translator.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:14:42 on Nov 13,2018
+# vlog -reportprogress 300 -sv -work system "+incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules" D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/altera_merlin_slave_translator.sv 
+# -- Compiling module altera_merlin_slave_translator
+# 
+# Top level modules:
+# 	altera_merlin_slave_translator
+# End time: 16:14:42 on Nov 13,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work system +incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules {D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/altera_merlin_master_translator.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:14:42 on Nov 13,2018
+# vlog -reportprogress 300 -sv -work system "+incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules" D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/altera_merlin_master_translator.sv 
+# -- Compiling module altera_merlin_master_translator
+# 
+# Top level modules:
+# 	altera_merlin_master_translator
+# End time: 16:14:42 on Nov 13,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work system +incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules {D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/altera_trace_monitor_endpoint_wrapper.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:14:42 on Nov 13,2018
+# vlog -reportprogress 300 -sv -work system "+incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules" D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/altera_trace_monitor_endpoint_wrapper.sv 
+# -- Compiling package altera_trace_monitor_endpoint_wpackage
+# -- Compiling module altera_trace_monitor_endpoint_wrapper
+# -- Importing package altera_trace_monitor_endpoint_wpackage
+# -- Compiling module altera_trace_monitor_endpoint
+# 
+# Top level modules:
+# 	altera_trace_monitor_endpoint_wrapper
+# End time: 16:14:42 on Nov 13,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work system +incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules {D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/system_mm_interconnect_0_rsp_mux.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:14:42 on Nov 13,2018
+# vlog -reportprogress 300 -sv -work system "+incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules" D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/system_mm_interconnect_0_rsp_mux.sv 
+# -- Compiling module system_mm_interconnect_0_rsp_mux
+# 
+# Top level modules:
+# 	system_mm_interconnect_0_rsp_mux
+# End time: 16:14:42 on Nov 13,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work system +incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules {D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/altera_merlin_arbitrator.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:14:43 on Nov 13,2018
+# vlog -reportprogress 300 -sv -work system "+incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules" D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/altera_merlin_arbitrator.sv 
+# -- Compiling module altera_merlin_arbitrator
+# -- Compiling module altera_merlin_arb_adder
+# 
+# Top level modules:
+# 	altera_merlin_arbitrator
+# End time: 16:14:43 on Nov 13,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work system +incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules {D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/system_mm_interconnect_0_rsp_demux.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:14:43 on Nov 13,2018
+# vlog -reportprogress 300 -sv -work system "+incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules" D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/system_mm_interconnect_0_rsp_demux.sv 
+# -- Compiling module system_mm_interconnect_0_rsp_demux
+# 
+# Top level modules:
+# 	system_mm_interconnect_0_rsp_demux
+# End time: 16:14:43 on Nov 13,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work system +incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules {D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/system_mm_interconnect_0_cmd_mux.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:14:43 on Nov 13,2018
+# vlog -reportprogress 300 -sv -work system "+incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules" D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/system_mm_interconnect_0_cmd_mux.sv 
+# -- Compiling module system_mm_interconnect_0_cmd_mux
+# 
+# Top level modules:
+# 	system_mm_interconnect_0_cmd_mux
+# End time: 16:14:43 on Nov 13,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work system +incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules {D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/system_mm_interconnect_0_cmd_demux.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:14:43 on Nov 13,2018
+# vlog -reportprogress 300 -sv -work system "+incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules" D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/system_mm_interconnect_0_cmd_demux.sv 
+# -- Compiling module system_mm_interconnect_0_cmd_demux
+# 
+# Top level modules:
+# 	system_mm_interconnect_0_cmd_demux
+# End time: 16:14:43 on Nov 13,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work system +incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules {D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/altera_merlin_traffic_limiter.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:14:43 on Nov 13,2018
+# vlog -reportprogress 300 -sv -work system "+incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules" D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/altera_merlin_traffic_limiter.sv 
+# -- Compiling module altera_merlin_traffic_limiter
+# ** Warning: D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/altera_merlin_traffic_limiter.sv(531): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/altera_merlin_traffic_limiter.sv(602): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/altera_merlin_traffic_limiter.sv(603): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/altera_merlin_traffic_limiter.sv(604): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/altera_merlin_traffic_limiter.sv(605): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/altera_merlin_traffic_limiter.sv(606): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/altera_merlin_traffic_limiter.sv(607): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/altera_merlin_traffic_limiter.sv(612): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/altera_merlin_traffic_limiter.sv(614): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/altera_merlin_traffic_limiter.sv(617): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/altera_merlin_traffic_limiter.sv(618): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/altera_merlin_traffic_limiter.sv(644): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/altera_merlin_traffic_limiter.sv(646): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/altera_merlin_traffic_limiter.sv(647): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/altera_merlin_traffic_limiter.sv(648): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/altera_merlin_traffic_limiter.sv(649): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/altera_merlin_traffic_limiter.sv(650): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/altera_merlin_traffic_limiter.sv(655): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/altera_merlin_traffic_limiter.sv(657): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/altera_merlin_traffic_limiter.sv(660): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/altera_merlin_traffic_limiter.sv(661): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# 
+# Top level modules:
+# 	altera_merlin_traffic_limiter
+# End time: 16:14:43 on Nov 13,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 21
+# vlog -vlog01compat -work system +incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules {D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/altera_avalon_st_pipeline_base.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:14:44 on Nov 13,2018
+# vlog -reportprogress 300 -vlog01compat -work system "+incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules" D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/altera_avalon_st_pipeline_base.v 
+# -- Compiling module altera_avalon_st_pipeline_base
+# 
+# Top level modules:
+# 	altera_avalon_st_pipeline_base
+# End time: 16:14:44 on Nov 13,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work system +incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules {D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/system_mm_interconnect_0_router_001.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:14:44 on Nov 13,2018
+# vlog -reportprogress 300 -sv -work system "+incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules" D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/system_mm_interconnect_0_router_001.sv 
+# -- Compiling module system_mm_interconnect_0_router_001_default_decode
+# -- Compiling module system_mm_interconnect_0_router_001
+# 
+# Top level modules:
+# 	system_mm_interconnect_0_router_001
+# End time: 16:14:44 on Nov 13,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work system +incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules {D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/system_mm_interconnect_0_router.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:14:44 on Nov 13,2018
+# vlog -reportprogress 300 -sv -work system "+incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules" D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/system_mm_interconnect_0_router.sv 
+# -- Compiling module system_mm_interconnect_0_router_default_decode
+# -- Compiling module system_mm_interconnect_0_router
+# 
+# Top level modules:
+# 	system_mm_interconnect_0_router
+# End time: 16:14:44 on Nov 13,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work system +incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules {D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/altera_merlin_slave_agent.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:14:44 on Nov 13,2018
+# vlog -reportprogress 300 -sv -work system "+incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules" D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/altera_merlin_slave_agent.sv 
+# -- Compiling module altera_merlin_slave_agent
+# ** Warning: D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/altera_merlin_slave_agent.sv(618): (vlog-2186) SystemVerilog testbench feature
+# (randomization, coverage or assertion) detected in the design.
+# These features are only supported in Questasim.
+# ** Warning: D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/altera_merlin_slave_agent.sv(488): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/altera_merlin_slave_agent.sv(489): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/altera_merlin_slave_agent.sv(490): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/altera_merlin_slave_agent.sv(491): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+# ** Warning: D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/altera_merlin_slave_agent.sv(34): (vlog-2186) SystemVerilog testbench feature
+# (randomization, coverage or assertion) detected in the design.
+# These features are only supported in Questasim.
+# 
+# Top level modules:
+# 	altera_merlin_slave_agent
+# End time: 16:14:44 on Nov 13,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 6
+# vlog -sv -work system +incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules {D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/altera_merlin_burst_uncompressor.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:14:44 on Nov 13,2018
+# vlog -reportprogress 300 -sv -work system "+incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules" D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/altera_merlin_burst_uncompressor.sv 
+# -- Compiling module altera_merlin_burst_uncompressor
+# 
+# Top level modules:
+# 	altera_merlin_burst_uncompressor
+# End time: 16:14:44 on Nov 13,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work system +incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules {D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/altera_merlin_master_agent.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:14:45 on Nov 13,2018
+# vlog -reportprogress 300 -sv -work system "+incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules" D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/altera_merlin_master_agent.sv 
+# -- Compiling module altera_merlin_master_agent
+# 
+# Top level modules:
+# 	altera_merlin_master_agent
+# End time: 16:14:45 on Nov 13,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work system +incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules {D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/system_system_console_p2b_adapter.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:14:45 on Nov 13,2018
+# vlog -reportprogress 300 -sv -work system "+incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules" D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/system_system_console_p2b_adapter.sv 
+# -- Compiling module system_system_console_p2b_adapter
+# 
+# Top level modules:
+# 	system_system_console_p2b_adapter
+# End time: 16:14:45 on Nov 13,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work system +incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules {D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/system_system_console_b2p_adapter.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:14:45 on Nov 13,2018
+# vlog -reportprogress 300 -sv -work system "+incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules" D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/system_system_console_b2p_adapter.sv 
+# -- Compiling module system_system_console_b2p_adapter
+# 
+# Top level modules:
+# 	system_system_console_b2p_adapter
+# End time: 16:14:45 on Nov 13,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work system +incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules {D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/system_system_console_timing_adt.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:14:45 on Nov 13,2018
+# vlog -reportprogress 300 -sv -work system "+incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules" D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/system_system_console_timing_adt.sv 
+# -- Compiling module system_system_console_timing_adt
+# 
+# Top level modules:
+# 	system_system_console_timing_adt
+# End time: 16:14:45 on Nov 13,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vlog -sv -work system +incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules {D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/system_mm_interconnect_0_monitor_system_console_master_gatherer.sv}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:14:45 on Nov 13,2018
+# vlog -reportprogress 300 -sv -work system "+incdir+D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules" D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/QSYS/system/synthesis/submodules/system_mm_interconnect_0_monitor_system_console_master_gatherer.sv 
+# -- Compiling module system_mm_interconnect_0_monitor_system_console_master_gatherer_address_decode_fsm
+# -- Compiling module system_mm_interconnect_0_monitor_system_console_master_gatherer_address_decode
+# -- Compiling module system_mm_interconnect_0_monitor_system_console_master_gatherer_address_decode_begintransfer
+# -- Compiling module system_mm_interconnect_0_monitor_system_console_master_gatherer_read_address_decode
+# -- Compiling module system_mm_interconnect_0_monitor_system_console_master_gatherer_write_address_decode
+# -- Compiling module system_mm_interconnect_0_monitor_system_console_master_gatherer_periodic_timer
+# -- Compiling module system_mm_interconnect_0_monitor_system_console_master_gatherer_data_master
+# -- Compiling module system_mm_interconnect_0_monitor_system_console_master_gatherer_control_readdata_mux
+# -- Compiling module system_mm_interconnect_0_monitor_system_console_master_gatherer_timestamp_generator
+# -- Compiling module system_mm_interconnect_0_monitor_system_console_master_gatherer_capture_source
+# -- Compiling module system_mm_interconnect_0_monitor_system_console_master_gatherer_capture_source_fifo
+# -- Compiling module system_mm_interconnect_0_monitor_system_console_master_gatherer_config_master
+# -- Compiling module system_mm_interconnect_0_monitor_system_console_master_gatherer
+# 
+# Top level modules:
+# 	system_mm_interconnect_0_monitor_system_console_master_gatherer
+# End time: 16:14:45 on Nov 13,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# 
+# vcom -93 -work work {D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/DELETEME/FIR_sim/FIR_tb.vhd}
+# Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:14:45 on Nov 13,2018
+# vcom -reportprogress 300 -93 -work work D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/DELETEME/FIR_sim/FIR_tb.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity fir_tb
+# -- Compiling architecture rtl of fir_tb
+# ** Error: (vcom-11) Could not find work.fir.
+# ** Error (suppressible): D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/DELETEME/FIR_sim/FIR_tb.vhd(143): (vcom-1195) Cannot find expanded name "work.fir".
+# ** Error: D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/DELETEME/FIR_sim/FIR_tb.vhd(143): Unknown expanded name.
+# ** Error: D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/DELETEME/FIR_sim/FIR_tb.vhd(469): VHDL Compiler exiting
+# End time: 16:14:45 on Nov 13,2018, Elapsed time: 0:00:00
+# Errors: 4, Warnings: 0
+# ** Error: C:/intelFPGA/17.1/modelsim_ase/win32aloem/vcom failed.
+# Error in macro ./top_run_msim_rtl_vhdl.do line 86
+# C:/intelFPGA/17.1/modelsim_ase/win32aloem/vcom failed.
+#     while executing
+# "vcom -93 -work work {D:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/DELETEME/FIR_sim/FIR_tb.vhd}"
+cd ..
+# reading C:/intelFPGA/17.1/modelsim_ase/win32aloem/../modelsim.ini
+ls
+# modelsim
+cd  ..
+ls
+# DELETEME
+# HDL
+# QSYS
+# TCL
+# c5_pin_model_dump.txt
+# db
+# greybox_tmp
+# hs_err_pid16608.log
+# hs_err_pid84612.log
+# hs_err_pid86728.log
+# incremental_db
+# replay_pid16608.log
+# replay_pid84612.log
+# replay_pid86728.log
+# simulation
+# top.asm.rpt
+# top.cdf
+# top.done
+# top.eda.rpt
+# top.fit.rpt
+# top.fit.smsg
+# top.fit.summary
+# top.flow.rpt
+# top.htm
+# top.jdi
+# top.map.rpt
+# top.map.smsg
+# top.map.summary
+# top.pin
+# top.qpf
+# top.qsf
+# top.sdc
+# top.sld
+# top.sof
+# top.sta.rpt
+# top.sta.summary
+# top.v
+# top_assignment_defaults.qdf
+# top_nativelink_simulation.rpt
+cd ..
+ls
+# MATLAB
+# QUARTUS-NoSoC
+# QUARTUS-SoC
+# SHELL
+cd QUARTUS-NoSoC
+ls
+# DELETEME
+# HDL
+# QSYS
+# TCL
+# c5_pin_model_dump.txt
+# db
+# greybox_tmp
+# hs_err_pid16608.log
+# hs_err_pid84612.log
+# hs_err_pid86728.log
+# incremental_db
+# replay_pid16608.log
+# replay_pid84612.log
+# replay_pid86728.log
+# simulation
+# top.asm.rpt
+# top.cdf
+# top.done
+# top.eda.rpt
+# top.fit.rpt
+# top.fit.smsg
+# top.fit.summary
+# top.flow.rpt
+# top.htm
+# top.jdi
+# top.map.rpt
+# top.map.smsg
+# top.map.summary
+# top.pin
+# top.qpf
+# top.qsf
+# top.sdc
+# top.sld
+# top.sof
+# top.sta.rpt
+# top.sta.summary
+# top.v
+# top_assignment_defaults.qdf
+# top_nativelink_simulation.rpt
+cd HDL
+ls
+# ADC_ACQ_WINGEN.v
+# ADC_ACQ_WINGEN_tb.do
+# ADC_ACQ_WINGEN_tb.v
+# ADC_LTC1746_DRV.v
+# ADC_LTC1746_DRV_tb.do
+# ADC_LTC1746_DRV_tb.v
+# ALTERA_IPs
+# CDC_Input_Synchronizer.v
+# FIR_coeff_100kHz
+# GNRL_delayed_pulser_tb.do
+# NMR_Controller.v
+# NMR_Controller.v.bak
+# NMR_Controller_tb.do
+# NMR_Controller_tb.v
+# NMR_Controller_tb.v.bak
+# NMR_PULSE_PROGRAM.v
+# NMR_PULSE_PROGRAM.v.bak
+# NMR_PULSE_PROGRAM_tb.do
+# NMR_PULSE_PROGRAM_tb.v
+# NMR_PULSE_PROGRAM_tb.v.bak
+# StdFunctions.vh
+cd ALTERA_IPs
+ls
+# FIR
+# altiobuf.qip
+# altiobuf.v
+# altiobuf_inst.v
+cd FIR
+ls
+# fir_final
+# fir_final.bsf
+# fir_final.cmp
+# fir_final.qip
+# fir_final.sip
+# fir_final.spd
+# fir_final.v
+# fir_final_sim
+# fir_final_sim.f
+cd fir_final_sim
+ls
+# aldec
+# altera_avalon_sc_fifo.v
+# auk_dspip_avalon_streaming_controller_hpfir.vhd
+# auk_dspip_avalon_streaming_sink_hpfir.vhd
+# auk_dspip_avalon_streaming_source_hpfir.vhd
+# auk_dspip_lib_pkg_hpfir.vhd
+# auk_dspip_math_pkg_hpfir.vhd
+# auk_dspip_roundsat_hpfir.vhd
+# cadence
+# dspba_library.vhd
+# dspba_library_package.vhd
+# fir_final.vhd
+# fir_final_ast.vhd
+# fir_final_coef_int.txt
+# fir_final_input.txt
+# fir_final_mlab.m
+# fir_final_model.m
+# fir_final_msim.tcl
+# fir_final_nativelink.tcl
+# fir_final_param.txt
+# fir_final_rtl_core.vhd
+# fir_final_tb.vhd
+# mentor
+# synopsys
+source fir_final_msim.tcl
+# Info: RTL simulation.
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:19:29 on Nov 13,2018
+# vlog -reportprogress 300 -work lpm C:/intelfpga/17.1/quartus/eda/sim_lib/220model.v 
+# -- Compiling module LPM_MEMORY_INITIALIZATION
+# -- Compiling module LPM_HINT_EVALUATION
+# -- Compiling module LPM_DEVICE_FAMILIES
+# -- Compiling module lpm_constant
+# ** Warning: C:/intelfpga/17.1/quartus/eda/sim_lib/220model.v(1578): (vlog-13233) Design unit "lpm_constant" already exists and will be overwritten. Overwriting a VHDL entity with a Verilog module.
+# -- Compiling module lpm_inv
+# ** Warning: C:/intelfpga/17.1/quartus/eda/sim_lib/220model.v(1629): (vlog-13233) Design unit "lpm_inv" already exists and will be overwritten. Overwriting a VHDL entity with a Verilog module.
+# -- Compiling module lpm_and
+# ** Warning: C:/intelfpga/17.1/quartus/eda/sim_lib/220model.v(1682): (vlog-13233) Design unit "lpm_and" already exists and will be overwritten. Overwriting a VHDL entity with a Verilog module.
+# -- Compiling module lpm_or
+# ** Warning: C:/intelfpga/17.1/quartus/eda/sim_lib/220model.v(1762): (vlog-13233) Design unit "lpm_or" already exists and will be overwritten. Overwriting a VHDL entity with a Verilog module.
+# -- Compiling module lpm_xor
+# ** Warning: C:/intelfpga/17.1/quartus/eda/sim_lib/220model.v(1843): (vlog-13233) Design unit "lpm_xor" already exists and will be overwritten. Overwriting a VHDL entity with a Verilog module.
+# -- Compiling module lpm_bustri
+# ** Warning: C:/intelfpga/17.1/quartus/eda/sim_lib/220model.v(1972): (vlog-13233) Design unit "lpm_bustri" already exists and will be overwritten. Overwriting a VHDL entity with a Verilog module.
+# -- Compiling module lpm_mux
+# ** Warning: C:/intelfpga/17.1/quartus/eda/sim_lib/220model.v(2058): (vlog-13233) Design unit "lpm_mux" already exists and will be overwritten. Overwriting a VHDL entity with a Verilog module.
+# -- Compiling module lpm_decode
+# ** Warning: C:/intelfpga/17.1/quartus/eda/sim_lib/220model.v(2193): (vlog-13233) Design unit "lpm_decode" already exists and will be overwritten. Overwriting a VHDL entity with a Verilog module.
+# -- Compiling module lpm_clshift
+# ** Warning: C:/intelfpga/17.1/quartus/eda/sim_lib/220model.v(2321): (vlog-13233) Design unit "lpm_clshift" already exists and will be overwritten. Overwriting a VHDL entity with a Verilog module.
+# -- Compiling module lpm_add_sub
+# ** Warning: C:/intelfpga/17.1/quartus/eda/sim_lib/220model.v(2606): (vlog-13233) Design unit "lpm_add_sub" already exists and will be overwritten. Overwriting a VHDL entity with a Verilog module.
+# -- Compiling module lpm_compare
+# ** Warning: C:/intelfpga/17.1/quartus/eda/sim_lib/220model.v(2812): (vlog-13233) Design unit "lpm_compare" already exists and will be overwritten. Overwriting a VHDL entity with a Verilog module.
+# -- Compiling module lpm_mult
+# ** Warning: C:/intelfpga/17.1/quartus/eda/sim_lib/220model.v(2986): (vlog-13233) Design unit "lpm_mult" already exists and will be overwritten. Overwriting a VHDL entity with a Verilog module.
+# -- Compiling module lpm_divide
+# ** Warning: C:/intelfpga/17.1/quartus/eda/sim_lib/220model.v(3272): (vlog-13233) Design unit "lpm_divide" already exists and will be overwritten. Overwriting a VHDL entity with a Verilog module.
+# -- Compiling module lpm_abs
+# ** Warning: C:/intelfpga/17.1/quartus/eda/sim_lib/220model.v(3479): (vlog-13233) Design unit "lpm_abs" already exists and will be overwritten. Overwriting a VHDL entity with a Verilog module.
+# -- Compiling module lpm_counter
+# ** Warning: C:/intelfpga/17.1/quartus/eda/sim_lib/220model.v(3543): (vlog-13233) Design unit "lpm_counter" already exists and will be overwritten. Overwriting a VHDL entity with a Verilog module.
+# -- Compiling module lpm_latch
+# ** Warning: C:/intelfpga/17.1/quartus/eda/sim_lib/220model.v(3827): (vlog-13233) Design unit "lpm_latch" already exists and will be overwritten. Overwriting a VHDL entity with a Verilog module.
+# -- Compiling module lpm_ff
+# ** Warning: C:/intelfpga/17.1/quartus/eda/sim_lib/220model.v(3951): (vlog-13233) Design unit "lpm_ff" already exists and will be overwritten. Overwriting a VHDL entity with a Verilog module.
+# -- Compiling module lpm_shiftreg
+# ** Warning: C:/intelfpga/17.1/quartus/eda/sim_lib/220model.v(4170): (vlog-13233) Design unit "lpm_shiftreg" already exists and will be overwritten. Overwriting a VHDL entity with a Verilog module.
+# -- Compiling module lpm_ram_dq
+# ** Warning: C:/intelfpga/17.1/quartus/eda/sim_lib/220model.v(4374): (vlog-13233) Design unit "lpm_ram_dq" already exists and will be overwritten. Overwriting a VHDL entity with a Verilog module.
+# -- Compiling module lpm_ram_dp
+# ** Warning: C:/intelfpga/17.1/quartus/eda/sim_lib/220model.v(4630): (vlog-13233) Design unit "lpm_ram_dp" already exists and will be overwritten. Overwriting a VHDL entity with a Verilog module.
+# -- Compiling module lpm_ram_io
+# ** Warning: C:/intelfpga/17.1/quartus/eda/sim_lib/220model.v(4921): (vlog-13233) Design unit "lpm_ram_io" already exists and will be overwritten. Overwriting a VHDL entity with a Verilog module.
+# -- Compiling module lpm_rom
+# ** Warning: C:/intelfpga/17.1/quartus/eda/sim_lib/220model.v(5183): (vlog-13233) Design unit "lpm_rom" already exists and will be overwritten. Overwriting a VHDL entity with a Verilog module.
+# -- Compiling module lpm_fifo
+# ** Warning: C:/intelfpga/17.1/quartus/eda/sim_lib/220model.v(5398): (vlog-13233) Design unit "lpm_fifo" already exists and will be overwritten. Overwriting a VHDL entity with a Verilog module.
+# -- Compiling module lpm_fifo_dc_dffpipe
+# ** Warning: C:/intelfpga/17.1/quartus/eda/sim_lib/220model.v(5729): (vlog-13233) Design unit "lpm_fifo_dc_dffpipe" already exists and will be overwritten. Overwriting a VHDL entity with a Verilog module.
+# -- Compiling module lpm_fifo_dc_fefifo
+# ** Warning: C:/intelfpga/17.1/quartus/eda/sim_lib/220model.v(5816): (vlog-13233) Design unit "lpm_fifo_dc_fefifo" already exists and will be overwritten. Overwriting a VHDL entity with a Verilog module.
+# -- Compiling module lpm_fifo_dc_async
+# ** Warning: C:/intelfpga/17.1/quartus/eda/sim_lib/220model.v(6018): (vlog-13233) Design unit "lpm_fifo_dc_async" already exists and will be overwritten. Overwriting a VHDL entity with a Verilog module.
+# -- Compiling module lpm_fifo_dc
+# ** Warning: C:/intelfpga/17.1/quartus/eda/sim_lib/220model.v(6455): (vlog-13233) Design unit "lpm_fifo_dc" already exists and will be overwritten. Overwriting a VHDL entity with a Verilog module.
+# -- Compiling module lpm_inpad
+# ** Warning: C:/intelfpga/17.1/quartus/eda/sim_lib/220model.v(6578): (vlog-13233) Design unit "lpm_inpad" already exists and will be overwritten. Overwriting a VHDL entity with a Verilog module.
+# -- Compiling module lpm_outpad
+# ** Warning: C:/intelfpga/17.1/quartus/eda/sim_lib/220model.v(6634): (vlog-13233) Design unit "lpm_outpad" already exists and will be overwritten. Overwriting a VHDL entity with a Verilog module.
+# -- Compiling module lpm_bipad
+# ** Warning: C:/intelfpga/17.1/quartus/eda/sim_lib/220model.v(6690): (vlog-13233) Design unit "lpm_bipad" already exists and will be overwritten. Overwriting a VHDL entity with a Verilog module.
+# 
+# Top level modules:
+# 	lpm_constant
+# 	lpm_inv
+# 	lpm_and
+# 	lpm_or
+# 	lpm_xor
+# 	lpm_bustri
+# 	lpm_mux
+# 	lpm_decode
+# 	lpm_clshift
+# 	lpm_add_sub
+# 	lpm_compare
+# 	lpm_mult
+# 	lpm_divide
+# 	lpm_abs
+# 	lpm_counter
+# 	lpm_latch
+# 	lpm_ff
+# 	lpm_shiftreg
+# 	lpm_ram_dq
+# 	lpm_ram_dp
+# 	lpm_ram_io
+# 	lpm_rom
+# 	lpm_fifo
+# 	lpm_fifo_dc
+# 	lpm_inpad
+# 	lpm_outpad
+# 	lpm_bipad
+# End time: 16:19:29 on Nov 13,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 30
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:19:31 on Nov 13,2018
+# vlog -reportprogress 300 -work sgate C:/intelfpga/17.1/quartus/eda/sim_lib/sgate.v 
+# -- Compiling module oper_add
+# ** Warning: C:/intelfpga/17.1/quartus/eda/sim_lib/sgate.v(18): (vlog-13233) Design unit "oper_add" already exists and will be overwritten. Overwriting a VHDL entity with a Verilog module.
+# -- Compiling module oper_addsub
+# ** Warning: C:/intelfpga/17.1/quartus/eda/sim_lib/sgate.v(95): (vlog-13233) Design unit "oper_addsub" already exists and will be overwritten. Overwriting a VHDL entity with a Verilog module.
+# -- Compiling module mux21
+# ** Warning: C:/intelfpga/17.1/quartus/eda/sim_lib/sgate.v(190): (vlog-13233) Design unit "mux21" already exists and will be overwritten. Overwriting a VHDL entity with a Verilog module.
+# -- Compiling module io_buf_tri
+# ** Warning: C:/intelfpga/17.1/quartus/eda/sim_lib/sgate.v(220): (vlog-13233) Design unit "io_buf_tri" already exists and will be overwritten. Overwriting a VHDL entity with a Verilog module.
+# -- Compiling module io_buf_opdrn
+# ** Warning: C:/intelfpga/17.1/quartus/eda/sim_lib/sgate.v(248): (vlog-13233) Design unit "io_buf_opdrn" already exists and will be overwritten. Overwriting a VHDL entity with a Verilog module.
+# -- Compiling module oper_mult
+# ** Warning: C:/intelfpga/17.1/quartus/eda/sim_lib/sgate.v(274): (vlog-13233) Design unit "oper_mult" already exists and will be overwritten. Overwriting a VHDL entity with a Verilog module.
+# -- Compiling module tri_bus
+# ** Warning: C:/intelfpga/17.1/quartus/eda/sim_lib/sgate.v(347): (vlog-13233) Design unit "tri_bus" already exists and will be overwritten. Overwriting a VHDL entity with a Verilog module.
+# -- Compiling module oper_div
+# ** Warning: C:/intelfpga/17.1/quartus/eda/sim_lib/sgate.v(394): (vlog-13233) Design unit "oper_div" already exists and will be overwritten. Overwriting a VHDL entity with a Verilog module.
+# -- Compiling module oper_mod
+# ** Warning: C:/intelfpga/17.1/quartus/eda/sim_lib/sgate.v(483): (vlog-13233) Design unit "oper_mod" already exists and will be overwritten. Overwriting a VHDL entity with a Verilog module.
+# -- Compiling module oper_left_shift
+# ** Warning: C:/intelfpga/17.1/quartus/eda/sim_lib/sgate.v(572): (vlog-13233) Design unit "oper_left_shift" already exists and will be overwritten. Overwriting a VHDL entity with a Verilog module.
+# -- Compiling module oper_right_shift
+# ** Warning: C:/intelfpga/17.1/quartus/eda/sim_lib/sgate.v(649): (vlog-13233) Design unit "oper_right_shift" already exists and will be overwritten. Overwriting a VHDL entity with a Verilog module.
+# -- Compiling module oper_rotate_left
+# ** Warning: C:/intelfpga/17.1/quartus/eda/sim_lib/sgate.v(732): (vlog-13233) Design unit "oper_rotate_left" already exists and will be overwritten. Overwriting a VHDL entity with a Verilog module.
+# -- Compiling module oper_rotate_right
+# ** Warning: C:/intelfpga/17.1/quartus/eda/sim_lib/sgate.v(793): (vlog-13233) Design unit "oper_rotate_right" already exists and will be overwritten. Overwriting a VHDL entity with a Verilog module.
+# -- Compiling module oper_less_than
+# ** Warning: C:/intelfpga/17.1/quartus/eda/sim_lib/sgate.v(853): (vlog-13233) Design unit "oper_less_than" already exists and will be overwritten. Overwriting a VHDL entity with a Verilog module.
+# -- Compiling module oper_mux
+# ** Warning: C:/intelfpga/17.1/quartus/eda/sim_lib/sgate.v(945): (vlog-13233) Design unit "oper_mux" already exists and will be overwritten. Overwriting a VHDL entity with a Verilog module.
+# -- Compiling module oper_selector
+# ** Warning: C:/intelfpga/17.1/quartus/eda/sim_lib/sgate.v(991): (vlog-13233) Design unit "oper_selector" already exists and will be overwritten. Overwriting a VHDL entity with a Verilog module.
+# -- Compiling module oper_decoder
+# ** Warning: C:/intelfpga/17.1/quartus/eda/sim_lib/sgate.v(1036): (vlog-13233) Design unit "oper_decoder" already exists and will be overwritten. Overwriting a VHDL entity with a Verilog module.
+# -- Compiling module oper_bus_mux
+# ** Warning: C:/intelfpga/17.1/quartus/eda/sim_lib/sgate.v(1072): (vlog-13233) Design unit "oper_bus_mux" already exists and will be overwritten. Overwriting a VHDL entity with a Verilog module.
+# -- Compiling module oper_latch
+# ** Warning: C:/intelfpga/17.1/quartus/eda/sim_lib/sgate.v(1135): (vlog-13233) Design unit "oper_latch" already exists and will be overwritten. Overwriting a VHDL entity with a Verilog module.
+# 
+# Top level modules:
+# 	oper_add
+# 	oper_addsub
+# 	mux21
+# 	io_buf_tri
+# 	io_buf_opdrn
+# 	oper_mult
+# 	tri_bus
+# 	oper_div
+# 	oper_mod
+# 	oper_left_shift
+# 	oper_right_shift
+# 	oper_rotate_left
+# 	oper_rotate_right
+# 	oper_less_than
+# 	oper_mux
+# 	oper_selector
+# 	oper_decoder
+# 	oper_bus_mux
+# 	oper_latch
+# End time: 16:19:31 on Nov 13,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 19
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:19:32 on Nov 13,2018
+# vlog -reportprogress 300 -work altera_lnsim C:/intelfpga/17.1/quartus/eda/sim_lib/mentor/altera_lnsim_for_vhdl.sv 
+# 
+# Top level modules:
+# End time: 16:19:33 on Nov 13,2018, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# ** Warning: C:/intelfpga/17.1/quartus/eda/sim_lib/twentynm_atoms.vhd(2123): (vcom-1288) VITAL timing generic "tpd_datainglitch_dataout" port specification "datainglitch" does not denote a port.
+# (1076.4 section 4.3.2.1.3)
+# Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:19:34 on Nov 13,2018
+# vcom -reportprogress 300 -93 -work altera C:/intelfpga/17.1/quartus/eda/sim_lib/altera_primitives_components.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package VITAL_Timing
+# -- Loading package VITAL_Primitives
+# -- Compiling package dffeas_pack
+# -- Loading package dffeas_pack
+# -- Compiling package altera_primitives_components
+# End time: 16:19:34 on Nov 13,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:19:34 on Nov 13,2018
+# vcom -reportprogress 300 -93 -work altera C:/intelfpga/17.1/quartus/eda/sim_lib/altera_primitives.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity GLOBAL
+# -- Compiling architecture BEHAVIOR of GLOBAL
+# -- Compiling entity CARRY
+# -- Compiling architecture BEHAVIOR of CARRY
+# -- Compiling entity CASCADE
+# -- Compiling architecture BEHAVIOR of CASCADE
+# -- Compiling entity CARRY_SUM
+# -- Compiling architecture BEHAVIOR of CARRY_SUM
+# -- Compiling entity EXP
+# -- Compiling architecture BEHAVIOR of EXP
+# -- Compiling entity SOFT
+# -- Compiling architecture BEHAVIOR of SOFT
+# -- Compiling entity OPNDRN
+# -- Compiling architecture BEHAVIOR of OPNDRN
+# -- Compiling entity ROW_GLOBAL
+# -- Compiling architecture BEHAVIOR of ROW_GLOBAL
+# -- Compiling entity TRI
+# -- Compiling architecture BEHAVIOR of TRI
+# -- Compiling entity LUT_INPUT
+# -- Compiling architecture BEHAVIOR of LUT_INPUT
+# -- Compiling entity LUT_OUTPUT
+# -- Compiling architecture BEHAVIOR of LUT_OUTPUT
+# -- Compiling entity latch
+# -- Compiling architecture BEHAVIOR of latch
+# -- Compiling entity dlatch
+# -- Compiling architecture BEHAVIOR of dlatch
+# -- Compiling entity PRIM_GDFF
+# -- Compiling architecture BEHAVIOR of PRIM_GDFF
+# -- Loading entity PRIM_GDFF
+# -- Compiling entity DFF
+# -- Compiling architecture BEHAVIOR of DFF
+# -- Compiling entity DFFE
+# -- Compiling architecture BEHAVIOR of DFFE
+# -- Compiling entity DFFEA
+# -- Compiling architecture BEHAVIOR of DFFEA
+# -- Loading package VITAL_Timing
+# -- Loading package VITAL_Primitives
+# -- Loading package dffeas_pack
+# -- Compiling entity DFFEAS
+# -- Compiling architecture vital_dffeas of dffeas
+# -- Compiling entity PRIM_GTFF
+# -- Compiling architecture BEHAVIOR of PRIM_GTFF
+# -- Loading entity PRIM_GTFF
+# -- Compiling entity TFF
+# -- Compiling architecture BEHAVIOR of TFF
+# -- Compiling entity TFFE
+# -- Compiling architecture BEHAVIOR of TFFE
+# -- Compiling entity PRIM_GJKFF
+# -- Compiling architecture BEHAVIOR of PRIM_GJKFF
+# -- Loading entity PRIM_GJKFF
+# -- Compiling entity JKFF
+# -- Compiling architecture BEHAVIOR of JKFF
+# -- Compiling entity JKFFE
+# -- Compiling architecture BEHAVIOR of JKFFE
+# -- Compiling entity PRIM_GSRFF
+# -- Compiling architecture BEHAVIOR of PRIM_GSRFF
+# -- Loading entity PRIM_GSRFF
+# -- Compiling entity SRFF
+# -- Compiling architecture BEHAVIOR of SRFF
+# -- Compiling entity SRFFE
+# -- Compiling architecture BEHAVIOR of SRFFE
+# -- Compiling entity clklock
+# -- Compiling architecture behavior of clklock
+# -- Compiling entity alt_inbuf
+# -- Compiling architecture BEHAVIOR of alt_inbuf
+# -- Compiling entity alt_outbuf
+# -- Compiling architecture BEHAVIOR of alt_outbuf
+# -- Compiling entity alt_outbuf_tri
+# -- Compiling architecture BEHAVIOR of alt_outbuf_tri
+# -- Compiling entity alt_iobuf
+# -- Compiling architecture BEHAVIOR of alt_iobuf
+# -- Compiling entity alt_inbuf_diff
+# -- Compiling architecture BEHAVIOR of alt_inbuf_diff
+# -- Compiling entity alt_outbuf_diff
+# -- Compiling architecture BEHAVIOR of alt_outbuf_diff
+# -- Compiling entity alt_outbuf_tri_diff
+# -- Compiling architecture BEHAVIOR of alt_outbuf_tri_diff
+# -- Compiling entity alt_iobuf_diff
+# -- Compiling architecture BEHAVIOR of alt_iobuf_diff
+# -- Compiling entity alt_bidir_diff
+# -- Compiling architecture BEHAVIOR of alt_bidir_diff
+# -- Compiling entity alt_bidir_buf
+# -- Compiling architecture BEHAVIOR of alt_bidir_buf
+# End time: 16:19:34 on Nov 13,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:19:34 on Nov 13,2018
+# vlog -reportprogress 300 -work work altera_avalon_sc_fifo.v 
+# -- Compiling module altera_avalon_sc_fifo
+# 
+# Top level modules:
+# 	altera_avalon_sc_fifo
+# End time: 16:19:34 on Nov 13,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:19:35 on Nov 13,2018
+# vcom -reportprogress 300 -work work dspba_library_package.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling package dspba_library_package
+# End time: 16:19:35 on Nov 13,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:19:35 on Nov 13,2018
+# vcom -reportprogress 300 -work work dspba_library.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package dspba_library_package
+# -- Compiling entity dspba_delay
+# -- Compiling architecture delay of dspba_delay
+# -- Loading package NUMERIC_STD
+# -- Compiling entity dspba_sync_reg
+# -- Compiling architecture sync_reg of dspba_sync_reg
+# -- Compiling entity dspba_pipe
+# -- Compiling architecture rtl of dspba_pipe
+# End time: 16:19:35 on Nov 13,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:19:35 on Nov 13,2018
+# vcom -reportprogress 300 -work work auk_dspip_roundsat_hpfir.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity auk_dspip_roundsat_hpfir
+# -- Compiling architecture beh of auk_dspip_roundsat_hpfir
+# End time: 16:19:35 on Nov 13,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:19:35 on Nov 13,2018
+# vcom -reportprogress 300 -work work auk_dspip_math_pkg_hpfir.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling package auk_dspip_math_pkg_hpfir
+# -- Compiling package body auk_dspip_math_pkg_hpfir
+# -- Loading package auk_dspip_math_pkg_hpfir
+# End time: 16:19:35 on Nov 13,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:19:35 on Nov 13,2018
+# vcom -reportprogress 300 -work work auk_dspip_lib_pkg_hpfir.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package auk_dspip_math_pkg_hpfir
+# -- Compiling package auk_dspip_lib_pkg_hpfir
+# End time: 16:19:36 on Nov 13,2018, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:19:36 on Nov 13,2018
+# vcom -reportprogress 300 -work work auk_dspip_avalon_streaming_controller_hpfir.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package std_logic_arith
+# -- Compiling entity auk_dspip_avalon_streaming_controller_hpfir
+# -- Compiling architecture struct of auk_dspip_avalon_streaming_controller_hpfir
+# End time: 16:19:36 on Nov 13,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:19:36 on Nov 13,2018
+# vcom -reportprogress 300 -work work auk_dspip_avalon_streaming_sink_hpfir.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package auk_dspip_math_pkg_hpfir
+# -- Loading package auk_dspip_lib_pkg_hpfir
+# -- Loading package altera_mf_components
+# -- Compiling entity auk_dspip_avalon_streaming_sink_hpfir
+# -- Compiling architecture rtl of auk_dspip_avalon_streaming_sink_hpfir
+# ** Warning: auk_dspip_avalon_streaming_sink_hpfir.vhd(113): Nonresolved signal 'sink_next_state' may have multiple sources.
+#   Drivers:
+#     auk_dspip_avalon_streaming_sink_hpfir.vhd(272):Process sink_comb_update_2
+#        Driven at:
+#           auk_dspip_avalon_streaming_sink_hpfir.vhd(279)
+#     auk_dspip_avalon_streaming_sink_hpfir.vhd(177):Process sink_comb_update_1
+#        Driven at:
+#           auk_dspip_avalon_streaming_sink_hpfir.vhd(183)
+# End time: 16:19:36 on Nov 13,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 1
+# Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:19:36 on Nov 13,2018
+# vcom -reportprogress 300 -work work auk_dspip_avalon_streaming_source_hpfir.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package altera_mf_components
+# -- Loading package auk_dspip_math_pkg_hpfir
+# -- Compiling entity auk_dspip_avalon_streaming_source_hpfir
+# -- Compiling architecture rtl of auk_dspip_avalon_streaming_source_hpfir
+# ** Warning: auk_dspip_avalon_streaming_source_hpfir.vhd(122): Nonresolved signal 'count_finished' may have multiple sources.
+#   Drivers:
+#     auk_dspip_avalon_streaming_source_hpfir.vhd(217):Conditional signal assignment line__216
+#     auk_dspip_avalon_streaming_source_hpfir.vhd(206):Conditional signal assignment line__205
+# ** Warning: auk_dspip_avalon_streaming_source_hpfir.vhd(123): Nonresolved signal 'count_started' may have multiple sources.
+#   Drivers:
+#     auk_dspip_avalon_streaming_source_hpfir.vhd(219):Conditional signal assignment line__218
+#     auk_dspip_avalon_streaming_source_hpfir.vhd(210):Conditional signal assignment line__209
+# End time: 16:19:36 on Nov 13,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 2
+# Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:19:36 on Nov 13,2018
+# vcom -reportprogress 300 -work work fir_final_rtl_core.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package MATH_REAL
+# -- Loading package dspba_library_package
+# -- Loading package altera_mf_components
+# -- Loading package altera_lnsim_components
+# -- Loading package LPM_COMPONENTS
+# -- Compiling entity fir_final_rtl_core
+# -- Compiling architecture normal of fir_final_rtl_core
+# End time: 16:19:36 on Nov 13,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:19:37 on Nov 13,2018
+# vcom -reportprogress 300 -work work fir_final_ast.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package auk_dspip_math_pkg_hpfir
+# -- Loading package auk_dspip_lib_pkg_hpfir
+# -- Compiling entity fir_final_ast
+# -- Compiling architecture struct of fir_final_ast
+# End time: 16:19:37 on Nov 13,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:19:37 on Nov 13,2018
+# vcom -reportprogress 300 -work work fir_final.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package auk_dspip_math_pkg_hpfir
+# -- Loading package auk_dspip_lib_pkg_hpfir
+# -- Compiling entity fir_final
+# -- Compiling architecture syn of fir_final
+# End time: 16:19:37 on Nov 13,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:19:37 on Nov 13,2018
+# vcom -reportprogress 300 -93 -work work fir_final_tb.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity fir_final_tb
+# -- Compiling architecture rtl of fir_final_tb
+# -- Loading package auk_dspip_math_pkg_hpfir
+# -- Loading package auk_dspip_lib_pkg_hpfir
+# -- Loading entity fir_final
+# End time: 16:19:37 on Nov 13,2018, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vsim -L cyclonev -L altera_mf -L lpm -L sgate -L altera -L altera_lnsim -L work work.fir_final_tb -t 1ps 
+# Start time: 16:19:37 on Nov 13,2018
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.auk_dspip_math_pkg_hpfir(body)
+# Loading work.auk_dspip_lib_pkg_hpfir
+# Loading work.fir_final_tb(rtl)
+# Loading work.fir_final(syn)
+# Loading work.fir_final_ast(struct)
+# Loading altera_mf.altera_mf_components
+# Loading work.auk_dspip_avalon_streaming_sink_hpfir(rtl)
+# Loading work.auk_dspip_avalon_streaming_source_hpfir(rtl)
+# Loading ieee.std_logic_arith(body)
+# Loading work.auk_dspip_avalon_streaming_controller_hpfir(struct)
+# Loading ieee.math_real(body)
+# Loading work.dspba_library_package
+# Loading altera_lnsim.altera_lnsim_components
+# Loading lpm.lpm_components
+# Loading work.fir_final_rtl_core(normal)
+# Loading sv_std.std
+# Loading work.dspba_delay(delay)
+# Loading work.auk_dspip_roundsat_hpfir(beh)
+# 
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /fir_final_tb/DUT/fir_final_ast_inst/real_passthrough/hpfircore_core
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /fir_final_tb/DUT/fir_final_ast_inst/real_passthrough/hpfircore_core
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /fir_final_tb/DUT/fir_final_ast_inst/real_passthrough/hpfircore_core
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /fir_final_tb/DUT/fir_final_ast_inst/real_passthrough/hpfircore_core
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /fir_final_tb/DUT/fir_final_ast_inst/real_passthrough/hpfircore_core
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /fir_final_tb/DUT/fir_final_ast_inst/real_passthrough/hpfircore_core
+# ** Note: NOTE: Stimuli ended
+#    Time: 95800 ns  Iteration: 0  Instance: /fir_final_tb
+# 
+source fir_final_msim.tcl

@@ -1,0 +1,492 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dD:/NMR_Thesis_PCBv2_hdl_v1_2018/QUARTUS-NoSoC/HDL/ALTERA_IPs/FIR/fir_final_sim
+vio_buf_opdrn
+Z1 !s110 1542171810
+!i10b 1
+!s100 =^<AH`I:TA`[9YUe=h1;_1
+IR7bR1fcAYbYlPzfk3Gz@Y0
+Z2 VDg1SIo80bB@j0V0VzS_@n1
+R0
+Z3 w1509008471
+Z4 8C:/intelfpga/17.1/quartus/eda/sim_lib/sgate.v
+Z5 FC:/intelfpga/17.1/quartus/eda/sim_lib/sgate.v
+L0 248
+Z6 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z7 !s108 1542171810.000000
+Z8 !s107 C:/intelfpga/17.1/quartus/eda/sim_lib/sgate.v|
+Z9 !s90 -reportprogress|300|-work|sgate|C:/intelfpga/17.1/quartus/eda/sim_lib/sgate.v|
+!i113 1
+Z10 o-work sgate
+Z11 tCvgOpt 0
+vio_buf_tri
+R1
+!i10b 1
+!s100 1H>;>BLi]?aVfL[[^U83N2
+IW3BfjA;6f[XKTQR5Zk5NE3
+R2
+R0
+R3
+R4
+R5
+L0 220
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+vmux21
+R1
+!i10b 1
+!s100 Q=nPK?Y`8Z_5n_P1iP>f42
+I22aU9]Im=h78?b<PYkmH?2
+R2
+R0
+R3
+R4
+R5
+L0 190
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+voper_add
+R1
+!i10b 1
+!s100 dPDYmXWgGKeHhoeFePfPR2
+IC773DgSP2N4V;RE9]^AXJ1
+R2
+R0
+R3
+R4
+R5
+L0 18
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+voper_addsub
+R1
+!i10b 1
+!s100 :Di:Lba[kXJBm`IoE?Bon1
+IZ<[F7;70N_KFm_QF;aI;P1
+R2
+R0
+R3
+R4
+R5
+L0 95
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+voper_bus_mux
+R1
+!i10b 1
+!s100 83iY7?J9JgD`=KN3I^];33
+I76>mAF8=d9IF`XR9dcDLd0
+R2
+R0
+R3
+R4
+R5
+L0 1072
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+voper_decoder
+R1
+!i10b 1
+!s100 BhU]JWh4CAH3f[ALIgD?91
+IGPCA4Fb<H[PcT]=Cz=S^e2
+R2
+R0
+R3
+R4
+R5
+L0 1036
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+voper_div
+R1
+!i10b 1
+!s100 Q4=5XaPJlA;U9o>EnYQ3Z2
+I5A9i8[fT5Qj<Abe9g8hIa3
+R2
+R0
+R3
+R4
+R5
+L0 394
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+voper_latch
+R1
+!i10b 1
+!s100 6TkzBj8lWoX[Wk_Oek;zG0
+I1;=I7C3AYRO`9<@JNKT[22
+R2
+R0
+R3
+R4
+R5
+L0 1135
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+voper_left_shift
+R1
+!i10b 1
+!s100 GzbHDnkb>SB<:N13UI28Z2
+IRS9MD68X3Lo@FJXH?VkFj2
+R2
+R0
+R3
+R4
+R5
+L0 572
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+voper_less_than
+R1
+!i10b 1
+!s100 mkW0GJN@;6C<2gM?VlHk40
+IDiL6ODEa6WU?UO?W_b6[23
+R2
+R0
+R3
+R4
+R5
+L0 853
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+voper_mod
+R1
+!i10b 1
+!s100 KY?eBB<PZPYJ_og7>a4lz1
+IgzD9?c2];^]D;hN^ZW6Q80
+R2
+R0
+R3
+R4
+R5
+L0 483
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+voper_mult
+R1
+!i10b 1
+!s100 hf0gV[nAT0;;hYNBSzZJ:3
+IoA@1KbdF9ohN_SbNZPoQi1
+R2
+R0
+R3
+R4
+R5
+L0 274
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+voper_mux
+R1
+!i10b 1
+!s100 1BV^<NLG6]@XcIB4ATlBY2
+IjQKIPOaL<06HTXgj5c7Z[0
+R2
+R0
+R3
+R4
+R5
+L0 945
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+Eoper_prio_selector
+Z12 w1509008470
+Z13 DPx4 ieee 16 std_logic_signed 0 22 C<aanc0R`<LWPSe[JYRP^3
+Z14 DPx4 ieee 15 std_logic_arith 0 22 [G314=:2zXJ`VORJe1J@Z1
+Z15 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z16 DPx4 ieee 14 std_logic_1164 0 22 eNV`TJ_GofJTzYa?f<@Oe1
+R0
+Z17 8C:/intelfpga/17.1/quartus/eda/sim_lib/sgate.vhd
+Z18 FC:/intelfpga/17.1/quartus/eda/sim_lib/sgate.vhd
+l0
+L1103
+V<D]Nj73CM7Da:TI>=gF2G2
+!s100 40>g=?bLLi^9Yf4=maN_;1
+Z19 OV;C;10.5b;63
+31
+R1
+!i10b 1
+R7
+Z20 !s90 -reportprogress|300|-quiet|-explicit|-93|-work|sgate|C:/intelfpga/17.1/quartus/eda/sim_lib/sgate.vhd|
+Z21 !s107 C:/intelfpga/17.1/quartus/eda/sim_lib/sgate.vhd|
+!i113 1
+Z22 o-quiet -explicit -93 -work sgate
+Z23 tExplicit 1 CvgOpt 0
+Asim_arch
+R13
+R14
+R15
+R16
+DEx4 work 18 oper_prio_selector 0 22 <D]Nj73CM7Da:TI>=gF2G2
+l1119
+L1118
+VZIC_GZ48^YmoLjBH:c4EA3
+!s100 VUIaAz>ILRO[RCH<V2i=e1
+R19
+31
+R1
+!i10b 1
+R7
+R20
+R21
+!i113 1
+R22
+R23
+voper_right_shift
+R1
+!i10b 1
+!s100 0GY5J>n8g<mQmG_1Ph1<l2
+I9dGfMj;T1maHTIzolo3LZ0
+R2
+R0
+R3
+R4
+R5
+L0 649
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+voper_rotate_left
+R1
+!i10b 1
+!s100 <LHW[F_:n>zBeU4k;`Kfc0
+I=aZ^A]9fRWh`gFbgC==MG0
+R2
+R0
+R3
+R4
+R5
+L0 732
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+voper_rotate_right
+R1
+!i10b 1
+!s100 0odf;mlW;hE0G1:GS066I2
+IzK?o]?74^MVK4[]YD[5903
+R2
+R0
+R3
+R4
+R5
+L0 793
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+voper_selector
+R1
+!i10b 1
+!s100 W1R9=N?MT:3kj1R0<;l[F0
+IE]R[>M:N]jYEf5WhV>cH41
+R2
+R0
+R3
+R4
+R5
+L0 991
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+Psgate_pack
+R15
+R16
+R12
+R0
+Z24 8C:/intelfpga/17.1/quartus/eda/sim_lib/sgate_pack.vhd
+Z25 FC:/intelfpga/17.1/quartus/eda/sim_lib/sgate_pack.vhd
+l0
+L19
+V`=bZzPbCLf9?k7DPM45m;2
+!s100 JNXdm65R_IhBH2h1UMXBQ0
+R19
+31
+b1
+R1
+!i10b 1
+R7
+Z26 !s90 -reportprogress|300|-quiet|-explicit|-93|-work|sgate|C:/intelfpga/17.1/quartus/eda/sim_lib/sgate_pack.vhd|
+Z27 !s107 C:/intelfpga/17.1/quartus/eda/sim_lib/sgate_pack.vhd|
+!i113 1
+R22
+R23
+Bbody
+DPx4 work 10 sgate_pack 0 22 `=bZzPbCLf9?k7DPM45m;2
+R15
+R16
+l0
+L316
+VDZ35_L>;:_C7BG>n23Nhd3
+!s100 B9zibYn4fK[<hAi3dnGm>1
+R19
+31
+R1
+!i10b 1
+R7
+R26
+R27
+!i113 1
+R22
+R23
+vtri_bus
+R1
+!i10b 1
+!s100 iZXLc]>>jEPo^MZifMO:93
+I0AFj9BTHf?M:W5<C78Sc13
+R2
+R0
+R3
+R4
+R5
+L0 347
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
