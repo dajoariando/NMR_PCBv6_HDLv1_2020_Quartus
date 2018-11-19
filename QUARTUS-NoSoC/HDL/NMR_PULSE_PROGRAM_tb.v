@@ -85,12 +85,12 @@ module NMR_PULSE_PROGRAM_tb;
 	
 	initial begin
 		START = 1'b0;
-		T1_PULSE180 = 10;
-		T1_DELAY = 20;
-		PULSE90 = 10;
-		DELAY_NO_ACQ = 5;
-		PULSE180 = 20;
-		DELAY_WITH_ACQ = 5;
+		T1_PULSE180 = 0;
+		T1_DELAY = 0;
+		PULSE90 = 128;
+		DELAY_NO_ACQ = 512;
+		PULSE180 = 256;
+		DELAY_WITH_ACQ = 512;
 		ECHO_PER_SCAN = 3;
 		CLK = 0;
 		PHASE_CYC = 1'b1;
@@ -100,7 +100,7 @@ module NMR_PULSE_PROGRAM_tb;
 		#(clockticks*2) START = 1'b1;
 		#(clockticks*2) START = 1'b0;
 		
-		#(clockticks*500) START = 1'b1;
+		#(clockticks*10000) START = 1'b1;
 		#(clockticks*2) START = 1'b0; 
 	end
 	

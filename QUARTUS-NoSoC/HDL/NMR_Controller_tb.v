@@ -38,6 +38,7 @@ module NMR_Controller_tb;
 	
 	// nmr control signals
 	reg PHASE_CYCLE;
+	wire EN_RX;
 	
 	// adc bus
 	reg [ADC_PHYS_WIDTH-1:0] Q_IN;
@@ -86,6 +87,7 @@ module NMR_Controller_tb;
 		
 		// nmr control signals
 		.PHASE_CYCLE	(PHASE_CYCLE),
+		.EN_RX			(EN_RX),		// enable receiver signal
 		
 		// ADC bus
 		.Q_IN (Q_IN),
@@ -104,15 +106,15 @@ module NMR_Controller_tb;
 	
 	initial begin
 		START = 1'b0;
-		T1_PULSE180 = 300;
-		T1_DELAY = 300;
-		PULSE90 = 300;
-		DELAY_NO_ACQ = 1000;
-		PULSE180 = 300;
-		DELAY_WITH_ACQ = 2000;
-		ECHO_PER_SCAN = 10;
-		SAMPLES_PER_ECHO = 10;
-		ADC_INIT_DELAY = 200;
+		T1_PULSE180 = 64;
+		T1_DELAY = 64;
+		PULSE90 = 128;
+		DELAY_NO_ACQ = 512;
+		PULSE180 = 256;
+		DELAY_WITH_ACQ = 1024;
+		ECHO_PER_SCAN = 1;
+		SAMPLES_PER_ECHO = 100;
+		ADC_INIT_DELAY = 2;
 		PULSEPROG_CLK = 1;
 		PHASE_CYCLE = 0;
 		Q_IN_OV = 0;

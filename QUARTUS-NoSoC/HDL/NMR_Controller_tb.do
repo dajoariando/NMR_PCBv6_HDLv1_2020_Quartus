@@ -11,8 +11,8 @@ add wave -noupdate -radix unsigned /NMR_Controller_tb/SAMPLES_PER_ECHO
 add wave -noupdate -radix unsigned /NMR_Controller_tb/ADC_INIT_DELAY
 add wave -noupdate /NMR_Controller_tb/START
 add wave -noupdate /NMR_Controller_tb/FSMSTAT
-add wave -noupdate /NMR_Controller_tb/RF_OUT_P
-add wave -noupdate /NMR_Controller_tb/RF_OUT_N
+add wave -noupdate -color Red /NMR_Controller_tb/RF_OUT_P
+add wave -noupdate -color Red /NMR_Controller_tb/RF_OUT_N
 add wave -noupdate /NMR_Controller_tb/PHASE_CYCLE
 add wave -noupdate -radix hexadecimal /NMR_Controller_tb/Q_IN
 add wave -noupdate /NMR_Controller_tb/Q_IN_OV
@@ -21,11 +21,13 @@ add wave -noupdate /NMR_Controller_tb/ADC_DATA_VALID
 add wave -noupdate /NMR_Controller_tb/PULSEPROG_CLK
 add wave -noupdate /NMR_Controller_tb/ADC_CLK
 add wave -noupdate /NMR_Controller_tb/RESET
+add wave -noupdate /NMR_Controller_tb/uut/EN_RX
 add wave -noupdate -divider NMR_PULSE_PROGRAM
 add wave -noupdate /NMR_Controller_tb/uut/NMR_PULSE_PROGRAM1/START
 add wave -noupdate -radix hexadecimal /NMR_Controller_tb/uut/NMR_PULSE_PROGRAM1/State
 add wave -noupdate /NMR_Controller_tb/uut/NMR_PULSE_PROGRAM1/OUT_EN
 add wave -noupdate /NMR_Controller_tb/uut/NMR_PULSE_PROGRAM1/ACQ_WND
+add wave -noupdate /NMR_Controller_tb/uut/ADC_ACQ_WINGEN1/ACQ_EN
 add wave -noupdate -divider ADC
 add wave -noupdate /NMR_Controller_tb/uut/ADC_LTC1746_DRV1/acq_en
 add wave -noupdate /NMR_Controller_tb/uut/ADC_LTC1746_DRV1/data_ready
@@ -37,10 +39,10 @@ add wave -noupdate /NMR_Controller_tb/uut/ADC_ACQ_WINGEN1/ACQ_EN
 add wave -noupdate /NMR_Controller_tb/uut/ADC_ACQ_WINGEN1/ACQ_WND
 add wave -noupdate /NMR_Controller_tb/uut/ADC_ACQ_WINGEN1/CLK
 add wave -noupdate /NMR_Controller_tb/uut/ADC_ACQ_WINGEN1/RESET
-add wave -noupdate /NMR_Controller_tb/uut/ADC_ACQ_WINGEN1/State
+add wave -noupdate -radix hexadecimal /NMR_Controller_tb/uut/ADC_ACQ_WINGEN1/State
 add wave -noupdate /NMR_Controller_tb/uut/ADC_ACQ_WINGEN1/TOKEN
 TreeUpdate [SetDefaultTree]
-WaveRestoreCursors {{Cursor 1} {169615385 ps} 0}
+WaveRestoreCursors {{Cursor 1} {8285509 ps} 0}
 quietly wave cursor active 1
 configure wave -namecolwidth 378
 configure wave -valuecolwidth 100
@@ -56,4 +58,4 @@ configure wave -griddelta 40
 configure wave -timeline 0
 configure wave -timelineunits us
 update
-WaveRestoreZoom {0 ps} {315 us}
+WaveRestoreZoom {0 ps} {210 us}

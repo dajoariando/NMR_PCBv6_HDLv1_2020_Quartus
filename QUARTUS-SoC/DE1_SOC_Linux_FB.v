@@ -42,7 +42,7 @@ module DE1_SOC_Linux_FB(
 	inout			FPGA_I2C_SDAT,
 
 	// GPIO
-	// output	[35:0]	GPIO_0,
+	inout	[35:0]	GPIO_0,
 	inout	[35:0]	GPIO_1,
  
 
@@ -167,6 +167,7 @@ module DE1_SOC_Linux_FB(
 	wire			adc_fifo_reset;
 	wire			fsm_start;
 	wire			phase_cycle;
+	wire			enable_rx;
 	wire			dac_preamp_LDAC_n;
 	wire			dac_preamp_CLR_n;
 
@@ -494,6 +495,7 @@ module DE1_SOC_Linux_FB(
 		
 		// nmr control signals
 		.PHASE_CYCLE		(phase_cycle),
+		.EN_RX				(enable_rx),
 		
 		// ADC bus
 		.Q_IN				(adc_data_in[ADC_PHYS_WIDTH-1:0]),
@@ -546,6 +548,8 @@ module DE1_SOC_Linux_FB(
 
 	assign GPIO_1[1] = nmr_clk_gate_avln_cnt ? nmr_rfout_p : pll_analyzer_clk0;
 	assign GPIO_1[0] = nmr_clk_gate_avln_cnt ? nmr_rfout_n : pll_analyzer_clk2;
+	
+	assign GPIO_0[29] = enable_rx;
 	
 	altiobuf i2c_int_io (
 		.datain		( 2'b00 ),

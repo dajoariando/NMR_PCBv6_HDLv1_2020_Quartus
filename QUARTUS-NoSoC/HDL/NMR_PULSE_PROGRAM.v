@@ -37,11 +37,13 @@ module NMR_PULSE_PROGRAM
 	// rollover counter reg
 	reg [PULSE_AND_DELAY_WIDTH-1:0]	T1_PULSE180_CNT;
 	reg [PULSE_AND_DELAY_WIDTH-1:0]	T1_DELAY_CNT;
-	wire [PULSE_AND_DELAY_WIDTH-1:0]	SKIP_S2_AND_S3;
+	wire [PULSE_AND_DELAY_WIDTH-1:0]	JUMP_TO_S4;
 	reg [PULSE_AND_DELAY_WIDTH-1:0]	PULSE90_CNT;
 	reg [PULSE_AND_DELAY_WIDTH-1:0]	DELAY_NO_ACQ_CNT;
+	wire [PULSE_AND_DELAY_WIDTH-1:0]	JUMP_TO_S6;
 	reg [PULSE_AND_DELAY_WIDTH-1:0]	PULSE180_CNT;
 	reg [PULSE_AND_DELAY_WIDTH-1:0]	DELAY_WITH_ACQ_CNT;
+	wire [PULSE_AND_DELAY_WIDTH-1:0]	JUMP_TO_S7;
 	reg [ECHO_PER_SCAN_WIDTH-1:0]	ECHO_PER_SCAN_CNT;
 	
 	// nmr tx clock generator
@@ -68,7 +70,9 @@ module NMR_PULSE_PROGRAM
 		S8 = 10'b0100000000,
 		S9 = 10'b1000000000;
 	
-	assign SKIP_S2_AND_S3	= {1'b1,{ (PULSE_AND_DELAY_WIDTH-1) {1'b0} }} - T1_PULSE180; // only MSB is used to define whether skipping/not is required
+	assign JUMP_TO_S4	= {1'b1,{ (PULSE_AND_DELAY_WIDTH-1) {1'b0} }} - T1_PULSE180; // only MSB is used to define whether skipping/not is required
+	assign JUMP_TO_S6	= {1'b1,{ (PULSE_AND_DELAY_WIDTH-1) {1'b0} }} - PULSE90; // only MSB is used to define whether skipping/not is required
+	assign JUMP_TO_S7	= {1'b1,{ (PULSE_AND_DELAY_WIDTH-1) {1'b0} }} - PULSE180; // only MSB is used to define whether skipping/not is required
 	
 	initial
 	begin
@@ -121,7 +125,16 @@ module NMR_PULSE_PROGRAM
 					
 					FSMSTAT <= 1'b1;
 					
-					if (SKIP_S2_AND_S3[PULSE_AND_DELAY_WIDTH-1])
+					// skip if the pulse length is 0. There are several scenario:
+					// 1. There's no point of doing T1 inversion recovery if PULSE90 is 0, so skip S2 until S5 if this is true, no matter what T1_PULSE180 is.
+					//    By skipping PULSE90, and with a single ECHO_PER_SCAN, FID measurement can be performed.
+					// 2. If the inversion recovery is not intended, set the T1_PULSE180 to 0 to skip S2 and S3.					
+					// 3. To do noise measurement, set the ECHO_PER_SCAN to be 1, and then set PULSE180 to be 0, effectively jumping all states before S7
+					if (JUMP_TO_S7[PULSE_AND_DELAY_WIDTH-1])
+						State <= S7;
+					else if (JUMP_TO_S6[PULSE_AND_DELAY_WIDTH-1])
+						State <= S6;
+					else if (JUMP_TO_S4[PULSE_AND_DELAY_WIDTH-1])
 						State <= S4;
 					else
 						State <= S2;

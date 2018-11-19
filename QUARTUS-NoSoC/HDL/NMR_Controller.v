@@ -32,7 +32,8 @@ module NMR_Controller
 	output RF_OUT_N,
 	
 	// nmr control signals
-	input PHASE_CYCLE,
+	input PHASE_CYCLE, 	// phase cycle control bit
+	output EN_RX,		// enable receiver signal
 	
 	// ADC bus
 	input [ADC_PHYS_WIDTH-1:0] Q_IN,
@@ -147,5 +148,6 @@ module NMR_Controller
 	);
 	assign ADC_OUT_DATA[ADC_DATA_WIDTH-1] = 1'b0; // bit-15 were not initialized anywhere in the ADC
 	
+	assign EN_RX = ACQ_EN;
 
 endmodule
