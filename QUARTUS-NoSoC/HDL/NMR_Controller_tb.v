@@ -31,6 +31,7 @@ module NMR_Controller_tb;
 	reg [ECHO_PER_SCAN_WIDTH-1:0]	ECHO_PER_SCAN;
 	reg [SAMPLES_PER_ECHO_WIDTH-1:0] SAMPLES_PER_ECHO;
 	reg [ADC_INIT_DELAY_WIDTH-1:0]	ADC_INIT_DELAY;
+	reg [ADC_INIT_DELAY_WIDTH-1:0]	RX_DELAY;
 	
 	// nmr rf tx-output (differential)
 	wire RF_OUT_P;
@@ -38,7 +39,9 @@ module NMR_Controller_tb;
 	
 	// nmr control signals
 	reg PHASE_CYCLE;
+	wire EN_ADC;
 	wire EN_RX;
+	wire ACQ_WND_DLY;
 	
 	// adc bus
 	reg [ADC_PHYS_WIDTH-1:0] Q_IN;
@@ -80,6 +83,7 @@ module NMR_Controller_tb;
 		.ECHO_PER_SCAN		(ECHO_PER_SCAN),	// echo per scan integer number
 		.SAMPLES_PER_ECHO	(SAMPLES_PER_ECHO),
 		.ADC_INIT_DELAY		(ADC_INIT_DELAY),
+		.RX_DELAY			(RX_DELAY), 
 		
 		// nmr rf tx-output (differential)
 		.RF_OUT_P	(RF_OUT_P),
@@ -87,7 +91,9 @@ module NMR_Controller_tb;
 		
 		// nmr control signals
 		.PHASE_CYCLE	(PHASE_CYCLE),
+		.EN_ADC			(EN_ADC),
 		.EN_RX			(EN_RX),		// enable receiver signal
+		.ACQ_WND_DLY	(ACQ_WND_DLY),	// delayed acquisition window for broadband board
 		
 		// ADC bus
 		.Q_IN (Q_IN),
@@ -106,15 +112,16 @@ module NMR_Controller_tb;
 	
 	initial begin
 		START = 1'b0;
-		T1_PULSE180 = 64;
-		T1_DELAY = 64;
-		PULSE90 = 128;
-		DELAY_NO_ACQ = 512;
-		PULSE180 = 256;
-		DELAY_WITH_ACQ = 1024;
-		ECHO_PER_SCAN = 1;
-		SAMPLES_PER_ECHO = 100;
-		ADC_INIT_DELAY = 2;
+		T1_PULSE180 = 0;
+		T1_DELAY = 0;
+		PULSE90 = 64;
+		DELAY_NO_ACQ = 64;
+		PULSE180 = 128;
+		DELAY_WITH_ACQ = 512;
+		ECHO_PER_SCAN = 5;
+		SAMPLES_PER_ECHO = 30;
+		ADC_INIT_DELAY = 30;
+		RX_DELAY = 20;
 		PULSEPROG_CLK = 1;
 		PHASE_CYCLE = 0;
 		Q_IN_OV = 0;

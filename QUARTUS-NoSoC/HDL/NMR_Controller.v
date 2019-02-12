@@ -1,4 +1,6 @@
-
+/*
+	there is an issue with the ADC_WINGEN, where TOKEN is implemented to prevent retriggering. But also at the same time, if ADC_CLOCK is generated after ACQ_WND rises, the TOKEN is not resetted to 0, which will prevent the state machine from running. It is fixed by having reset button implemented to reset the TOKEN to 0 just before any acquisition. This is done in C Programming
+*/
 
 module NMR_Controller
 #(
@@ -25,7 +27,8 @@ module NMR_Controller
 	input [PULSE_AND_DELAY_WIDTH-1:0]	DELAY_WITH_ACQ,
 	input [ECHO_PER_SCAN_WIDTH-1:0]		ECHO_PER_SCAN,	// echo per scan integer number
 	input [SAMPLES_PER_ECHO_WIDTH-1:0]	SAMPLES_PER_ECHO,
-	input [ADC_INIT_DELAY_WIDTH-1:0]	ADC_INIT_DELAY, 
+	input [ADC_INIT_DELAY_WIDTH-1:0]	ADC_INIT_DELAY,
+	input [ADC_INIT_DELAY_WIDTH-1:0]	RX_DELAY, 
 	
 	// nmr rf tx-output (differential)
 	output RF_OUT_P,
@@ -33,7 +36,9 @@ module NMR_Controller
 	
 	// nmr control signals
 	input PHASE_CYCLE, 	// phase cycle control bit
+	output EN_ADC,		// enable adc
 	output EN_RX,		// enable receiver signal
+	output reg ACQ_WND_DLY,	// delayed acquisition window for broadband board
 	
 	// ADC bus
 	input [ADC_PHYS_WIDTH-1:0] Q_IN,
@@ -52,6 +57,7 @@ module NMR_Controller
 	wire ACQ_WND /* synthesis keep = 1 */;
 	wire ACQ_EN;
 	wire START_SYNC /* synthesis keep = 1 */;
+	wire ACQ_WND_PULSED;
 	
 	CDC_Input_Synchronizer
 	#(
@@ -148,6 +154,105 @@ module NMR_Controller
 	);
 	assign ADC_OUT_DATA[ADC_DATA_WIDTH-1] = 1'b0; // bit-15 were not initialized anywhere in the ADC
 	
-	assign EN_RX = ACQ_EN;
+	assign EN_ADC = ACQ_EN;
+	assign EN_RX = ACQ_WND;
+	
+	
+	
+	
+	
+	// ADDED LINES FOR BROADBAND BOARD
+	GNRL_delayed_pulser
+	#(
+		.DELAY_WIDTH (32)
+	)
+	DELAYED_EN_RX1
+	(
+		// signals
+		.SIG_IN	(ACQ_WND),
+		.SIG_OUT(ACQ_WND_PULSED),
+		
+		// parameters
+		.DELAY	(RX_DELAY),
+		
+		// system
+		.CLK	(ADC_CLK),
+		.RESET	(RESET)
+		
+	);
+	
+	reg [9:0] State;
+	localparam [9:0]
+		S0 = 10'b0000000001,
+		S1 = 10'b0000000010,
+		S2 = 10'b0000000100,
+		S3 = 10'b0000001000,
+		S4 = 10'b0000010000,
+		S5 = 10'b0000100000,
+		S6 = 10'b0001000000,
+		S7 = 10'b0010000000,
+		S8 = 10'b0100000000,
+		S9 = 10'b1000000000;
+	always @(posedge ADC_CLK, posedge RESET)
+	begin
+		if (RESET)
+		begin
+			
+			State <= S0;
+			ACQ_WND_DLY <= 1'b0;
+			
+		end
+		else
+		begin
+		
+			case (State)
+			
+				S0 :
+				begin
+								
+					// Wait for the Start signal
+					if (ACQ_WND_PULSED)
+						State <= S1;
+				
+				end
+				
+				S1 : 
+				begin
+					
+					ACQ_WND_DLY <= 1'b1;
+					
+					if (ACQ_EN) State <= S3;
+					else State <= S2;
+						
+					
+				end
+				
+				S2 : 
+				begin
+				
+					if (ACQ_EN) State <= S3;
+					
+				end
+				
+				S3 : 
+				begin
+				
+					if (!ACQ_EN) State <= S4;
+					
+				end
+				
+				S4 : 
+				begin
+				
+					ACQ_WND_DLY <= 1'b0;
+					State <= S0;
+					
+				end
+			endcase
+		end
+				
+	end
+	
+	
 
 endmodule

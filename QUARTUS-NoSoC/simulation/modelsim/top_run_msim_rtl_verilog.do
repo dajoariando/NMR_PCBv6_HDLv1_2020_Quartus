@@ -28,6 +28,7 @@ vcom "D:/NMR_PCBv2_HDLv1_2018_FPGA/QUARTUS-NoSoC/DELETEME/test_sim/test_ast.vhd"
 vcom "D:/NMR_PCBv2_HDLv1_2018_FPGA/QUARTUS-NoSoC/DELETEME/test_sim/test.vhd"                                       
 vcom "D:/NMR_PCBv2_HDLv1_2018_FPGA/QUARTUS-NoSoC/DELETEME/test_sim/test_tb.vhd"                                    
 
+vlog -vlog01compat -work work +incdir+D:/NMR_PCBv2_HDLv1_2018_FPGA/QUARTUS-NoSoC/HDL {D:/NMR_PCBv2_HDLv1_2018_FPGA/QUARTUS-NoSoC/HDL/GNRL_delayed_pulser.v}
 vlog -vlog01compat -work work +incdir+D:/NMR_PCBv2_HDLv1_2018_FPGA/QUARTUS-NoSoC/HDL {D:/NMR_PCBv2_HDLv1_2018_FPGA/QUARTUS-NoSoC/HDL/NMR_PULSE_PROGRAM.v}
 vlog -vlog01compat -work work +incdir+D:/NMR_PCBv2_HDLv1_2018_FPGA/QUARTUS-NoSoC/HDL {D:/NMR_PCBv2_HDLv1_2018_FPGA/QUARTUS-NoSoC/HDL/NMR_Controller.v}
 vlog -vlog01compat -work work +incdir+D:/NMR_PCBv2_HDLv1_2018_FPGA/QUARTUS-NoSoC/HDL {D:/NMR_PCBv2_HDLv1_2018_FPGA/QUARTUS-NoSoC/HDL/CDC_Input_Synchronizer.v}

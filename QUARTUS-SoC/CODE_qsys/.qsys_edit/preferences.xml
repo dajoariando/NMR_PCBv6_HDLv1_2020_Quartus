@@ -16,8 +16,8 @@
    <frequency preferredWidth="417" />
   </columns>
  </clocktable>
- <window width="1616" height="1176" x="-1608" y="-8" />
- <library expandedCategories="Project,Library" />
+ <window width="1296" height="1000" x="-8" y="-8" />
+ <library expandedCategories="Library,Project" />
  <hdlexample language="VERILOG" />
  <generation
    block_symbol_file="0"

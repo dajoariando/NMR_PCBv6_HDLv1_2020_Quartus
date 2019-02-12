@@ -168,6 +168,8 @@ module DE1_SOC_Linux_FB(
 	wire			fsm_start;
 	wire			phase_cycle;
 	wire			enable_rx;
+	wire			enable_adc;
+	wire 			enable_rx_dly;
 	wire			dac_preamp_LDAC_n;
 	wire			dac_preamp_CLR_n;
 
@@ -201,6 +203,7 @@ module DE1_SOC_Linux_FB(
 	wire	[SAMPLES_PER_ECHO_WIDTH-1:0]	samples_per_echo;
 	wire	[ECHOES_PER_SCAN_WIDTH-1:0]		echoes_per_scan;
 	wire	[ADC_INIT_DELAY_WIDTH-1:0]		init_delay;
+	wire	[ADC_INIT_DELAY_WIDTH-1:0]		rx_delay;
 
 	// adc data
 	wire	[ADC_DATA_WIDTH-1:0]			adc_data_in;
@@ -345,6 +348,7 @@ module DE1_SOC_Linux_FB(
 		.pulse_180deg_export		(pulse_180deg),
 		.pulse_90deg_export			(pulse_90deg),
 		.init_delay_export			(init_delay),
+		.rx_delay_export			(rx_delay),
 		.pulse_t1_export			(pulse_t1),
         .delay_t1_export			(delay_t1),
 
@@ -448,6 +452,7 @@ module DE1_SOC_Linux_FB(
 	reg	[SAMPLES_PER_ECHO_WIDTH-1:0]	samples_per_echo_reg;
 	reg	[ECHOES_PER_SCAN_WIDTH-1:0]		echoes_per_scan_reg;
 	reg	[ADC_INIT_DELAY_WIDTH-1:0]		init_delay_reg;
+	reg	[ADC_INIT_DELAY_WIDTH-1:0]		rx_delay_reg;
 	always @(posedge pulseprog_clk)
 	begin
 		pulse_90deg_reg      <= pulse_90deg;
@@ -459,6 +464,7 @@ module DE1_SOC_Linux_FB(
 		samples_per_echo_reg <= samples_per_echo;
 		echoes_per_scan_reg  <= echoes_per_scan;
 		init_delay_reg       <= init_delay;
+		rx_delay_reg		 <= rx_delay;
 	end
 	
 	NMR_Controller
@@ -487,7 +493,8 @@ module DE1_SOC_Linux_FB(
 		.DELAY_WITH_ACQ		(delay_sig_reg),
 		.ECHO_PER_SCAN		(echoes_per_scan_reg),	// echo per scan integer number
 		.SAMPLES_PER_ECHO	(samples_per_echo_reg),
-		.ADC_INIT_DELAY		(init_delay_reg), 
+		.ADC_INIT_DELAY		(init_delay_reg),
+		.RX_DELAY			(rx_delay_reg),		
 		
 		// nmr rf tx-output (differential)
 		.RF_OUT_P			(nmr_rfout_p),
@@ -496,6 +503,8 @@ module DE1_SOC_Linux_FB(
 		// nmr control signals
 		.PHASE_CYCLE		(phase_cycle),
 		.EN_RX				(enable_rx),
+		.EN_ADC				(enable_adc),
+		.ACQ_WND_DLY		(enable_rx_dly),
 		
 		// ADC bus
 		.Q_IN				(adc_data_in[ADC_PHYS_WIDTH-1:0]),
@@ -550,6 +559,8 @@ module DE1_SOC_Linux_FB(
 	assign GPIO_1[0] = nmr_clk_gate_avln_cnt ? nmr_rfout_n : pll_analyzer_clk2;
 	
 	assign GPIO_0[29] = enable_rx;
+	assign GPIO_0[27] = enable_rx_dly;
+	assign GPIO_0[25] = enable_adc;
 	
 	altiobuf i2c_int_io (
 		.datain		( 2'b00 ),

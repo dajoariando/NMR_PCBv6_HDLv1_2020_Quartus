@@ -57,7 +57,7 @@ module NMR_PULSE_PROGRAM
 	// register for NMR main timer
 	reg [NMR_MAIN_TIMER_WIDTH-1:0] NMR_MAIN_TIMER_CNT;
 
-	reg [9:0] State;
+	reg [9:0] State /* synthesis keep = 1 */;
 	localparam [9:0]
 		S0 = 10'b0000000001,
 		S1 = 10'b0000000010,
@@ -146,6 +146,7 @@ module NMR_PULSE_PROGRAM
 				
 					OUT_EN <= 1'b1;
 					PHASE <= 1'b0;
+					ACQ_WND <= 1'b0;
 					
 					T1_PULSE180_CNT <= T1_PULSE180_CNT + 1'b1;
 					
@@ -158,6 +159,7 @@ module NMR_PULSE_PROGRAM
 				begin
 					
 					OUT_EN <= 1'b0;
+					ACQ_WND <= 1'b0;
 					
 					T1_DELAY_CNT <= T1_DELAY_CNT + 1'b1;
 					
@@ -171,6 +173,7 @@ module NMR_PULSE_PROGRAM
 					
 					OUT_EN <= 1'b1;
 					PHASE <= 1'b0;
+					ACQ_WND <= 1'b0;
 					
 					PULSE90_CNT <= PULSE90_CNT + 1'b1;
 					
@@ -183,7 +186,7 @@ module NMR_PULSE_PROGRAM
 				begin
 					
 					OUT_EN <= 1'b0;
-					
+					ACQ_WND <= 1'b0;
 					DELAY_NO_ACQ_CNT <= DELAY_NO_ACQ_CNT + 1'b1;
 					
 					if (DELAY_NO_ACQ_CNT[PULSE_AND_DELAY_WIDTH-1])

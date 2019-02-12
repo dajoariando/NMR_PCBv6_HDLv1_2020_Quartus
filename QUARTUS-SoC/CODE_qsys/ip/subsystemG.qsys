@@ -73,6 +73,14 @@
          type = "int";
       }
    }
+   element rx_delay
+   {
+      datum _sortIndex
+      {
+         value = "9";
+         type = "int";
+      }
+   }
    element samples_per_echo
    {
       datum _sortIndex
@@ -234,6 +242,18 @@
    type="reset"
    dir="end" />
  <interface name="pulse_t1_s1" internal="pulse_t1.s1" type="avalon" dir="end" />
+ <interface name="rx_delay_clk" internal="rx_delay.clk" type="clock" dir="end" />
+ <interface
+   name="rx_delay_external_connection"
+   internal="rx_delay.external_connection"
+   type="conduit"
+   dir="end" />
+ <interface
+   name="rx_delay_reset"
+   internal="rx_delay.reset"
+   type="reset"
+   dir="end" />
+ <interface name="rx_delay_s1" internal="rx_delay.s1" type="avalon" dir="end" />
  <interface
    name="samples_per_echo_clk"
    internal="samples_per_echo.clk"
@@ -369,6 +389,20 @@
   <parameter name="width" value="32" />
  </module>
  <module name="pulse_t1" kind="altera_avalon_pio" version="17.1" enabled="1">
+  <parameter name="bitClearingEdgeCapReg" value="false" />
+  <parameter name="bitModifyingOutReg" value="false" />
+  <parameter name="captureEdge" value="false" />
+  <parameter name="clockRate" value="0" />
+  <parameter name="direction" value="Output" />
+  <parameter name="edgeType" value="RISING" />
+  <parameter name="generateIRQ" value="false" />
+  <parameter name="irqType" value="LEVEL" />
+  <parameter name="resetValue" value="0" />
+  <parameter name="simDoTestBenchWiring" value="false" />
+  <parameter name="simDrivenValue" value="0" />
+  <parameter name="width" value="32" />
+ </module>
+ <module name="rx_delay" kind="altera_avalon_pio" version="17.1" enabled="1">
   <parameter name="bitClearingEdgeCapReg" value="false" />
   <parameter name="bitModifyingOutReg" value="false" />
   <parameter name="captureEdge" value="false" />

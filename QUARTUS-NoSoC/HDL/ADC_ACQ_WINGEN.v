@@ -6,6 +6,9 @@
 	in general will be shorter than the original delay_with_acqusition window
 	The window for ADC real acquisition itself will be proportional to the length
 	of SAMPLES_PER_ECHO or in KeA2 it is called number-of-points.
+	
+	There is an issue: TOKEN was implemented to prevent retriggering. But also at the same time, if CLK is generated after ACQ_WND rises,
+	TOKEN is not resetted to 0, which will prevent the state machine from running. It is fixed by having reset button implemented to reset the TOKEN to 0 just before any acquisition
 
 */
 
@@ -60,6 +63,7 @@ module ADC_ACQ_WINGEN
 		if (RESET)
 		begin
 			ACQ_EN <= 1'b0;
+			TOKEN <= 1'b0;
 			ADC_DELAY_CNT <= ADC_DELAY_CNT_LOADVAL;
 			SAMPLES_PER_ECHO_CNT <= SAMPLES_PER_ECHO_CNT_LOADVAL;
 			State <= S0;

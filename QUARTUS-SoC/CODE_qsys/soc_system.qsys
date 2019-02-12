@@ -29,7 +29,7 @@
    {
       datum _lockedAddress
       {
-         value = "0";
+         value = "1";
          type = "boolean";
       }
       datum baseAddress
@@ -42,7 +42,7 @@
    {
       datum _lockedAddress
       {
-         value = "0";
+         value = "1";
          type = "boolean";
       }
       datum baseAddress
@@ -71,7 +71,7 @@
    {
       datum _lockedAddress
       {
-         value = "0";
+         value = "1";
          type = "boolean";
       }
       datum baseAddress
@@ -100,7 +100,7 @@
    {
       datum _lockedAddress
       {
-         value = "0";
+         value = "1";
          type = "boolean";
       }
       datum baseAddress
@@ -129,7 +129,7 @@
    {
       datum _lockedAddress
       {
-         value = "0";
+         value = "1";
          type = "boolean";
       }
       datum baseAddress
@@ -150,7 +150,7 @@
    {
       datum _lockedAddress
       {
-         value = "0";
+         value = "1";
          type = "boolean";
       }
       datum baseAddress
@@ -171,7 +171,7 @@
    {
       datum _lockedAddress
       {
-         value = "0";
+         value = "1";
          type = "boolean";
       }
       datum baseAddress
@@ -190,6 +190,11 @@
    }
    element dma_fifo.control_port_slave
    {
+      datum _lockedAddress
+      {
+         value = "1";
+         type = "boolean";
+      }
       datum baseAddress
       {
          value = "896";
@@ -232,7 +237,7 @@
    {
       datum _lockedAddress
       {
-         value = "0";
+         value = "1";
          type = "boolean";
       }
       datum baseAddress
@@ -251,6 +256,11 @@
    }
    element i2c_ext.csr
    {
+      datum _lockedAddress
+      {
+         value = "1";
+         type = "boolean";
+      }
       datum baseAddress
       {
          value = "64";
@@ -269,7 +279,7 @@
    {
       datum _lockedAddress
       {
-         value = "0";
+         value = "1";
          type = "boolean";
       }
       datum baseAddress
@@ -290,7 +300,7 @@
    {
       datum _lockedAddress
       {
-         value = "0";
+         value = "1";
          type = "boolean";
       }
       datum baseAddress
@@ -327,7 +337,7 @@
    {
       datum _lockedAddress
       {
-         value = "0";
+         value = "1";
          type = "boolean";
       }
       datum baseAddress
@@ -340,7 +350,7 @@
    {
       datum _lockedAddress
       {
-         value = "0";
+         value = "1";
          type = "boolean";
       }
       datum baseAddress
@@ -353,7 +363,7 @@
    {
       datum _lockedAddress
       {
-         value = "0";
+         value = "1";
          type = "boolean";
       }
       datum baseAddress
@@ -366,7 +376,7 @@
    {
       datum _lockedAddress
       {
-         value = "0";
+         value = "1";
          type = "boolean";
       }
       datum baseAddress
@@ -379,7 +389,7 @@
    {
       datum _lockedAddress
       {
-         value = "0";
+         value = "1";
          type = "boolean";
       }
       datum baseAddress
@@ -392,7 +402,7 @@
    {
       datum _lockedAddress
       {
-         value = "0";
+         value = "1";
          type = "boolean";
       }
       datum baseAddress
@@ -405,7 +415,7 @@
    {
       datum _lockedAddress
       {
-         value = "0";
+         value = "1";
          type = "boolean";
       }
       datum baseAddress
@@ -418,7 +428,7 @@
    {
       datum _lockedAddress
       {
-         value = "0";
+         value = "1";
          type = "boolean";
       }
       datum baseAddress
@@ -427,11 +437,19 @@
          type = "String";
       }
    }
+   element nmr_parameters.rx_delay_s1
+   {
+      datum baseAddress
+      {
+         value = "864";
+         type = "String";
+      }
+   }
    element nmr_parameters.samples_per_echo_s1
    {
       datum _lockedAddress
       {
-         value = "0";
+         value = "1";
          type = "boolean";
       }
       datum baseAddress
@@ -460,7 +478,7 @@
    {
       datum _lockedAddress
       {
-         value = "0";
+         value = "1";
          type = "boolean";
       }
       datum baseAddress
@@ -479,6 +497,11 @@
    }
    element sdram.s1
    {
+      datum _lockedAddress
+      {
+         value = "1";
+         type = "boolean";
+      }
       datum baseAddress
       {
          value = "0";
@@ -518,7 +541,7 @@
    {
       datum _lockedAddress
       {
-         value = "0";
+         value = "1";
          type = "boolean";
       }
       datum baseAddress
@@ -688,6 +711,11 @@
    type="conduit"
    dir="end" />
  <interface name="reset" internal="clk_0.clk_in_reset" type="reset" dir="end" />
+ <interface
+   name="rx_delay"
+   internal="nmr_parameters.rx_delay_external_connection"
+   type="conduit"
+   dir="end" />
  <interface
    name="samples_per_echo"
    internal="nmr_parameters.samples_per_echo_external_connection"
@@ -1912,6 +1940,9 @@
   <parameter name="AUTO_PULSE_T1_CLK_CLOCK_DOMAIN" value="6" />
   <parameter name="AUTO_PULSE_T1_CLK_CLOCK_RATE" value="50000000" />
   <parameter name="AUTO_PULSE_T1_CLK_RESET_DOMAIN" value="6" />
+  <parameter name="AUTO_RX_DELAY_CLK_CLOCK_DOMAIN" value="6" />
+  <parameter name="AUTO_RX_DELAY_CLK_CLOCK_RATE" value="50000000" />
+  <parameter name="AUTO_RX_DELAY_CLK_RESET_DOMAIN" value="6" />
   <parameter name="AUTO_SAMPLES_PER_ECHO_CLK_CLOCK_DOMAIN" value="6" />
   <parameter name="AUTO_SAMPLES_PER_ECHO_CLK_CLOCK_RATE" value="50000000" />
   <parameter name="AUTO_SAMPLES_PER_ECHO_CLK_RESET_DOMAIN" value="6" />
@@ -2373,6 +2404,15 @@
    kind="avalon"
    version="17.1"
    start="hps_0.h2f_lw_axi_master"
+   end="nmr_parameters.rx_delay_s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x0360" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="17.1"
+   start="hps_0.h2f_lw_axi_master"
    end="ctrl_out.s1">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x03b0" />
@@ -2571,6 +2611,15 @@
    kind="avalon"
    version="17.1"
    start="master_non_sec.master"
+   end="nmr_parameters.rx_delay_s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x0360" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="17.1"
+   start="master_non_sec.master"
    end="ctrl_out.s1">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x03b0" />
@@ -2747,6 +2796,11 @@
    version="17.1"
    start="clk_0.clk"
    end="analyzer_pll.refclk" />
+ <connection
+   kind="clock"
+   version="17.1"
+   start="clk_0.clk"
+   end="nmr_parameters.rx_delay_clk" />
  <connection
    kind="clock"
    version="17.1"
@@ -2999,6 +3053,11 @@
    version="17.1"
    start="clk_0.clk_reset"
    end="i2c_ext.reset_sink" />
+ <connection
+   kind="reset"
+   version="17.1"
+   start="clk_0.clk_reset"
+   end="nmr_parameters.rx_delay_reset" />
  <connection
    kind="reset"
    version="17.1"
