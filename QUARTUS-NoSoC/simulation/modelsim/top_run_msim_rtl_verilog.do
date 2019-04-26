@@ -37,8 +37,8 @@ vlog -vlog01compat -work work +incdir+D:/NMR_PCBv2_HDLv1_2018_FPGA/QUARTUS-NoSoC
 vlog -vlog01compat -work work +incdir+D:/NMR_PCBv2_HDLv1_2018_FPGA/QUARTUS-NoSoC/HDL/ALTERA_IPs {D:/NMR_PCBv2_HDLv1_2018_FPGA/QUARTUS-NoSoC/HDL/ALTERA_IPs/altiobuf.v}
 vlog -vlog01compat -work work +incdir+D:/NMR_PCBv2_HDLv1_2018_FPGA/QUARTUS-NoSoC {D:/NMR_PCBv2_HDLv1_2018_FPGA/QUARTUS-NoSoC/top.v}
 
-vlog -vlog01compat -work work +incdir+D:/NMR_PCBv2_HDLv1_2018_FPGA/QUARTUS-NoSoC/HDL {D:/NMR_PCBv2_HDLv1_2018_FPGA/QUARTUS-NoSoC/HDL/NMR_Controller_tb.v}
+vlog -vlog01compat -work work +incdir+D:/NMR_PCBv2_HDLv1_2018_FPGA/QUARTUS-NoSoC/HDL {D:/NMR_PCBv2_HDLv1_2018_FPGA/QUARTUS-NoSoC/HDL/NMR_PULSE_PROGRAM_tb.v}
 
-vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cyclonev -L cyclonev_ver -L cyclonev_hssi_ver -L cyclonev_pcie_hip_ver -L rtl_work -L work -voptargs="+acc"  NMR_Controller_tb
+vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cyclonev -L cyclonev_ver -L cyclonev_hssi_ver -L cyclonev_pcie_hip_ver -L rtl_work -L work -voptargs="+acc"  NMR_PULSE_PROGRAM_tb
 
-do D:/NMR_PCBv2_HDLv1_2018_FPGA/QUARTUS-NoSoC/HDL/NMR_Controller_tb.do
+do D:/NMR_PCBv2_HDLv1_2018_FPGA/QUARTUS-NoSoC/HDL/NMR_PULSE_PROGRAM_tb.do

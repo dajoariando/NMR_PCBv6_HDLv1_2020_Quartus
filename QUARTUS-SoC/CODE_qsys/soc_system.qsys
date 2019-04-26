@@ -13,7 +13,7 @@
    {
       datum _sortIndex
       {
-         value = "19";
+         value = "20";
          type = "int";
       }
    }
@@ -21,7 +21,7 @@
    {
       datum _sortIndex
       {
-         value = "18";
+         value = "19";
          type = "int";
       }
    }
@@ -55,7 +55,7 @@
    {
       datum _sortIndex
       {
-         value = "21";
+         value = "22";
          type = "int";
       }
    }
@@ -63,7 +63,7 @@
    {
       datum _sortIndex
       {
-         value = "20";
+         value = "21";
          type = "int";
       }
    }
@@ -109,6 +109,22 @@
          type = "String";
       }
    }
+   element aux_cnt_out
+   {
+      datum _sortIndex
+      {
+         value = "11";
+         type = "int";
+      }
+   }
+   element aux_cnt_out.s1
+   {
+      datum baseAddress
+      {
+         value = "864";
+         type = "String";
+      }
+   }
    element clk_0
    {
       datum _sortIndex
@@ -121,7 +137,7 @@
    {
       datum _sortIndex
       {
-         value = "11";
+         value = "12";
          type = "int";
       }
    }
@@ -163,7 +179,7 @@
    {
       datum _sortIndex
       {
-         value = "15";
+         value = "16";
          type = "int";
       }
    }
@@ -184,7 +200,7 @@
    {
       datum _sortIndex
       {
-         value = "23";
+         value = "24";
          type = "int";
       }
    }
@@ -205,7 +221,7 @@
    {
       datum _sortIndex
       {
-         value = "16";
+         value = "17";
          type = "int";
       }
    }
@@ -213,7 +229,7 @@
    {
       datum _sortIndex
       {
-         value = "17";
+         value = "18";
          type = "int";
       }
    }
@@ -221,7 +237,7 @@
    {
       datum _sortIndex
       {
-         value = "22";
+         value = "23";
          type = "int";
       }
    }
@@ -250,7 +266,7 @@
    {
       datum _sortIndex
       {
-         value = "14";
+         value = "15";
          type = "int";
       }
    }
@@ -271,7 +287,7 @@
    {
       datum _sortIndex
       {
-         value = "13";
+         value = "14";
          type = "int";
       }
    }
@@ -329,7 +345,7 @@
    {
       datum _sortIndex
       {
-         value = "12";
+         value = "13";
          type = "int";
       }
    }
@@ -441,7 +457,7 @@
    {
       datum baseAddress
       {
-         value = "864";
+         value = "880";
          type = "String";
       }
    }
@@ -491,7 +507,7 @@
    {
       datum _sortIndex
       {
-         value = "24";
+         value = "25";
          type = "int";
       }
    }
@@ -512,7 +528,7 @@
    {
       datum _sortIndex
       {
-         value = "25";
+         value = "26";
          type = "int";
       }
    }
@@ -610,6 +626,11 @@
    name="analyzer_pll_reset"
    internal="analyzer_pll.reset"
    type="reset"
+   dir="end" />
+ <interface
+   name="aux_cnt_out"
+   internal="aux_cnt_out.external_connection"
+   type="conduit"
    dir="end" />
  <interface name="clk" internal="clk_0.clk_in" type="clock" dir="end" />
  <interface
@@ -1033,6 +1054,24 @@
   <parameter name="ENABLE_MIF" value="false" />
   <parameter name="MIF_FILE_NAME" value="" />
   <parameter name="device_family" value="Cyclone V" />
+ </module>
+ <module
+   name="aux_cnt_out"
+   kind="altera_avalon_pio"
+   version="17.1"
+   enabled="1">
+  <parameter name="bitClearingEdgeCapReg" value="false" />
+  <parameter name="bitModifyingOutReg" value="false" />
+  <parameter name="captureEdge" value="false" />
+  <parameter name="clockRate" value="50000000" />
+  <parameter name="direction" value="Output" />
+  <parameter name="edgeType" value="RISING" />
+  <parameter name="generateIRQ" value="false" />
+  <parameter name="irqType" value="LEVEL" />
+  <parameter name="resetValue" value="119" />
+  <parameter name="simDoTestBenchWiring" value="false" />
+  <parameter name="simDrivenValue" value="0" />
+  <parameter name="width" value="32" />
  </module>
  <module name="clk_0" kind="clock_source" version="17.1" enabled="1">
   <parameter name="clockFrequency" value="50000000" />
@@ -2406,7 +2445,7 @@
    start="hps_0.h2f_lw_axi_master"
    end="nmr_parameters.rx_delay_s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x0360" />
+  <parameter name="baseAddress" value="0x0370" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -2425,6 +2464,15 @@
    end="ctrl_in.s1">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x03a0" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="17.1"
+   start="hps_0.h2f_lw_axi_master"
+   end="aux_cnt_out.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x0360" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -2613,7 +2661,7 @@
    start="master_non_sec.master"
    end="nmr_parameters.rx_delay_s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x0360" />
+  <parameter name="baseAddress" value="0x0370" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -2632,6 +2680,15 @@
    end="ctrl_in.s1">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x03a0" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="17.1"
+   start="master_non_sec.master"
+   end="aux_cnt_out.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x0360" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -2703,6 +2760,7 @@
  <connection kind="clock" version="17.1" start="clk_0.clk" end="dma_fifo.clk" />
  <connection kind="clock" version="17.1" start="clk_0.clk" end="switches.clk" />
  <connection kind="clock" version="17.1" start="clk_0.clk" end="sdram.clk" />
+ <connection kind="clock" version="17.1" start="clk_0.clk" end="aux_cnt_out.clk" />
  <connection
    kind="clock"
    version="17.1"
@@ -3038,6 +3096,11 @@
    version="17.1"
    start="clk_0.clk_reset"
    end="switches.reset" />
+ <connection
+   kind="reset"
+   version="17.1"
+   start="clk_0.clk_reset"
+   end="aux_cnt_out.reset" />
  <connection
    kind="reset"
    version="17.1"

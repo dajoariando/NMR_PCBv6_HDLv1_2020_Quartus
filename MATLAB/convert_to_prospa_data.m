@@ -20,8 +20,8 @@ function data = convert_to_prospa_data(path,name,write_csv)
         en_ph_cycle_proc = read_custom_acqu_par(path,'usePhaseCycle');
         
         %n = 3; Wn = 0.008;
-        %n = 1; Wn = 0.03;
-        n = 2; Wn = 0.05;
+        n = 2; Wn = 0.01;
+        % n = 2; Wn = 0.05;
         [butter_b,butter_a] = butter(n,Wn);
 
         % parse file & remove DC component

@@ -13,8 +13,8 @@ function [A,T2,asymp_rms,snr] = compute_iterate(path)
     
     % filter settings for downconversion
     %n = 3; Wn = 0.008;
-    %n = 1; Wn = 0.03;
-    n = 2; Wn = 0.05;
+    n = 2; Wn = 0.02;
+    %n = 2; Wn = 0.05;
     [butter_b,butter_a] = butter(n,Wn);
 
     %% MAIN PROGRAM
@@ -36,7 +36,7 @@ function [A,T2,asymp_rms,snr] = compute_iterate(path)
         convert_to_prospa_data(path,'\dat',1);
         ori_dir = pwd;
         cd prospa_code;
-        [A,T2,asymp_rms,snr]=plot_cpmg_multiexp_opt_081116_extout([path,'\kea_format'],1,1,1,[1 1 1],1,9.6,0);
+        [A,T2,asymp_rms,snr]=plot_cpmg_multiexp_opt_081116_extout([path,'\kea_format'],1,1,1,[1 1 1],1,1800,0);
         [A,T2,asymp_rms,snr]=plot_cpmg_multiexp_opt_081116_extout([path,'\kea_format'],1,1,1,[1 1 1],A,T2,1);
 
         disp('A='); disp(A);

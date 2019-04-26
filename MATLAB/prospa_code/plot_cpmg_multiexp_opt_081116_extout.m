@@ -68,7 +68,7 @@ for j=1:sizdata(1)
     data_c(j,:)=data(j,1:2:sizdata(2)-1)+1i*data(j,2:2:sizdata(2));
     if j>nignore
         %        No T2-weighting
-        %        echo_asymp=echo_asymp+data_c(j,:)/(sizdata(1)-nignore);
+         %       echo_asymp=echo_asymp+data_c(j,:)/(sizdata(1)-nignore);
         %        T2-weighted
         echo_asymp=echo_asymp+data_c(j,:)*sig_decay_est(j)/(sizdata(1)-nignore);
     end
@@ -250,7 +250,7 @@ if plt
 	disp('Figure file saved.');
 end
 
-deconv_spect(tacq,wvect/(2*pi*1e3),spect',50); % all in KHz
+% deconv_spect(tacq,wvect/(2*pi*1e3),spect',50); % all in KHz
 
 function val=expfun(vars,tvect,echo_int)
 

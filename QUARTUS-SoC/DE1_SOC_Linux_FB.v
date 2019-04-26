@@ -371,7 +371,17 @@ module DE1_SOC_Linux_FB(
 			dac_preamp_LDAC_n,		// dac_ldac -> active low
 			dac_preamp_CLR_n		// dac clear -> active low
 		}),
-		
+		.aux_cnt_out_export ({
+			GPIO_0[7],
+			GPIO_0[6],
+			GPIO_0[5],
+			GPIO_0[4],
+			GPIO_0[3],
+			GPIO_0[2],
+			GPIO_0[1],
+			GPIO_0[0]
+		}),
+
 		// I2C onboard
 		.i2c_int_sda_in                            (i2c_int_sda_in),                            //                     i2c_int.sda_in
         .i2c_int_scl_in                            (i2c_int_scl_in),                            //                            .scl_in
