@@ -1,4 +1,7 @@
 `define ENABLE_HPS
+`define PCBv4_APR2019
+// define PCBv2_FEB2018
+
 
 module DE1_SOC_Linux_FB(
 	// ADC
@@ -172,6 +175,8 @@ module DE1_SOC_Linux_FB(
 	wire 			enable_rx_dly;
 	wire			dac_preamp_LDAC_n;
 	wire			dac_preamp_CLR_n;
+	wire			qsw_en;
+	wire			dup_en;
 
 	// control input signal
 	wire			pll_nmr_sys_locked;
@@ -191,7 +196,6 @@ module DE1_SOC_Linux_FB(
 	wire			pll_nmr_sys_reset;
 	wire			pll_analyzer_reset;
 	wire			nmr_controller_reset;
-	// wire			main_clock_reset;
 	
 	// parameters
 	wire	[PULSE_AND_DELAY_WIDTH-1:0]		pulse_90deg;
@@ -226,6 +230,13 @@ module DE1_SOC_Linux_FB(
     wire dac_preamp_MOSI;
     wire dac_preamp_SCLK;
     wire dac_preamp_SS_n;
+
+	// SPI for matching network
+	wire spi_mtch_ntwrk_MISO;
+	wire spi_mtch_ntwrk_MOSI;
+	wire spi_mtch_ntwrk_SCLK;
+	wire spi_mtch_ntwrk_SS_n;
+	
  
 //=======================================================
 // Structural coding
@@ -359,7 +370,8 @@ module DE1_SOC_Linux_FB(
 			pll_nmr_sys_locked		// PLL lock status for the NMR pulse programmer
 		}),
 		.ctrl_out_export({
-			// main_clock_reset,
+			dup_en,					// active duplexer enable
+			qsw_en,					// Qswitch enable
 			nmr_controller_reset,
 			pll_analyzer_reset,		// analyzer_pll_reset
 			pll_nmr_sys_reset,		// nmr_system_pll reset for the FSM main controller clock
@@ -387,31 +399,31 @@ module DE1_SOC_Linux_FB(
         .i2c_int_scl_in                            (i2c_int_scl_in),                            //                            .scl_in
         .i2c_int_sda_oe                            (i2c_int_sda_oe),                            //                            .sda_oe
         .i2c_int_scl_oe                            (i2c_int_scl_oe),                            //                            .scl_oe
-        
+
 		// I2C offboard
 		.i2c_ext_sda_in                            (i2c_ext_sda_in),                            //                     i2c_ext.sda_in
         .i2c_ext_scl_in                            (i2c_ext_scl_in),                            //                            .scl_in
         .i2c_ext_sda_oe                            (i2c_ext_sda_oe),                            //                            .sda_oe
         .i2c_ext_scl_oe                            (i2c_ext_scl_oe),                            //                            .scl_oe
-        
+
 		// Dedicated SPI for DAC
 		.dac_preamp_MISO                           (dac_preamp_MISO),                           //                  dac_preamp.MISO
         .dac_preamp_MOSI                           (dac_preamp_MOSI),                           //                            .MOSI
         .dac_preamp_SCLK                           (dac_preamp_SCLK),                           //                            .SCLK
         .dac_preamp_SS_n                           (dac_preamp_SS_n),
-		
+
 		// FIFO
 		.adc_fifo_in_data			(adc_data_out),
 		.adc_fifo_in_valid			(adc_data_valid),
 		.adc_fifo_in_ready			(),
 		.fifo_clk_bridge_in_clk		(adc_clk),
 		.fifo_rst_reset				(adc_fifo_reset),
-		
+
 		// NMR system clock
 		.nmr_sys_pll_outclk_clk   	(pulseprog_clk),
         .nmr_sys_pll_locked_export	(pll_nmr_sys_locked),
 		.nmr_sys_pll_reset_reset	(pll_nmr_sys_reset),
-		
+
 		// Analyzer PLL for performance characterization
 		.analyzer_pll_reset_reset	(pll_analyzer_reset), 
         .analyzer_pll_locked_export	(pll_analyzer_locked),
@@ -419,11 +431,11 @@ module DE1_SOC_Linux_FB(
 		.analyzer_pll_outclk1_clk	(pll_analyzer_clk1),
 		.analyzer_pll_outclk2_clk	(pll_analyzer_clk2),
 		.analyzer_pll_outclk3_clk	(pll_analyzer_clk3),
-		
+
 		// VGA PLL
 		.pll_vga_clk65_clk			(clk_65),
         .pll_vga_locked_export		(pll_vga_locked),
-		
+
 		//itc
 		.alt_vip_itc_0_clocked_video_vid_clk         (~clk_65),         					 	 // alt_vip_itc_0_clocked_video.vid_clk
         .alt_vip_itc_0_clocked_video_vid_data        ({vid_r,vid_g,vid_b}),        		 //                .vid_data
@@ -434,7 +446,7 @@ module DE1_SOC_Linux_FB(
         .alt_vip_itc_0_clocked_video_vid_f           (),           							 //                .vid_f
         .alt_vip_itc_0_clocked_video_vid_h           (),           							 //                .vid_h
         .alt_vip_itc_0_clocked_video_vid_v           (),
-		
+
 		// SDRAM
 		.sdram_clk_clk		(DRAM_CLK),                  //    
 	    .sdram_wire_addr	(DRAM_ADDR),                //              sdram_wire.addr
@@ -446,8 +458,14 @@ module DE1_SOC_Linux_FB(
 		.sdram_wire_dqm		({DRAM_UDQM,DRAM_LDQM}),                 //                        .dqm
 		.sdram_wire_ras_n	(DRAM_RAS_N),               //                        .ras_n
 		.sdram_wire_we_n	(DRAM_WE_N),                 //                              // 
-		
-		.switches_export	(SW)                            //                    switches.export
+
+		.switches_export	(SW),                            //                    switches.export
+
+		// Dedicated SPI for the matching network
+		.spi_mtch_ntwrk_MISO		(spi_mtch_ntwrk_MISO),	// spi_mtch_ntwrk.MISO
+		.spi_mtch_ntwrk_MOSI		(spi_mtch_ntwrk_MOSI),	//               .MOSI
+		.spi_mtch_ntwrk_SCLK		(spi_mtch_ntwrk_SCLK),	//               .SCLK
+		.spi_mtch_ntwrk_SS_n		(spi_mtch_ntwrk_SS_n) 	//               .SS_n
 	);
 	
 	
@@ -578,15 +596,23 @@ module DE1_SOC_Linux_FB(
 		.dataio		( {GPIO_1[2],GPIO_1[3]} ),
 		.dataout	( {i2c_int_sda_in , i2c_int_scl_in} )
 	);
-	
+
+`ifdef PCBv2_FEB2018
 	altiobuf i2c_ext_io (
 		.datain		( 2'b00 ),
 		.oe			( {i2c_ext_sda_oe , i2c_ext_scl_oe} ),
 		.dataio		( {GPIO_1[14],GPIO_1[17]} ),
 		.dataout	( {i2c_ext_sda_in , i2c_ext_scl_in} )
 	);
-	
-	
+`endif /* PCBv2_FEB2018 */
+`ifdef PCBv4_APR2019
+	assign GPIO_0[11] = spi_mtch_ntwrk_SCLK;
+	assign GPIO_0[13] = spi_mtch_ntwrk_MOSI;
+	assign GPIO_0[15] = spi_mtch_ntwrk_SS_n;
+	assign GPIO_1[14] = dup_en;
+	assign GPIO_1[17] = qsw_en;
+`endif /* PCBv4_APR2019 */
+
 	// USEFUL SIMPLE STATUS SIGNALS
 	assign LEDR[0] = 1'b1;
 	assign LEDR[1] = 1'b0;

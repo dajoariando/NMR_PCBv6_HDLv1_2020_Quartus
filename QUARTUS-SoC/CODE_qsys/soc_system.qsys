@@ -13,7 +13,7 @@
    {
       datum _sortIndex
       {
-         value = "20";
+         value = "21";
          type = "int";
       }
    }
@@ -21,7 +21,7 @@
    {
       datum _sortIndex
       {
-         value = "19";
+         value = "20";
          type = "int";
       }
    }
@@ -55,7 +55,7 @@
    {
       datum _sortIndex
       {
-         value = "22";
+         value = "23";
          type = "int";
       }
    }
@@ -63,7 +63,7 @@
    {
       datum _sortIndex
       {
-         value = "21";
+         value = "22";
          type = "int";
       }
    }
@@ -121,7 +121,7 @@
    {
       datum baseAddress
       {
-         value = "864";
+         value = "1104";
          type = "String";
       }
    }
@@ -200,7 +200,7 @@
    {
       datum _sortIndex
       {
-         value = "24";
+         value = "25";
          type = "int";
       }
    }
@@ -221,7 +221,7 @@
    {
       datum _sortIndex
       {
-         value = "17";
+         value = "18";
          type = "int";
       }
    }
@@ -229,7 +229,7 @@
    {
       datum _sortIndex
       {
-         value = "18";
+         value = "19";
          type = "int";
       }
    }
@@ -237,7 +237,7 @@
    {
       datum _sortIndex
       {
-         value = "23";
+         value = "24";
          type = "int";
       }
    }
@@ -457,7 +457,7 @@
    {
       datum baseAddress
       {
-         value = "880";
+         value = "1120";
          type = "String";
       }
    }
@@ -507,7 +507,7 @@
    {
       datum _sortIndex
       {
-         value = "25";
+         value = "26";
          type = "int";
       }
    }
@@ -524,11 +524,27 @@
          type = "String";
       }
    }
+   element spi_mtch_ntwrk
+   {
+      datum _sortIndex
+      {
+         value = "17";
+         type = "int";
+      }
+   }
+   element spi_mtch_ntwrk.spi_control_port
+   {
+      datum baseAddress
+      {
+         value = "864";
+         type = "String";
+      }
+   }
    element switches
    {
       datum _sortIndex
       {
-         value = "26";
+         value = "27";
          type = "int";
       }
    }
@@ -744,6 +760,11 @@
    dir="end" />
  <interface name="sdram_clk" internal="gp_pll.outclk3" type="clock" dir="start" />
  <interface name="sdram_wire" internal="sdram.wire" type="conduit" dir="end" />
+ <interface
+   name="spi_mtch_ntwrk"
+   internal="spi_mtch_ntwrk.external"
+   type="conduit"
+   dir="end" />
  <interface
    name="switches"
    internal="switches.external_connection"
@@ -2229,6 +2250,26 @@
   <parameter name="registerDataIn" value="true" />
   <parameter name="rowWidth" value="13" />
  </module>
+ <module
+   name="spi_mtch_ntwrk"
+   kind="altera_avalon_spi"
+   version="17.1"
+   enabled="1">
+  <parameter name="avalonSpec" value="2.0" />
+  <parameter name="clockPhase" value="0" />
+  <parameter name="clockPolarity" value="0" />
+  <parameter name="dataWidth" value="24" />
+  <parameter name="disableAvalonFlowControl" value="false" />
+  <parameter name="inputClockRate" value="50000000" />
+  <parameter name="insertDelayBetweenSlaveSelectAndSClk" value="false" />
+  <parameter name="insertSync" value="false" />
+  <parameter name="lsbOrderedFirst" value="false" />
+  <parameter name="masterSPI" value="true" />
+  <parameter name="numberOfSlaves" value="1" />
+  <parameter name="syncRegDepth" value="2" />
+  <parameter name="targetClockRate" value="128000" />
+  <parameter name="targetSlaveSelectToSClkDelay" value="0.0" />
+ </module>
  <module name="switches" kind="altera_avalon_pio" version="17.1" enabled="1">
   <parameter name="bitClearingEdgeCapReg" value="false" />
   <parameter name="bitModifyingOutReg" value="false" />
@@ -2445,7 +2486,7 @@
    start="hps_0.h2f_lw_axi_master"
    end="nmr_parameters.rx_delay_s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x0370" />
+  <parameter name="baseAddress" value="0x0460" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -2472,7 +2513,7 @@
    start="hps_0.h2f_lw_axi_master"
    end="aux_cnt_out.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x0360" />
+  <parameter name="baseAddress" value="0x0450" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -2491,6 +2532,15 @@
    end="dac_preamp.spi_control_port">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x0020" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="17.1"
+   start="hps_0.h2f_lw_axi_master"
+   end="spi_mtch_ntwrk.spi_control_port">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x0360" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -2661,7 +2711,7 @@
    start="master_non_sec.master"
    end="nmr_parameters.rx_delay_s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x0370" />
+  <parameter name="baseAddress" value="0x0460" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -2688,7 +2738,7 @@
    start="master_non_sec.master"
    end="aux_cnt_out.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x0360" />
+  <parameter name="baseAddress" value="0x0450" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -2707,6 +2757,15 @@
    end="dac_preamp.spi_control_port">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x0020" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="17.1"
+   start="master_non_sec.master"
+   end="spi_mtch_ntwrk.spi_control_port">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x0360" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -2761,6 +2820,11 @@
  <connection kind="clock" version="17.1" start="clk_0.clk" end="switches.clk" />
  <connection kind="clock" version="17.1" start="clk_0.clk" end="sdram.clk" />
  <connection kind="clock" version="17.1" start="clk_0.clk" end="aux_cnt_out.clk" />
+ <connection
+   kind="clock"
+   version="17.1"
+   start="clk_0.clk"
+   end="spi_mtch_ntwrk.clk" />
  <connection
    kind="clock"
    version="17.1"
@@ -2971,6 +3035,13 @@
   <parameter name="irqNumber" value="0" />
  </connection>
  <connection
+   kind="interrupt"
+   version="17.1"
+   start="hps_0.f2h_irq1"
+   end="spi_mtch_ntwrk.irq">
+  <parameter name="irqNumber" value="3" />
+ </connection>
+ <connection
    kind="reset"
    version="17.1"
    start="clk_0.clk_reset"
@@ -3101,6 +3172,11 @@
    version="17.1"
    start="clk_0.clk_reset"
    end="aux_cnt_out.reset" />
+ <connection
+   kind="reset"
+   version="17.1"
+   start="clk_0.clk_reset"
+   end="spi_mtch_ntwrk.reset" />
  <connection
    kind="reset"
    version="17.1"
