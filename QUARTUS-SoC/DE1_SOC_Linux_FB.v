@@ -1,6 +1,6 @@
 `define ENABLE_HPS
-`define PCBv4_APR2019
-// define PCBv2_FEB2018
+//`define PCBv4_APR2019
+`define PCBv2_FEB2018
 
 
 module DE1_SOC_Linux_FB(
@@ -47,7 +47,7 @@ module DE1_SOC_Linux_FB(
 	// GPIO
 	inout	[35:0]	GPIO_0,
 	inout	[35:0]	GPIO_1,
- 
+
 
 	// HEX
 	output	[6:0]	HEX0,
@@ -158,7 +158,7 @@ module DE1_SOC_Linux_FB(
 	localparam ADC_DATA_WIDTH = 16;
 	localparam ADC_PHYS_WIDTH = 14; // ADC physical data width
 	localparam ADC_LATENCY = 5;
-	
+
 
 //=======================================================
 // REG/WIRE declarations
@@ -190,13 +190,13 @@ module DE1_SOC_Linux_FB(
 	wire			pll_analyzer_clk1;
 	wire			pll_analyzer_clk2;
 	wire			pll_analyzer_clk3;
-	
-	
+
+
 	// reset signals
 	wire			pll_nmr_sys_reset;
 	wire			pll_analyzer_reset;
 	wire			nmr_controller_reset;
-	
+
 	// parameters
 	wire	[PULSE_AND_DELAY_WIDTH-1:0]		pulse_90deg;
 	wire	[PULSE_AND_DELAY_WIDTH-1:0]		pulse_180deg;
@@ -208,14 +208,21 @@ module DE1_SOC_Linux_FB(
 	wire	[ECHOES_PER_SCAN_WIDTH-1:0]		echoes_per_scan;
 	wire	[ADC_INIT_DELAY_WIDTH-1:0]		init_delay;
 	wire	[ADC_INIT_DELAY_WIDTH-1:0]		rx_delay;
+	wire	[31:0]							adc_val_sub;
 
 	// adc data
 	wire	[ADC_DATA_WIDTH-1:0]			adc_data_in;
 	wire	[ADC_DATA_WIDTH-1:0]			adc_data_out;
-	
+
 	wire									adc_data_valid;
 	wire									nmr_rfout_p;
 	wire									nmr_rfout_n;
+	
+	wire	[27:0]		dconv_fir_out_data; // the bus length is defined by FIR module in the QSYS. Make sure of this.
+	wire	[27:0]		dconv_fir_q_out_data; // the bus length is defined by FIR module in the QSYS. Make sure of this.
+	wire 				dconv_fir_out_valid;
+	wire 				dconv_fir_q_out_valid;
+	wire	[ADC_DATA_WIDTH-1:0]			adc_data_dconv;
 
 	// VGA control
 	wire		clk_65;
@@ -224,33 +231,33 @@ module DE1_SOC_Linux_FB(
 	wire		vid_h_sync ;
 	wire		vid_datavalid;
 	wire		pll_vga_locked;
-	
+
 	// DAC preamp
 	wire dac_preamp_MISO;
-    wire dac_preamp_MOSI;
-    wire dac_preamp_SCLK;
-    wire dac_preamp_SS_n;
+	wire dac_preamp_MOSI;
+	wire dac_preamp_SCLK;
+	wire dac_preamp_SS_n;
 
 	// SPI for matching network
 	wire spi_mtch_ntwrk_MISO;
 	wire spi_mtch_ntwrk_MOSI;
 	wire spi_mtch_ntwrk_SCLK;
 	wire spi_mtch_ntwrk_SS_n;
-	
+
  
 //=======================================================
 // Structural coding
 //=======================================================
-	
-	
+
+
 	assign   VGA_BLANK_N          =     1'b1;
 	assign   VGA_SYNC_N           =     1'b0;	
 	assign   VGA_CLK              =     clk_65;
 	assign  {VGA_B,VGA_G,VGA_R}   =     {vid_b,vid_g,vid_r};
 	assign   VGA_VS               =     vid_v_sync;
 	assign   VGA_HS               =     vid_h_sync;
-	
-	
+
+
 	soc_system u0 (
 		.clk_clk			(CLOCK_50),	// clk.clk
 		.reset_reset_n		(1'b1),		// reset.reset_n
@@ -361,7 +368,8 @@ module DE1_SOC_Linux_FB(
 		.init_delay_export			(init_delay),
 		.rx_delay_export			(rx_delay),
 		.pulse_t1_export			(pulse_t1),
-        .delay_t1_export			(delay_t1),
+		.delay_t1_export			(delay_t1),
+		.adc_val_sub_export			(adc_val_sub),                         //                 adc_val_sub.export
 
 		// Control Signals from/to HPS
 		.ctrl_in_export ({
@@ -396,21 +404,21 @@ module DE1_SOC_Linux_FB(
 
 		// I2C onboard
 		.i2c_int_sda_in                            (i2c_int_sda_in),                            //                     i2c_int.sda_in
-        .i2c_int_scl_in                            (i2c_int_scl_in),                            //                            .scl_in
-        .i2c_int_sda_oe                            (i2c_int_sda_oe),                            //                            .sda_oe
-        .i2c_int_scl_oe                            (i2c_int_scl_oe),                            //                            .scl_oe
+		.i2c_int_scl_in                            (i2c_int_scl_in),                            //                            .scl_in
+		.i2c_int_sda_oe                            (i2c_int_sda_oe),                            //                            .sda_oe
+		.i2c_int_scl_oe                            (i2c_int_scl_oe),                            //                            .scl_oe
 
 		// I2C offboard
 		.i2c_ext_sda_in                            (i2c_ext_sda_in),                            //                     i2c_ext.sda_in
-        .i2c_ext_scl_in                            (i2c_ext_scl_in),                            //                            .scl_in
-        .i2c_ext_sda_oe                            (i2c_ext_sda_oe),                            //                            .sda_oe
-        .i2c_ext_scl_oe                            (i2c_ext_scl_oe),                            //                            .scl_oe
+		.i2c_ext_scl_in                            (i2c_ext_scl_in),                            //                            .scl_in
+		.i2c_ext_sda_oe                            (i2c_ext_sda_oe),                            //                            .sda_oe
+		.i2c_ext_scl_oe                            (i2c_ext_scl_oe),                            //                            .scl_oe
 
 		// Dedicated SPI for DAC
 		.dac_preamp_MISO                           (dac_preamp_MISO),                           //                  dac_preamp.MISO
-        .dac_preamp_MOSI                           (dac_preamp_MOSI),                           //                            .MOSI
-        .dac_preamp_SCLK                           (dac_preamp_SCLK),                           //                            .SCLK
-        .dac_preamp_SS_n                           (dac_preamp_SS_n),
+		.dac_preamp_MOSI                           (dac_preamp_MOSI),                           //                            .MOSI
+		.dac_preamp_SCLK                           (dac_preamp_SCLK),                           //                            .SCLK
+		.dac_preamp_SS_n                           (dac_preamp_SS_n),
 
 		// FIFO
 		.adc_fifo_in_data			(adc_data_out),
@@ -460,6 +468,28 @@ module DE1_SOC_Linux_FB(
 		.sdram_wire_we_n	(DRAM_WE_N),                 //                              // 
 
 		.switches_export	(SW),                            //                    switches.export
+		
+		// downconversion data-i
+		.dconv_fir_in_data		(data_i),                         //                dconv_fir_in.data
+		.dconv_fir_in_valid		(fsmstat),                        //                            .valid
+		.dconv_fir_in_error		(),                        //                            .error
+		.dconv_fir_out_data		(dconv_fir_out_data),                        //               dconv_fir_out.data
+		.dconv_fir_out_valid	(dconv_fir_out_valid),                       //                            .valid
+		.dconv_fir_out_error	(),                        //                            .error
+		.dconv_fifo_in_data		(dconv_fir_out_data),                        //               dconv_fifo_in.data
+		.dconv_fifo_in_valid	(dconv_fir_out_valid && fsmstat),                 //                            .valid
+		.dconv_fifo_in_ready	(),                        //                            .ready
+		
+		// downconversion data-q
+		.dconv_fir_q_in_data	(data_q),                       //              dconv_fir_q_in.data
+		.dconv_fir_q_in_valid	(fsmstat),                      //                            .valid
+		.dconv_fir_q_in_error	(),                      //                            .error
+		.dconv_fir_q_out_data	(dconv_fir_q_out_data),                      //             dconv_fir_q_out.data
+		.dconv_fir_q_out_valid	(dconv_fir_q_out_valid),                     //                            .valid
+		.dconv_fir_q_out_error	(),                     //                            .error
+		.dconv_fifo_q_in_data	(dconv_fir_q_out_data),                      //             dconv_fifo_q_in.data
+		.dconv_fifo_q_in_valid	(dconv_fir_q_out_valid && fsmstat),                     //                            .valid
+		.dconv_fifo_q_in_ready	(),                      //                            .ready
 
 		// Dedicated SPI for the matching network
 		.spi_mtch_ntwrk_MISO		(spi_mtch_ntwrk_MISO),	// spi_mtch_ntwrk.MISO
@@ -467,9 +497,29 @@ module DE1_SOC_Linux_FB(
 		.spi_mtch_ntwrk_SCLK		(spi_mtch_ntwrk_SCLK),	//               .SCLK
 		.spi_mtch_ntwrk_SS_n		(spi_mtch_ntwrk_SS_n) 	//               .SS_n
 	);
-	
-	
-	
+
+	GNRL_dconv_nofilter
+	# (
+		.ADC_PHYS_WIDTH (ADC_PHYS_WIDTH) 
+	) GNRL_dconv_nofilter1
+	(
+
+		// data interface
+		.adc_data_in	(adc_data_in), // unsigned integer data in
+		.data_i			(data_i), // in-phase signed integer data (wider by 1 bit)
+		.data_q			(data_q), // quadrature signed integer data (wider by 1 bit)
+
+		// parameters
+		.adc_dcval_subtractor	(adc_val_sub_reg[ADC_PHYS_WIDTH:0]), // signed integer subtractor to remove dc value
+
+		.conv_en			(fsmstat),
+
+		// system signal
+		.CLK			(adc_clk),
+		.RESET			(nmr_controller_reset)
+	);
+
+
 	// Clock Domain Crossing!!!
 	reg	[PULSE_AND_DELAY_WIDTH-1:0]		pulse_90deg_reg;
 	reg	[PULSE_AND_DELAY_WIDTH-1:0]		pulse_180deg_reg;
@@ -481,6 +531,7 @@ module DE1_SOC_Linux_FB(
 	reg	[ECHOES_PER_SCAN_WIDTH-1:0]		echoes_per_scan_reg;
 	reg	[ADC_INIT_DELAY_WIDTH-1:0]		init_delay_reg;
 	reg	[ADC_INIT_DELAY_WIDTH-1:0]		rx_delay_reg;
+	reg	[31:0]							adc_val_sub_reg;
 	always @(posedge pulseprog_clk)
 	begin
 		pulse_90deg_reg      <= pulse_90deg;
@@ -493,8 +544,9 @@ module DE1_SOC_Linux_FB(
 		echoes_per_scan_reg  <= echoes_per_scan;
 		init_delay_reg       <= init_delay;
 		rx_delay_reg		 <= rx_delay;
+		adc_val_sub_reg		<= adc_val_sub;
 	end
-	
+
 	NMR_Controller
 	#(
 		.PULSE_AND_DELAY_WIDTH 	(PULSE_AND_DELAY_WIDTH),
@@ -559,7 +611,7 @@ module DE1_SOC_Linux_FB(
 	assign GPIO_1[11] = dac_preamp_SS_n;
 	assign GPIO_1[12] = dac_preamp_LDAC_n;
 	assign GPIO_1[15] = dac_preamp_CLR_n;
-	
+
 
 	assign adc_clkout = GPIO_1[21];	// uncomment this if the shifted clock from the ADC is used instead of clk_25M below
 	assign GPIO_1[19] = adc_clk;	// ADC high speed clock ENC
@@ -585,11 +637,11 @@ module DE1_SOC_Linux_FB(
 
 	assign GPIO_1[1] = nmr_clk_gate_avln_cnt ? nmr_rfout_p : pll_analyzer_clk0;
 	assign GPIO_1[0] = nmr_clk_gate_avln_cnt ? nmr_rfout_n : pll_analyzer_clk2;
-	
+
 	assign GPIO_0[29] = enable_rx;
 	assign GPIO_0[27] = enable_rx_dly;
 	assign GPIO_0[25] = enable_adc;
-	
+
 	altiobuf i2c_int_io (
 		.datain		( 2'b00 ),
 		.oe			( {i2c_int_sda_oe , i2c_int_scl_oe} ),

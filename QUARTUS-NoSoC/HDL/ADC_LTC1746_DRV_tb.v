@@ -35,7 +35,7 @@ module ADC_LTC1746_DRV_tb;
 	(
 		// digital data
 		.Q_IN		(Q_IN),		// digital data in
-		.Q_IN_OV		(Q_IN_OV),	// digital data in overflow
+		.Q_IN_OV	(Q_IN_OV),	// digital data in overflow
 		.Q_OUT		(Q_OUT),	// digital data out
 		.Q_OUT_OV	(Q_OUT_OV),	// digital data out overflow
 		

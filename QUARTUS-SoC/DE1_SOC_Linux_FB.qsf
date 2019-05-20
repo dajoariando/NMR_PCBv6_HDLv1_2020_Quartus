@@ -7,7 +7,7 @@ set_global_assignment -name FAMILY "Cyclone V"
 set_global_assignment -name DEVICE 5CSEMA5F31C6
 set_global_assignment -name TOP_LEVEL_ENTITY "DE1_SOC_Linux_FB"
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION 13
-set_global_assignment -name LAST_QUARTUS_VERSION "17.1.0 Standard Edition"
+set_global_assignment -name LAST_QUARTUS_VERSION "18.1.0 Lite Edition"
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "THU JUL 11 11:26:45 2013"
 set_global_assignment -name DEVICE_FILTER_PACKAGE FBGA
 
@@ -870,11 +870,11 @@ set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 
 set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
 set_global_assignment -name ENABLE_SIGNALTAP ON
 set_global_assignment -name USE_SIGNALTAP_FILE ltc1746_adc_test.stp
-set_global_assignment -name EDA_SIMULATION_TOOL "ModelSim-Altera (Verilog)"
+set_global_assignment -name EDA_SIMULATION_TOOL "ModelSim-Altera (VHDL)"
 set_global_assignment -name EDA_TIME_SCALE "1 ps" -section_id eda_simulation
-set_global_assignment -name EDA_OUTPUT_DATA_FORMAT "VERILOG HDL" -section_id eda_simulation
+set_global_assignment -name EDA_OUTPUT_DATA_FORMAT VHDL -section_id eda_simulation
 set_global_assignment -name EDA_TEST_BENCH_ENABLE_STATUS TEST_BENCH_MODE -section_id eda_simulation
-set_global_assignment -name EDA_NATIVELINK_SIMULATION_TEST_BENCH i2c_tca9555_tb -section_id eda_simulation
+set_global_assignment -name EDA_NATIVELINK_SIMULATION_TEST_BENCH tb -section_id eda_simulation
 set_global_assignment -name EDA_TEST_BENCH_NAME i2c_tca9555_tb -section_id eda_simulation
 set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id i2c_tca9555_tb
 set_global_assignment -name EDA_TEST_BENCH_RUN_SIM_FOR "10 us" -section_id i2c_tca9555_tb
@@ -982,7 +982,6 @@ set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_COUNTER_PIPELINE=
 set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_ADVANCED_TRIGGER_ENTITY=basic,1," -section_id adc_ltc1746
 set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_TRIGGER_LEVEL_PIPELINE=1" -section_id adc_ltc1746
 set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_ENABLE_ADVANCED_TRIGGER=0" -section_id adc_ltc1746
-set_global_assignment -name EDA_TEST_BENCH_FILE CODE_modelsim/i2c_tca9555/i2c_tca9555_tb.v -section_id i2c_tca9555_tb
 set_location_assignment PIN_AC18 -to GPIO_0[0]
 set_location_assignment PIN_Y17 -to GPIO_0[1]
 set_location_assignment PIN_AD17 -to GPIO_0[2]
@@ -1056,6 +1055,14 @@ set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO_0[3]
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO_0[2]
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO_0[1]
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO_0[0]
+set_global_assignment -name EDA_TEST_BENCH_NAME tb -section_id eda_simulation
+set_global_assignment -name EDA_DESIGN_INSTANCE_NAME DUT -section_id tb
+set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME work.soc_system_dconv_fir_tb -section_id tb
+set_global_assignment -name EDA_TEST_BENCH_NAME GNRL_dconv_nofilter_tb -section_id eda_simulation
+set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id GNRL_dconv_nofilter_tb
+set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME GNRL_dconv_nofilter_tb -section_id GNRL_dconv_nofilter_tb
+set_global_assignment -name VERILOG_TEST_BENCH_FILE "../QUARTUS-NoSoC/HDL/GNRL_dconv_nofilter_tb.v"
+set_global_assignment -name VERILOG_FILE "../QUARTUS-NoSoC/HDL/GNRL_dconv_nofilter.v"
 set_global_assignment -name VERILOG_FILE "../QUARTUS-NoSoC/HDL/GNRL_delayed_pulser.v"
 set_global_assignment -name SDC_FILE DE1_SOC_Linux_FB.out.sdc
 set_global_assignment -name VERILOG_FILE "../QUARTUS-NoSoC/HDL/NMR_PULSE_PROGRAM_tb.v"
@@ -1075,5 +1082,15 @@ set_global_assignment -name SDC_FILE DE1_SOC_Linux_FB.sdc
 set_global_assignment -name VERILOG_FILE DE1_SOC_Linux_FB.v
 set_global_assignment -name SIGNALTAP_FILE CODE_signaltap/signaltap.stp
 set_global_assignment -name SIGNALTAP_FILE ltc1746_adc_test.stp
-set_global_assignment -name SLD_FILE db/ltc1746_adc_test_auto_stripped.stp
+set_global_assignment -name QIP_FILE ../../DELETEME/firtest.qip
+set_global_assignment -name SIP_FILE ../../DELETEME/firtest.sip
+set_global_assignment -name EDA_TEST_BENCH_RUN_SIM_FOR "100 us" -section_id GNRL_dconv_nofilter_tb
+set_global_assignment -name EDA_TEST_BENCH_FILE CODE_modelsim/i2c_tca9555/i2c_tca9555_tb.v -section_id i2c_tca9555_tb
+set_global_assignment -name EDA_TEST_BENCH_FILE "D:/NMR_PCBv2_HDLv1_2018_FPGA/QUARTUS-SoC/CODE_qsys/soc_system/simulation/submodules/soc_system_dconv_fir_coef_reload.txt" -section_id tb -library work
+set_global_assignment -name EDA_TEST_BENCH_FILE "D:/NMR_PCBv2_HDLv1_2018_FPGA/QUARTUS-SoC/CODE_qsys/soc_system/simulation/submodules/soc_system_dconv_fir_coef_reload_rtl.txt" -section_id tb -library work
+set_global_assignment -name EDA_TEST_BENCH_FILE "D:/NMR_PCBv2_HDLv1_2018_FPGA/QUARTUS-SoC/CODE_qsys/soc_system/simulation/submodules/soc_system_dconv_fir_input.txt" -section_id tb -library work
+set_global_assignment -name EDA_TEST_BENCH_FILE "D:/NMR_PCBv2_HDLv1_2018_FPGA/QUARTUS-SoC/CODE_qsys/soc_system/simulation/submodules/soc_system_dconv_fir_tb.vhd" -section_id tb -library work
+set_global_assignment -name EDA_TEST_BENCH_FILE "../QUARTUS-NoSoC/HDL/GNRL_dconv_nofilter_tb.v" -section_id GNRL_dconv_nofilter_tb
+set_global_assignment -name EDA_TEST_BENCH_FILE "../QUARTUS-NoSoC/HDL/GNRL_dconv_nofilter.v" -section_id GNRL_dconv_nofilter_tb
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
+set_global_assignment -name SLD_FILE db/ltc1746_adc_test_auto_stripped.stp

@@ -3,7 +3,7 @@
  <debug showDebugMenu="0" />
  <systemtable filter="All Interfaces">
   <columns>
-   <connections preferredWidth="527" />
+   <connections preferredWidth="591" />
    <irq preferredWidth="47" />
    <export preferredWidth="188" />
    <name preferredWidth="155" />
@@ -16,12 +16,12 @@
    <frequency preferredWidth="417" />
   </columns>
  </clocktable>
- <window width="1296" height="1000" x="-8" y="-8" />
- <library expandedCategories="Project,Library" />
+ <window width="1938" height="1048" x="-9" y="-9" />
+ <library expandedCategories="Library,Project" />
  <hdlexample language="VERILOG" />
  <generation
    block_symbol_file="0"
-   simulation="NONE"
+   simulation="VHDL"
    greybox="0"
    synthesis="VERILOG"
    path="_PROJECT_NAME_" />

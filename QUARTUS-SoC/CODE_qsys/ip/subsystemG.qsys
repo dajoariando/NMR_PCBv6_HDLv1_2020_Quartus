@@ -9,6 +9,14 @@
    categories="System" />
  <parameter name="bonusData"><![CDATA[bonusData 
 {
+   element adc_val_sub
+   {
+      datum _sortIndex
+      {
+         value = "10";
+         type = "int";
+      }
+   }
    element delay_nosig
    {
       datum _sortIndex
@@ -110,6 +118,26 @@
  <parameter name="timeStamp" value="0" />
  <parameter name="useTestBenchNamingPattern" value="false" />
  <instanceScript></instanceScript>
+ <interface
+   name="adc_val_sub_clk"
+   internal="adc_val_sub.clk"
+   type="clock"
+   dir="end" />
+ <interface
+   name="adc_val_sub_external_connection"
+   internal="adc_val_sub.external_connection"
+   type="conduit"
+   dir="end" />
+ <interface
+   name="adc_val_sub_reset"
+   internal="adc_val_sub.reset"
+   type="reset"
+   dir="end" />
+ <interface
+   name="adc_val_sub_s1"
+   internal="adc_val_sub.s1"
+   type="avalon"
+   dir="end" />
  <interface
    name="delay_nosig_clk"
    internal="delay_nosig.clk"
@@ -275,9 +303,27 @@
    type="avalon"
    dir="end" />
  <module
+   name="adc_val_sub"
+   kind="altera_avalon_pio"
+   version="18.1"
+   enabled="1">
+  <parameter name="bitClearingEdgeCapReg" value="false" />
+  <parameter name="bitModifyingOutReg" value="false" />
+  <parameter name="captureEdge" value="false" />
+  <parameter name="clockRate" value="0" />
+  <parameter name="direction" value="Output" />
+  <parameter name="edgeType" value="RISING" />
+  <parameter name="generateIRQ" value="false" />
+  <parameter name="irqType" value="LEVEL" />
+  <parameter name="resetValue" value="0" />
+  <parameter name="simDoTestBenchWiring" value="false" />
+  <parameter name="simDrivenValue" value="0" />
+  <parameter name="width" value="32" />
+ </module>
+ <module
    name="delay_nosig"
    kind="altera_avalon_pio"
-   version="17.1"
+   version="18.1"
    enabled="1">
   <parameter name="bitClearingEdgeCapReg" value="false" />
   <parameter name="bitModifyingOutReg" value="false" />
@@ -292,7 +338,7 @@
   <parameter name="simDrivenValue" value="0" />
   <parameter name="width" value="32" />
  </module>
- <module name="delay_sig" kind="altera_avalon_pio" version="17.1" enabled="1">
+ <module name="delay_sig" kind="altera_avalon_pio" version="18.1" enabled="1">
   <parameter name="bitClearingEdgeCapReg" value="false" />
   <parameter name="bitModifyingOutReg" value="false" />
   <parameter name="captureEdge" value="false" />
@@ -306,7 +352,7 @@
   <parameter name="simDrivenValue" value="0" />
   <parameter name="width" value="32" />
  </module>
- <module name="delay_t1" kind="altera_avalon_pio" version="17.1" enabled="1">
+ <module name="delay_t1" kind="altera_avalon_pio" version="18.1" enabled="1">
   <parameter name="bitClearingEdgeCapReg" value="false" />
   <parameter name="bitModifyingOutReg" value="false" />
   <parameter name="captureEdge" value="false" />
@@ -323,7 +369,7 @@
  <module
    name="echoes_per_scan"
    kind="altera_avalon_pio"
-   version="17.1"
+   version="18.1"
    enabled="1">
   <parameter name="bitClearingEdgeCapReg" value="false" />
   <parameter name="bitModifyingOutReg" value="false" />
@@ -338,7 +384,7 @@
   <parameter name="simDrivenValue" value="0" />
   <parameter name="width" value="32" />
  </module>
- <module name="init_delay" kind="altera_avalon_pio" version="17.1" enabled="1">
+ <module name="init_delay" kind="altera_avalon_pio" version="18.1" enabled="1">
   <parameter name="bitClearingEdgeCapReg" value="false" />
   <parameter name="bitModifyingOutReg" value="false" />
   <parameter name="captureEdge" value="false" />
@@ -355,7 +401,7 @@
  <module
    name="pulse_180deg"
    kind="altera_avalon_pio"
-   version="17.1"
+   version="18.1"
    enabled="1">
   <parameter name="bitClearingEdgeCapReg" value="false" />
   <parameter name="bitModifyingOutReg" value="false" />
@@ -373,7 +419,7 @@
  <module
    name="pulse_90deg"
    kind="altera_avalon_pio"
-   version="17.1"
+   version="18.1"
    enabled="1">
   <parameter name="bitClearingEdgeCapReg" value="false" />
   <parameter name="bitModifyingOutReg" value="false" />
@@ -388,7 +434,7 @@
   <parameter name="simDrivenValue" value="0" />
   <parameter name="width" value="32" />
  </module>
- <module name="pulse_t1" kind="altera_avalon_pio" version="17.1" enabled="1">
+ <module name="pulse_t1" kind="altera_avalon_pio" version="18.1" enabled="1">
   <parameter name="bitClearingEdgeCapReg" value="false" />
   <parameter name="bitModifyingOutReg" value="false" />
   <parameter name="captureEdge" value="false" />
@@ -402,7 +448,7 @@
   <parameter name="simDrivenValue" value="0" />
   <parameter name="width" value="32" />
  </module>
- <module name="rx_delay" kind="altera_avalon_pio" version="17.1" enabled="1">
+ <module name="rx_delay" kind="altera_avalon_pio" version="18.1" enabled="1">
   <parameter name="bitClearingEdgeCapReg" value="false" />
   <parameter name="bitModifyingOutReg" value="false" />
   <parameter name="captureEdge" value="false" />
@@ -419,7 +465,7 @@
  <module
    name="samples_per_echo"
    kind="altera_avalon_pio"
-   version="17.1"
+   version="18.1"
    enabled="1">
   <parameter name="bitClearingEdgeCapReg" value="false" />
   <parameter name="bitModifyingOutReg" value="false" />
