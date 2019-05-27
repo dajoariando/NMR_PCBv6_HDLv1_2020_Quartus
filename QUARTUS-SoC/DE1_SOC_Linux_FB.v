@@ -1,7 +1,6 @@
 `define ENABLE_HPS
-//`define PCBv4_APR2019
-`define PCBv2_FEB2018
-
+`define PCBv4_APR2019
+//`define PCBv2_FEB2018
 
 module DE1_SOC_Linux_FB(
 	// ADC
@@ -211,18 +210,19 @@ module DE1_SOC_Linux_FB(
 	wire	[31:0]							adc_val_sub;
 
 	// adc data
-	wire	[ADC_DATA_WIDTH-1:0]			adc_data_in;
+	wire	[ADC_DATA_WIDTH-1:0]			adc_data_in/* synthesis keep = 1 */;
 	wire	[ADC_DATA_WIDTH-1:0]			adc_data_out;
 
 	wire									adc_data_valid;
 	wire									nmr_rfout_p;
 	wire									nmr_rfout_n;
 	
-	wire	[27:0]		dconv_fir_out_data; // the bus length is defined by FIR module in the QSYS. Make sure of this.
-	wire	[27:0]		dconv_fir_q_out_data; // the bus length is defined by FIR module in the QSYS. Make sure of this.
-	wire 				dconv_fir_out_valid;
-	wire 				dconv_fir_q_out_valid;
-	wire	[ADC_DATA_WIDTH-1:0]			adc_data_dconv;
+	wire	[31:0]							dconv_fir_out_data/* synthesis keep = 1 */; // the bus length is defined by FIR module in the QSYS. Make sure of this.
+	wire	[31:0]							dconv_fir_q_out_data; // the bus length is defined by FIR module in the QSYS. Make sure of this.
+	wire 									dconv_fir_out_valid;
+	wire 									dconv_fir_q_out_valid;
+	wire	[ADC_PHYS_WIDTH:0]				data_i /* synthesis keep = 1 */;
+	wire	[ADC_PHYS_WIDTH:0]				data_q /* synthesis keep = 1 */;
 
 	// VGA control
 	wire		clk_65;
@@ -243,6 +243,16 @@ module DE1_SOC_Linux_FB(
 	wire spi_mtch_ntwrk_MOSI;
 	wire spi_mtch_ntwrk_SCLK;
 	wire spi_mtch_ntwrk_SS_n;
+	
+	// I2C wires
+	wire i2c_int_sda_in;
+	wire i2c_int_scl_in;
+	wire i2c_int_sda_oe;
+	wire i2c_int_scl_oe;
+	wire i2c_ext_sda_in;
+	wire i2c_ext_scl_in;
+	wire i2c_ext_sda_oe;
+	wire i2c_ext_scl_oe;
 
  
 //=======================================================
@@ -477,7 +487,7 @@ module DE1_SOC_Linux_FB(
 		.dconv_fir_out_valid	(dconv_fir_out_valid),                       //                            .valid
 		.dconv_fir_out_error	(),                        //                            .error
 		.dconv_fifo_in_data		(dconv_fir_out_data),                        //               dconv_fifo_in.data
-		.dconv_fifo_in_valid	(dconv_fir_out_valid && fsmstat),                 //                            .valid
+		.dconv_fifo_in_valid	(dconv_fir_out_valid && adc_data_valid),                 //                            .valid
 		.dconv_fifo_in_ready	(),                        //                            .ready
 		
 		// downconversion data-q
@@ -488,7 +498,7 @@ module DE1_SOC_Linux_FB(
 		.dconv_fir_q_out_valid	(dconv_fir_q_out_valid),                     //                            .valid
 		.dconv_fir_q_out_error	(),                     //                            .error
 		.dconv_fifo_q_in_data	(dconv_fir_q_out_data),                      //             dconv_fifo_q_in.data
-		.dconv_fifo_q_in_valid	(dconv_fir_q_out_valid && fsmstat),                     //                            .valid
+		.dconv_fifo_q_in_valid	(dconv_fir_q_out_valid && adc_data_valid),                     //                            .valid
 		.dconv_fifo_q_in_ready	(),                      //                            .ready
 
 		// Dedicated SPI for the matching network
@@ -505,7 +515,7 @@ module DE1_SOC_Linux_FB(
 	(
 
 		// data interface
-		.adc_data_in	(adc_data_in), // unsigned integer data in
+		.adc_data_in	(adc_data_in[ADC_PHYS_WIDTH-1:0]), // unsigned integer data in, remove overflow sign
 		.data_i			(data_i), // in-phase signed integer data (wider by 1 bit)
 		.data_q			(data_q), // quadrature signed integer data (wider by 1 bit)
 
@@ -613,7 +623,7 @@ module DE1_SOC_Linux_FB(
 	assign GPIO_1[15] = dac_preamp_CLR_n;
 
 
-	assign adc_clkout = GPIO_1[21];	// uncomment this if the shifted clock from the ADC is used instead of clk_25M below
+	// assign adc_clkout = GPIO_1[21];	// uncomment this if the shifted clock from the ADC is used instead of clk_25M below
 	assign GPIO_1[19] = adc_clk;	// ADC high speed clock ENC
 	assign GPIO_1[18] = 1'b0; 		// ADC2_OE is always on
 	assign adc_data_in = {

@@ -8,7 +8,11 @@ function data = convert_to_prospa_data(path,name,write_csv)
         %% SETTINGS
         enable_figure = 0;
         perform_rotation = 1;
-        mvoltPerDigit = 3200 / 16384; 
+        mvoltPerDigit = 3200 / 16384;
+        pampGain = 54; % in dB
+        rxGain = 0; % in dB
+        totGain = 10^((pampGain+rxGain)/20);% in magnitude
+        readsum = 1; % read the sum data instead of the raw data
 
         %% DATA PARSING
         tE = read_custom_acqu_par(path,'echoTimeRun');
@@ -19,26 +23,34 @@ function data = convert_to_prospa_data(path,name,write_csv)
         nrIterations = read_custom_acqu_par(path,'nrIterations');
         en_ph_cycle_proc = read_custom_acqu_par(path,'usePhaseCycle');
         
-        %n = 3; Wn = 0.008;
-        n = 2; Wn = 0.01;
-        % n = 2; Wn = 0.05;
-        [butter_b,butter_a] = butter(n,Wn);
+        % filter settings for downconversion
+        order = 2;
+        cutoff = 50e3; % in Hz
+        nyq = 0.5 * Sf;
+        norm_cutoff = cutoff / nyq;
+        [butter_b,butter_a] = butter(order,norm_cutoff);
 
         % parse file & remove DC component
-        data = zeros(NoE*SpE,1);
-        for m = 1:nrIterations
-            filename = [path,name,'_',num2str(m,'%03d')];
-            if exist(filename,'file')
-                temp = load(filename);
-                temp = (temp - mean(temp)) ./ nrIterations * mvoltPerDigit;
-                if (en_ph_cycle_proc)
-                    if mod(m,2)==0
-                        data = data + temp;
+        if readsum
+            filename = [path,'\asum'];
+            data = load(filename);
+            data = data * mvoltPerDigit / totGain;
+        else
+            data = zeros(NoE*SpE,1);
+            for m = 1:nrIterations
+                filename = [path,name,'_',num2str(m,'%03d')];
+                if exist(filename,'file')
+                    temp = load(filename);
+                    temp = (temp - mean(temp)) ./ nrIterations * mvoltPerDigit / totGain;
+                    if (en_ph_cycle_proc)
+                        if mod(m,2)==0
+                            data = data + temp;
+                        else
+                            data = data - temp;
+                        end
                     else
-                        data = data - temp;
+                        data = data + temp;
                     end
-                else
-                    data = data + temp;
                 end
             end
         end
@@ -56,7 +68,7 @@ function data = convert_to_prospa_data(path,name,write_csv)
             ylabel ('Amplitude');
         end
 
-        %% BASIC DOWNCONVERTION
+        %% BASIC DOWNCONVERSION
         % filter the raw data and store it in the same data length (storage) in
         % quadrature format
         datafilt=zeros(1,SpE*NoE);

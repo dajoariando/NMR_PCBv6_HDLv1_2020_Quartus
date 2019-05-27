@@ -15,15 +15,9 @@ function r = downconvert(s,k,tE,Df,Sf,a,b)
     sReal = s' .* cos(2*pi*Df*t);
     %sImag = s' .* sin(2*pi*Ds*t);
     sImag = s' .* sin(2*pi*Df*t);
-		
 
-    %n = 3; Wn = 0.008;
-    %n = 3; Wn = 0.001;
-    %[b,a] = butter(n,Wn);
-
-    r = filter(b,a,sReal+1i*sImag); % Forward-backward filter to cancel time delay
-    %r = filtfilt(b,a,sReal+1i*sImag); % Forward-backward filter to cancel time delay
-    %r = sReal+1i*sImag; % Forward-backward filter to cancel time delay
+    %r = filter(b,a,sReal+1i*sImag); % Standard filter
+    r = filtfilt(b,a,sReal+1i*sImag); % Forward-backward filter to cancel time delay
 
 %     figure(27); hold on;
 %     plot(t,real(r),'b-');

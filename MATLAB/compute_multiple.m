@@ -20,22 +20,28 @@ function [a,a0,snr,T2,noise,theta,scan_avg,echo_avg] = compute_multiple(path,nam
     
     perform_rotation = 1;   % perform rotation for the data
     mtch_fltr_sta_idx = 1;  % 1 is default or something referenced to SpE, e.g. SpE/4; the start index for match filtering is to neglect ringdown part from calculation
+    readsum = 1; % read the sum data instead of the raw data
     
     % parse file & remove DC component
-    data = zeros(NoE*SpE,1);
-    for m = 1:total_scan
-        filename = [path,name,'_',num2str(m,'%03d')];
-        if exist(filename,'file')
-            temp = load(filename);
-            temp = (temp - mean(temp)) ./ total_scan;
-            if (en_ph_cycle_proc)
-                if mod(m,2)==0
-                    data = data + temp;
+    if readsum
+        filename = [path,'\asum'];
+        data = load(filename);
+    else
+        data = zeros(NoE*SpE,1);
+        for m = 1:total_scan
+            filename = [path,name,'_',num2str(m,'%03d')];
+            if exist(filename,'file')
+                temp = load(filename);
+                temp = (temp - mean(temp)) ./ total_scan;
+                if (en_ph_cycle_proc)
+                    if mod(m,2)==0
+                        data = data + temp;
+                    else
+                        data = data - temp;
+                    end
                 else
-                    data = data - temp;
+                    data = data + temp;
                 end
-            else
-                data = data + temp;
             end
         end
     end
