@@ -961,29 +961,6 @@ set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME work.soc_system_dconv_fir
 set_global_assignment -name EDA_TEST_BENCH_NAME GNRL_dconv_nofilter_tb -section_id eda_simulation
 set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id GNRL_dconv_nofilter_tb
 set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME GNRL_dconv_nofilter_tb -section_id GNRL_dconv_nofilter_tb
-set_global_assignment -name VERILOG_TEST_BENCH_FILE "../QUARTUS-NoSoC/HDL/GNRL_dconv_nofilter_tb.v"
-set_global_assignment -name VERILOG_FILE "../QUARTUS-NoSoC/HDL/GNRL_dconv_nofilter.v"
-set_global_assignment -name VERILOG_FILE "../QUARTUS-NoSoC/HDL/GNRL_delayed_pulser.v"
-set_global_assignment -name SDC_FILE DE1_SOC_Linux_FB.out.sdc
-set_global_assignment -name VERILOG_FILE "../QUARTUS-NoSoC/HDL/NMR_PULSE_PROGRAM_tb.v"
-set_global_assignment -name VERILOG_FILE "../QUARTUS-NoSoC/HDL/NMR_PULSE_PROGRAM.v"
-set_global_assignment -name VERILOG_FILE "../QUARTUS-NoSoC/HDL/NMR_Controller_tb.v"
-set_global_assignment -name VERILOG_FILE "../QUARTUS-NoSoC/HDL/NMR_Controller.v"
-set_global_assignment -name VERILOG_FILE "../QUARTUS-NoSoC/HDL/CDC_Input_Synchronizer.v"
-set_global_assignment -name VERILOG_FILE "../QUARTUS-NoSoC/HDL/ADC_LTC1746_DRV_tb.v"
-set_global_assignment -name VERILOG_FILE "../QUARTUS-NoSoC/HDL/ADC_LTC1746_DRV.v"
-set_global_assignment -name VERILOG_FILE "../QUARTUS-NoSoC/HDL/ADC_ACQ_WINGEN_tb.v"
-set_global_assignment -name VERILOG_FILE "../QUARTUS-NoSoC/HDL/ADC_ACQ_WINGEN.v"
-set_global_assignment -name QIP_FILE "../QUARTUS-NoSoC/HDL/ALTERA_IPs/altiobuf.qip"
-set_global_assignment -name VERILOG_FILE "../QUARTUS-NoSoC/CODE_verilog/CDC_Input_Synchronizer.v"
-set_global_assignment -name QIP_FILE CODE_verilog/altera_IPs/vga_pll/vga_pll.qip
-set_global_assignment -name QIP_FILE CODE_qsys/soc_system/synthesis/soc_system.qip
-set_global_assignment -name SDC_FILE DE1_SOC_Linux_FB.sdc
-set_global_assignment -name VERILOG_FILE DE1_SOC_Linux_FB.v
-set_global_assignment -name SIGNALTAP_FILE CODE_signaltap/signaltap.stp
-set_global_assignment -name SIGNALTAP_FILE ltc1746_adc_test.stp
-set_global_assignment -name QIP_FILE ../../DELETEME/firtest.qip
-set_global_assignment -name SIP_FILE ../../DELETEME/firtest.sip
 set_global_assignment -name EDA_TEST_BENCH_RUN_SIM_FOR "100 us" -section_id GNRL_dconv_nofilter_tb
 set_global_assignment -name EDA_TEST_BENCH_FILE CODE_modelsim/i2c_tca9555/i2c_tca9555_tb.v -section_id i2c_tca9555_tb
 set_global_assignment -name EDA_TEST_BENCH_FILE "D:/NMR_PCBv2_HDLv1_2018_FPGA/QUARTUS-SoC/CODE_qsys/soc_system/simulation/submodules/soc_system_dconv_fir_coef_reload.txt" -section_id tb -library work
@@ -1158,5 +1135,26 @@ set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[26] -
 set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[28] -to downconv|gnd -section_id downconv
 set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[29] -to downconv|vcc -section_id downconv
 set_instance_assignment -name POST_FIT_CONNECT_TO_SLD_NODE_ENTITY_PORT crc[30] -to downconv|gnd -section_id downconv
-set_global_assignment -name SLD_FILE db/ltc1746_adc_test_auto_stripped.stp
+set_global_assignment -name VERILOG_TEST_BENCH_FILE "../QUARTUS-NoSoC/HDL/GNRL_dconv_nofilter_tb.v"
+set_global_assignment -name VERILOG_FILE "../QUARTUS-NoSoC/HDL/GNRL_dconv_nofilter.v"
+set_global_assignment -name VERILOG_FILE "../QUARTUS-NoSoC/HDL/GNRL_delayed_pulser.v"
+set_global_assignment -name SDC_FILE DE1_SOC_Linux_FB.out.sdc
+set_global_assignment -name VERILOG_FILE "../QUARTUS-NoSoC/HDL/NMR_PULSE_PROGRAM_tb.v"
+set_global_assignment -name VERILOG_FILE "../QUARTUS-NoSoC/HDL/NMR_PULSE_PROGRAM.v"
+set_global_assignment -name VERILOG_FILE "../QUARTUS-NoSoC/HDL/NMR_Controller_tb.v"
+set_global_assignment -name VERILOG_FILE "../QUARTUS-NoSoC/HDL/NMR_Controller.v"
+set_global_assignment -name VERILOG_FILE "../QUARTUS-NoSoC/HDL/CDC_Input_Synchronizer.v"
+set_global_assignment -name VERILOG_FILE "../QUARTUS-NoSoC/HDL/ADC_LTC1746_DRV_tb.v"
+set_global_assignment -name VERILOG_FILE "../QUARTUS-NoSoC/HDL/ADC_LTC1746_DRV.v"
+set_global_assignment -name VERILOG_FILE "../QUARTUS-NoSoC/HDL/ADC_ACQ_WINGEN_tb.v"
+set_global_assignment -name VERILOG_FILE "../QUARTUS-NoSoC/HDL/ADC_ACQ_WINGEN.v"
+set_global_assignment -name QIP_FILE "../QUARTUS-NoSoC/HDL/ALTERA_IPs/altiobuf.qip"
+set_global_assignment -name VERILOG_FILE "../QUARTUS-NoSoC/CODE_verilog/CDC_Input_Synchronizer.v"
+set_global_assignment -name QIP_FILE CODE_verilog/altera_IPs/vga_pll/vga_pll.qip
+set_global_assignment -name QIP_FILE CODE_qsys/soc_system/synthesis/soc_system.qip
+set_global_assignment -name SDC_FILE DE1_SOC_Linux_FB.sdc
+set_global_assignment -name VERILOG_FILE DE1_SOC_Linux_FB.v
+set_global_assignment -name SIGNALTAP_FILE CODE_signaltap/signaltap.stp
+set_global_assignment -name SIGNALTAP_FILE ltc1746_adc_test.stp
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
+set_global_assignment -name SLD_FILE db/ltc1746_adc_test_auto_stripped.stp

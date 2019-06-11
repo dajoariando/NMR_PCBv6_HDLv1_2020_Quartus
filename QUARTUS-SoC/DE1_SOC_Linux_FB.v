@@ -171,7 +171,6 @@ module DE1_SOC_Linux_FB(
 	wire			phase_cycle;
 	wire			enable_rx;
 	wire			enable_adc;
-	wire 			enable_rx_dly;
 	wire			dac_preamp_LDAC_n;
 	wire			dac_preamp_CLR_n;
 	wire			qsw_en;
@@ -388,8 +387,6 @@ module DE1_SOC_Linux_FB(
 			pll_nmr_sys_locked		// PLL lock status for the NMR pulse programmer
 		}),
 		.ctrl_out_export({
-			dup_en,					// active duplexer enable
-			qsw_en,					// Qswitch enable
 			nmr_controller_reset,
 			pll_analyzer_reset,		// analyzer_pll_reset
 			pll_nmr_sys_reset,		// nmr_system_pll reset for the FSM main controller clock
@@ -594,7 +591,8 @@ module DE1_SOC_Linux_FB(
 		.PHASE_CYCLE		(phase_cycle),
 		.EN_RX				(enable_rx),
 		.EN_ADC				(enable_adc),
-		.ACQ_WND_DLY		(enable_rx_dly),
+		.ACQ_WND_DLY		(dup_en),
+		.EN_QSW				(qsw_en),
 		
 		// ADC bus
 		.Q_IN				(adc_data_in[ADC_PHYS_WIDTH-1:0]),
@@ -649,7 +647,7 @@ module DE1_SOC_Linux_FB(
 	assign GPIO_1[0] = nmr_clk_gate_avln_cnt ? nmr_rfout_n : pll_analyzer_clk2;
 
 	assign GPIO_0[29] = enable_rx;
-	assign GPIO_0[27] = enable_rx_dly;
+	assign GPIO_0[27] = dup_en;
 	assign GPIO_0[25] = enable_adc;
 
 	altiobuf i2c_int_io (
@@ -671,6 +669,8 @@ module DE1_SOC_Linux_FB(
 	assign GPIO_0[11] = spi_mtch_ntwrk_SCLK;
 	assign GPIO_0[13] = spi_mtch_ntwrk_MOSI;
 	assign GPIO_0[15] = spi_mtch_ntwrk_SS_n;
+	
+	
 	assign GPIO_1[14] = dup_en;
 	assign GPIO_1[17] = qsw_en;
 `endif /* PCBv4_APR2019 */

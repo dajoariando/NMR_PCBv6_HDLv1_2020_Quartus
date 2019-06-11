@@ -19,7 +19,7 @@
 ## PROGRAM "Quartus Prime"
 ## VERSION "Version 17.1.0 Build 590 10/25/2017 SJ Standard Edition"
 
-## DATE    "Thu Oct 25 04:44:47 2018"
+## DATE    "Wed Jun 05 15:03:13 2019"
 
 ##
 ## DEVICE  "5CSEMA5F31C6"
@@ -51,6 +51,7 @@ create_clock -name {clock_50_2} -period 20.000 -waveform { 0.000 10.000 } [get_p
 create_clock -name {clock_50_3} -period 20.000 -waveform { 0.000 10.000 } [get_ports {CLOCK4_50}]
 create_clock -name {VGA_CLK} -period 15.384 -waveform { 0.000 7.692 } [get_ports {VGA_CLK}]
 create_clock -name {adc_clk} -period 40.000 -waveform { 0.000 20.000 } [get_keepers {GPIO_1[19]}]
+create_clock -name {NMR_Controller:NMR_Controller1|NMR_PULSE_PROGRAM:NMR_PULSE_PROGRAM1|NMR_MAIN_TIMER_CNT[1]} -period 40.000 -waveform { 0.000 20.000 } [get_registers {NMR_Controller:NMR_Controller1|NMR_PULSE_PROGRAM:NMR_PULSE_PROGRAM1|NMR_MAIN_TIMER_CNT[1]}]
 
 
 #**************************************************************
@@ -89,334 +90,6 @@ create_generated_clock -name {u0|gp_pll|altera_pll_i|general[3].gpll~PLL_OUTPUT_
 # Set Clock Uncertainty
 #**************************************************************
 
-set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -rise_to [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -setup 0.080  
-set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -rise_to [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -hold 0.060  
-set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -fall_to [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -setup 0.080  
-set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -fall_to [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -hold 0.060  
-set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -rise_to [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -setup 0.080  
-set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -rise_to [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -hold 0.060  
-set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -fall_to [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -setup 0.080  
-set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -fall_to [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -hold 0.060  
-set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_N[3]_OUT}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_N[3]_OUT}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_N[2]_OUT}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_N[2]_OUT}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_N[1]_OUT}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_N[1]_OUT}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_N[0]_OUT}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_N[0]_OUT}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_P[3]_OUT}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_P[3]_OUT}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_P[2]_OUT}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_P[2]_OUT}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_P[1]_OUT}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_P[1]_OUT}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_P[0]_OUT}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_P[0]_OUT}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -rise_to [get_clocks {HPS_DDR3_CK_N}]  0.226  
-set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -fall_to [get_clocks {HPS_DDR3_CK_N}]  0.226  
-set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -rise_to [get_clocks {HPS_DDR3_CK_P}]  0.226  
-set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -fall_to [get_clocks {HPS_DDR3_CK_P}]  0.226  
-set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -rise_to [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -setup 0.080  
-set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -rise_to [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -hold 0.060  
-set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -fall_to [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -setup 0.080  
-set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -fall_to [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -hold 0.060  
-set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -rise_to [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -setup 0.080  
-set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -rise_to [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -hold 0.060  
-set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -fall_to [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -setup 0.080  
-set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -fall_to [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -hold 0.060  
-set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_N[3]_OUT}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_N[3]_OUT}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_N[2]_OUT}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_N[2]_OUT}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_N[1]_OUT}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_N[1]_OUT}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_N[0]_OUT}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_N[0]_OUT}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_P[3]_OUT}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_P[3]_OUT}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_P[2]_OUT}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_P[2]_OUT}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_P[1]_OUT}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_P[1]_OUT}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_P[0]_OUT}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_P[0]_OUT}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -rise_to [get_clocks {HPS_DDR3_CK_N}]  0.226  
-set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -fall_to [get_clocks {HPS_DDR3_CK_N}]  0.226  
-set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -rise_to [get_clocks {HPS_DDR3_CK_P}]  0.226  
-set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -fall_to [get_clocks {HPS_DDR3_CK_P}]  0.226  
-set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -rise_to [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -setup 0.080  
-set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -rise_to [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -hold 0.060  
-set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -fall_to [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -setup 0.080  
-set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -fall_to [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -hold 0.060  
-set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -rise_to [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -setup 0.080  
-set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -rise_to [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -hold 0.060  
-set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -fall_to [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -setup 0.080  
-set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -fall_to [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -hold 0.060  
-set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_N[3]_OUT}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_N[3]_OUT}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_N[2]_OUT}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_N[2]_OUT}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_N[1]_OUT}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_N[1]_OUT}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_N[0]_OUT}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_N[0]_OUT}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_P[3]_OUT}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_P[3]_OUT}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_P[2]_OUT}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_P[2]_OUT}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_P[1]_OUT}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_P[1]_OUT}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_P[0]_OUT}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_P[0]_OUT}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -rise_to [get_clocks {HPS_DDR3_CK_N}]  0.226  
-set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -fall_to [get_clocks {HPS_DDR3_CK_N}]  0.226  
-set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -rise_to [get_clocks {HPS_DDR3_CK_P}]  0.226  
-set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -fall_to [get_clocks {HPS_DDR3_CK_P}]  0.226  
-set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -rise_to [get_clocks {clock_50_0}]  0.200  
-set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -fall_to [get_clocks {clock_50_0}]  0.200  
-set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -rise_to [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -setup 0.080  
-set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -rise_to [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -hold 0.060  
-set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -fall_to [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -setup 0.080  
-set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -fall_to [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -hold 0.060  
-set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -rise_to [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -setup 0.080  
-set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -rise_to [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -hold 0.060  
-set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -fall_to [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -setup 0.080  
-set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -fall_to [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -hold 0.060  
-set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_N[3]_OUT}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_N[3]_OUT}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_N[2]_OUT}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_N[2]_OUT}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_N[1]_OUT}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_N[1]_OUT}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_N[0]_OUT}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_N[0]_OUT}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_P[3]_OUT}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_P[3]_OUT}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_P[2]_OUT}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_P[2]_OUT}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_P[1]_OUT}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_P[1]_OUT}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_P[0]_OUT}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_P[0]_OUT}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -rise_to [get_clocks {HPS_DDR3_CK_N}]  0.226  
-set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -fall_to [get_clocks {HPS_DDR3_CK_N}]  0.226  
-set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -rise_to [get_clocks {HPS_DDR3_CK_P}]  0.226  
-set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -fall_to [get_clocks {HPS_DDR3_CK_P}]  0.226  
-set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -rise_to [get_clocks {clock_50_0}]  0.200  
-set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -fall_to [get_clocks {clock_50_0}]  0.200  
-set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}] -rise_to [get_clocks {HPS_DDR3_DQS_N[3]_OUT}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}] -fall_to [get_clocks {HPS_DDR3_DQS_N[3]_OUT}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}] -rise_to [get_clocks {HPS_DDR3_DQS_N[2]_OUT}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}] -fall_to [get_clocks {HPS_DDR3_DQS_N[2]_OUT}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}] -rise_to [get_clocks {HPS_DDR3_DQS_N[1]_OUT}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}] -fall_to [get_clocks {HPS_DDR3_DQS_N[1]_OUT}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}] -rise_to [get_clocks {HPS_DDR3_DQS_N[0]_OUT}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}] -fall_to [get_clocks {HPS_DDR3_DQS_N[0]_OUT}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}] -rise_to [get_clocks {HPS_DDR3_DQS_P[3]_OUT}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}] -fall_to [get_clocks {HPS_DDR3_DQS_P[3]_OUT}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}] -rise_to [get_clocks {HPS_DDR3_DQS_P[2]_OUT}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}] -fall_to [get_clocks {HPS_DDR3_DQS_P[2]_OUT}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}] -rise_to [get_clocks {HPS_DDR3_DQS_P[1]_OUT}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}] -fall_to [get_clocks {HPS_DDR3_DQS_P[1]_OUT}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}] -rise_to [get_clocks {HPS_DDR3_DQS_P[0]_OUT}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}] -fall_to [get_clocks {HPS_DDR3_DQS_P[0]_OUT}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}] -rise_to [get_clocks {HPS_DDR3_CK_N}]  0.226  
-set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}] -fall_to [get_clocks {HPS_DDR3_CK_N}]  0.226  
-set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}] -rise_to [get_clocks {HPS_DDR3_CK_P}]  0.226  
-set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}] -fall_to [get_clocks {HPS_DDR3_CK_P}]  0.226  
-set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}] -rise_to [get_clocks {HPS_DDR3_DQS_N[3]_OUT}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}] -fall_to [get_clocks {HPS_DDR3_DQS_N[3]_OUT}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}] -rise_to [get_clocks {HPS_DDR3_DQS_N[2]_OUT}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}] -fall_to [get_clocks {HPS_DDR3_DQS_N[2]_OUT}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}] -rise_to [get_clocks {HPS_DDR3_DQS_N[1]_OUT}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}] -fall_to [get_clocks {HPS_DDR3_DQS_N[1]_OUT}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}] -rise_to [get_clocks {HPS_DDR3_DQS_N[0]_OUT}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}] -fall_to [get_clocks {HPS_DDR3_DQS_N[0]_OUT}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}] -rise_to [get_clocks {HPS_DDR3_DQS_P[3]_OUT}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}] -fall_to [get_clocks {HPS_DDR3_DQS_P[3]_OUT}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}] -rise_to [get_clocks {HPS_DDR3_DQS_P[2]_OUT}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}] -fall_to [get_clocks {HPS_DDR3_DQS_P[2]_OUT}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}] -rise_to [get_clocks {HPS_DDR3_DQS_P[1]_OUT}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}] -fall_to [get_clocks {HPS_DDR3_DQS_P[1]_OUT}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}] -rise_to [get_clocks {HPS_DDR3_DQS_P[0]_OUT}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}] -fall_to [get_clocks {HPS_DDR3_DQS_P[0]_OUT}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}] -rise_to [get_clocks {HPS_DDR3_CK_N}]  0.226  
-set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}] -fall_to [get_clocks {HPS_DDR3_CK_N}]  0.226  
-set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}] -rise_to [get_clocks {HPS_DDR3_CK_P}]  0.226  
-set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}] -fall_to [get_clocks {HPS_DDR3_CK_P}]  0.226  
-set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_N[3]_OUT}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_N[3]_OUT}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_N[2]_OUT}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_N[2]_OUT}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_N[1]_OUT}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_N[1]_OUT}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_N[0]_OUT}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_N[0]_OUT}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_P[3]_OUT}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_P[3]_OUT}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_P[2]_OUT}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_P[2]_OUT}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_P[1]_OUT}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_P[1]_OUT}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_P[0]_OUT}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_P[0]_OUT}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_CK_N}]  0.226  
-set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_CK_N}]  0.226  
-set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_CK_P}]  0.226  
-set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_CK_P}]  0.226  
-set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_N[3]_OUT}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_N[3]_OUT}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_N[2]_OUT}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_N[2]_OUT}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_N[1]_OUT}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_N[1]_OUT}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_N[0]_OUT}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_N[0]_OUT}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_P[3]_OUT}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_P[3]_OUT}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_P[2]_OUT}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_P[2]_OUT}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_P[1]_OUT}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_P[1]_OUT}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_P[0]_OUT}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_P[0]_OUT}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_CK_N}]  0.226  
-set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_CK_N}]  0.226  
-set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_CK_P}]  0.226  
-set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_CK_P}]  0.226  
-set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_N[3]_OUT}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_N[3]_OUT}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_N[2]_OUT}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_N[2]_OUT}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_N[1]_OUT}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_N[1]_OUT}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_N[0]_OUT}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_N[0]_OUT}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_P[3]_OUT}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_P[3]_OUT}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_P[2]_OUT}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_P[2]_OUT}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_P[1]_OUT}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_P[1]_OUT}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_P[0]_OUT}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_P[0]_OUT}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_CK_N}]  0.226  
-set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_CK_N}]  0.226  
-set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_CK_P}]  0.226  
-set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_CK_P}]  0.226  
-set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_N[3]_OUT}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_N[3]_OUT}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_N[2]_OUT}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_N[2]_OUT}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_N[1]_OUT}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_N[1]_OUT}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_N[0]_OUT}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_N[0]_OUT}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_P[3]_OUT}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_P[3]_OUT}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_P[2]_OUT}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_P[2]_OUT}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_P[1]_OUT}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_P[1]_OUT}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_P[0]_OUT}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_P[0]_OUT}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_CK_N}]  0.226  
-set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_CK_N}]  0.226  
-set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_CK_P}]  0.226  
-set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_CK_P}]  0.226  
-set_clock_uncertainty -rise_from [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -rise_to [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -setup 0.200  
-set_clock_uncertainty -rise_from [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -rise_to [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -hold 0.060  
-set_clock_uncertainty -rise_from [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -fall_to [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -setup 0.200  
-set_clock_uncertainty -rise_from [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -fall_to [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -hold 0.060  
-set_clock_uncertainty -rise_from [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_N[3]_OUT}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_N[3]_OUT}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_N[2]_OUT}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_N[2]_OUT}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_N[1]_OUT}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_N[1]_OUT}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_N[0]_OUT}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_N[0]_OUT}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_P[3]_OUT}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_P[3]_OUT}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_P[2]_OUT}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_P[2]_OUT}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_P[1]_OUT}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_P[1]_OUT}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_P[0]_OUT}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_P[0]_OUT}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_CK_N}]  0.226  
-set_clock_uncertainty -rise_from [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_CK_N}]  0.226  
-set_clock_uncertainty -rise_from [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_CK_P}]  0.226  
-set_clock_uncertainty -rise_from [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_CK_P}]  0.226  
-set_clock_uncertainty -rise_from [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -rise_to [get_clocks {clock_50_0}]  0.230  
-set_clock_uncertainty -rise_from [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -fall_to [get_clocks {clock_50_0}]  0.230  
-set_clock_uncertainty -fall_from [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -rise_to [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -setup 0.200  
-set_clock_uncertainty -fall_from [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -rise_to [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -hold 0.060  
-set_clock_uncertainty -fall_from [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -fall_to [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -setup 0.200  
-set_clock_uncertainty -fall_from [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -fall_to [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -hold 0.060  
-set_clock_uncertainty -fall_from [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_N[3]_OUT}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_N[3]_OUT}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_N[2]_OUT}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_N[2]_OUT}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_N[1]_OUT}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_N[1]_OUT}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_N[0]_OUT}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_N[0]_OUT}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_P[3]_OUT}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_P[3]_OUT}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_P[2]_OUT}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_P[2]_OUT}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_P[1]_OUT}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_P[1]_OUT}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_P[0]_OUT}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_P[0]_OUT}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_CK_N}]  0.226  
-set_clock_uncertainty -fall_from [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_CK_N}]  0.226  
-set_clock_uncertainty -fall_from [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_CK_P}]  0.226  
-set_clock_uncertainty -fall_from [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_CK_P}]  0.226  
-set_clock_uncertainty -fall_from [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -rise_to [get_clocks {clock_50_0}]  0.230  
-set_clock_uncertainty -fall_from [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -fall_to [get_clocks {clock_50_0}]  0.230  
-set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}] -rise_to [get_clocks {HPS_DDR3_DQS_N[3]_OUT}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}] -fall_to [get_clocks {HPS_DDR3_DQS_N[3]_OUT}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}] -rise_to [get_clocks {HPS_DDR3_DQS_N[2]_OUT}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}] -fall_to [get_clocks {HPS_DDR3_DQS_N[2]_OUT}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}] -rise_to [get_clocks {HPS_DDR3_DQS_N[1]_OUT}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}] -fall_to [get_clocks {HPS_DDR3_DQS_N[1]_OUT}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}] -rise_to [get_clocks {HPS_DDR3_DQS_N[0]_OUT}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}] -fall_to [get_clocks {HPS_DDR3_DQS_N[0]_OUT}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}] -rise_to [get_clocks {HPS_DDR3_DQS_P[3]_OUT}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}] -fall_to [get_clocks {HPS_DDR3_DQS_P[3]_OUT}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}] -rise_to [get_clocks {HPS_DDR3_DQS_P[2]_OUT}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}] -fall_to [get_clocks {HPS_DDR3_DQS_P[2]_OUT}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}] -rise_to [get_clocks {HPS_DDR3_DQS_P[1]_OUT}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}] -fall_to [get_clocks {HPS_DDR3_DQS_P[1]_OUT}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}] -rise_to [get_clocks {HPS_DDR3_DQS_P[0]_OUT}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}] -fall_to [get_clocks {HPS_DDR3_DQS_P[0]_OUT}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}] -rise_to [get_clocks {HPS_DDR3_CK_N}]  0.226  
-set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}] -fall_to [get_clocks {HPS_DDR3_CK_N}]  0.226  
-set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}] -rise_to [get_clocks {HPS_DDR3_CK_P}]  0.226  
-set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}] -fall_to [get_clocks {HPS_DDR3_CK_P}]  0.226  
-set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}] -rise_to [get_clocks {HPS_DDR3_DQS_N[3]_OUT}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}] -fall_to [get_clocks {HPS_DDR3_DQS_N[3]_OUT}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}] -rise_to [get_clocks {HPS_DDR3_DQS_N[2]_OUT}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}] -fall_to [get_clocks {HPS_DDR3_DQS_N[2]_OUT}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}] -rise_to [get_clocks {HPS_DDR3_DQS_N[1]_OUT}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}] -fall_to [get_clocks {HPS_DDR3_DQS_N[1]_OUT}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}] -rise_to [get_clocks {HPS_DDR3_DQS_N[0]_OUT}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}] -fall_to [get_clocks {HPS_DDR3_DQS_N[0]_OUT}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}] -rise_to [get_clocks {HPS_DDR3_DQS_P[3]_OUT}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}] -fall_to [get_clocks {HPS_DDR3_DQS_P[3]_OUT}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}] -rise_to [get_clocks {HPS_DDR3_DQS_P[2]_OUT}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}] -fall_to [get_clocks {HPS_DDR3_DQS_P[2]_OUT}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}] -rise_to [get_clocks {HPS_DDR3_DQS_P[1]_OUT}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}] -fall_to [get_clocks {HPS_DDR3_DQS_P[1]_OUT}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}] -rise_to [get_clocks {HPS_DDR3_DQS_P[0]_OUT}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}] -fall_to [get_clocks {HPS_DDR3_DQS_P[0]_OUT}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}] -rise_to [get_clocks {HPS_DDR3_CK_N}]  0.226  
-set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}] -fall_to [get_clocks {HPS_DDR3_CK_N}]  0.226  
-set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}] -rise_to [get_clocks {HPS_DDR3_CK_P}]  0.226  
-set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}] -fall_to [get_clocks {HPS_DDR3_CK_P}]  0.226  
 set_clock_uncertainty -rise_from [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}] -rise_to [get_clocks {HPS_DDR3_DQS_N[3]_OUT}]  0.000  
 set_clock_uncertainty -rise_from [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}] -fall_to [get_clocks {HPS_DDR3_DQS_N[3]_OUT}]  0.000  
 set_clock_uncertainty -rise_from [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}] -rise_to [get_clocks {HPS_DDR3_DQS_N[2]_OUT}]  0.000  
@@ -913,6 +586,46 @@ set_clock_uncertainty -fall_from [get_clocks {u0|hps_0|hps_io|border|hps_sdram_i
 set_clock_uncertainty -fall_from [get_clocks {u0|hps_0|hps_io|border|hps_sdram_inst|hps_sdram_p0_sampling_clock}] -fall_to [get_clocks {HPS_DDR3_DQS_P[1]_IN}]  0.260  
 set_clock_uncertainty -fall_from [get_clocks {u0|hps_0|hps_io|border|hps_sdram_inst|hps_sdram_p0_sampling_clock}] -rise_to [get_clocks {HPS_DDR3_DQS_P[0]_IN}]  0.260  
 set_clock_uncertainty -fall_from [get_clocks {u0|hps_0|hps_io|border|hps_sdram_inst|hps_sdram_p0_sampling_clock}] -fall_to [get_clocks {HPS_DDR3_DQS_P[0]_IN}]  0.260  
+set_clock_uncertainty -rise_from [get_clocks {NMR_Controller:NMR_Controller1|NMR_PULSE_PROGRAM:NMR_PULSE_PROGRAM1|NMR_MAIN_TIMER_CNT[1]}] -rise_to [get_clocks {HPS_DDR3_DQS_N[3]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {NMR_Controller:NMR_Controller1|NMR_PULSE_PROGRAM:NMR_PULSE_PROGRAM1|NMR_MAIN_TIMER_CNT[1]}] -fall_to [get_clocks {HPS_DDR3_DQS_N[3]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {NMR_Controller:NMR_Controller1|NMR_PULSE_PROGRAM:NMR_PULSE_PROGRAM1|NMR_MAIN_TIMER_CNT[1]}] -rise_to [get_clocks {HPS_DDR3_DQS_N[2]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {NMR_Controller:NMR_Controller1|NMR_PULSE_PROGRAM:NMR_PULSE_PROGRAM1|NMR_MAIN_TIMER_CNT[1]}] -fall_to [get_clocks {HPS_DDR3_DQS_N[2]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {NMR_Controller:NMR_Controller1|NMR_PULSE_PROGRAM:NMR_PULSE_PROGRAM1|NMR_MAIN_TIMER_CNT[1]}] -rise_to [get_clocks {HPS_DDR3_DQS_N[1]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {NMR_Controller:NMR_Controller1|NMR_PULSE_PROGRAM:NMR_PULSE_PROGRAM1|NMR_MAIN_TIMER_CNT[1]}] -fall_to [get_clocks {HPS_DDR3_DQS_N[1]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {NMR_Controller:NMR_Controller1|NMR_PULSE_PROGRAM:NMR_PULSE_PROGRAM1|NMR_MAIN_TIMER_CNT[1]}] -rise_to [get_clocks {HPS_DDR3_DQS_N[0]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {NMR_Controller:NMR_Controller1|NMR_PULSE_PROGRAM:NMR_PULSE_PROGRAM1|NMR_MAIN_TIMER_CNT[1]}] -fall_to [get_clocks {HPS_DDR3_DQS_N[0]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {NMR_Controller:NMR_Controller1|NMR_PULSE_PROGRAM:NMR_PULSE_PROGRAM1|NMR_MAIN_TIMER_CNT[1]}] -rise_to [get_clocks {HPS_DDR3_DQS_P[3]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {NMR_Controller:NMR_Controller1|NMR_PULSE_PROGRAM:NMR_PULSE_PROGRAM1|NMR_MAIN_TIMER_CNT[1]}] -fall_to [get_clocks {HPS_DDR3_DQS_P[3]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {NMR_Controller:NMR_Controller1|NMR_PULSE_PROGRAM:NMR_PULSE_PROGRAM1|NMR_MAIN_TIMER_CNT[1]}] -rise_to [get_clocks {HPS_DDR3_DQS_P[2]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {NMR_Controller:NMR_Controller1|NMR_PULSE_PROGRAM:NMR_PULSE_PROGRAM1|NMR_MAIN_TIMER_CNT[1]}] -fall_to [get_clocks {HPS_DDR3_DQS_P[2]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {NMR_Controller:NMR_Controller1|NMR_PULSE_PROGRAM:NMR_PULSE_PROGRAM1|NMR_MAIN_TIMER_CNT[1]}] -rise_to [get_clocks {HPS_DDR3_DQS_P[1]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {NMR_Controller:NMR_Controller1|NMR_PULSE_PROGRAM:NMR_PULSE_PROGRAM1|NMR_MAIN_TIMER_CNT[1]}] -fall_to [get_clocks {HPS_DDR3_DQS_P[1]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {NMR_Controller:NMR_Controller1|NMR_PULSE_PROGRAM:NMR_PULSE_PROGRAM1|NMR_MAIN_TIMER_CNT[1]}] -rise_to [get_clocks {HPS_DDR3_DQS_P[0]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {NMR_Controller:NMR_Controller1|NMR_PULSE_PROGRAM:NMR_PULSE_PROGRAM1|NMR_MAIN_TIMER_CNT[1]}] -fall_to [get_clocks {HPS_DDR3_DQS_P[0]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {NMR_Controller:NMR_Controller1|NMR_PULSE_PROGRAM:NMR_PULSE_PROGRAM1|NMR_MAIN_TIMER_CNT[1]}] -rise_to [get_clocks {HPS_DDR3_CK_N}]  0.226  
+set_clock_uncertainty -rise_from [get_clocks {NMR_Controller:NMR_Controller1|NMR_PULSE_PROGRAM:NMR_PULSE_PROGRAM1|NMR_MAIN_TIMER_CNT[1]}] -fall_to [get_clocks {HPS_DDR3_CK_N}]  0.226  
+set_clock_uncertainty -rise_from [get_clocks {NMR_Controller:NMR_Controller1|NMR_PULSE_PROGRAM:NMR_PULSE_PROGRAM1|NMR_MAIN_TIMER_CNT[1]}] -rise_to [get_clocks {HPS_DDR3_CK_P}]  0.226  
+set_clock_uncertainty -rise_from [get_clocks {NMR_Controller:NMR_Controller1|NMR_PULSE_PROGRAM:NMR_PULSE_PROGRAM1|NMR_MAIN_TIMER_CNT[1]}] -fall_to [get_clocks {HPS_DDR3_CK_P}]  0.226  
+set_clock_uncertainty -fall_from [get_clocks {NMR_Controller:NMR_Controller1|NMR_PULSE_PROGRAM:NMR_PULSE_PROGRAM1|NMR_MAIN_TIMER_CNT[1]}] -rise_to [get_clocks {HPS_DDR3_DQS_N[3]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {NMR_Controller:NMR_Controller1|NMR_PULSE_PROGRAM:NMR_PULSE_PROGRAM1|NMR_MAIN_TIMER_CNT[1]}] -fall_to [get_clocks {HPS_DDR3_DQS_N[3]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {NMR_Controller:NMR_Controller1|NMR_PULSE_PROGRAM:NMR_PULSE_PROGRAM1|NMR_MAIN_TIMER_CNT[1]}] -rise_to [get_clocks {HPS_DDR3_DQS_N[2]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {NMR_Controller:NMR_Controller1|NMR_PULSE_PROGRAM:NMR_PULSE_PROGRAM1|NMR_MAIN_TIMER_CNT[1]}] -fall_to [get_clocks {HPS_DDR3_DQS_N[2]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {NMR_Controller:NMR_Controller1|NMR_PULSE_PROGRAM:NMR_PULSE_PROGRAM1|NMR_MAIN_TIMER_CNT[1]}] -rise_to [get_clocks {HPS_DDR3_DQS_N[1]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {NMR_Controller:NMR_Controller1|NMR_PULSE_PROGRAM:NMR_PULSE_PROGRAM1|NMR_MAIN_TIMER_CNT[1]}] -fall_to [get_clocks {HPS_DDR3_DQS_N[1]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {NMR_Controller:NMR_Controller1|NMR_PULSE_PROGRAM:NMR_PULSE_PROGRAM1|NMR_MAIN_TIMER_CNT[1]}] -rise_to [get_clocks {HPS_DDR3_DQS_N[0]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {NMR_Controller:NMR_Controller1|NMR_PULSE_PROGRAM:NMR_PULSE_PROGRAM1|NMR_MAIN_TIMER_CNT[1]}] -fall_to [get_clocks {HPS_DDR3_DQS_N[0]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {NMR_Controller:NMR_Controller1|NMR_PULSE_PROGRAM:NMR_PULSE_PROGRAM1|NMR_MAIN_TIMER_CNT[1]}] -rise_to [get_clocks {HPS_DDR3_DQS_P[3]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {NMR_Controller:NMR_Controller1|NMR_PULSE_PROGRAM:NMR_PULSE_PROGRAM1|NMR_MAIN_TIMER_CNT[1]}] -fall_to [get_clocks {HPS_DDR3_DQS_P[3]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {NMR_Controller:NMR_Controller1|NMR_PULSE_PROGRAM:NMR_PULSE_PROGRAM1|NMR_MAIN_TIMER_CNT[1]}] -rise_to [get_clocks {HPS_DDR3_DQS_P[2]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {NMR_Controller:NMR_Controller1|NMR_PULSE_PROGRAM:NMR_PULSE_PROGRAM1|NMR_MAIN_TIMER_CNT[1]}] -fall_to [get_clocks {HPS_DDR3_DQS_P[2]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {NMR_Controller:NMR_Controller1|NMR_PULSE_PROGRAM:NMR_PULSE_PROGRAM1|NMR_MAIN_TIMER_CNT[1]}] -rise_to [get_clocks {HPS_DDR3_DQS_P[1]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {NMR_Controller:NMR_Controller1|NMR_PULSE_PROGRAM:NMR_PULSE_PROGRAM1|NMR_MAIN_TIMER_CNT[1]}] -fall_to [get_clocks {HPS_DDR3_DQS_P[1]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {NMR_Controller:NMR_Controller1|NMR_PULSE_PROGRAM:NMR_PULSE_PROGRAM1|NMR_MAIN_TIMER_CNT[1]}] -rise_to [get_clocks {HPS_DDR3_DQS_P[0]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {NMR_Controller:NMR_Controller1|NMR_PULSE_PROGRAM:NMR_PULSE_PROGRAM1|NMR_MAIN_TIMER_CNT[1]}] -fall_to [get_clocks {HPS_DDR3_DQS_P[0]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {NMR_Controller:NMR_Controller1|NMR_PULSE_PROGRAM:NMR_PULSE_PROGRAM1|NMR_MAIN_TIMER_CNT[1]}] -rise_to [get_clocks {HPS_DDR3_CK_N}]  0.226  
+set_clock_uncertainty -fall_from [get_clocks {NMR_Controller:NMR_Controller1|NMR_PULSE_PROGRAM:NMR_PULSE_PROGRAM1|NMR_MAIN_TIMER_CNT[1]}] -fall_to [get_clocks {HPS_DDR3_CK_N}]  0.226  
+set_clock_uncertainty -fall_from [get_clocks {NMR_Controller:NMR_Controller1|NMR_PULSE_PROGRAM:NMR_PULSE_PROGRAM1|NMR_MAIN_TIMER_CNT[1]}] -rise_to [get_clocks {HPS_DDR3_CK_P}]  0.226  
+set_clock_uncertainty -fall_from [get_clocks {NMR_Controller:NMR_Controller1|NMR_PULSE_PROGRAM:NMR_PULSE_PROGRAM1|NMR_MAIN_TIMER_CNT[1]}] -fall_to [get_clocks {HPS_DDR3_CK_P}]  0.226  
 set_clock_uncertainty -rise_from [get_clocks {adc_clk}] -rise_to [get_clocks {HPS_DDR3_DQS_N[3]_OUT}]  0.000  
 set_clock_uncertainty -rise_from [get_clocks {adc_clk}] -fall_to [get_clocks {HPS_DDR3_DQS_N[3]_OUT}]  0.000  
 set_clock_uncertainty -rise_from [get_clocks {adc_clk}] -rise_to [get_clocks {HPS_DDR3_DQS_N[2]_OUT}]  0.000  
@@ -1113,10 +826,6 @@ set_clock_uncertainty -fall_from [get_clocks {clock_50_1}] -rise_to [get_clocks 
 set_clock_uncertainty -fall_from [get_clocks {clock_50_1}] -fall_to [get_clocks {HPS_DDR3_CK_N}]  0.226  
 set_clock_uncertainty -fall_from [get_clocks {clock_50_1}] -rise_to [get_clocks {HPS_DDR3_CK_P}]  0.226  
 set_clock_uncertainty -fall_from [get_clocks {clock_50_1}] -fall_to [get_clocks {HPS_DDR3_CK_P}]  0.226  
-set_clock_uncertainty -rise_from [get_clocks {clock_50_0}] -rise_to [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}]  0.200  
-set_clock_uncertainty -rise_from [get_clocks {clock_50_0}] -fall_to [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}]  0.200  
-set_clock_uncertainty -rise_from [get_clocks {clock_50_0}] -rise_to [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}]  0.230  
-set_clock_uncertainty -rise_from [get_clocks {clock_50_0}] -fall_to [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}]  0.230  
 set_clock_uncertainty -rise_from [get_clocks {clock_50_0}] -rise_to [get_clocks {HPS_DDR3_DQS_N[3]_OUT}]  0.000  
 set_clock_uncertainty -rise_from [get_clocks {clock_50_0}] -fall_to [get_clocks {HPS_DDR3_DQS_N[3]_OUT}]  0.000  
 set_clock_uncertainty -rise_from [get_clocks {clock_50_0}] -rise_to [get_clocks {HPS_DDR3_DQS_N[2]_OUT}]  0.000  
@@ -1141,10 +850,10 @@ set_clock_uncertainty -rise_from [get_clocks {clock_50_0}] -rise_to [get_clocks 
 set_clock_uncertainty -rise_from [get_clocks {clock_50_0}] -rise_to [get_clocks {clock_50_0}] -hold 0.080  
 set_clock_uncertainty -rise_from [get_clocks {clock_50_0}] -fall_to [get_clocks {clock_50_0}] -setup 0.180  
 set_clock_uncertainty -rise_from [get_clocks {clock_50_0}] -fall_to [get_clocks {clock_50_0}] -hold 0.080  
-set_clock_uncertainty -fall_from [get_clocks {clock_50_0}] -rise_to [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}]  0.200  
-set_clock_uncertainty -fall_from [get_clocks {clock_50_0}] -fall_to [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}]  0.200  
-set_clock_uncertainty -fall_from [get_clocks {clock_50_0}] -rise_to [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}]  0.230  
-set_clock_uncertainty -fall_from [get_clocks {clock_50_0}] -fall_to [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}]  0.230  
+set_clock_uncertainty -rise_from [get_clocks {clock_50_0}] -rise_to [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}]  0.200  
+set_clock_uncertainty -rise_from [get_clocks {clock_50_0}] -fall_to [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}]  0.200  
+set_clock_uncertainty -rise_from [get_clocks {clock_50_0}] -rise_to [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}]  0.230  
+set_clock_uncertainty -rise_from [get_clocks {clock_50_0}] -fall_to [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}]  0.230  
 set_clock_uncertainty -fall_from [get_clocks {clock_50_0}] -rise_to [get_clocks {HPS_DDR3_DQS_N[3]_OUT}]  0.000  
 set_clock_uncertainty -fall_from [get_clocks {clock_50_0}] -fall_to [get_clocks {HPS_DDR3_DQS_N[3]_OUT}]  0.000  
 set_clock_uncertainty -fall_from [get_clocks {clock_50_0}] -rise_to [get_clocks {HPS_DDR3_DQS_N[2]_OUT}]  0.000  
@@ -1169,20 +878,10 @@ set_clock_uncertainty -fall_from [get_clocks {clock_50_0}] -rise_to [get_clocks 
 set_clock_uncertainty -fall_from [get_clocks {clock_50_0}] -rise_to [get_clocks {clock_50_0}] -hold 0.080  
 set_clock_uncertainty -fall_from [get_clocks {clock_50_0}] -fall_to [get_clocks {clock_50_0}] -setup 0.180  
 set_clock_uncertainty -fall_from [get_clocks {clock_50_0}] -fall_to [get_clocks {clock_50_0}] -hold 0.080  
-set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[3]_IN}] -rise_to [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[3]_IN}] -fall_to [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[3]_IN}] -rise_to [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[3]_IN}] -fall_to [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[3]_IN}] -rise_to [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[3]_IN}] -fall_to [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[3]_IN}] -rise_to [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[3]_IN}] -fall_to [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[3]_IN}] -rise_to [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[3]_IN}] -fall_to [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[3]_IN}] -rise_to [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[3]_IN}] -fall_to [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[3]_IN}] -rise_to [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[3]_IN}] -fall_to [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {clock_50_0}] -rise_to [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}]  0.200  
+set_clock_uncertainty -fall_from [get_clocks {clock_50_0}] -fall_to [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}]  0.200  
+set_clock_uncertainty -fall_from [get_clocks {clock_50_0}] -rise_to [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}]  0.230  
+set_clock_uncertainty -fall_from [get_clocks {clock_50_0}] -fall_to [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}]  0.230  
 set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[3]_IN}] -rise_to [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}]  0.000  
 set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[3]_IN}] -fall_to [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}]  0.000  
 set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[3]_IN}] -rise_to [get_clocks {HPS_DDR3_DQS_N[3]_OUT}]  0.000  
@@ -1207,6 +906,8 @@ set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[3]_IN}] -rise_to [g
 set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[3]_IN}] -fall_to [get_clocks {HPS_DDR3_CK_P}]  0.000  
 set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[3]_IN}] -rise_to [get_clocks {u0|hps_0|hps_io|border|hps_sdram_inst|hps_sdram_p0_sampling_clock}]  0.000  
 set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[3]_IN}] -fall_to [get_clocks {u0|hps_0|hps_io|border|hps_sdram_inst|hps_sdram_p0_sampling_clock}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[3]_IN}] -rise_to [get_clocks {NMR_Controller:NMR_Controller1|NMR_PULSE_PROGRAM:NMR_PULSE_PROGRAM1|NMR_MAIN_TIMER_CNT[1]}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[3]_IN}] -fall_to [get_clocks {NMR_Controller:NMR_Controller1|NMR_PULSE_PROGRAM:NMR_PULSE_PROGRAM1|NMR_MAIN_TIMER_CNT[1]}]  0.000  
 set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[3]_IN}] -rise_to [get_clocks {adc_clk}]  0.000  
 set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[3]_IN}] -fall_to [get_clocks {adc_clk}]  0.000  
 set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[3]_IN}] -rise_to [get_clocks {VGA_CLK}]  0.000  
@@ -1233,20 +934,20 @@ set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[3]_IN}] -rise_to [g
 set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[3]_IN}] -fall_to [get_clocks {soc_system:u0|soc_system_hps_0:hps_0|soc_system_hps_0_hps_io:hps_io|soc_system_hps_0_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_pll:pll|afi_clk_write_clk}]  0.000  
 set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[3]_IN}] -rise_to [get_clocks {altera_reserved_tck}]  0.000  
 set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[3]_IN}] -fall_to [get_clocks {altera_reserved_tck}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[3]_IN}] -rise_to [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[3]_IN}] -fall_to [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[3]_IN}] -rise_to [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[3]_IN}] -fall_to [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[3]_IN}] -rise_to [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[3]_IN}] -fall_to [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[3]_IN}] -rise_to [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[3]_IN}] -fall_to [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[3]_IN}] -rise_to [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[3]_IN}] -fall_to [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[3]_IN}] -rise_to [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[3]_IN}] -fall_to [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[3]_IN}] -rise_to [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[3]_IN}] -fall_to [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[3]_IN}] -rise_to [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[3]_IN}] -fall_to [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[3]_IN}] -rise_to [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[3]_IN}] -fall_to [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[3]_IN}] -rise_to [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[3]_IN}] -fall_to [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[3]_IN}] -rise_to [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[3]_IN}] -fall_to [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[3]_IN}] -rise_to [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[3]_IN}] -fall_to [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[3]_IN}] -rise_to [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[3]_IN}] -fall_to [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[3]_IN}] -rise_to [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[3]_IN}] -fall_to [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}]  0.000  
 set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[3]_IN}] -rise_to [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}]  0.000  
 set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[3]_IN}] -fall_to [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}]  0.000  
 set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[3]_IN}] -rise_to [get_clocks {HPS_DDR3_DQS_N[3]_OUT}]  0.000  
@@ -1271,6 +972,8 @@ set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[3]_IN}] -rise_to [g
 set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[3]_IN}] -fall_to [get_clocks {HPS_DDR3_CK_P}]  0.000  
 set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[3]_IN}] -rise_to [get_clocks {u0|hps_0|hps_io|border|hps_sdram_inst|hps_sdram_p0_sampling_clock}]  0.000  
 set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[3]_IN}] -fall_to [get_clocks {u0|hps_0|hps_io|border|hps_sdram_inst|hps_sdram_p0_sampling_clock}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[3]_IN}] -rise_to [get_clocks {NMR_Controller:NMR_Controller1|NMR_PULSE_PROGRAM:NMR_PULSE_PROGRAM1|NMR_MAIN_TIMER_CNT[1]}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[3]_IN}] -fall_to [get_clocks {NMR_Controller:NMR_Controller1|NMR_PULSE_PROGRAM:NMR_PULSE_PROGRAM1|NMR_MAIN_TIMER_CNT[1]}]  0.000  
 set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[3]_IN}] -rise_to [get_clocks {adc_clk}]  0.000  
 set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[3]_IN}] -fall_to [get_clocks {adc_clk}]  0.000  
 set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[3]_IN}] -rise_to [get_clocks {VGA_CLK}]  0.000  
@@ -1297,20 +1000,20 @@ set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[3]_IN}] -rise_to [g
 set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[3]_IN}] -fall_to [get_clocks {soc_system:u0|soc_system_hps_0:hps_0|soc_system_hps_0_hps_io:hps_io|soc_system_hps_0_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_pll:pll|afi_clk_write_clk}]  0.000  
 set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[3]_IN}] -rise_to [get_clocks {altera_reserved_tck}]  0.000  
 set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[3]_IN}] -fall_to [get_clocks {altera_reserved_tck}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[2]_IN}] -rise_to [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[2]_IN}] -fall_to [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[2]_IN}] -rise_to [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[2]_IN}] -fall_to [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[2]_IN}] -rise_to [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[2]_IN}] -fall_to [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[2]_IN}] -rise_to [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[2]_IN}] -fall_to [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[2]_IN}] -rise_to [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[2]_IN}] -fall_to [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[2]_IN}] -rise_to [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[2]_IN}] -fall_to [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[2]_IN}] -rise_to [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[2]_IN}] -fall_to [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[3]_IN}] -rise_to [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[3]_IN}] -fall_to [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[3]_IN}] -rise_to [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[3]_IN}] -fall_to [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[3]_IN}] -rise_to [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[3]_IN}] -fall_to [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[3]_IN}] -rise_to [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[3]_IN}] -fall_to [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[3]_IN}] -rise_to [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[3]_IN}] -fall_to [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[3]_IN}] -rise_to [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[3]_IN}] -fall_to [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[3]_IN}] -rise_to [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[3]_IN}] -fall_to [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}]  0.000  
 set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[2]_IN}] -rise_to [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}]  0.000  
 set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[2]_IN}] -fall_to [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}]  0.000  
 set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[2]_IN}] -rise_to [get_clocks {HPS_DDR3_DQS_N[3]_OUT}]  0.000  
@@ -1335,6 +1038,8 @@ set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[2]_IN}] -rise_to [g
 set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[2]_IN}] -fall_to [get_clocks {HPS_DDR3_CK_P}]  0.000  
 set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[2]_IN}] -rise_to [get_clocks {u0|hps_0|hps_io|border|hps_sdram_inst|hps_sdram_p0_sampling_clock}]  0.000  
 set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[2]_IN}] -fall_to [get_clocks {u0|hps_0|hps_io|border|hps_sdram_inst|hps_sdram_p0_sampling_clock}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[2]_IN}] -rise_to [get_clocks {NMR_Controller:NMR_Controller1|NMR_PULSE_PROGRAM:NMR_PULSE_PROGRAM1|NMR_MAIN_TIMER_CNT[1]}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[2]_IN}] -fall_to [get_clocks {NMR_Controller:NMR_Controller1|NMR_PULSE_PROGRAM:NMR_PULSE_PROGRAM1|NMR_MAIN_TIMER_CNT[1]}]  0.000  
 set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[2]_IN}] -rise_to [get_clocks {adc_clk}]  0.000  
 set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[2]_IN}] -fall_to [get_clocks {adc_clk}]  0.000  
 set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[2]_IN}] -rise_to [get_clocks {VGA_CLK}]  0.000  
@@ -1361,20 +1066,20 @@ set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[2]_IN}] -rise_to [g
 set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[2]_IN}] -fall_to [get_clocks {soc_system:u0|soc_system_hps_0:hps_0|soc_system_hps_0_hps_io:hps_io|soc_system_hps_0_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_pll:pll|afi_clk_write_clk}]  0.000  
 set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[2]_IN}] -rise_to [get_clocks {altera_reserved_tck}]  0.000  
 set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[2]_IN}] -fall_to [get_clocks {altera_reserved_tck}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[2]_IN}] -rise_to [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[2]_IN}] -fall_to [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[2]_IN}] -rise_to [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[2]_IN}] -fall_to [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[2]_IN}] -rise_to [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[2]_IN}] -fall_to [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[2]_IN}] -rise_to [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[2]_IN}] -fall_to [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[2]_IN}] -rise_to [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[2]_IN}] -fall_to [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[2]_IN}] -rise_to [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[2]_IN}] -fall_to [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[2]_IN}] -rise_to [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[2]_IN}] -fall_to [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[2]_IN}] -rise_to [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[2]_IN}] -fall_to [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[2]_IN}] -rise_to [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[2]_IN}] -fall_to [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[2]_IN}] -rise_to [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[2]_IN}] -fall_to [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[2]_IN}] -rise_to [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[2]_IN}] -fall_to [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[2]_IN}] -rise_to [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[2]_IN}] -fall_to [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[2]_IN}] -rise_to [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[2]_IN}] -fall_to [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[2]_IN}] -rise_to [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[2]_IN}] -fall_to [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}]  0.000  
 set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[2]_IN}] -rise_to [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}]  0.000  
 set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[2]_IN}] -fall_to [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}]  0.000  
 set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[2]_IN}] -rise_to [get_clocks {HPS_DDR3_DQS_N[3]_OUT}]  0.000  
@@ -1399,6 +1104,8 @@ set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[2]_IN}] -rise_to [g
 set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[2]_IN}] -fall_to [get_clocks {HPS_DDR3_CK_P}]  0.000  
 set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[2]_IN}] -rise_to [get_clocks {u0|hps_0|hps_io|border|hps_sdram_inst|hps_sdram_p0_sampling_clock}]  0.000  
 set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[2]_IN}] -fall_to [get_clocks {u0|hps_0|hps_io|border|hps_sdram_inst|hps_sdram_p0_sampling_clock}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[2]_IN}] -rise_to [get_clocks {NMR_Controller:NMR_Controller1|NMR_PULSE_PROGRAM:NMR_PULSE_PROGRAM1|NMR_MAIN_TIMER_CNT[1]}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[2]_IN}] -fall_to [get_clocks {NMR_Controller:NMR_Controller1|NMR_PULSE_PROGRAM:NMR_PULSE_PROGRAM1|NMR_MAIN_TIMER_CNT[1]}]  0.000  
 set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[2]_IN}] -rise_to [get_clocks {adc_clk}]  0.000  
 set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[2]_IN}] -fall_to [get_clocks {adc_clk}]  0.000  
 set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[2]_IN}] -rise_to [get_clocks {VGA_CLK}]  0.000  
@@ -1425,20 +1132,20 @@ set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[2]_IN}] -rise_to [g
 set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[2]_IN}] -fall_to [get_clocks {soc_system:u0|soc_system_hps_0:hps_0|soc_system_hps_0_hps_io:hps_io|soc_system_hps_0_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_pll:pll|afi_clk_write_clk}]  0.000  
 set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[2]_IN}] -rise_to [get_clocks {altera_reserved_tck}]  0.000  
 set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[2]_IN}] -fall_to [get_clocks {altera_reserved_tck}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[1]_IN}] -rise_to [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[1]_IN}] -fall_to [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[1]_IN}] -rise_to [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[1]_IN}] -fall_to [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[1]_IN}] -rise_to [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[1]_IN}] -fall_to [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[1]_IN}] -rise_to [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[1]_IN}] -fall_to [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[1]_IN}] -rise_to [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[1]_IN}] -fall_to [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[1]_IN}] -rise_to [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[1]_IN}] -fall_to [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[1]_IN}] -rise_to [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[1]_IN}] -fall_to [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[2]_IN}] -rise_to [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[2]_IN}] -fall_to [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[2]_IN}] -rise_to [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[2]_IN}] -fall_to [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[2]_IN}] -rise_to [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[2]_IN}] -fall_to [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[2]_IN}] -rise_to [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[2]_IN}] -fall_to [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[2]_IN}] -rise_to [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[2]_IN}] -fall_to [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[2]_IN}] -rise_to [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[2]_IN}] -fall_to [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[2]_IN}] -rise_to [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[2]_IN}] -fall_to [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}]  0.000  
 set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[1]_IN}] -rise_to [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}]  0.000  
 set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[1]_IN}] -fall_to [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}]  0.000  
 set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[1]_IN}] -rise_to [get_clocks {HPS_DDR3_DQS_N[3]_OUT}]  0.000  
@@ -1463,6 +1170,8 @@ set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[1]_IN}] -rise_to [g
 set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[1]_IN}] -fall_to [get_clocks {HPS_DDR3_CK_P}]  0.000  
 set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[1]_IN}] -rise_to [get_clocks {u0|hps_0|hps_io|border|hps_sdram_inst|hps_sdram_p0_sampling_clock}]  0.000  
 set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[1]_IN}] -fall_to [get_clocks {u0|hps_0|hps_io|border|hps_sdram_inst|hps_sdram_p0_sampling_clock}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[1]_IN}] -rise_to [get_clocks {NMR_Controller:NMR_Controller1|NMR_PULSE_PROGRAM:NMR_PULSE_PROGRAM1|NMR_MAIN_TIMER_CNT[1]}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[1]_IN}] -fall_to [get_clocks {NMR_Controller:NMR_Controller1|NMR_PULSE_PROGRAM:NMR_PULSE_PROGRAM1|NMR_MAIN_TIMER_CNT[1]}]  0.000  
 set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[1]_IN}] -rise_to [get_clocks {adc_clk}]  0.000  
 set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[1]_IN}] -fall_to [get_clocks {adc_clk}]  0.000  
 set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[1]_IN}] -rise_to [get_clocks {VGA_CLK}]  0.000  
@@ -1489,20 +1198,20 @@ set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[1]_IN}] -rise_to [g
 set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[1]_IN}] -fall_to [get_clocks {soc_system:u0|soc_system_hps_0:hps_0|soc_system_hps_0_hps_io:hps_io|soc_system_hps_0_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_pll:pll|afi_clk_write_clk}]  0.000  
 set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[1]_IN}] -rise_to [get_clocks {altera_reserved_tck}]  0.000  
 set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[1]_IN}] -fall_to [get_clocks {altera_reserved_tck}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[1]_IN}] -rise_to [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[1]_IN}] -fall_to [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[1]_IN}] -rise_to [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[1]_IN}] -fall_to [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[1]_IN}] -rise_to [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[1]_IN}] -fall_to [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[1]_IN}] -rise_to [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[1]_IN}] -fall_to [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[1]_IN}] -rise_to [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[1]_IN}] -fall_to [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[1]_IN}] -rise_to [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[1]_IN}] -fall_to [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[1]_IN}] -rise_to [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[1]_IN}] -fall_to [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[1]_IN}] -rise_to [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[1]_IN}] -fall_to [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[1]_IN}] -rise_to [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[1]_IN}] -fall_to [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[1]_IN}] -rise_to [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[1]_IN}] -fall_to [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[1]_IN}] -rise_to [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[1]_IN}] -fall_to [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[1]_IN}] -rise_to [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[1]_IN}] -fall_to [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[1]_IN}] -rise_to [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[1]_IN}] -fall_to [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[1]_IN}] -rise_to [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[1]_IN}] -fall_to [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}]  0.000  
 set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[1]_IN}] -rise_to [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}]  0.000  
 set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[1]_IN}] -fall_to [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}]  0.000  
 set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[1]_IN}] -rise_to [get_clocks {HPS_DDR3_DQS_N[3]_OUT}]  0.000  
@@ -1527,6 +1236,8 @@ set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[1]_IN}] -rise_to [g
 set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[1]_IN}] -fall_to [get_clocks {HPS_DDR3_CK_P}]  0.000  
 set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[1]_IN}] -rise_to [get_clocks {u0|hps_0|hps_io|border|hps_sdram_inst|hps_sdram_p0_sampling_clock}]  0.000  
 set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[1]_IN}] -fall_to [get_clocks {u0|hps_0|hps_io|border|hps_sdram_inst|hps_sdram_p0_sampling_clock}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[1]_IN}] -rise_to [get_clocks {NMR_Controller:NMR_Controller1|NMR_PULSE_PROGRAM:NMR_PULSE_PROGRAM1|NMR_MAIN_TIMER_CNT[1]}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[1]_IN}] -fall_to [get_clocks {NMR_Controller:NMR_Controller1|NMR_PULSE_PROGRAM:NMR_PULSE_PROGRAM1|NMR_MAIN_TIMER_CNT[1]}]  0.000  
 set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[1]_IN}] -rise_to [get_clocks {adc_clk}]  0.000  
 set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[1]_IN}] -fall_to [get_clocks {adc_clk}]  0.000  
 set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[1]_IN}] -rise_to [get_clocks {VGA_CLK}]  0.000  
@@ -1553,20 +1264,20 @@ set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[1]_IN}] -rise_to [g
 set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[1]_IN}] -fall_to [get_clocks {soc_system:u0|soc_system_hps_0:hps_0|soc_system_hps_0_hps_io:hps_io|soc_system_hps_0_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_pll:pll|afi_clk_write_clk}]  0.000  
 set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[1]_IN}] -rise_to [get_clocks {altera_reserved_tck}]  0.000  
 set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[1]_IN}] -fall_to [get_clocks {altera_reserved_tck}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[0]_IN}] -rise_to [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[0]_IN}] -fall_to [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[0]_IN}] -rise_to [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[0]_IN}] -fall_to [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[0]_IN}] -rise_to [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[0]_IN}] -fall_to [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[0]_IN}] -rise_to [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[0]_IN}] -fall_to [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[0]_IN}] -rise_to [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[0]_IN}] -fall_to [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[0]_IN}] -rise_to [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[0]_IN}] -fall_to [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[0]_IN}] -rise_to [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}]  0.000  
-set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[0]_IN}] -fall_to [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[1]_IN}] -rise_to [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[1]_IN}] -fall_to [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[1]_IN}] -rise_to [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[1]_IN}] -fall_to [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[1]_IN}] -rise_to [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[1]_IN}] -fall_to [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[1]_IN}] -rise_to [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[1]_IN}] -fall_to [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[1]_IN}] -rise_to [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[1]_IN}] -fall_to [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[1]_IN}] -rise_to [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[1]_IN}] -fall_to [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[1]_IN}] -rise_to [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[1]_IN}] -fall_to [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}]  0.000  
 set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[0]_IN}] -rise_to [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}]  0.000  
 set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[0]_IN}] -fall_to [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}]  0.000  
 set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[0]_IN}] -rise_to [get_clocks {HPS_DDR3_DQS_N[3]_OUT}]  0.000  
@@ -1591,6 +1302,8 @@ set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[0]_IN}] -rise_to [g
 set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[0]_IN}] -fall_to [get_clocks {HPS_DDR3_CK_P}]  0.000  
 set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[0]_IN}] -rise_to [get_clocks {u0|hps_0|hps_io|border|hps_sdram_inst|hps_sdram_p0_sampling_clock}]  0.000  
 set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[0]_IN}] -fall_to [get_clocks {u0|hps_0|hps_io|border|hps_sdram_inst|hps_sdram_p0_sampling_clock}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[0]_IN}] -rise_to [get_clocks {NMR_Controller:NMR_Controller1|NMR_PULSE_PROGRAM:NMR_PULSE_PROGRAM1|NMR_MAIN_TIMER_CNT[1]}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[0]_IN}] -fall_to [get_clocks {NMR_Controller:NMR_Controller1|NMR_PULSE_PROGRAM:NMR_PULSE_PROGRAM1|NMR_MAIN_TIMER_CNT[1]}]  0.000  
 set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[0]_IN}] -rise_to [get_clocks {adc_clk}]  0.000  
 set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[0]_IN}] -fall_to [get_clocks {adc_clk}]  0.000  
 set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[0]_IN}] -rise_to [get_clocks {VGA_CLK}]  0.000  
@@ -1617,20 +1330,20 @@ set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[0]_IN}] -rise_to [g
 set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[0]_IN}] -fall_to [get_clocks {soc_system:u0|soc_system_hps_0:hps_0|soc_system_hps_0_hps_io:hps_io|soc_system_hps_0_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_pll:pll|afi_clk_write_clk}]  0.000  
 set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[0]_IN}] -rise_to [get_clocks {altera_reserved_tck}]  0.000  
 set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[0]_IN}] -fall_to [get_clocks {altera_reserved_tck}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[0]_IN}] -rise_to [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[0]_IN}] -fall_to [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[0]_IN}] -rise_to [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[0]_IN}] -fall_to [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[0]_IN}] -rise_to [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[0]_IN}] -fall_to [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[0]_IN}] -rise_to [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[0]_IN}] -fall_to [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[0]_IN}] -rise_to [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[0]_IN}] -fall_to [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[0]_IN}] -rise_to [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[0]_IN}] -fall_to [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[0]_IN}] -rise_to [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}]  0.000  
-set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[0]_IN}] -fall_to [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[0]_IN}] -rise_to [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[0]_IN}] -fall_to [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[0]_IN}] -rise_to [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[0]_IN}] -fall_to [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[0]_IN}] -rise_to [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[0]_IN}] -fall_to [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[0]_IN}] -rise_to [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[0]_IN}] -fall_to [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[0]_IN}] -rise_to [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[0]_IN}] -fall_to [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[0]_IN}] -rise_to [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[0]_IN}] -fall_to [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[0]_IN}] -rise_to [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {HPS_DDR3_DQS_P[0]_IN}] -fall_to [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}]  0.000  
 set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[0]_IN}] -rise_to [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}]  0.000  
 set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[0]_IN}] -fall_to [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}]  0.000  
 set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[0]_IN}] -rise_to [get_clocks {HPS_DDR3_DQS_N[3]_OUT}]  0.000  
@@ -1655,6 +1368,8 @@ set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[0]_IN}] -rise_to [g
 set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[0]_IN}] -fall_to [get_clocks {HPS_DDR3_CK_P}]  0.000  
 set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[0]_IN}] -rise_to [get_clocks {u0|hps_0|hps_io|border|hps_sdram_inst|hps_sdram_p0_sampling_clock}]  0.000  
 set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[0]_IN}] -fall_to [get_clocks {u0|hps_0|hps_io|border|hps_sdram_inst|hps_sdram_p0_sampling_clock}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[0]_IN}] -rise_to [get_clocks {NMR_Controller:NMR_Controller1|NMR_PULSE_PROGRAM:NMR_PULSE_PROGRAM1|NMR_MAIN_TIMER_CNT[1]}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[0]_IN}] -fall_to [get_clocks {NMR_Controller:NMR_Controller1|NMR_PULSE_PROGRAM:NMR_PULSE_PROGRAM1|NMR_MAIN_TIMER_CNT[1]}]  0.000  
 set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[0]_IN}] -rise_to [get_clocks {adc_clk}]  0.000  
 set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[0]_IN}] -fall_to [get_clocks {adc_clk}]  0.000  
 set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[0]_IN}] -rise_to [get_clocks {VGA_CLK}]  0.000  
@@ -1681,6 +1396,20 @@ set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[0]_IN}] -rise_to [g
 set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[0]_IN}] -fall_to [get_clocks {soc_system:u0|soc_system_hps_0:hps_0|soc_system_hps_0_hps_io:hps_io|soc_system_hps_0_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_pll:pll|afi_clk_write_clk}]  0.000  
 set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[0]_IN}] -rise_to [get_clocks {altera_reserved_tck}]  0.000  
 set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[0]_IN}] -fall_to [get_clocks {altera_reserved_tck}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[0]_IN}] -rise_to [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[0]_IN}] -fall_to [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[0]_IN}] -rise_to [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[0]_IN}] -fall_to [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[0]_IN}] -rise_to [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[0]_IN}] -fall_to [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[0]_IN}] -rise_to [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[0]_IN}] -fall_to [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[0]_IN}] -rise_to [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[0]_IN}] -fall_to [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[0]_IN}] -rise_to [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[0]_IN}] -fall_to [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[0]_IN}] -rise_to [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {HPS_DDR3_DQS_P[0]_IN}] -fall_to [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}]  0.000  
 set_clock_uncertainty -rise_from [get_clocks {soc_system:u0|soc_system_hps_0:hps_0|soc_system_hps_0_hps_io:hps_io|soc_system_hps_0_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_pll:pll|pll_write_clk_dq_write_clk}] -rise_to [get_clocks {HPS_DDR3_DQS_N[3]_OUT}]  0.000  
 set_clock_uncertainty -rise_from [get_clocks {soc_system:u0|soc_system_hps_0:hps_0|soc_system_hps_0_hps_io:hps_io|soc_system_hps_0_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_pll:pll|pll_write_clk_dq_write_clk}] -fall_to [get_clocks {HPS_DDR3_DQS_N[3]_OUT}]  0.000  
 set_clock_uncertainty -rise_from [get_clocks {soc_system:u0|soc_system_hps_0:hps_0|soc_system_hps_0_hps_io:hps_io|soc_system_hps_0_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_pll:pll|pll_write_clk_dq_write_clk}] -rise_to [get_clocks {HPS_DDR3_DQS_N[2]_OUT}]  0.000  
@@ -1817,14 +1546,366 @@ set_clock_uncertainty -fall_from [get_clocks {altera_reserved_tck}] -rise_to [ge
 set_clock_uncertainty -fall_from [get_clocks {altera_reserved_tck}] -rise_to [get_clocks {altera_reserved_tck}] -hold 0.270  
 set_clock_uncertainty -fall_from [get_clocks {altera_reserved_tck}] -fall_to [get_clocks {altera_reserved_tck}] -setup 0.310  
 set_clock_uncertainty -fall_from [get_clocks {altera_reserved_tck}] -fall_to [get_clocks {altera_reserved_tck}] -hold 0.270  
+set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_N[3]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_N[3]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_N[2]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_N[2]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_N[1]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_N[1]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_N[0]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_N[0]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_P[3]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_P[3]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_P[2]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_P[2]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_P[1]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_P[1]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_P[0]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_P[0]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -rise_to [get_clocks {HPS_DDR3_CK_N}]  0.226  
+set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -fall_to [get_clocks {HPS_DDR3_CK_N}]  0.226  
+set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -rise_to [get_clocks {HPS_DDR3_CK_P}]  0.226  
+set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -fall_to [get_clocks {HPS_DDR3_CK_P}]  0.226  
+set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -rise_to [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -setup 0.080  
+set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -rise_to [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -hold 0.060  
+set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -fall_to [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -setup 0.080  
+set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -fall_to [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -hold 0.060  
+set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -rise_to [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -setup 0.080  
+set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -rise_to [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -hold 0.060  
+set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -fall_to [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -setup 0.080  
+set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -fall_to [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -hold 0.060  
+set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_N[3]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_N[3]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_N[2]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_N[2]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_N[1]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_N[1]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_N[0]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_N[0]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_P[3]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_P[3]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_P[2]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_P[2]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_P[1]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_P[1]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_P[0]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_P[0]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -rise_to [get_clocks {HPS_DDR3_CK_N}]  0.226  
+set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -fall_to [get_clocks {HPS_DDR3_CK_N}]  0.226  
+set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -rise_to [get_clocks {HPS_DDR3_CK_P}]  0.226  
+set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -fall_to [get_clocks {HPS_DDR3_CK_P}]  0.226  
+set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -rise_to [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -setup 0.080  
+set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -rise_to [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -hold 0.060  
+set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -fall_to [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -setup 0.080  
+set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -fall_to [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -hold 0.060  
+set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -rise_to [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -setup 0.080  
+set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -rise_to [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -hold 0.060  
+set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -fall_to [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -setup 0.080  
+set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -fall_to [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -hold 0.060  
+set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_N[3]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_N[3]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_N[2]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_N[2]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_N[1]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_N[1]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_N[0]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_N[0]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_P[3]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_P[3]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_P[2]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_P[2]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_P[1]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_P[1]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_P[0]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_P[0]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -rise_to [get_clocks {HPS_DDR3_CK_N}]  0.226  
+set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -fall_to [get_clocks {HPS_DDR3_CK_N}]  0.226  
+set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -rise_to [get_clocks {HPS_DDR3_CK_P}]  0.226  
+set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -fall_to [get_clocks {HPS_DDR3_CK_P}]  0.226  
+set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -rise_to [get_clocks {clock_50_0}]  0.200  
+set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -fall_to [get_clocks {clock_50_0}]  0.200  
+set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -rise_to [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -setup 0.080  
+set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -rise_to [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -hold 0.060  
+set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -fall_to [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -setup 0.080  
+set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -fall_to [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -hold 0.060  
+set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -rise_to [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -setup 0.080  
+set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -rise_to [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -hold 0.060  
+set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -fall_to [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -setup 0.080  
+set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -fall_to [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -hold 0.060  
+set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_N[3]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_N[3]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_N[2]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_N[2]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_N[1]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_N[1]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_N[0]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_N[0]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_P[3]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_P[3]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_P[2]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_P[2]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_P[1]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_P[1]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_P[0]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_P[0]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -rise_to [get_clocks {HPS_DDR3_CK_N}]  0.226  
+set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -fall_to [get_clocks {HPS_DDR3_CK_N}]  0.226  
+set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -rise_to [get_clocks {HPS_DDR3_CK_P}]  0.226  
+set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -fall_to [get_clocks {HPS_DDR3_CK_P}]  0.226  
+set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -rise_to [get_clocks {clock_50_0}]  0.200  
+set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -fall_to [get_clocks {clock_50_0}]  0.200  
+set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -rise_to [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -setup 0.080  
+set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -rise_to [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -hold 0.060  
+set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -fall_to [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -setup 0.080  
+set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -fall_to [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}] -hold 0.060  
+set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -rise_to [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -setup 0.080  
+set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -rise_to [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -hold 0.060  
+set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -fall_to [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -setup 0.080  
+set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -fall_to [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}] -hold 0.060  
+set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}] -rise_to [get_clocks {HPS_DDR3_DQS_N[3]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}] -fall_to [get_clocks {HPS_DDR3_DQS_N[3]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}] -rise_to [get_clocks {HPS_DDR3_DQS_N[2]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}] -fall_to [get_clocks {HPS_DDR3_DQS_N[2]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}] -rise_to [get_clocks {HPS_DDR3_DQS_N[1]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}] -fall_to [get_clocks {HPS_DDR3_DQS_N[1]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}] -rise_to [get_clocks {HPS_DDR3_DQS_N[0]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}] -fall_to [get_clocks {HPS_DDR3_DQS_N[0]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}] -rise_to [get_clocks {HPS_DDR3_DQS_P[3]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}] -fall_to [get_clocks {HPS_DDR3_DQS_P[3]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}] -rise_to [get_clocks {HPS_DDR3_DQS_P[2]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}] -fall_to [get_clocks {HPS_DDR3_DQS_P[2]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}] -rise_to [get_clocks {HPS_DDR3_DQS_P[1]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}] -fall_to [get_clocks {HPS_DDR3_DQS_P[1]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}] -rise_to [get_clocks {HPS_DDR3_DQS_P[0]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}] -fall_to [get_clocks {HPS_DDR3_DQS_P[0]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}] -rise_to [get_clocks {HPS_DDR3_CK_N}]  0.226  
+set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}] -fall_to [get_clocks {HPS_DDR3_CK_N}]  0.226  
+set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}] -rise_to [get_clocks {HPS_DDR3_CK_P}]  0.226  
+set_clock_uncertainty -rise_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}] -fall_to [get_clocks {HPS_DDR3_CK_P}]  0.226  
+set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}] -rise_to [get_clocks {HPS_DDR3_DQS_N[3]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}] -fall_to [get_clocks {HPS_DDR3_DQS_N[3]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}] -rise_to [get_clocks {HPS_DDR3_DQS_N[2]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}] -fall_to [get_clocks {HPS_DDR3_DQS_N[2]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}] -rise_to [get_clocks {HPS_DDR3_DQS_N[1]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}] -fall_to [get_clocks {HPS_DDR3_DQS_N[1]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}] -rise_to [get_clocks {HPS_DDR3_DQS_N[0]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}] -fall_to [get_clocks {HPS_DDR3_DQS_N[0]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}] -rise_to [get_clocks {HPS_DDR3_DQS_P[3]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}] -fall_to [get_clocks {HPS_DDR3_DQS_P[3]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}] -rise_to [get_clocks {HPS_DDR3_DQS_P[2]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}] -fall_to [get_clocks {HPS_DDR3_DQS_P[2]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}] -rise_to [get_clocks {HPS_DDR3_DQS_P[1]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}] -fall_to [get_clocks {HPS_DDR3_DQS_P[1]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}] -rise_to [get_clocks {HPS_DDR3_DQS_P[0]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}] -fall_to [get_clocks {HPS_DDR3_DQS_P[0]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}] -rise_to [get_clocks {HPS_DDR3_CK_N}]  0.226  
+set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}] -fall_to [get_clocks {HPS_DDR3_CK_N}]  0.226  
+set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}] -rise_to [get_clocks {HPS_DDR3_CK_P}]  0.226  
+set_clock_uncertainty -fall_from [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~FRACTIONAL_PLL|vcoph[0]}] -fall_to [get_clocks {HPS_DDR3_CK_P}]  0.226  
+set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_N[3]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_N[3]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_N[2]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_N[2]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_N[1]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_N[1]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_N[0]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_N[0]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_P[3]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_P[3]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_P[2]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_P[2]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_P[1]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_P[1]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_P[0]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_P[0]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_CK_N}]  0.226  
+set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_CK_N}]  0.226  
+set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_CK_P}]  0.226  
+set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_CK_P}]  0.226  
 set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -rise_to [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}]  0.220  
 set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -fall_to [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}]  0.220  
+set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_N[3]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_N[3]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_N[2]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_N[2]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_N[1]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_N[1]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_N[0]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_N[0]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_P[3]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_P[3]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_P[2]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_P[2]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_P[1]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_P[1]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_P[0]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_P[0]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_CK_N}]  0.226  
+set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_CK_N}]  0.226  
+set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_CK_P}]  0.226  
+set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_CK_P}]  0.226  
 set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -rise_to [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}]  0.220  
 set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -fall_to [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}]  0.220  
+set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_N[3]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_N[3]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_N[2]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_N[2]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_N[1]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_N[1]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_N[0]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_N[0]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_P[3]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_P[3]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_P[2]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_P[2]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_P[1]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_P[1]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_P[0]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_P[0]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_CK_N}]  0.226  
+set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_CK_N}]  0.226  
+set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_CK_P}]  0.226  
+set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_CK_P}]  0.226  
 set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk}] -rise_to [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}]  0.220  
 set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk}] -fall_to [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}]  0.220  
+set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_N[3]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_N[3]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_N[2]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_N[2]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_N[1]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_N[1]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_N[0]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_N[0]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_P[3]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_P[3]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_P[2]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_P[2]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_P[1]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_P[1]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_P[0]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_P[0]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_CK_N}]  0.226  
+set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_CK_N}]  0.226  
+set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_CK_P}]  0.226  
+set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_CK_P}]  0.226  
 set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk}] -rise_to [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}]  0.220  
 set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk}] -fall_to [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}]  0.220  
+set_clock_uncertainty -rise_from [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_N[3]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_N[3]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_N[2]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_N[2]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_N[1]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_N[1]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_N[0]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_N[0]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_P[3]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_P[3]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_P[2]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_P[2]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_P[1]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_P[1]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_P[0]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_P[0]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_CK_N}]  0.226  
+set_clock_uncertainty -rise_from [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_CK_N}]  0.226  
+set_clock_uncertainty -rise_from [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_CK_P}]  0.226  
+set_clock_uncertainty -rise_from [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_CK_P}]  0.226  
+set_clock_uncertainty -rise_from [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -rise_to [get_clocks {clock_50_0}]  0.230  
+set_clock_uncertainty -rise_from [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -fall_to [get_clocks {clock_50_0}]  0.230  
+set_clock_uncertainty -rise_from [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -rise_to [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -setup 0.200  
+set_clock_uncertainty -rise_from [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -rise_to [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -hold 0.060  
+set_clock_uncertainty -rise_from [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -fall_to [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -setup 0.200  
+set_clock_uncertainty -rise_from [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -fall_to [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -hold 0.060  
+set_clock_uncertainty -fall_from [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_N[3]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_N[3]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_N[2]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_N[2]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_N[1]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_N[1]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_N[0]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_N[0]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_P[3]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_P[3]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_P[2]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_P[2]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_P[1]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_P[1]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_DQS_P[0]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_DQS_P[0]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_CK_N}]  0.226  
+set_clock_uncertainty -fall_from [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_CK_N}]  0.226  
+set_clock_uncertainty -fall_from [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -rise_to [get_clocks {HPS_DDR3_CK_P}]  0.226  
+set_clock_uncertainty -fall_from [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -fall_to [get_clocks {HPS_DDR3_CK_P}]  0.226  
+set_clock_uncertainty -fall_from [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -rise_to [get_clocks {clock_50_0}]  0.230  
+set_clock_uncertainty -fall_from [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -fall_to [get_clocks {clock_50_0}]  0.230  
+set_clock_uncertainty -fall_from [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -rise_to [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -setup 0.200  
+set_clock_uncertainty -fall_from [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -rise_to [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -hold 0.060  
+set_clock_uncertainty -fall_from [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -fall_to [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -setup 0.200  
+set_clock_uncertainty -fall_from [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -fall_to [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -hold 0.060  
+set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}] -rise_to [get_clocks {HPS_DDR3_DQS_N[3]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}] -fall_to [get_clocks {HPS_DDR3_DQS_N[3]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}] -rise_to [get_clocks {HPS_DDR3_DQS_N[2]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}] -fall_to [get_clocks {HPS_DDR3_DQS_N[2]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}] -rise_to [get_clocks {HPS_DDR3_DQS_N[1]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}] -fall_to [get_clocks {HPS_DDR3_DQS_N[1]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}] -rise_to [get_clocks {HPS_DDR3_DQS_N[0]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}] -fall_to [get_clocks {HPS_DDR3_DQS_N[0]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}] -rise_to [get_clocks {HPS_DDR3_DQS_P[3]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}] -fall_to [get_clocks {HPS_DDR3_DQS_P[3]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}] -rise_to [get_clocks {HPS_DDR3_DQS_P[2]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}] -fall_to [get_clocks {HPS_DDR3_DQS_P[2]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}] -rise_to [get_clocks {HPS_DDR3_DQS_P[1]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}] -fall_to [get_clocks {HPS_DDR3_DQS_P[1]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}] -rise_to [get_clocks {HPS_DDR3_DQS_P[0]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}] -fall_to [get_clocks {HPS_DDR3_DQS_P[0]_OUT}]  0.000  
+set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}] -rise_to [get_clocks {HPS_DDR3_CK_N}]  0.226  
+set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}] -fall_to [get_clocks {HPS_DDR3_CK_N}]  0.226  
+set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}] -rise_to [get_clocks {HPS_DDR3_CK_P}]  0.226  
+set_clock_uncertainty -rise_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}] -fall_to [get_clocks {HPS_DDR3_CK_P}]  0.226  
+set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}] -rise_to [get_clocks {HPS_DDR3_DQS_N[3]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}] -fall_to [get_clocks {HPS_DDR3_DQS_N[3]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}] -rise_to [get_clocks {HPS_DDR3_DQS_N[2]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}] -fall_to [get_clocks {HPS_DDR3_DQS_N[2]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}] -rise_to [get_clocks {HPS_DDR3_DQS_N[1]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}] -fall_to [get_clocks {HPS_DDR3_DQS_N[1]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}] -rise_to [get_clocks {HPS_DDR3_DQS_N[0]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}] -fall_to [get_clocks {HPS_DDR3_DQS_N[0]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}] -rise_to [get_clocks {HPS_DDR3_DQS_P[3]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}] -fall_to [get_clocks {HPS_DDR3_DQS_P[3]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}] -rise_to [get_clocks {HPS_DDR3_DQS_P[2]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}] -fall_to [get_clocks {HPS_DDR3_DQS_P[2]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}] -rise_to [get_clocks {HPS_DDR3_DQS_P[1]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}] -fall_to [get_clocks {HPS_DDR3_DQS_P[1]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}] -rise_to [get_clocks {HPS_DDR3_DQS_P[0]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}] -fall_to [get_clocks {HPS_DDR3_DQS_P[0]_OUT}]  0.000  
+set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}] -rise_to [get_clocks {HPS_DDR3_CK_N}]  0.226  
+set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}] -fall_to [get_clocks {HPS_DDR3_CK_N}]  0.226  
+set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}] -rise_to [get_clocks {HPS_DDR3_CK_P}]  0.226  
+set_clock_uncertainty -fall_from [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|fpll_0|fpll|vcoph[0]}] -fall_to [get_clocks {HPS_DDR3_CK_P}]  0.226  
+set_clock_uncertainty -rise_from [get_clocks {NMR_Controller:NMR_Controller1|NMR_PULSE_PROGRAM:NMR_PULSE_PROGRAM1|NMR_MAIN_TIMER_CNT[1]}] -rise_to [get_clocks {NMR_Controller:NMR_Controller1|NMR_PULSE_PROGRAM:NMR_PULSE_PROGRAM1|NMR_MAIN_TIMER_CNT[1]}]  0.060  
+set_clock_uncertainty -rise_from [get_clocks {NMR_Controller:NMR_Controller1|NMR_PULSE_PROGRAM:NMR_PULSE_PROGRAM1|NMR_MAIN_TIMER_CNT[1]}] -fall_to [get_clocks {NMR_Controller:NMR_Controller1|NMR_PULSE_PROGRAM:NMR_PULSE_PROGRAM1|NMR_MAIN_TIMER_CNT[1]}]  0.060  
+set_clock_uncertainty -rise_from [get_clocks {NMR_Controller:NMR_Controller1|NMR_PULSE_PROGRAM:NMR_PULSE_PROGRAM1|NMR_MAIN_TIMER_CNT[1]}] -rise_to [get_clocks {clock_50_0}]  0.120  
+set_clock_uncertainty -rise_from [get_clocks {NMR_Controller:NMR_Controller1|NMR_PULSE_PROGRAM:NMR_PULSE_PROGRAM1|NMR_MAIN_TIMER_CNT[1]}] -fall_to [get_clocks {clock_50_0}]  0.120  
+set_clock_uncertainty -rise_from [get_clocks {NMR_Controller:NMR_Controller1|NMR_PULSE_PROGRAM:NMR_PULSE_PROGRAM1|NMR_MAIN_TIMER_CNT[1]}] -rise_to [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}]  0.170  
+set_clock_uncertainty -rise_from [get_clocks {NMR_Controller:NMR_Controller1|NMR_PULSE_PROGRAM:NMR_PULSE_PROGRAM1|NMR_MAIN_TIMER_CNT[1]}] -fall_to [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}]  0.170  
+set_clock_uncertainty -fall_from [get_clocks {NMR_Controller:NMR_Controller1|NMR_PULSE_PROGRAM:NMR_PULSE_PROGRAM1|NMR_MAIN_TIMER_CNT[1]}] -rise_to [get_clocks {NMR_Controller:NMR_Controller1|NMR_PULSE_PROGRAM:NMR_PULSE_PROGRAM1|NMR_MAIN_TIMER_CNT[1]}]  0.060  
+set_clock_uncertainty -fall_from [get_clocks {NMR_Controller:NMR_Controller1|NMR_PULSE_PROGRAM:NMR_PULSE_PROGRAM1|NMR_MAIN_TIMER_CNT[1]}] -fall_to [get_clocks {NMR_Controller:NMR_Controller1|NMR_PULSE_PROGRAM:NMR_PULSE_PROGRAM1|NMR_MAIN_TIMER_CNT[1]}]  0.060  
+set_clock_uncertainty -fall_from [get_clocks {NMR_Controller:NMR_Controller1|NMR_PULSE_PROGRAM:NMR_PULSE_PROGRAM1|NMR_MAIN_TIMER_CNT[1]}] -rise_to [get_clocks {clock_50_0}]  0.120  
+set_clock_uncertainty -fall_from [get_clocks {NMR_Controller:NMR_Controller1|NMR_PULSE_PROGRAM:NMR_PULSE_PROGRAM1|NMR_MAIN_TIMER_CNT[1]}] -fall_to [get_clocks {clock_50_0}]  0.120  
+set_clock_uncertainty -fall_from [get_clocks {NMR_Controller:NMR_Controller1|NMR_PULSE_PROGRAM:NMR_PULSE_PROGRAM1|NMR_MAIN_TIMER_CNT[1]}] -rise_to [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}]  0.170  
+set_clock_uncertainty -fall_from [get_clocks {NMR_Controller:NMR_Controller1|NMR_PULSE_PROGRAM:NMR_PULSE_PROGRAM1|NMR_MAIN_TIMER_CNT[1]}] -fall_to [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}]  0.170  
+set_clock_uncertainty -rise_from [get_clocks {adc_clk}] -rise_to [get_clocks {NMR_Controller:NMR_Controller1|NMR_PULSE_PROGRAM:NMR_PULSE_PROGRAM1|NMR_MAIN_TIMER_CNT[1]}]  0.030  
+set_clock_uncertainty -rise_from [get_clocks {adc_clk}] -fall_to [get_clocks {NMR_Controller:NMR_Controller1|NMR_PULSE_PROGRAM:NMR_PULSE_PROGRAM1|NMR_MAIN_TIMER_CNT[1]}]  0.030  
+set_clock_uncertainty -fall_from [get_clocks {adc_clk}] -rise_to [get_clocks {NMR_Controller:NMR_Controller1|NMR_PULSE_PROGRAM:NMR_PULSE_PROGRAM1|NMR_MAIN_TIMER_CNT[1]}]  0.030  
+set_clock_uncertainty -fall_from [get_clocks {adc_clk}] -fall_to [get_clocks {NMR_Controller:NMR_Controller1|NMR_PULSE_PROGRAM:NMR_PULSE_PROGRAM1|NMR_MAIN_TIMER_CNT[1]}]  0.030  
+set_clock_uncertainty -rise_from [get_clocks {clock_50_0}] -rise_to [get_clocks {NMR_Controller:NMR_Controller1|NMR_PULSE_PROGRAM:NMR_PULSE_PROGRAM1|NMR_MAIN_TIMER_CNT[1]}]  0.120  
+set_clock_uncertainty -rise_from [get_clocks {clock_50_0}] -fall_to [get_clocks {NMR_Controller:NMR_Controller1|NMR_PULSE_PROGRAM:NMR_PULSE_PROGRAM1|NMR_MAIN_TIMER_CNT[1]}]  0.120  
+set_clock_uncertainty -fall_from [get_clocks {clock_50_0}] -rise_to [get_clocks {NMR_Controller:NMR_Controller1|NMR_PULSE_PROGRAM:NMR_PULSE_PROGRAM1|NMR_MAIN_TIMER_CNT[1]}]  0.120  
+set_clock_uncertainty -fall_from [get_clocks {clock_50_0}] -fall_to [get_clocks {NMR_Controller:NMR_Controller1|NMR_PULSE_PROGRAM:NMR_PULSE_PROGRAM1|NMR_MAIN_TIMER_CNT[1]}]  0.120  
+set_clock_uncertainty -rise_from [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -rise_to [get_clocks {NMR_Controller:NMR_Controller1|NMR_PULSE_PROGRAM:NMR_PULSE_PROGRAM1|NMR_MAIN_TIMER_CNT[1]}]  0.170  
+set_clock_uncertainty -rise_from [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -fall_to [get_clocks {NMR_Controller:NMR_Controller1|NMR_PULSE_PROGRAM:NMR_PULSE_PROGRAM1|NMR_MAIN_TIMER_CNT[1]}]  0.170  
+set_clock_uncertainty -fall_from [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -rise_to [get_clocks {NMR_Controller:NMR_Controller1|NMR_PULSE_PROGRAM:NMR_PULSE_PROGRAM1|NMR_MAIN_TIMER_CNT[1]}]  0.170  
+set_clock_uncertainty -fall_from [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -fall_to [get_clocks {NMR_Controller:NMR_Controller1|NMR_PULSE_PROGRAM:NMR_PULSE_PROGRAM1|NMR_MAIN_TIMER_CNT[1]}]  0.170  
 
 
 #**************************************************************
@@ -2126,6 +2207,8 @@ set_output_delay -add_delay -min -clock [get_clocks {HPS_DDR3_CK_P}]  0.980 [get
 
 set_clock_groups -asynchronous -group [get_clocks {altera_reserved_tck}] 
 set_clock_groups -asynchronous -group [get_clocks {altera_reserved_tck}] 
+set_clock_groups -asynchronous -group [get_clocks {altera_reserved_tck}] 
+set_clock_groups -asynchronous -group [get_clocks {altera_reserved_tck}] 
 set_clock_groups -physically_exclusive -group [get_clocks {HPS_DDR3_DQS_P[0]_IN}] -group [get_clocks {HPS_DDR3_DQS_P[0]_OUT HPS_DDR3_DQS_N[0]_OUT}] 
 set_clock_groups -physically_exclusive -group [get_clocks {HPS_DDR3_DQS_P[1]_IN}] -group [get_clocks {HPS_DDR3_DQS_P[1]_OUT HPS_DDR3_DQS_N[1]_OUT}] 
 set_clock_groups -physically_exclusive -group [get_clocks {HPS_DDR3_DQS_P[2]_IN}] -group [get_clocks {HPS_DDR3_DQS_P[2]_OUT HPS_DDR3_DQS_N[2]_OUT}] 
@@ -2134,6 +2217,16 @@ set_clock_groups -physically_exclusive -group [get_clocks {HPS_DDR3_DQS_P[0]_IN}
 set_clock_groups -physically_exclusive -group [get_clocks {HPS_DDR3_DQS_P[1]_IN}] -group [get_clocks {HPS_DDR3_DQS_P[1]_OUT HPS_DDR3_DQS_N[1]_OUT}] 
 set_clock_groups -physically_exclusive -group [get_clocks {HPS_DDR3_DQS_P[2]_IN}] -group [get_clocks {HPS_DDR3_DQS_P[2]_OUT HPS_DDR3_DQS_N[2]_OUT}] 
 set_clock_groups -physically_exclusive -group [get_clocks {HPS_DDR3_DQS_P[3]_IN}] -group [get_clocks {HPS_DDR3_DQS_P[3]_OUT HPS_DDR3_DQS_N[3]_OUT}] 
+set_clock_groups -physically_exclusive -group [get_clocks {HPS_DDR3_DQS_P[0]_IN}] -group [get_clocks {HPS_DDR3_DQS_P[0]_OUT HPS_DDR3_DQS_N[0]_OUT}] 
+set_clock_groups -physically_exclusive -group [get_clocks {HPS_DDR3_DQS_P[1]_IN}] -group [get_clocks {HPS_DDR3_DQS_P[1]_OUT HPS_DDR3_DQS_N[1]_OUT}] 
+set_clock_groups -physically_exclusive -group [get_clocks {HPS_DDR3_DQS_P[2]_IN}] -group [get_clocks {HPS_DDR3_DQS_P[2]_OUT HPS_DDR3_DQS_N[2]_OUT}] 
+set_clock_groups -physically_exclusive -group [get_clocks {HPS_DDR3_DQS_P[3]_IN}] -group [get_clocks {HPS_DDR3_DQS_P[3]_OUT HPS_DDR3_DQS_N[3]_OUT}] 
+set_clock_groups -asynchronous -group [get_clocks {clock_50_0 }] -group [get_clocks { u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk }] 
+set_clock_groups -physically_exclusive -group [get_clocks {HPS_DDR3_DQS_P[0]_IN}] -group [get_clocks {HPS_DDR3_DQS_P[0]_OUT HPS_DDR3_DQS_N[0]_OUT}] 
+set_clock_groups -physically_exclusive -group [get_clocks {HPS_DDR3_DQS_P[1]_IN}] -group [get_clocks {HPS_DDR3_DQS_P[1]_OUT HPS_DDR3_DQS_N[1]_OUT}] 
+set_clock_groups -physically_exclusive -group [get_clocks {HPS_DDR3_DQS_P[2]_IN}] -group [get_clocks {HPS_DDR3_DQS_P[2]_OUT HPS_DDR3_DQS_N[2]_OUT}] 
+set_clock_groups -physically_exclusive -group [get_clocks {HPS_DDR3_DQS_P[3]_IN}] -group [get_clocks {HPS_DDR3_DQS_P[3]_OUT HPS_DDR3_DQS_N[3]_OUT}] 
+set_clock_groups -asynchronous -group [get_clocks {clock_50_0 }] -group [get_clocks { u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk }] 
 
 
 #**************************************************************
@@ -2143,6 +2236,11 @@ set_clock_groups -physically_exclusive -group [get_clocks {HPS_DDR3_DQS_P[3]_IN}
 set_false_path  -fall_from  [get_clocks {soc_system:u0|soc_system_hps_0:hps_0|soc_system_hps_0_hps_io:hps_io|soc_system_hps_0_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_pll:pll|afi_clk_write_clk}]  -to  [get_clocks {HPS_DDR3_CK_P}]
 set_false_path  -from  [get_clocks {soc_system:u0|soc_system_hps_0:hps_0|soc_system_hps_0_hps_io:hps_io|soc_system_hps_0_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_pll:pll|afi_clk_write_clk}]  -to  [get_clocks {*_IN}]
 set_false_path  -from  [get_clocks *]  -to  [get_clocks {u0|hps_0|hps_io|border|hps_sdram_inst|hps_sdram_p0_sampling_clock}]
+set_false_path  -from  [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}]  -to  [get_clocks {clock_50_0}]
+set_false_path  -from  [get_clocks {u0|gp_pll|altera_pll_i|general[0].gpll~PLL_OUTPUT_COUNTER|divclk}]  -to  [get_clocks {u0|gp_pll|altera_pll_i|general[1].gpll~PLL_OUTPUT_COUNTER|divclk}]
+set_false_path  -from  [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[2].output_counter|divclk}]  -to  [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}]
+set_false_path  -from  [get_clocks {u0|analyzer_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}]  -to  [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}]
+set_false_path  -from  [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}]  -to  [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}]
 set_false_path  -fall_from  [get_clocks {soc_system:u0|soc_system_hps_0:hps_0|soc_system_hps_0_hps_io:hps_io|soc_system_hps_0_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_pll:pll|afi_clk_write_clk}]  -to  [get_clocks {HPS_DDR3_CK_P}]
 set_false_path  -from  [get_clocks {soc_system:u0|soc_system_hps_0:hps_0|soc_system_hps_0_hps_io:hps_io|soc_system_hps_0_hps_io_border:border|hps_sdram:hps_sdram_inst|hps_sdram_pll:pll|afi_clk_write_clk}]  -to  [get_clocks {*_IN}]
 set_false_path  -from  [get_clocks *]  -to  [get_clocks {u0|hps_0|hps_io|border|hps_sdram_inst|hps_sdram_p0_sampling_clock}]
@@ -2208,6 +2306,8 @@ set_false_path -to [get_keepers {*alt_vipitc131_IS2Vid:*|alt_vipitc131_common_sy
 # Set Multicycle Path
 #**************************************************************
 
+set_multicycle_path -hold -end -from  [get_clocks {u0|hps_0|hps_io|border|hps_sdram_inst|hps_sdram_p0_sampling_clock}]  -to  [get_clocks *] 2
+set_multicycle_path -hold -end -from  [get_clocks {u0|hps_0|hps_io|border|hps_sdram_inst|hps_sdram_p0_sampling_clock}]  -to  [get_clocks *] 2
 set_multicycle_path -setup -end -from  [get_clocks {u0|hps_0|hps_io|border|hps_sdram_inst|hps_sdram_p0_sampling_clock}]  -to  [get_clocks *] 2
 set_multicycle_path -hold -end -from  [get_clocks {u0|hps_0|hps_io|border|hps_sdram_inst|hps_sdram_p0_sampling_clock}]  -to  [get_clocks *] 2
 set_multicycle_path -setup -end -from  [get_clocks {u0|hps_0|hps_io|border|hps_sdram_inst|hps_sdram_p0_sampling_clock}]  -to  [get_clocks *] 2

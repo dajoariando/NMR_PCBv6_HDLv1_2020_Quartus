@@ -9,8 +9,8 @@ function data = convert_to_prospa_data(path,name,write_csv)
         enable_figure = 0;
         perform_rotation = 1;
         mvoltPerDigit = 3200 / 16384;
-        pampGain = 54; % in dB
-        rxGain = 0; % in dB
+        pampGain = 45; % in dB
+        rxGain = 30; % in dB
         totGain = 10^((pampGain+rxGain)/20);% in magnitude
         readsum = 1; % read the sum data instead of the raw data
 

@@ -38,7 +38,8 @@ module NMR_Controller
 	input PHASE_CYCLE, 	// phase cycle control bit
 	output EN_ADC,		// enable adc
 	output EN_RX,		// enable receiver signal
-	output reg ACQ_WND_DLY,	// delayed acquisition window for broadband board
+	output reg ACQ_WND_DLY,	// delayed acquisition window for broadband board, mainly used for DUP_EN or RX_EN
+	output reg EN_QSW,	// enable Q-switch
 	
 	// ADC bus
 	input [ADC_PHYS_WIDTH-1:0] Q_IN,
@@ -161,7 +162,7 @@ module NMR_Controller
 	
 	
 	
-	// ADDED LINES FOR BROADBAND BOARD
+	// this is to compute delay for RX_EN/DUP_EN control signal, which is named as ACQ_WND_DLY
 	GNRL_delayed_pulser
 	#(
 		.DELAY_WIDTH (32)
@@ -254,5 +255,51 @@ module NMR_Controller
 	end
 	
 	
+	// this is to generate Qswitch enable signal
+	reg [9:0] StateX;
+	localparam [9:0]
+		Sx0 = 3'b001,
+		Sx1 = 3'b010,
+		Sx2 = 3'b100;
+	always @(posedge ADC_CLK, posedge RESET)
+	begin
+		if (RESET)
+		begin
+			
+			StateX <= Sx0;
+			EN_QSW <= 1'b0;
+			
+		end
+		else
+		begin
+		
+			case (StateX)
+			
+				Sx0 : // find logic low of ACQ_WND
+				begin
+				
+					EN_QSW <= 1'b0;
+					if ( !ACQ_WND ) StateX = Sx1;
+					
+				end
+				
+				Sx1 : // find rising edge of ACQ_WND
+				begin
+				
+					if ( ACQ_WND ) StateX = Sx2;
+				
+				end
+				
+				Sx2 : // find rising edge of ACQ_WND_PULSED
+				begin
+					
+					EN_QSW <= 1'b1;
+					if ( ACQ_WND_PULSED ) StateX = Sx0;
+				
+				end
+				
+			endcase
+		end
+	end
 
 endmodule

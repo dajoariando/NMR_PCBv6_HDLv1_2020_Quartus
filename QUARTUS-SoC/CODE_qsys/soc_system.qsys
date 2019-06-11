@@ -263,12 +263,12 @@
    {
       datum _lockedAddress
       {
-         value = "0";
+         value = "1";
          type = "boolean";
       }
       datum baseAddress
       {
-         value = "1184";
+         value = "1248";
          type = "String";
       }
    }
@@ -276,12 +276,12 @@
    {
       datum _lockedAddress
       {
-         value = "0";
+         value = "1";
          type = "boolean";
       }
       datum baseAddress
       {
-         value = "1216";
+         value = "1536";
          type = "String";
       }
    }
@@ -318,12 +318,75 @@
    {
       datum _lockedAddress
       {
-         value = "0";
+         value = "1";
          type = "boolean";
       }
       datum baseAddress
       {
          value = "1408";
+         type = "String";
+      }
+   }
+   element dma_dconvi
+   {
+      datum _sortIndex
+      {
+         value = "34";
+         type = "int";
+      }
+   }
+   element dma_dconvi.control_port_slave
+   {
+      datum _lockedAddress
+      {
+         value = "1";
+         type = "boolean";
+      }
+      datum baseAddress
+      {
+         value = "1216";
+         type = "String";
+      }
+   }
+   element dma_dconvq
+   {
+      datum _sortIndex
+      {
+         value = "35";
+         type = "int";
+      }
+   }
+   element dma_dconvq.control_port_slave
+   {
+      datum _lockedAddress
+      {
+         value = "1";
+         type = "boolean";
+      }
+      datum baseAddress
+      {
+         value = "1184";
+         type = "String";
+      }
+   }
+   element dma_dummy
+   {
+      datum _sortIndex
+      {
+         value = "38";
+         type = "int";
+      }
+   }
+   element dma_dummy.control_port_slave
+   {
+      datum _lockedAddress
+      {
+         value = "1";
+         type = "boolean";
+      }
+      datum baseAddress
+      {
+         value = "1568";
          type = "String";
       }
    }
@@ -354,6 +417,129 @@
       {
          value = "18";
          type = "int";
+      }
+   }
+   element fifo_dummy
+   {
+      datum _sortIndex
+      {
+         value = "39";
+         type = "int";
+      }
+   }
+   element fifo_dummy.in
+   {
+      datum _lockedAddress
+      {
+         value = "1";
+         type = "boolean";
+      }
+      datum baseAddress
+      {
+         value = "83886088";
+         type = "String";
+      }
+   }
+   element fifo_dummy.in_csr
+   {
+      datum _lockedAddress
+      {
+         value = "1";
+         type = "boolean";
+      }
+      datum baseAddress
+      {
+         value = "83886112";
+         type = "String";
+      }
+   }
+   element fifo_dummy.out
+   {
+      datum _lockedAddress
+      {
+         value = "1";
+         type = "boolean";
+      }
+      datum baseAddress
+      {
+         value = "67108880";
+         type = "String";
+      }
+   }
+   element fifo_dummy64_in
+   {
+      datum _sortIndex
+      {
+         value = "36";
+         type = "int";
+      }
+   }
+   element fifo_dummy64_in.in
+   {
+      datum _lockedAddress
+      {
+         value = "1";
+         type = "boolean";
+      }
+      datum baseAddress
+      {
+         value = "83886096";
+         type = "String";
+      }
+   }
+   element fifo_dummy64_in.in_csr
+   {
+      datum _lockedAddress
+      {
+         value = "1";
+         type = "boolean";
+      }
+      datum baseAddress
+      {
+         value = "83886176";
+         type = "String";
+      }
+   }
+   element fifo_dummy64_in.out
+   {
+      datum baseAddress
+      {
+         value = "0";
+         type = "String";
+      }
+   }
+   element fifo_dummy64_out
+   {
+      datum _sortIndex
+      {
+         value = "37";
+         type = "int";
+      }
+   }
+   element fifo_dummy64_out.in_csr
+   {
+      datum _lockedAddress
+      {
+         value = "1";
+         type = "boolean";
+      }
+      datum baseAddress
+      {
+         value = "83886144";
+         type = "String";
+      }
+   }
+   element fifo_dummy64_out.out
+   {
+      datum _lockedAddress
+      {
+         value = "1";
+         type = "boolean";
+      }
+      datum baseAddress
+      {
+         value = "83886080";
+         type = "String";
       }
    }
    element fifo_rst
@@ -484,7 +670,7 @@
    {
       datum _lockedAddress
       {
-         value = "0";
+         value = "1";
          type = "boolean";
       }
       datum baseAddress
@@ -664,7 +850,7 @@
    {
       datum _lockedAddress
       {
-         value = "1";
+         value = "0";
          type = "boolean";
       }
       datum baseAddress
@@ -1343,7 +1529,7 @@
   <parameter name="ENABLE_EXPLICIT_MAXCHANNEL" value="false" />
   <parameter name="ERROR_WIDTH" value="0" />
   <parameter name="EXPLICIT_MAXCHANNEL" value="0" />
-  <parameter name="FIFO_DEPTH" value="16384" />
+  <parameter name="FIFO_DEPTH" value="32768" />
   <parameter name="RD_SYNC_DEPTH" value="3" />
   <parameter name="SYMBOLS_PER_BEAT" value="1" />
   <parameter name="USE_IN_FILL_LEVEL" value="0" />
@@ -1361,7 +1547,7 @@
   <parameter name="ENABLE_EXPLICIT_MAXCHANNEL" value="false" />
   <parameter name="ERROR_WIDTH" value="0" />
   <parameter name="EXPLICIT_MAXCHANNEL" value="0" />
-  <parameter name="FIFO_DEPTH" value="16384" />
+  <parameter name="FIFO_DEPTH" value="32768" />
   <parameter name="RD_SYNC_DEPTH" value="3" />
   <parameter name="SYMBOLS_PER_BEAT" value="1" />
   <parameter name="USE_IN_FILL_LEVEL" value="0" />
@@ -1441,11 +1627,11 @@
   <parameter name="coeffSetRealValue">0.0176663,0.013227,0.0,-0.0149911,-0.0227152,-0.0172976,0.0,0.0204448,0.0318046,0.0249882,0.0,-0.0321283,-0.0530093,-0.04498,0.0,0.0749693,0.159034,0.224907,0.249809,0.224907,0.159034,0.0749693,0.0,-0.04498,-0.0530093,-0.0321283,0.0,0.0249882,0.0318046,0.0204448,0.0,-0.0172976,-0.0227152,-0.0149911,0.0,0.013227,0.0176663</parameter>
   <parameter name="coeffSetRealValueImag">0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -0.0530093, -0.04498, 0.0, 0.0749693, 0.159034, 0.224907, 0.249809, 0.224907, 0.159034, 0.0749693, 0.0, -0.04498, -0.0530093, -0.0321283, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0</parameter>
   <parameter name="coeffType" value="int" />
-  <parameter name="decimFactor" value="4" />
+  <parameter name="decimFactor" value="1" />
   <parameter name="delayRAMBlockThreshold" value="20" />
   <parameter name="deviceFamily" value="Cyclone V" />
   <parameter name="dualMemDistRAMThreshold" value="1280" />
-  <parameter name="filterType" value="decim" />
+  <parameter name="filterType" value="single" />
   <parameter name="hardMultiplierThreshold" value="-1" />
   <parameter name="inputBitWidth" value="15" />
   <parameter name="inputChannelNum" value="1" />
@@ -1489,11 +1675,11 @@
   <parameter name="coeffSetRealValue">0.0176663,0.013227,0.0,-0.0149911,-0.0227152,-0.0172976,0.0,0.0204448,0.0318046,0.0249882,0.0,-0.0321283,-0.0530093,-0.04498,0.0,0.0749693,0.159034,0.224907,0.249809,0.224907,0.159034,0.0749693,0.0,-0.04498,-0.0530093,-0.0321283,0.0,0.0249882,0.0318046,0.0204448,0.0,-0.0172976,-0.0227152,-0.0149911,0.0,0.013227,0.0176663</parameter>
   <parameter name="coeffSetRealValueImag">0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -0.0530093, -0.04498, 0.0, 0.0749693, 0.159034, 0.224907, 0.249809, 0.224907, 0.159034, 0.0749693, 0.0, -0.04498, -0.0530093, -0.0321283, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0</parameter>
   <parameter name="coeffType" value="int" />
-  <parameter name="decimFactor" value="4" />
+  <parameter name="decimFactor" value="1" />
   <parameter name="delayRAMBlockThreshold" value="20" />
   <parameter name="deviceFamily" value="Cyclone V" />
   <parameter name="dualMemDistRAMThreshold" value="1280" />
-  <parameter name="filterType" value="decim" />
+  <parameter name="filterType" value="single" />
   <parameter name="hardMultiplierThreshold" value="-1" />
   <parameter name="inputBitWidth" value="15" />
   <parameter name="inputChannelNum" value="1" />
@@ -1514,6 +1700,69 @@
   <parameter name="reconfigurable_list" value="0" />
   <parameter name="speedGrade" value="medium" />
   <parameter name="symmetryMode" value="nsym" />
+ </module>
+ <module name="dma_dconvi" kind="altera_avalon_dma" version="17.1" enabled="1">
+  <parameter name="allowByteTransactions" value="true" />
+  <parameter name="allowDoubleWordTransactions" value="true" />
+  <parameter name="allowHalfWordTransactions" value="true" />
+  <parameter name="allowQuadWordTransactions" value="true" />
+  <parameter name="allowWordTransactions" value="true" />
+  <parameter name="avalonSpec" value="2.0" />
+  <parameter name="bigEndian" value="false" />
+  <parameter name="burstEnable" value="false" />
+  <parameter name="fifoDepth" value="1024" />
+  <parameter name="maxBurstSize" value="4" />
+  <parameter name="minimumDmaTransactionRegisterWidth" value="32" />
+  <parameter name="readAddressMap"><![CDATA[<address-map><slave name='dconv_fifo_mem.out' start='0x448' end='0x450' /></address-map>]]></parameter>
+  <parameter name="readSlaveAddressWidthMax" value="11" />
+  <parameter name="readSlaveDataWidthMax" value="32" />
+  <parameter name="softresetEnable" value="true" />
+  <parameter name="useRegistersForFIFO" value="false" />
+  <parameter name="writeAddressMap"><![CDATA[<address-map><slave name='sdram.s1' start='0x0' end='0x4000000' /></address-map>]]></parameter>
+  <parameter name="writeSlaveAddressWidthMax" value="26" />
+  <parameter name="writeSlaveDataWidthMax" value="16" />
+ </module>
+ <module name="dma_dconvq" kind="altera_avalon_dma" version="17.1" enabled="1">
+  <parameter name="allowByteTransactions" value="true" />
+  <parameter name="allowDoubleWordTransactions" value="true" />
+  <parameter name="allowHalfWordTransactions" value="true" />
+  <parameter name="allowQuadWordTransactions" value="true" />
+  <parameter name="allowWordTransactions" value="true" />
+  <parameter name="avalonSpec" value="2.0" />
+  <parameter name="bigEndian" value="false" />
+  <parameter name="burstEnable" value="false" />
+  <parameter name="fifoDepth" value="1024" />
+  <parameter name="maxBurstSize" value="4" />
+  <parameter name="minimumDmaTransactionRegisterWidth" value="32" />
+  <parameter name="readAddressMap"><![CDATA[<address-map><slave name='dconv_fifo_mem_q.out' start='0x600' end='0x608' /></address-map>]]></parameter>
+  <parameter name="readSlaveAddressWidthMax" value="11" />
+  <parameter name="readSlaveDataWidthMax" value="32" />
+  <parameter name="softresetEnable" value="true" />
+  <parameter name="useRegistersForFIFO" value="false" />
+  <parameter name="writeAddressMap"><![CDATA[<address-map><slave name='sdram.s1' start='0x0' end='0x4000000' /></address-map>]]></parameter>
+  <parameter name="writeSlaveAddressWidthMax" value="26" />
+  <parameter name="writeSlaveDataWidthMax" value="16" />
+ </module>
+ <module name="dma_dummy" kind="altera_avalon_dma" version="17.1" enabled="1">
+  <parameter name="allowByteTransactions" value="true" />
+  <parameter name="allowDoubleWordTransactions" value="true" />
+  <parameter name="allowHalfWordTransactions" value="true" />
+  <parameter name="allowQuadWordTransactions" value="true" />
+  <parameter name="allowWordTransactions" value="true" />
+  <parameter name="avalonSpec" value="2.0" />
+  <parameter name="bigEndian" value="false" />
+  <parameter name="burstEnable" value="false" />
+  <parameter name="fifoDepth" value="32" />
+  <parameter name="maxBurstSize" value="128" />
+  <parameter name="minimumDmaTransactionRegisterWidth" value="32" />
+  <parameter name="readAddressMap"><![CDATA[<address-map><slave name='fifo_dummy64_out.out' start='0x5000000' end='0x5000008' /></address-map>]]></parameter>
+  <parameter name="readSlaveAddressWidthMax" value="27" />
+  <parameter name="readSlaveDataWidthMax" value="32" />
+  <parameter name="softresetEnable" value="true" />
+  <parameter name="useRegistersForFIFO" value="false" />
+  <parameter name="writeAddressMap"><![CDATA[<address-map><slave name='sdram.s1' start='0x0' end='0x4000000' /></address-map>]]></parameter>
+  <parameter name="writeSlaveAddressWidthMax" value="26" />
+  <parameter name="writeSlaveDataWidthMax" value="16" />
  </module>
  <module name="dma_fifo" kind="altera_avalon_dma" version="17.1" enabled="1">
   <parameter name="allowByteTransactions" value="true" />
@@ -1544,6 +1793,81 @@
   <parameter name="DERIVED_CLOCK_RATE" value="0" />
   <parameter name="EXPLICIT_CLOCK_RATE" value="0" />
   <parameter name="NUM_CLOCK_OUTPUTS" value="1" />
+ </module>
+ <module
+   name="fifo_dummy"
+   kind="altera_avalon_fifo"
+   version="17.1"
+   enabled="1">
+  <parameter name="avalonMMAvalonMMDataWidth" value="32" />
+  <parameter name="avalonMMAvalonSTDataWidth" value="32" />
+  <parameter name="bitsPerSymbol" value="32" />
+  <parameter name="channelWidth" value="0" />
+  <parameter name="deviceFamilyString" value="Cyclone V" />
+  <parameter name="errorWidth" value="0" />
+  <parameter name="fifoDepth" value="128" />
+  <parameter name="fifoInputInterfaceOptions" value="AVALONMM_WRITE" />
+  <parameter name="fifoOutputInterfaceOptions" value="AVALONMM_READ" />
+  <parameter name="showHiddenFeatures" value="false" />
+  <parameter name="singleClockMode" value="true" />
+  <parameter name="singleResetMode" value="false" />
+  <parameter name="symbolsPerBeat" value="1" />
+  <parameter name="useBackpressure" value="true" />
+  <parameter name="useIRQ" value="false" />
+  <parameter name="usePacket" value="false" />
+  <parameter name="useReadControl" value="false" />
+  <parameter name="useRegister" value="false" />
+  <parameter name="useWriteControl" value="true" />
+ </module>
+ <module
+   name="fifo_dummy64_in"
+   kind="altera_avalon_fifo"
+   version="17.1"
+   enabled="1">
+  <parameter name="avalonMMAvalonMMDataWidth" value="64" />
+  <parameter name="avalonMMAvalonSTDataWidth" value="32" />
+  <parameter name="bitsPerSymbol" value="32" />
+  <parameter name="channelWidth" value="0" />
+  <parameter name="deviceFamilyString" value="Cyclone V" />
+  <parameter name="errorWidth" value="0" />
+  <parameter name="fifoDepth" value="128" />
+  <parameter name="fifoInputInterfaceOptions" value="AVALONMM_WRITE" />
+  <parameter name="fifoOutputInterfaceOptions" value="AVALONST_SOURCE" />
+  <parameter name="showHiddenFeatures" value="false" />
+  <parameter name="singleClockMode" value="true" />
+  <parameter name="singleResetMode" value="false" />
+  <parameter name="symbolsPerBeat" value="1" />
+  <parameter name="useBackpressure" value="true" />
+  <parameter name="useIRQ" value="false" />
+  <parameter name="usePacket" value="false" />
+  <parameter name="useReadControl" value="false" />
+  <parameter name="useRegister" value="false" />
+  <parameter name="useWriteControl" value="true" />
+ </module>
+ <module
+   name="fifo_dummy64_out"
+   kind="altera_avalon_fifo"
+   version="17.1"
+   enabled="1">
+  <parameter name="avalonMMAvalonMMDataWidth" value="64" />
+  <parameter name="avalonMMAvalonSTDataWidth" value="32" />
+  <parameter name="bitsPerSymbol" value="32" />
+  <parameter name="channelWidth" value="0" />
+  <parameter name="deviceFamilyString" value="Cyclone V" />
+  <parameter name="errorWidth" value="0" />
+  <parameter name="fifoDepth" value="128" />
+  <parameter name="fifoInputInterfaceOptions" value="AVALONST_SINK" />
+  <parameter name="fifoOutputInterfaceOptions" value="AVALONMM_READ" />
+  <parameter name="showHiddenFeatures" value="false" />
+  <parameter name="singleClockMode" value="true" />
+  <parameter name="singleResetMode" value="false" />
+  <parameter name="symbolsPerBeat" value="1" />
+  <parameter name="useBackpressure" value="true" />
+  <parameter name="useIRQ" value="false" />
+  <parameter name="usePacket" value="false" />
+  <parameter name="useReadControl" value="false" />
+  <parameter name="useRegister" value="false" />
+  <parameter name="useWriteControl" value="true" />
  </module>
  <module name="fifo_rst" kind="altera_reset_bridge" version="17.1" enabled="1">
   <parameter name="ACTIVE_LOW_RESET" value="0" />
@@ -1868,7 +2192,7 @@
   <parameter name="F2SDRAM_Type" value="" />
   <parameter name="F2SDRAM_Width" value="" />
   <parameter name="F2SINTERRUPT_Enable" value="true" />
-  <parameter name="F2S_Width" value="2" />
+  <parameter name="F2S_Width" value="3" />
   <parameter name="FIX_READ_LATENCY" value="8" />
   <parameter name="FORCED_NON_LDC_ADDR_CMD_MEM_CK_INVERT" value="false" />
   <parameter name="FORCED_NUM_WRITE_FR_CYCLE_SHIFTS" value="0" />
@@ -2127,7 +2451,7 @@
   <parameter name="S2FINTERRUPT_UART_Enable" value="false" />
   <parameter name="S2FINTERRUPT_USB_Enable" value="false" />
   <parameter name="S2FINTERRUPT_WATCHDOG_Enable" value="false" />
-  <parameter name="S2F_Width" value="1" />
+  <parameter name="S2F_Width" value="3" />
   <parameter name="SDIO_Mode" value="4-bit Data" />
   <parameter name="SDIO_PinMuxing" value="HPS I/O Set 0" />
   <parameter name="SEQUENCER_TYPE" value="NIOS" />
@@ -2678,6 +3002,69 @@
    kind="avalon"
    version="17.1"
    start="hps_0.h2f_axi_master"
+   end="fifo_dummy64_in.in">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x05000010" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="17.1"
+   start="hps_0.h2f_axi_master"
+   end="fifo_dummy.in">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x05000008" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="17.1"
+   start="hps_0.h2f_axi_master"
+   end="fifo_dummy64_in.in_csr">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x05000060" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="17.1"
+   start="hps_0.h2f_axi_master"
+   end="fifo_dummy64_out.in_csr">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x05000040" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="17.1"
+   start="hps_0.h2f_axi_master"
+   end="fifo_dummy.in_csr">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x05000020" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="17.1"
+   start="hps_0.h2f_axi_master"
+   end="fifo_dummy64_out.out">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x05000000" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="17.1"
+   start="hps_0.h2f_axi_master"
+   end="fifo_dummy.out">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x04000010" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="17.1"
+   start="hps_0.h2f_axi_master"
    end="switches.s1">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x04000000" />
@@ -2744,6 +3131,33 @@
    end="dma_fifo.control_port_slave">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x0380" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="17.1"
+   start="hps_0.h2f_lw_axi_master"
+   end="dma_dconvi.control_port_slave">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x04c0" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="17.1"
+   start="hps_0.h2f_lw_axi_master"
+   end="dma_dconvq.control_port_slave">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x04a0" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="17.1"
+   start="hps_0.h2f_lw_axi_master"
+   end="dma_dummy.control_port_slave">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x0620" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -2833,7 +3247,7 @@
    start="hps_0.h2f_lw_axi_master"
    end="dconv_fifo_mem_q.in_csr">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x04a0" />
+  <parameter name="baseAddress" value="0x04e0" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -2887,7 +3301,7 @@
    start="hps_0.h2f_lw_axi_master"
    end="dconv_fifo_mem_q.out">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x04c0" />
+  <parameter name="baseAddress" value="0x0600" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -3121,7 +3535,7 @@
    start="master_non_sec.master"
    end="dconv_fifo_mem_q.in_csr">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x04a0" />
+  <parameter name="baseAddress" value="0x04e0" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -3175,7 +3589,7 @@
    start="master_non_sec.master"
    end="dconv_fifo_mem_q.out">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x04c0" />
+  <parameter name="baseAddress" value="0x0600" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -3280,6 +3694,33 @@
  <connection
    kind="avalon"
    version="17.1"
+   start="dma_dconvi.read_master"
+   end="dconv_fifo_mem.out">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x0448" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="17.1"
+   start="dma_dconvq.read_master"
+   end="dconv_fifo_mem_q.out">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x0600" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="17.1"
+   start="dma_dummy.read_master"
+   end="fifo_dummy64_out.out">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x05000000" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="17.1"
    start="dma_fifo.read_master"
    end="switches.s1">
   <parameter name="arbitrationPriority" value="1" />
@@ -3290,6 +3731,33 @@
    kind="avalon"
    version="17.1"
    start="dma_fifo.write_master"
+   end="sdram.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x0000" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="17.1"
+   start="dma_dconvi.write_master"
+   end="sdram.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x0000" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="17.1"
+   start="dma_dconvq.write_master"
+   end="sdram.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x0000" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="17.1"
+   start="dma_dummy.write_master"
    end="sdram.s1">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x0000" />
@@ -3316,6 +3784,11 @@
    start="dconv_fifo_dc_q.out"
    end="dconv_fifo_mem_q.in" />
  <connection
+   kind="avalon_streaming"
+   version="17.1"
+   start="fifo_dummy64_in.out"
+   end="fifo_dummy64_out.in" />
+ <connection
    kind="clock"
    version="17.1"
    start="clk_0.clk"
@@ -3340,6 +3813,9 @@
    version="17.1"
    start="clk_0.clk"
    end="spi_mtch_ntwrk.clk" />
+ <connection kind="clock" version="17.1" start="clk_0.clk" end="dma_dconvi.clk" />
+ <connection kind="clock" version="17.1" start="clk_0.clk" end="dma_dconvq.clk" />
+ <connection kind="clock" version="17.1" start="clk_0.clk" end="dma_dummy.clk" />
  <connection
    kind="clock"
    version="17.1"
@@ -3355,6 +3831,17 @@
    version="17.1"
    start="clk_0.clk"
    end="dconv_fifo_mem_q.clk_in" />
+ <connection
+   kind="clock"
+   version="17.1"
+   start="clk_0.clk"
+   end="fifo_dummy64_in.clk_in" />
+ <connection
+   kind="clock"
+   version="17.1"
+   start="clk_0.clk"
+   end="fifo_dummy64_out.clk_in" />
+ <connection kind="clock" version="17.1" start="clk_0.clk" end="fifo_dummy.clk_in" />
  <connection kind="clock" version="17.1" start="clk_0.clk" end="i2c_int.clock" />
  <connection kind="clock" version="17.1" start="clk_0.clk" end="i2c_ext.clock" />
  <connection
@@ -3607,6 +4094,20 @@
   <parameter name="irqNumber" value="3" />
  </connection>
  <connection
+   kind="interrupt"
+   version="17.1"
+   start="hps_0.f2h_irq1"
+   end="dma_dconvi.irq">
+  <parameter name="irqNumber" value="5" />
+ </connection>
+ <connection
+   kind="interrupt"
+   version="17.1"
+   start="hps_0.f2h_irq1"
+   end="dma_dconvq.irq">
+  <parameter name="irqNumber" value="6" />
+ </connection>
+ <connection
    kind="reset"
    version="17.1"
    start="clk_0.clk_reset"
@@ -3781,6 +4282,21 @@
    kind="reset"
    version="17.1"
    start="clk_0.clk_reset"
+   end="dma_dconvi.reset" />
+ <connection
+   kind="reset"
+   version="17.1"
+   start="clk_0.clk_reset"
+   end="dma_dconvq.reset" />
+ <connection
+   kind="reset"
+   version="17.1"
+   start="clk_0.clk_reset"
+   end="dma_dummy.reset" />
+ <connection
+   kind="reset"
+   version="17.1"
+   start="clk_0.clk_reset"
    end="adc_fifo_mem.reset_in" />
  <connection
    kind="reset"
@@ -3792,6 +4308,21 @@
    version="17.1"
    start="clk_0.clk_reset"
    end="dconv_fifo_mem_q.reset_in" />
+ <connection
+   kind="reset"
+   version="17.1"
+   start="clk_0.clk_reset"
+   end="fifo_dummy64_in.reset_in" />
+ <connection
+   kind="reset"
+   version="17.1"
+   start="clk_0.clk_reset"
+   end="fifo_dummy64_out.reset_in" />
+ <connection
+   kind="reset"
+   version="17.1"
+   start="clk_0.clk_reset"
+   end="fifo_dummy.reset_in" />
  <connection
    kind="reset"
    version="17.1"
