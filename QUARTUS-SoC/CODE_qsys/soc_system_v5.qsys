@@ -1719,10 +1719,10 @@
   <parameter name="symmetryMode" value="nsym" />
  </module>
  <module name="dma_dconvi" kind="altera_avalon_dma" version="17.1" enabled="1">
-  <parameter name="allowByteTransactions" value="true" />
-  <parameter name="allowDoubleWordTransactions" value="true" />
-  <parameter name="allowHalfWordTransactions" value="true" />
-  <parameter name="allowQuadWordTransactions" value="true" />
+  <parameter name="allowByteTransactions" value="false" />
+  <parameter name="allowDoubleWordTransactions" value="false" />
+  <parameter name="allowHalfWordTransactions" value="false" />
+  <parameter name="allowQuadWordTransactions" value="false" />
   <parameter name="allowWordTransactions" value="true" />
   <parameter name="avalonSpec" value="2.0" />
   <parameter name="bigEndian" value="false" />
@@ -1740,10 +1740,10 @@
   <parameter name="writeSlaveDataWidthMax" value="16" />
  </module>
  <module name="dma_dconvq" kind="altera_avalon_dma" version="17.1" enabled="1">
-  <parameter name="allowByteTransactions" value="true" />
-  <parameter name="allowDoubleWordTransactions" value="true" />
-  <parameter name="allowHalfWordTransactions" value="true" />
-  <parameter name="allowQuadWordTransactions" value="true" />
+  <parameter name="allowByteTransactions" value="false" />
+  <parameter name="allowDoubleWordTransactions" value="false" />
+  <parameter name="allowHalfWordTransactions" value="false" />
+  <parameter name="allowQuadWordTransactions" value="false" />
   <parameter name="allowWordTransactions" value="true" />
   <parameter name="avalonSpec" value="2.0" />
   <parameter name="bigEndian" value="false" />
@@ -1761,15 +1761,15 @@
   <parameter name="writeSlaveDataWidthMax" value="16" />
  </module>
  <module name="dma_dummy" kind="altera_avalon_dma" version="17.1" enabled="1">
-  <parameter name="allowByteTransactions" value="true" />
-  <parameter name="allowDoubleWordTransactions" value="true" />
-  <parameter name="allowHalfWordTransactions" value="true" />
-  <parameter name="allowQuadWordTransactions" value="true" />
+  <parameter name="allowByteTransactions" value="false" />
+  <parameter name="allowDoubleWordTransactions" value="false" />
+  <parameter name="allowHalfWordTransactions" value="false" />
+  <parameter name="allowQuadWordTransactions" value="false" />
   <parameter name="allowWordTransactions" value="true" />
   <parameter name="avalonSpec" value="2.0" />
   <parameter name="bigEndian" value="false" />
   <parameter name="burstEnable" value="false" />
-  <parameter name="fifoDepth" value="32" />
+  <parameter name="fifoDepth" value="1024" />
   <parameter name="maxBurstSize" value="128" />
   <parameter name="minimumDmaTransactionRegisterWidth" value="32" />
   <parameter name="readAddressMap"><![CDATA[<address-map><slave name='fifo_dummy64_out.out' start='0x5000000' end='0x5000008' /></address-map>]]></parameter>
@@ -1782,16 +1782,16 @@
   <parameter name="writeSlaveDataWidthMax" value="16" />
  </module>
  <module name="dma_fifo" kind="altera_avalon_dma" version="17.1" enabled="1">
-  <parameter name="allowByteTransactions" value="true" />
-  <parameter name="allowDoubleWordTransactions" value="true" />
-  <parameter name="allowHalfWordTransactions" value="true" />
-  <parameter name="allowQuadWordTransactions" value="true" />
+  <parameter name="allowByteTransactions" value="false" />
+  <parameter name="allowDoubleWordTransactions" value="false" />
+  <parameter name="allowHalfWordTransactions" value="false" />
+  <parameter name="allowQuadWordTransactions" value="false" />
   <parameter name="allowWordTransactions" value="true" />
   <parameter name="avalonSpec" value="2.0" />
   <parameter name="bigEndian" value="false" />
   <parameter name="burstEnable" value="false" />
-  <parameter name="fifoDepth" value="128" />
-  <parameter name="maxBurstSize" value="4" />
+  <parameter name="fifoDepth" value="1024" />
+  <parameter name="maxBurstSize" value="1024" />
   <parameter name="minimumDmaTransactionRegisterWidth" value="32" />
   <parameter name="readAddressMap"><![CDATA[<address-map><slave name='adc_fifo_mem.out' start='0x0' end='0x8' /><slave name='switches.s1' start='0x4000000' end='0x4000010' /></address-map>]]></parameter>
   <parameter name="readSlaveAddressWidthMax" value="27" />

@@ -45,6 +45,7 @@ module NMR_PULSE_PROGRAM
 	reg [PULSE_AND_DELAY_WIDTH-1:0]	DELAY_WITH_ACQ_CNT;
 	wire [PULSE_AND_DELAY_WIDTH-1:0]	JUMP_TO_S7;
 	reg [ECHO_PER_SCAN_WIDTH-1:0]	ECHO_PER_SCAN_CNT;
+	reg [PULSE_AND_DELAY_WIDTH-1:0]	TAIL_DELAY_CNT;
 	
 	// nmr tx clock generator
 	wire TX_CLK_X; // tx phase 0 output
@@ -57,18 +58,19 @@ module NMR_PULSE_PROGRAM
 	// register for NMR main timer
 	reg [NMR_MAIN_TIMER_WIDTH-1:0] NMR_MAIN_TIMER_CNT;
 
-	reg [9:0] State /* synthesis keep = 1 */;
-	localparam [9:0]
-		S0 = 10'b0000000001,
-		S1 = 10'b0000000010,
-		S2 = 10'b0000000100,
-		S3 = 10'b0000001000,
-		S4 = 10'b0000010000,
-		S5 = 10'b0000100000,
-		S6 = 10'b0001000000,
-		S7 = 10'b0010000000,
-		S8 = 10'b0100000000,
-		S9 = 10'b1000000000;
+	reg [10:0] State /* synthesis keep = 1 */;
+	localparam [10:0]
+		S0 	= 11'b00000000001,
+		S1 	= 11'b00000000010,
+		S2 	= 11'b00000000100,
+		S3 	= 11'b00000001000,
+		S4 	= 11'b00000010000,
+		S5 	= 11'b00000100000,
+		S6 	= 11'b00001000000,
+		S7 	= 11'b00010000000,
+		S8 	= 11'b00100000000,
+		S9 	= 11'b01000000000,
+		S10 	= 11'b10000000000;
 	
 	assign JUMP_TO_S4	= {1'b1,{ (PULSE_AND_DELAY_WIDTH-1) {1'b0} }} - T1_PULSE180; // only MSB is used to define whether skipping/not is required
 	assign JUMP_TO_S6	= {1'b1,{ (PULSE_AND_DELAY_WIDTH-1) {1'b0} }} - PULSE90; // only MSB is used to define whether skipping/not is required
@@ -122,6 +124,7 @@ module NMR_PULSE_PROGRAM
 					DELAY_NO_ACQ_CNT 	<= {1'b1,{ (PULSE_AND_DELAY_WIDTH-1) {1'b0} }} - DELAY_NO_ACQ + 1'b1;
 					PULSE180_CNT		<= {1'b1,{ (PULSE_AND_DELAY_WIDTH-1) {1'b0} }} - PULSE180 + 1'b1;
 					DELAY_WITH_ACQ_CNT	<= {1'b1,{ (PULSE_AND_DELAY_WIDTH-1) {1'b0} }} - DELAY_WITH_ACQ + 1'b1 + 1'b1; // another (+1'b1) compensate for S6 state 1 clock cycle 
+					TAIL_DELAY_CNT		<= {1'b1,{ (PULSE_AND_DELAY_WIDTH-1) {1'b0} }} - ((PULSE180+DELAY_WITH_ACQ)<<5) + 1'b1; // tail delay to extend the ADC_CLK window. The delay is (echo_period*32) or (echo_period << 5
 					
 					FSMSTAT <= 1'b1;
 					
@@ -236,14 +239,25 @@ module NMR_PULSE_PROGRAM
 						
 				end
 				
-				S9 : // end of sequence
+				S9 : // additional delay at the end of the sequence. Added to prolong the ADC_CLK that's enabled when FSM_STAT is 1
+				begin
+					
+					
+					ACQ_WND <= 1'b0;
+					TAIL_DELAY_CNT <= TAIL_DELAY_CNT + 1'b1;
+					
+					if (TAIL_DELAY_CNT[PULSE_AND_DELAY_WIDTH-1])
+						State <= S10;
+					
+				end
+				
+				S10: // end of sequence
 				begin
 					
 					FSMSTAT <= 1'b0;
-					ACQ_WND <= 1'b0;
 					
 					State <= S0;
-					
+				
 				end
 				
 				
