@@ -242,6 +242,7 @@ module DE1_SOC_Linux_FB(
 	wire	[ADC_INIT_DELAY_WIDTH-1:0]		init_delay;
 	wire	[ADC_INIT_DELAY_WIDTH-1:0]		rx_delay;
 	wire	[31:0]							adc_val_sub;
+	wire	[15:0]							dec_fact;
 
 	// adc data
 	wire	[ADC_DATA_WIDTH-1:0]			adc_data_in/* synthesis keep = 1 */;
@@ -253,8 +254,10 @@ module DE1_SOC_Linux_FB(
 	
 	wire	[31:0]							dconv_fir_out_data/* synthesis keep = 1 */; // the bus length is defined by FIR module in the QSYS. Make sure of this.
 	wire	[31:0]							dconv_fir_q_out_data; // the bus length is defined by FIR module in the QSYS. Make sure of this.
+	wire	[31:0]							dconv_fir_iq_comb_dec_data; // the combined decimated data from FIR filter
 	wire 									dconv_fir_out_valid;
 	wire 									dconv_fir_q_out_valid;
+	wire									dconv_fir_iq_comb_dec_valid;
 	wire	[ADC_PHYS_WIDTH:0]				data_i /* synthesis keep = 1 */;
 	wire	[ADC_PHYS_WIDTH:0]				data_q /* synthesis keep = 1 */;
 
@@ -426,7 +429,9 @@ module DE1_SOC_Linux_FB(
 		.pulse_t1_export			(pulse_t1),
 		.delay_t1_export			(delay_t1),
 		.adc_val_sub_export			(adc_val_sub),                         //                 adc_val_sub.export
-
+		.dec_fact_export            (dec_fact),
+		
+		
 		// Control Signals from/to HPS
 		.ctrl_in_export ({
 			pll_analyzer_locked,
@@ -547,8 +552,10 @@ module DE1_SOC_Linux_FB(
 		.dconv_fir_out_data		(dconv_fir_out_data),                        //               dconv_fir_out.data
 		.dconv_fir_out_valid	(dconv_fir_out_valid),                       //                            .valid
 		.dconv_fir_out_error	(),                        //                            .error
-		.dconv_fifo_in_data		(dconv_fir_out_data),                        //               dconv_fifo_in.data
-		.dconv_fifo_in_valid	(dconv_fir_out_valid && adc_data_valid),                 //                            .valid
+		
+		// dconv fifo in 
+		.dconv_fifo_in_data		(dconv_fir_iq_comb_dec_data),                        //               dconv_fifo_in.data
+		.dconv_fifo_in_valid	(dconv_fir_iq_comb_dec_valid),                 //                            .valid
 		.dconv_fifo_in_ready	(),                        //                            .ready
 		
 		// downconversion data-q
@@ -558,9 +565,9 @@ module DE1_SOC_Linux_FB(
 		.dconv_fir_q_out_data	(dconv_fir_q_out_data),                      //             dconv_fir_q_out.data
 		.dconv_fir_q_out_valid	(dconv_fir_q_out_valid),                     //                            .valid
 		.dconv_fir_q_out_error	(),                     //                            .error
-		.dconv_fifo_q_in_data	(dconv_fir_q_out_data),                      //             dconv_fifo_q_in.data
-		.dconv_fifo_q_in_valid	(dconv_fir_q_out_valid && adc_data_valid),                     //                            .valid
-		.dconv_fifo_q_in_ready	(),                      //                            .ready
+		//.dconv_fifo_q_in_data	(dconv_fir_q_out_data),                      //             dconv_fifo_q_in.data
+		//.dconv_fifo_q_in_valid	(dconv_fir_q_out_valid && adc_data_valid),                     //                            .valid
+		//.dconv_fifo_q_in_ready	(),                      //                            .ready
 		
 `ifdef PCBv5_JUN2019
 		// Dedicated SPI for AFE relays
@@ -589,6 +596,7 @@ module DE1_SOC_Linux_FB(
 	reg	[ADC_INIT_DELAY_WIDTH-1:0]		init_delay_reg;
 	reg	[ADC_INIT_DELAY_WIDTH-1:0]		rx_delay_reg;
 	reg	[31:0]							adc_val_sub_reg;
+	reg [15:0]							dec_fact_reg;
 	always @(posedge pulseprog_clk)
 	begin
 		pulse_90deg_reg      <= pulse_90deg;
@@ -602,6 +610,7 @@ module DE1_SOC_Linux_FB(
 		init_delay_reg       <= init_delay;
 		rx_delay_reg		 <= rx_delay;
 		adc_val_sub_reg		<= adc_val_sub;
+		dec_fact_reg		<= dec_fact;
 	end
 
 
@@ -627,8 +636,32 @@ module DE1_SOC_Linux_FB(
 		.CLK			(adc_clk),
 		.RESET			(nmr_controller_reset)
 	);
-
-
+	
+	// decimator module
+	GNRL_IQcomb_decimator // POSSIBLE ISSUE: the IQ output from the filter also have 2 data_valid signals, and is only being used here. So it assumes that the data is always present at the same time, which is typical.
+	#(
+		.DATA_WIDTH (32),
+		.DEC_WIDTH (16)
+	)
+	GNRL_IQcomb_decimator1
+	(
+		// signals
+		.dataI (dconv_fir_out_data),	// in-phase data
+		.dataQ (dconv_fir_q_out_data),	// quadrature data
+		.dataout (dconv_fir_iq_comb_dec_data),// output data
+		
+		// control
+		.in_valid (dconv_fir_out_valid && adc_data_valid), // the valid data should be limited by adc_data_valid cause the data is continuous
+		.out_valid (dconv_fir_iq_comb_dec_valid),
+		
+		// parameters
+		.dec_fact (dec_fact_reg), // the decimation factor selector
+		
+		// system
+		.CLK (adc_clk),
+		.RESET (nmr_controller_reset)
+		
+	);
 	
 
 	NMR_Controller

@@ -24,7 +24,7 @@ module GNRL_IQcomb_decimator
 	output reg out_valid,
 	
 	// parameters
-	input [DEC_WIDTH-1:0] dec_sel, // the decimation factor selector
+	input [DEC_WIDTH-1:0] dec_fact, // the decimation factor selector
 	
 	// system
 	input CLK,
@@ -63,7 +63,7 @@ module GNRL_IQcomb_decimator
 		State <= S0;
 		
 		// state machine 2
-		DEC_CNT <= {(DEC_WIDTH){1'b0}}; // POSSIBLE ISSUE: dec_sel unsynchronized, needs a synchronizer outside the module
+		DEC_CNT <= {(DEC_WIDTH){1'b0}}; // POSSIBLE ISSUE: dec_fact unsynchronized, needs a synchronizer outside the module
 		SState <= SS2; // starts with SS2 to enable the output at first
 		bit_sel <= 1'b0;
 		
@@ -132,7 +132,7 @@ module GNRL_IQcomb_decimator
 				SS0 :
 				begin
 					
-					DEC_CNT <= {1'b1,{(DEC_WIDTH-1){1'b0}}} - dec_sel + 1'b1 + 1'b1;
+					DEC_CNT <= {1'b1,{(DEC_WIDTH-1){1'b0}}} - dec_fact + 1'b1 + 1'b1;
 					bit_sel <= 1'b0;
 					
 					SState <= SS1;
@@ -163,7 +163,7 @@ module GNRL_IQcomb_decimator
 		
 		else 
 			begin
-				DEC_CNT <= {(DEC_WIDTH){1'b0}}; // POSSIBLE ISSUE: dec_sel unsynchronized, needs a synchronizer outside the module
+				DEC_CNT <= {(DEC_WIDTH){1'b0}}; // POSSIBLE ISSUE: dec_fact unsynchronized, needs a synchronizer outside the module
 				SState <= SS2; // starts with SS2 to enable the output at first
 				bit_sel <= 1'b0;
 			end

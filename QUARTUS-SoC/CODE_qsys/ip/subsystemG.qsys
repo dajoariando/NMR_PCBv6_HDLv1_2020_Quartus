@@ -17,6 +17,14 @@
          type = "int";
       }
    }
+   element dec_fact
+   {
+      datum _sortIndex
+      {
+         value = "11";
+         type = "int";
+      }
+   }
    element delay_nosig
    {
       datum _sortIndex
@@ -138,6 +146,18 @@
    internal="adc_val_sub.s1"
    type="avalon"
    dir="end" />
+ <interface name="dec_fact_clk" internal="dec_fact.clk" type="clock" dir="end" />
+ <interface
+   name="dec_fact_external_connection"
+   internal="dec_fact.external_connection"
+   type="conduit"
+   dir="end" />
+ <interface
+   name="dec_fact_reset"
+   internal="dec_fact.reset"
+   type="reset"
+   dir="end" />
+ <interface name="dec_fact_s1" internal="dec_fact.s1" type="avalon" dir="end" />
  <interface
    name="delay_nosig_clk"
    internal="delay_nosig.clk"
@@ -316,6 +336,20 @@
   <parameter name="generateIRQ" value="false" />
   <parameter name="irqType" value="LEVEL" />
   <parameter name="resetValue" value="9732" />
+  <parameter name="simDoTestBenchWiring" value="false" />
+  <parameter name="simDrivenValue" value="0" />
+  <parameter name="width" value="32" />
+ </module>
+ <module name="dec_fact" kind="altera_avalon_pio" version="17.1" enabled="1">
+  <parameter name="bitClearingEdgeCapReg" value="false" />
+  <parameter name="bitModifyingOutReg" value="false" />
+  <parameter name="captureEdge" value="false" />
+  <parameter name="clockRate" value="0" />
+  <parameter name="direction" value="Output" />
+  <parameter name="edgeType" value="RISING" />
+  <parameter name="generateIRQ" value="false" />
+  <parameter name="irqType" value="LEVEL" />
+  <parameter name="resetValue" value="0" />
   <parameter name="simDoTestBenchWiring" value="false" />
   <parameter name="simDrivenValue" value="0" />
   <parameter name="width" value="32" />

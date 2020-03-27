@@ -19,7 +19,7 @@ module GNRL_IQcomb_decimator_tb;
 	wire out_valid;
 	
 	// parameters
-	reg [DEC_WIDTH-1:0] dec_sel; // the decimation factor selector
+	reg [DEC_WIDTH-1:0] dec_fact; // the decimation factor selector
 	
 	// system
 	reg CLK;
@@ -42,7 +42,7 @@ module GNRL_IQcomb_decimator_tb;
 		.out_valid (out_valid),
 		
 		// parameters
-		.dec_sel (dec_sel), // the decimation factor selector
+		.dec_fact (dec_fact), // the decimation factor selector
 		
 		// system
 		.CLK (CLK),
@@ -53,7 +53,7 @@ module GNRL_IQcomb_decimator_tb;
 	initial begin
 		CLK = 1'b1;
 		RESET = 1'b0;
-		dec_sel = 3;
+		dec_fact = 3;
 		
 		#(clockticks*2) RESET = 1'b1;
 		#(clockticks*2) RESET = 1'b0;
