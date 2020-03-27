@@ -874,7 +874,7 @@ set_global_assignment -name EDA_SIMULATION_TOOL "ModelSim-Altera (VHDL)"
 set_global_assignment -name EDA_TIME_SCALE "1 ps" -section_id eda_simulation
 set_global_assignment -name EDA_OUTPUT_DATA_FORMAT VHDL -section_id eda_simulation
 set_global_assignment -name EDA_TEST_BENCH_ENABLE_STATUS TEST_BENCH_MODE -section_id eda_simulation
-set_global_assignment -name EDA_NATIVELINK_SIMULATION_TEST_BENCH tb -section_id eda_simulation
+set_global_assignment -name EDA_NATIVELINK_SIMULATION_TEST_BENCH GNRL_dconv_nofilter_tb -section_id eda_simulation
 set_global_assignment -name EDA_TEST_BENCH_NAME i2c_tca9555_tb -section_id eda_simulation
 set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id i2c_tca9555_tb
 set_global_assignment -name EDA_TEST_BENCH_RUN_SIM_FOR "10 us" -section_id i2c_tca9555_tb
@@ -962,13 +962,6 @@ set_global_assignment -name EDA_TEST_BENCH_NAME GNRL_dconv_nofilter_tb -section_
 set_global_assignment -name EDA_DESIGN_INSTANCE_NAME NA -section_id GNRL_dconv_nofilter_tb
 set_global_assignment -name EDA_TEST_BENCH_MODULE_NAME GNRL_dconv_nofilter_tb -section_id GNRL_dconv_nofilter_tb
 set_global_assignment -name EDA_TEST_BENCH_RUN_SIM_FOR "100 us" -section_id GNRL_dconv_nofilter_tb
-set_global_assignment -name EDA_TEST_BENCH_FILE CODE_modelsim/i2c_tca9555/i2c_tca9555_tb.v -section_id i2c_tca9555_tb
-set_global_assignment -name EDA_TEST_BENCH_FILE "D:/NMR_PCBv2_HDLv1_2018_FPGA/QUARTUS-SoC/CODE_qsys/soc_system/simulation/submodules/soc_system_dconv_fir_coef_reload.txt" -section_id tb -library work
-set_global_assignment -name EDA_TEST_BENCH_FILE "D:/NMR_PCBv2_HDLv1_2018_FPGA/QUARTUS-SoC/CODE_qsys/soc_system/simulation/submodules/soc_system_dconv_fir_coef_reload_rtl.txt" -section_id tb -library work
-set_global_assignment -name EDA_TEST_BENCH_FILE "D:/NMR_PCBv2_HDLv1_2018_FPGA/QUARTUS-SoC/CODE_qsys/soc_system/simulation/submodules/soc_system_dconv_fir_input.txt" -section_id tb -library work
-set_global_assignment -name EDA_TEST_BENCH_FILE "D:/NMR_PCBv2_HDLv1_2018_FPGA/QUARTUS-SoC/CODE_qsys/soc_system/simulation/submodules/soc_system_dconv_fir_tb.vhd" -section_id tb -library work
-set_global_assignment -name EDA_TEST_BENCH_FILE "../QUARTUS-NoSoC/HDL/GNRL_dconv_nofilter_tb.v" -section_id GNRL_dconv_nofilter_tb
-set_global_assignment -name EDA_TEST_BENCH_FILE "../QUARTUS-NoSoC/HDL/GNRL_dconv_nofilter.v" -section_id GNRL_dconv_nofilter_tb
 set_global_assignment -name QIP_FILE CODE_qsys/soc_system_v5/synthesis/soc_system_v5.qip
 set_global_assignment -name VERILOG_TEST_BENCH_FILE "../QUARTUS-NoSoC/HDL/GNRL_dconv_nofilter_tb.v"
 set_global_assignment -name VERILOG_FILE "../QUARTUS-NoSoC/HDL/GNRL_dconv_nofilter.v"
@@ -990,4 +983,12 @@ set_global_assignment -name SDC_FILE DE1_SOC_Linux_FB.sdc
 set_global_assignment -name VERILOG_FILE DE1_SOC_Linux_FB.v
 set_global_assignment -name SIGNALTAP_FILE CODE_signaltap/signaltap.stp
 set_global_assignment -name SIGNALTAP_FILE ltc1746_adc_test.stp
+set_global_assignment -name EDA_NATIVELINK_SIMULATION_SETUP_SCRIPT "../QUARTUS-NoSoC/HDL/GNRL_dconv_nofilter_tb.do" -section_id eda_simulation
+set_global_assignment -name EDA_TEST_BENCH_FILE CODE_modelsim/i2c_tca9555/i2c_tca9555_tb.v -section_id i2c_tca9555_tb
+set_global_assignment -name EDA_TEST_BENCH_FILE "D:/NMR_PCBv2_HDLv1_2018_FPGA/QUARTUS-SoC/CODE_qsys/soc_system/simulation/submodules/soc_system_dconv_fir_coef_reload.txt" -section_id tb -library work
+set_global_assignment -name EDA_TEST_BENCH_FILE "D:/NMR_PCBv2_HDLv1_2018_FPGA/QUARTUS-SoC/CODE_qsys/soc_system/simulation/submodules/soc_system_dconv_fir_coef_reload_rtl.txt" -section_id tb -library work
+set_global_assignment -name EDA_TEST_BENCH_FILE "D:/NMR_PCBv2_HDLv1_2018_FPGA/QUARTUS-SoC/CODE_qsys/soc_system/simulation/submodules/soc_system_dconv_fir_input.txt" -section_id tb -library work
+set_global_assignment -name EDA_TEST_BENCH_FILE "D:/NMR_PCBv2_HDLv1_2018_FPGA/QUARTUS-SoC/CODE_qsys/soc_system/simulation/submodules/soc_system_dconv_fir_tb.vhd" -section_id tb -library work
+set_global_assignment -name EDA_TEST_BENCH_FILE "../QUARTUS-NoSoC/HDL/GNRL_dconv_nofilter_tb.v" -section_id GNRL_dconv_nofilter_tb
+set_global_assignment -name EDA_TEST_BENCH_FILE "../QUARTUS-NoSoC/HDL/GNRL_dconv_nofilter.v" -section_id GNRL_dconv_nofilter_tb
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

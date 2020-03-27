@@ -1,3 +1,5 @@
+// search for POSSIBLE ISSUE if there's a problem, e.g. in timing
+
 `define ENABLE_HPS
 `define PCBv5_JUN2019 // use the soc_system_v5.qsys
 //`define PCBv4_APR2019 // use the soc_system_v4.qsys
@@ -575,30 +577,6 @@ module DE1_SOC_Linux_FB(
 		.spi_mtch_ntwrk_SS_n		(spi_mtch_ntwrk_SS_n) 	//               .SS_n
 	);
 
-		
-
-	GNRL_dconv_nofilter
-	# (
-		.ADC_PHYS_WIDTH (ADC_PHYS_WIDTH) 
-	) GNRL_dconv_nofilter1
-	(
-
-		// data interface
-		.adc_data_in	(adc_data_in[ADC_PHYS_WIDTH-1:0]), // unsigned integer data in, remove overflow sign
-		.data_i			(data_i), // in-phase signed integer data (wider by 1 bit)
-		.data_q			(data_q), // quadrature signed integer data (wider by 1 bit)
-
-		// parameters
-		.adc_dcval_subtractor	(adc_val_sub_reg[ADC_PHYS_WIDTH:0]), // signed integer subtractor to remove dc value
-
-		.conv_en			(fsmstat),
-
-		// system signal
-		.CLK			(adc_clk),
-		.RESET			(nmr_controller_reset)
-	);
-
-
 	// Clock Domain Crossing!!!
 	reg	[PULSE_AND_DELAY_WIDTH-1:0]		pulse_90deg_reg;
 	reg	[PULSE_AND_DELAY_WIDTH-1:0]		pulse_180deg_reg;
@@ -625,6 +603,33 @@ module DE1_SOC_Linux_FB(
 		rx_delay_reg		 <= rx_delay;
 		adc_val_sub_reg		<= adc_val_sub;
 	end
+
+
+
+
+	GNRL_dconv_nofilter // POSSIBLE ISSUE: the counter is synchronized with the conv_en. If fsmstat delay to first pulse is changing, this code might need to be changed.
+	# (
+		.ADC_PHYS_WIDTH (ADC_PHYS_WIDTH) 
+	) GNRL_dconv_nofilter1
+	(
+
+		// data interface
+		.adc_data_in	(adc_data_in[ADC_PHYS_WIDTH-1:0]), // unsigned integer data in, remove overflow sign
+		.data_i			(data_i), // in-phase signed integer data (wider by 1 bit)
+		.data_q			(data_q), // quadrature signed integer data (wider by 1 bit)
+
+		// parameters
+		.adc_dcval_subtractor	(adc_val_sub_reg[ADC_PHYS_WIDTH:0]), // signed integer subtractor to remove dc value
+
+		.conv_en			(fsmstat),
+
+		// system signal
+		.CLK			(adc_clk),
+		.RESET			(nmr_controller_reset)
+	);
+
+
+	
 
 	NMR_Controller
 	#(
