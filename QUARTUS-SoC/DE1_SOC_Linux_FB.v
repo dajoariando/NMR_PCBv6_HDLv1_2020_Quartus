@@ -252,12 +252,15 @@ module DE1_SOC_Linux_FB(
 	wire									nmr_rfout_p;
 	wire									nmr_rfout_n;
 	
+	// fir related signals
 	wire	[31:0]							dconv_fir_out_data/* synthesis keep = 1 */; // the bus length is defined by FIR module in the QSYS. Make sure of this.
 	wire	[31:0]							dconv_fir_q_out_data; // the bus length is defined by FIR module in the QSYS. Make sure of this.
 	wire	[31:0]							dconv_fir_iq_comb_dec_data; // the combined decimated data from FIR filter
 	wire 									dconv_fir_out_valid;
 	wire 									dconv_fir_q_out_valid;
 	wire									dconv_fir_iq_comb_dec_valid;
+	wire									dconv_fir_q_rst_reset_n;
+	wire									dconv_fir_rst_reset_n;
 	wire	[ADC_PHYS_WIDTH:0]				data_i /* synthesis keep = 1 */;
 	wire	[ADC_PHYS_WIDTH:0]				data_q /* synthesis keep = 1 */;
 
@@ -439,6 +442,8 @@ module DE1_SOC_Linux_FB(
 			pll_nmr_sys_locked		// PLL lock status for the NMR pulse programmer
 		}),
 		.ctrl_out_export({
+			dconv_fir_rst_reset_n,
+			dconv_fir_q_rst_reset_n,
 			nmr_controller_reset,
 			pll_analyzer_reset,		// analyzer_pll_reset
 			pll_nmr_sys_reset,		// nmr_system_pll reset for the FSM main controller clock
@@ -552,6 +557,7 @@ module DE1_SOC_Linux_FB(
 		.dconv_fir_out_data		(dconv_fir_out_data),                        //               dconv_fir_out.data
 		.dconv_fir_out_valid	(dconv_fir_out_valid),                       //                            .valid
 		.dconv_fir_out_error	(),                        //                            .error
+		.dconv_fir_rst_reset_n  (dconv_fir_rst_reset_n),
 		
 		// dconv fifo in 
 		.dconv_fifo_in_data		(dconv_fir_iq_comb_dec_data),                        //               dconv_fifo_in.data
@@ -565,9 +571,7 @@ module DE1_SOC_Linux_FB(
 		.dconv_fir_q_out_data	(dconv_fir_q_out_data),                      //             dconv_fir_q_out.data
 		.dconv_fir_q_out_valid	(dconv_fir_q_out_valid),                     //                            .valid
 		.dconv_fir_q_out_error	(),                     //                            .error
-		//.dconv_fifo_q_in_data	(dconv_fir_q_out_data),                      //             dconv_fifo_q_in.data
-		//.dconv_fifo_q_in_valid	(dconv_fir_q_out_valid && adc_data_valid),                     //                            .valid
-		//.dconv_fifo_q_in_ready	(),                      //                            .ready
+		.dconv_fir_q_rst_reset_n	(dconv_fir_q_rst_reset_n),
 		
 `ifdef PCBv5_JUN2019
 		// Dedicated SPI for AFE relays

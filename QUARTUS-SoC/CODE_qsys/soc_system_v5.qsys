@@ -992,6 +992,12 @@
    type="avalon_streaming"
    dir="start" />
  <interface
+   name="dconv_fir_q_rst"
+   internal="dconv_fir_q.rst"
+   type="reset"
+   dir="end" />
+ <interface name="dconv_fir_rst" internal="dconv_fir.rst" type="reset" dir="end" />
+ <interface
    name="dec_fact"
    internal="nmr_parameters.dec_fact_external_connection"
    type="conduit"
@@ -1566,7 +1572,7 @@
   <parameter name="outMSBRound" value="trunc" />
   <parameter name="outMsbBitRem" value="0" />
   <parameter name="outType" value="int" />
-  <parameter name="readWriteMode" value="read_write" />
+  <parameter name="readWriteMode" value="write" />
   <parameter name="reconfigurable" value="false" />
   <parameter name="reconfigurable_list" value="0" />
   <parameter name="speedGrade" value="medium" />
@@ -1614,7 +1620,7 @@
   <parameter name="outMSBRound" value="trunc" />
   <parameter name="outMsbBitRem" value="0" />
   <parameter name="outType" value="int" />
-  <parameter name="readWriteMode" value="read_write" />
+  <parameter name="readWriteMode" value="write" />
   <parameter name="reconfigurable" value="false" />
   <parameter name="reconfigurable_list" value="0" />
   <parameter name="speedGrade" value="medium" />
@@ -3022,18 +3028,18 @@
    kind="avalon"
    version="17.1"
    start="hps_0.h2f_lw_axi_master"
-   end="dconv_fir.avalon_mm_slave">
+   end="dconv_fir_q.avalon_mm_slave">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x0500" />
+  <parameter name="baseAddress" value="0x0580" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
    kind="avalon"
    version="17.1"
    start="hps_0.h2f_lw_axi_master"
-   end="dconv_fir_q.avalon_mm_slave">
+   end="dconv_fir.avalon_mm_slave">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x0580" />
+  <parameter name="baseAddress" value="0x0500" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -3328,18 +3334,18 @@
    kind="avalon"
    version="17.1"
    start="master_non_sec.master"
-   end="dconv_fir.avalon_mm_slave">
+   end="dconv_fir_q.avalon_mm_slave">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x0500" />
+  <parameter name="baseAddress" value="0x0580" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
    kind="avalon"
    version="17.1"
    start="master_non_sec.master"
-   end="dconv_fir_q.avalon_mm_slave">
+   end="dconv_fir.avalon_mm_slave">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x0580" />
+  <parameter name="baseAddress" value="0x0500" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -3741,12 +3747,12 @@
    kind="clock"
    version="17.1"
    start="clk_0.clk"
-   end="dconv_fir.coeff_clock" />
+   end="dconv_fir_q.coeff_clock" />
  <connection
    kind="clock"
    version="17.1"
    start="clk_0.clk"
-   end="dconv_fir_q.coeff_clock" />
+   end="dconv_fir.coeff_clock" />
  <connection
    kind="clock"
    version="17.1"
@@ -4019,12 +4025,12 @@
    kind="reset"
    version="17.1"
    start="clk_0.clk_reset"
-   end="dconv_fir.coeff_reset" />
+   end="dconv_fir_q.coeff_reset" />
  <connection
    kind="reset"
    version="17.1"
    start="clk_0.clk_reset"
-   end="dconv_fir_q.coeff_reset" />
+   end="dconv_fir.coeff_reset" />
  <connection
    kind="reset"
    version="17.1"
@@ -4246,16 +4252,6 @@
    version="17.1"
    start="fifo_rst.out_reset"
    end="dconv_fifo_mem.reset_in" />
- <connection
-   kind="reset"
-   version="17.1"
-   start="fifo_rst.out_reset"
-   end="dconv_fir.rst" />
- <connection
-   kind="reset"
-   version="17.1"
-   start="fifo_rst.out_reset"
-   end="dconv_fir_q.rst" />
  <interconnectRequirement for="$system" name="qsys_mm.clockCrossingAdapter" value="HANDSHAKE" />
  <interconnectRequirement for="$system" name="qsys_mm.maxAdditionalLatency" value="1" />
 </system>
