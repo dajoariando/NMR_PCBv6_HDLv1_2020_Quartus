@@ -1,39 +1,6 @@
-// search for POSSIBLE ISSUE if there's a problem, e.g. in timing
+// search for keyword: POSSIBLE ISSUE if there's a problem, e.g. in timing
 
 `define ENABLE_HPS
-`define PCBv5_JUN2019 // use the soc_system_v5.qsys
-//`define PCBv4_APR2019 // use the soc_system_v4.qsys
-//`define PCBv2_FEB2018 // use the soc_system_v4.qsys
-
-// define if version 4 and 2 is detected
-`ifdef PCBv4_APR2019
-	`define PCBv4_or_PCBv2
-`endif
-`ifdef PCBv2_FEB2018
-	`define PCBv4_or_PCBv2
-`endif
-
-/*
-### list of changes from v4.1 to v5.0 ###
-v4.1 PoV:
-- SCL_INT/SDA_INT (basic control) changes from pin D3/D2 to pin D12/D15
-- I2C_EN_INT (D5) is removed
-- DAC2 (D4,D6-D9) is removed
-- DAC_SCLK, DAC_SYNC, DAC_LDAC, DAC_SDIN, DAC_CLR (D10-D13,D15) is repurposed from PreAmp bias to gradient driver DAC_SCLK, DAC_SYNC, DAC_SDIN, DAC_SDO (D17,D14,D16,D19)
-- SDA_EXT/SCL_EXT (D14,D17) are removed
-- I2C_EN_EXT (D16) is removed
-- ADC2 is all the same but ADC2_OE (D21) is removed and ADC2_ENC is moved from D19 to D18
-
-v5.0 PoV:
-- RLY SPI for matching network can be migrated from the old code, which hardware was implemented through jumper wires. RLY_CLK(D13),RLY_CS(D11), and RLY_DIN(D10)
-- DUP_EN/QSW_EN are migrated from D14/D17 to D8/D9.
-
-
-TO BE RESOLVED::::
-- PAMP_SDA/PAMP_SCL/PAMP_LDAC is new I2C device (D2,D3,D5)
-- PRLY SPI (D4,D6,D7) is new SPI device. PRLY_CLK(D4),PRLY_CS(D6), and PRLY_DIN(D7)
-
-*/
 
 module DE1_SOC_Linux_FB(
 	// ADC
@@ -301,10 +268,11 @@ module DE1_SOC_Linux_FB(
 	wire i2c_int_scl_in;
 	wire i2c_int_sda_oe;
 	wire i2c_int_scl_oe;
-	wire i2c_ext_sda_in;
-	wire i2c_ext_scl_in;
-	wire i2c_ext_sda_oe;
-	wire i2c_ext_scl_oe;
+	
+	// wire i2c_ext_sda_in;
+	// wire i2c_ext_scl_in;
+	// wire i2c_ext_sda_oe;
+	// wire i2c_ext_scl_oe;
 
  
 //=======================================================
@@ -319,7 +287,7 @@ module DE1_SOC_Linux_FB(
 	assign   VGA_VS               =     vid_v_sync;
 	assign   VGA_HS               =     vid_h_sync;
 
-	soc_system_v5 u0 (
+	soc_system u0 (
 
 		.clk_clk			(CLOCK_50),	// clk.clk
 		.reset_reset_n		(1'b1),		// reset.reset_n
@@ -452,8 +420,8 @@ module DE1_SOC_Linux_FB(
 			adc_fifo_reset,			// reset adc fifo control signal
 			fsm_start,				// fsm start control signal
 			phase_cycle,			// phase cycling control. 1 for 90 degrees and 0 for 270 degrees
-			dac_preamp_LDAC_n,		// dac_ldac -> active low
-			dac_preamp_CLR_n		// dac clear -> active low
+			dac_preamp_LDAC_n,	// NOT USED IN v6. dac_ldac -> active low
+			dac_preamp_CLR_n		// NOT USED IN v6. dac clear -> active low 
 		}),
 		.aux_cnt_out_export ({
 			GPIO_0[7],
@@ -473,34 +441,23 @@ module DE1_SOC_Linux_FB(
 		.i2c_int_scl_oe                            (i2c_int_scl_oe),                            //                            .scl_oe
 
 		// I2C offboard
-		.i2c_ext_sda_in                            (i2c_ext_sda_in),                            //                     i2c_ext.sda_in
-		.i2c_ext_scl_in                            (i2c_ext_scl_in),                            //                            .scl_in
-		.i2c_ext_sda_oe                            (i2c_ext_sda_oe),                            //                            .sda_oe
-		.i2c_ext_scl_oe                            (i2c_ext_scl_oe),                            //                            .scl_oe
+		// .i2c_ext_sda_in                            (i2c_ext_sda_in),                            //                     i2c_ext.sda_in
+		// .i2c_ext_scl_in                            (i2c_ext_scl_in),                            //                            .scl_in
+		// .i2c_ext_sda_oe                            (i2c_ext_sda_oe),                            //                            .sda_oe
+		// .i2c_ext_scl_oe                            (i2c_ext_scl_oe),                            //                            .scl_oe
 		
-		
-		
-		
-		
-		
-`ifdef PCBv4_or_PCBv2
 		// Dedicated SPI for DAC preamp
 		.dac_preamp_MISO                           (dac_preamp_MISO),                           //                  dac_preamp.MISO
 		.dac_preamp_MOSI                           (dac_preamp_MOSI),                           //                            .MOSI
 		.dac_preamp_SCLK                           (dac_preamp_SCLK),                           //                            .SCLK
 		.dac_preamp_SS_n                           (dac_preamp_SS_n),
-`endif
-`ifdef PCBv5_JUN2019
+
 		// Dedicated SPI for DAC gradient driver
 		.dac_grad_MISO                           (dac_grad_MISO),                           //                  dac_preamp.MISO
 		.dac_grad_MOSI                           (dac_grad_MOSI),                           //                            .MOSI
 		.dac_grad_SCLK                           (dac_grad_SCLK),                           //                            .SCLK
 		.dac_grad_SS_n                           (dac_grad_SS_n),
-`endif
 		
-		
-		
-
 		// FIFO
 		.adc_fifo_in_data			(adc_data_out),
 		.adc_fifo_in_valid			(adc_data_valid),
@@ -573,13 +530,11 @@ module DE1_SOC_Linux_FB(
 		.dconv_fir_q_out_error	(),                     //                            .error
 		.dconv_fir_q_rst_reset_n	(dconv_fir_q_rst_reset_n),
 		
-`ifdef PCBv5_JUN2019
 		// Dedicated SPI for AFE relays
 		.spi_afe_relays_MISO		(spi_afe_relays_MISO),                       //              spi_afe_relays.MISO
         .spi_afe_relays_MOSI		(spi_afe_relays_MOSI),                       //                            .MOSI
         .spi_afe_relays_SCLK		(spi_afe_relays_SCLK),                       //                            .SCLK
         .spi_afe_relays_SS_n		(spi_afe_relays_SS_n),                        //                            .SS_n
-`endif /* PCBv5_JUN2019 */
 		
 		// Dedicated SPI for the matching network
 		.spi_mtch_ntwrk_MISO		(spi_mtch_ntwrk_MISO),	// spi_mtch_ntwrk.MISO
@@ -723,42 +678,28 @@ module DE1_SOC_Linux_FB(
 	);
 
 
-	// PIN ASSIGNMENT
-`ifdef PCBv4_or_PCBv2
-	assign GPIO_1[5]	= 1'b1;
-	assign GPIO_1[16]	= 1'b1;
-
-	// assign dac_preamp_MISO = ; // DAC_MISO is not connected PCB v4.1 and below
-	assign GPIO_1[10] = dac_preamp_SCLK; // use GPIO_1[10] in PCB v4.1 and below
-	assign GPIO_1[11] = dac_preamp_SS_n; // use GPIO_1[11] in PCB v4.1 and below
-	assign GPIO_1[12] = dac_preamp_LDAC_n;
-	assign GPIO_1[13] = dac_preamp_MOSI; // use GPIO_1[13] in PCB v4.1 and below
-	assign GPIO_1[15] = dac_preamp_CLR_n;
-
-
-	// assign adc_clkout = GPIO_1[21];	// uncomment this if the shifted clock from the ADC is used instead of clk_25M below
-	assign GPIO_1[19] = adc_clk;	// ADC high speed clock ENC
-	assign GPIO_1[18] = 1'b0; 		// ADC2_OE is always on
 	
-	altiobuf i2c_int_io (
-		.datain		( 2'b00 ),
-		.oe			( {i2c_int_sda_oe , i2c_int_scl_oe} ),
-		.dataio		( {GPIO_1[2],GPIO_1[3]} ),
-		.dataout	( {i2c_int_sda_in , i2c_int_scl_in} )
-	);
-`endif
-`ifdef PCBv5_JUN2019
+	
+	// PIN ASSIGNMENT
+	
+	// DAC preamp
+	assign GPIO_1[2] = dac_preamp_MOSI;
+	assign GPIO_1[5] = dac_preamp_SCLK;
+	assign GPIO_1[3] = dac_preamp_SS_n;
+	// assign dac_preamp_MISO = GPIO_1[]; // not being used in v6
+	
+
 	assign dac_grad_MISO = GPIO_1[19];
-	assign GPIO_1[17] = dac_grad_SCLK; 		// use GPIO_1[17] in PCB v4.1 and below
-	assign GPIO_1[14] = dac_grad_SS_n; 		// use GPIO_1[14] in PCB v4.1 and below
-	// assign GPIO_1[12] = dac_grad_LDAC_n; 	// DAC_LDAC is hardwired in PCB v5.0
-	assign GPIO_1[16] = dac_grad_MOSI; 		// use GPIO_1[16] in PCB v4.1 and below
-	// assign GPIO_1[15] = dac_grad_CLR_n; 	// DAC_CLR is hardwired in PCB v5.0
+	assign GPIO_1[17] = dac_grad_SCLK;
+	assign GPIO_1[14] = dac_grad_SS_n;
+	// assign GPIO_1[12] = dac_grad_LDAC_n; 	// DAC_LDAC is hardwired in PCB v6.0
+	assign GPIO_1[16] = dac_grad_MOSI;
+	// assign GPIO_1[15] = dac_grad_CLR_n; 	// DAC_CLR is hardwired in PCB v6.0
 
 
 	// assign adc_clkout = GPIO_1[21];	// uncomment this if the shifted clock from the ADC is used instead of clk_25M below
 	assign GPIO_1[18] = adc_clk;		// ADC high speed clock ENC
-	// assign GPIO_1[18] = 1'b0; 		// ADC2_OE is hardwired in PCB v5.0
+	// assign GPIO_1[18] = 1'b0; 		// ADC2_OE is hardwired in PCB v6.0
 	
 	altiobuf i2c_int_io (
 		.datain		( 2'b00 ),
@@ -766,25 +707,7 @@ module DE1_SOC_Linux_FB(
 		.dataio		( {GPIO_1[15],GPIO_1[12]} ),
 		.dataout	( {i2c_int_sda_in , i2c_int_scl_in} )
 	);
-`endif
 
-`ifdef PCBv2_FEB2018
-	altiobuf i2c_ext_io (
-		.datain		( 2'b00 ),
-		.oe			( {i2c_ext_sda_oe , i2c_ext_scl_oe} ),
-		.dataio		( {GPIO_1[14],GPIO_1[17]} ),
-		.dataout	( {i2c_ext_sda_in , i2c_ext_scl_in} )
-	);
-`endif /* PCBv2_FEB2018 */
-`ifdef PCBv4_APR2019
-	assign GPIO_0[11] = spi_mtch_ntwrk_SCLK;
-	assign GPIO_0[13] = spi_mtch_ntwrk_MOSI;
-	assign GPIO_0[15] = spi_mtch_ntwrk_SS_n;
-	
-	assign GPIO_1[14] = dup_en;
-	assign GPIO_1[17] = qsw_en;
-`endif /* PCBv4_APR2019 */
-`ifdef PCBv5_JUN2019
 	assign GPIO_1[13] = spi_mtch_ntwrk_SCLK;
 	assign GPIO_1[10] = spi_mtch_ntwrk_MOSI;
 	assign GPIO_1[11] = spi_mtch_ntwrk_SS_n;
@@ -795,15 +718,7 @@ module DE1_SOC_Linux_FB(
 	
 	assign GPIO_1[8] = dup_en;
 	assign GPIO_1[9] = qsw_en;
-	
-	altiobuf i2c_ext_io (
-		.datain		( 2'b00 ),
-		.oe			( {i2c_ext_sda_oe , i2c_ext_scl_oe} ),
-		.dataio		( {GPIO_1[2],GPIO_1[3]} ),
-		.dataout	( {i2c_ext_sda_in , i2c_ext_scl_in} )
-	);
-	assign GPIO_1[5] = dac_preamp_LDAC_n;
-`endif /* PCBv5_JUN2019 */
+
 
 
 

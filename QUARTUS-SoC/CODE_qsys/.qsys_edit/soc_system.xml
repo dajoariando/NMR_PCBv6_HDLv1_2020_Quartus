@@ -884,7 +884,7 @@
 									<root>true</root>
 									<content delegate="SplitDockStationFactory">
 										<fullscreen-action>false</fullscreen-action>
-										<node nodeId="1372710005721" orientation="HORIZONTAL" divider="0.10837696335078534">
+										<node nodeId="1372710005721" orientation="HORIZONTAL" divider="0.16261879619852165">
 											<node nodeId="1375985011088" orientation="VERTICAL" divider="0.504054054054054">
 												<leaf id="4" nodeId="1375985003630">
 													<placeholders>
@@ -912,7 +912,7 @@
 														</entry>
 													</placeholder-map>
 												</leaf>
-												<leaf id="1" nodeId="1375985011087">
+												<leaf id="2" nodeId="1375985011087">
 													<placeholders>
 														<placeholder>dock.single.Hierarchy</placeholder>
 													</placeholders>
@@ -1008,7 +1008,7 @@
 																		</entry>
 																	</placeholder-map>
 																</leaf>
-																<node nodeId="1560211469125" orientation="HORIZONTAL" divider="0.7060552616108171">
+																<node nodeId="1560211469125" orientation="HORIZONTAL" divider="0.7291527685123416">
 																	<node nodeId="1560211816618" orientation="VERTICAL" divider="0.25">
 																		<leaf id="-1" nodeId="1525149824606">
 																			<placeholders>
@@ -1036,13 +1036,13 @@
 																				</entry>
 																			</placeholder-map>
 																		</leaf>
-																		<leaf id="3" nodeId="1560211816616">
+																		<leaf id="0" nodeId="1560211816616">
 																			<placeholders>
 																				<placeholder>dock.single.System\ Contents</placeholder>
 																			</placeholders>
 																		</leaf>
 																	</node>
-																	<leaf id="2" nodeId="1560211469123">
+																	<leaf id="1" nodeId="1560211469123">
 																		<placeholders>
 																			<placeholder>dock.single.Parameters</placeholder>
 																		</placeholders>
@@ -1062,7 +1062,7 @@
 														</placeholders>
 													</leaf>
 												</node>
-												<leaf id="0" nodeId="1372710005745">
+												<leaf id="3" nodeId="1372710005745">
 													<placeholders>
 														<placeholder>dock.single.Messages</placeholder>
 														<placeholder>dock.single.Generation\ Messages</placeholder>
@@ -1094,10 +1094,20 @@
 							</adjacent>
 							<children ignore="false">
 								<child>
-									<layout factory="predefined" placeholder="dock.single.Messages">
-										<replacement id="dockablesingle Messages"/>
+									<layout factory="predefined" placeholder="dock.single.System\ Contents">
+										<replacement id="dockablesingle System Contents"/>
 										<delegate id="delegate_ccontrol backup factory id">
-											<id>Messages</id>
+											<id>System Contents</id>
+											<area/>
+										</delegate>
+									</layout>
+									<children ignore="false"/>
+								</child>
+								<child>
+									<layout factory="predefined" placeholder="dock.single.Parameters">
+										<replacement id="dockablesingle Parameters"/>
+										<delegate id="delegate_ccontrol backup factory id">
+											<id>Parameters</id>
 											<area/>
 										</delegate>
 									</layout>
@@ -1163,20 +1173,10 @@
 									</children>
 								</child>
 								<child>
-									<layout factory="predefined" placeholder="dock.single.Parameters">
-										<replacement id="dockablesingle Parameters"/>
+									<layout factory="predefined" placeholder="dock.single.Messages">
+										<replacement id="dockablesingle Messages"/>
 										<delegate id="delegate_ccontrol backup factory id">
-											<id>Parameters</id>
-											<area/>
-										</delegate>
-									</layout>
-									<children ignore="false"/>
-								</child>
-								<child>
-									<layout factory="predefined" placeholder="dock.single.System\ Contents">
-										<replacement id="dockablesingle System Contents"/>
-										<delegate id="delegate_ccontrol backup factory id">
-											<id>System Contents</id>
+											<id>Messages</id>
 											<area/>
 										</delegate>
 									</layout>
@@ -1222,7 +1222,7 @@
 								<property factory="SplitDockPlaceholderProperty">
 									<placeholder>dock.single.Details</placeholder>
 									<backup-path>
-										<node location="RIGHT" size="0.7958579881656804" id="1372710005721"/>
+										<node location="RIGHT" size="0.7925026399155227" id="1372710005721"/>
 										<node location="TOP" size="0.7355460385438972" id="1372710005725"/>
 										<node location="LEFT" size="0.8169949466060207" id="1372710005727"/>
 										<node location="TOP" size="0.75" id="1372710005733"/>
@@ -1662,18 +1662,15 @@
 										<property factory="SplitDockPlaceholderProperty">
 											<placeholder>dock.single.Parameters</placeholder>
 											<backup-path>
-												<node location="RIGHT" size="0.7958579881656804" id="1372710005721"/>
+												<node location="RIGHT" size="0.8916230366492146" id="1372710005721"/>
 												<node location="TOP" size="0.7355460385438972" id="1372710005725"/>
 												<node location="LEFT" size="0.8169949466060207" id="1372710005727"/>
 												<node location="TOP" size="0.75" id="1372710005733"/>
 												<node location="BOTTOM" size="0.2050691244239632" id="1525149801902"/>
 												<node location="BOTTOM" size="0.6117824773413898" id="1531196630601"/>
-												<leaf id="1525149824606"/>
+												<node location="RIGHT" size="0.4599406528189911" id="1560211469125"/>
+												<leaf id="1560211469123"/>
 											</backup-path>
-										</property>
-										<property factory="StackDockPropertyFactory">
-											<index>0</index>
-											<placeholder>dock.single.Parameters</placeholder>
 										</property>
 									</location>
 								</property>
@@ -2067,13 +2064,13 @@
 										<property factory="SplitDockPlaceholderProperty">
 											<placeholder>dock.single.System\ Contents</placeholder>
 											<backup-path>
-												<node location="RIGHT" size="0.8916230366492146" id="1372710005721"/>
+												<node location="RIGHT" size="0.7925026399155227" id="1372710005721"/>
 												<node location="TOP" size="0.7355460385438972" id="1372710005725"/>
 												<node location="LEFT" size="0.8169949466060207" id="1372710005727"/>
 												<node location="TOP" size="0.75" id="1372710005733"/>
 												<node location="BOTTOM" size="0.2050691244239632" id="1525149801902"/>
 												<node location="BOTTOM" size="0.6117824773413898" id="1531196630601"/>
-												<node location="LEFT" size="0.7060552616108171" id="1560211469125"/>
+												<node location="LEFT" size="0.7291527685123416" id="1560211469125"/>
 												<node location="BOTTOM" size="0.75" id="1560211816618"/>
 												<leaf id="1560211816616"/>
 											</backup-path>
