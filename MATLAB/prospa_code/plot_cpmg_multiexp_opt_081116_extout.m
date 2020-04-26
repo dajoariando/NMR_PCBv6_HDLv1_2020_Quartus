@@ -170,21 +170,38 @@ snr_e=sum(A)/(sqrt(nrScans)*noise); % SNR per echo per scan
 
 % Fit with synthetic data to estimate SNR for parameter estimates
 fitvals=zeros(numiter,2*nexp); snr_params=zeros(1,2*nexp);
+figure(2);
 for i=1:numiter
     % Synthetic data assuming residuals are normally distributed
     echo_int_syn=sig_decay_fit+mres+sres*randn(1,length(tvect));
     
+    % plot the synthetic data
+    subplot(2,1,1); hold on;
+    plot(tvect,echo_int_syn);
+    
     optfun=@(vars)expfun(vars,tvect,echo_int_syn);
     vars=fmincon(optfun,[Aest,T2est],[],[],[],[],[zeros(1,nexp),1e-1*ones(1,nexp)],...
         [1e3*ones(1,nexp),1e4*ones(1,nexp)],[],options);
-    fitvals(i,1:nexp)=sort(vars(1:nexp)); 
-    fitvals(i,nexp+1:2*nexp)=sort(vars(nexp+1:2*nexp));
+    fitvals(i,1:nexp)=sort(vars(1:nexp)); % estimate A. Doing numiter times of computing A defines the confidence of the value.
+    fitvals(i,nexp+1:2*nexp)=sort(vars(nexp+1:2*nexp)); % estimate T2
+    
+    subplot(2,1,2); hold on;
+    sig_decay_fit_synth=fitvals(i,1:nexp)*exp(-tvect/fitvals(i,nexp+1:2*nexp));
+    plot(tvect,sig_decay_fit_synth);
 end
+subplot(2,1,1);
+ylabel('Echo amplitude (a.u.)');
+title('Synthesized decay to estimate param SNR');
+subplot(2,1,2);
+xlabel('Time (ms)');
+ylabel('Echo amplitude (a.u.)');
+
 for i=1:2*nexp
     snr_params(i)=mean(fitvals(:,i))/(sqrt(nrScans)*std(fitvals(:,i)));
 end
 snr=[snr_e, snr_params];
 
+figure(1);
 if plt
     subplot(2,4,[5,6]);
     plot(tvect,real(echo_int)/norms(2),'b-'); hold on;
@@ -196,17 +213,17 @@ if plt
         'Residuals'},'Location','northeast');
     xlabel('Time (ms)');
     ylabel('Echo amplitude (a.u.)');
-    title(['SNR_{e} = ' num2str(snr_e,3) ', SNR_{A} = [' num2str(snr_params(1:nexp),3) '] (per scan)']);
+    title(['SNR_{e} = ' num2str(snr_e,3) ', SNR_{A-synth} = [' num2str(snr_params(1:nexp),3) '] (per scan)']);
     set(gca,'FontSize',16);
     xlim([0 max(tvect)])
     
     subplot(2,4,7);
-    histogram(res,numbin); % Residuals
+    histfit(res,numbin); % Residuals
     title(['Residuals, (' num2str(mres,3) ',' num2str(sres,3) ')']);
     set(gca,'FontSize',12);
     
     subplot(2,4,8);
-    histogram(imag(echo_int),numbin); % Imaginary channel
+    histfit(imag(echo_int),numbin); % Imaginary channel
     title(['Imag channel, (' num2str(mimag,3) ',' num2str(simag,3) ')']);
     set(gca,'FontSize',12);
 end

@@ -49,6 +49,12 @@ set_output_delay -min -clock clk_vga -1.485 [get_ports VGA_BLANK]
 
 set_clock_groups -asynchronous -group {clock_50_0 } -group { u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk } 
 
+set_multicycle_path -from [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -to [get_clocks {NMR_Controller:NMR_Controller1|NMR_PULSE_PROGRAM:NMR_PULSE_PROGRAM1|NMR_MAIN_TIMER_CNT[1]}] -setup -end 2
+set_multicycle_path -from [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -to [get_clocks {NMR_Controller:NMR_Controller1|NMR_PULSE_PROGRAM:NMR_PULSE_PROGRAM1|NMR_MAIN_TIMER_CNT[1]}] -hold -end 1
+set_multicycle_path -from [get_clocks {NMR_Controller:NMR_Controller1|NMR_PULSE_PROGRAM:NMR_PULSE_PROGRAM1|NMR_MAIN_TIMER_CNT[1]}] -to [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -setup -end 2
+set_multicycle_path -from [get_clocks {NMR_Controller:NMR_Controller1|NMR_PULSE_PROGRAM:NMR_PULSE_PROGRAM1|NMR_MAIN_TIMER_CNT[1]}] -to [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] -hold -end 1
+
+
 # tsu/th constraints
 
 # tco constraints
