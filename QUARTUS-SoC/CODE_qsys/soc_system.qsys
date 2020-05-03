@@ -55,7 +55,7 @@
    {
       datum _sortIndex
       {
-         value = "29";
+         value = "32";
          type = "int";
       }
    }
@@ -63,7 +63,7 @@
    {
       datum _sortIndex
       {
-         value = "28";
+         value = "31";
          type = "int";
       }
    }
@@ -226,7 +226,7 @@
    {
       datum _sortIndex
       {
-         value = "25";
+         value = "26";
          type = "int";
       }
    }
@@ -234,7 +234,7 @@
    {
       datum _sortIndex
       {
-         value = "24";
+         value = "25";
          type = "int";
       }
    }
@@ -268,7 +268,7 @@
    {
       datum _sortIndex
       {
-         value = "26";
+         value = "27";
          type = "int";
       }
    }
@@ -289,7 +289,7 @@
    {
       datum _sortIndex
       {
-         value = "27";
+         value = "28";
          type = "int";
       }
    }
@@ -310,7 +310,7 @@
    {
       datum _sortIndex
       {
-         value = "34";
+         value = "29";
          type = "int";
       }
    }
@@ -352,7 +352,7 @@
    {
       datum _sortIndex
       {
-         value = "31";
+         value = "24";
          type = "int";
       }
    }
@@ -512,7 +512,7 @@
    {
       datum _sortIndex
       {
-         value = "30";
+         value = "33";
          type = "int";
       }
    }
@@ -813,7 +813,7 @@
    {
       datum _sortIndex
       {
-         value = "32";
+         value = "30";
          type = "int";
       }
    }
@@ -876,7 +876,7 @@
    {
       datum _sortIndex
       {
-         value = "33";
+         value = "34";
          type = "int";
       }
    }
@@ -1159,7 +1159,7 @@
   <parameter name="ENABLE_EXPLICIT_MAXCHANNEL" value="false" />
   <parameter name="ERROR_WIDTH" value="0" />
   <parameter name="EXPLICIT_MAXCHANNEL" value="0" />
-  <parameter name="FIFO_DEPTH" value="32768" />
+  <parameter name="FIFO_DEPTH" value="131072" />
   <parameter name="RD_SYNC_DEPTH" value="3" />
   <parameter name="SYMBOLS_PER_BEAT" value="1" />
   <parameter name="USE_IN_FILL_LEVEL" value="0" />
@@ -1549,7 +1549,7 @@
   <parameter name="ENABLE_EXPLICIT_MAXCHANNEL" value="false" />
   <parameter name="ERROR_WIDTH" value="0" />
   <parameter name="EXPLICIT_MAXCHANNEL" value="0" />
-  <parameter name="FIFO_DEPTH" value="65536" />
+  <parameter name="FIFO_DEPTH" value="4096" />
   <parameter name="RD_SYNC_DEPTH" value="3" />
   <parameter name="SYMBOLS_PER_BEAT" value="1" />
   <parameter name="USE_IN_FILL_LEVEL" value="0" />
@@ -1699,7 +1699,7 @@
   <parameter name="writeSlaveAddressWidthMax" value="26" />
   <parameter name="writeSlaveDataWidthMax" value="16" />
  </module>
- <module name="dma_dummy" kind="altera_avalon_dma" version="17.1" enabled="1">
+ <module name="dma_dummy" kind="altera_avalon_dma" version="17.1" enabled="0">
   <parameter name="allowByteTransactions" value="false" />
   <parameter name="allowDoubleWordTransactions" value="false" />
   <parameter name="allowHalfWordTransactions" value="false" />
@@ -1754,7 +1754,7 @@
    name="fifo_dummy"
    kind="altera_avalon_fifo"
    version="17.1"
-   enabled="1">
+   enabled="0">
   <parameter name="avalonMMAvalonMMDataWidth" value="32" />
   <parameter name="avalonMMAvalonSTDataWidth" value="32" />
   <parameter name="bitsPerSymbol" value="32" />
@@ -1779,7 +1779,7 @@
    name="fifo_dummy64_in"
    kind="altera_avalon_fifo"
    version="17.1"
-   enabled="1">
+   enabled="0">
   <parameter name="avalonMMAvalonMMDataWidth" value="64" />
   <parameter name="avalonMMAvalonSTDataWidth" value="32" />
   <parameter name="bitsPerSymbol" value="32" />
@@ -1804,7 +1804,7 @@
    name="fifo_dummy64_out"
    kind="altera_avalon_fifo"
    version="17.1"
-   enabled="1">
+   enabled="0">
   <parameter name="avalonMMAvalonMMDataWidth" value="64" />
   <parameter name="avalonMMAvalonSTDataWidth" value="32" />
   <parameter name="bitsPerSymbol" value="32" />

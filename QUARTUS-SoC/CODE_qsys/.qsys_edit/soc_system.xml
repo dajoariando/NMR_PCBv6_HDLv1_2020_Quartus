@@ -912,7 +912,7 @@
 														</entry>
 													</placeholder-map>
 												</leaf>
-												<leaf id="2" nodeId="1375985011087">
+												<leaf id="1" nodeId="1375985011087">
 													<placeholders>
 														<placeholder>dock.single.Hierarchy</placeholder>
 													</placeholders>
@@ -1008,7 +1008,7 @@
 																		</entry>
 																	</placeholder-map>
 																</leaf>
-																<node nodeId="1560211469125" orientation="HORIZONTAL" divider="0.7291527685123416">
+																<node nodeId="1560211469125" orientation="HORIZONTAL" divider="0.7007633850189326">
 																	<node nodeId="1560211816618" orientation="VERTICAL" divider="0.25">
 																		<leaf id="-1" nodeId="1525149824606">
 																			<placeholders>
@@ -1036,13 +1036,13 @@
 																				</entry>
 																			</placeholder-map>
 																		</leaf>
-																		<leaf id="0" nodeId="1560211816616">
+																		<leaf id="3" nodeId="1560211816616">
 																			<placeholders>
 																				<placeholder>dock.single.System\ Contents</placeholder>
 																			</placeholders>
 																		</leaf>
 																	</node>
-																	<leaf id="3" nodeId="1560211469123">
+																	<leaf id="2" nodeId="1560211469123">
 																		<placeholders>
 																			<placeholder>dock.single.Parameters</placeholder>
 																		</placeholders>
@@ -1062,7 +1062,7 @@
 														</placeholders>
 													</leaf>
 												</node>
-												<leaf id="1" nodeId="1372710005745">
+												<leaf id="0" nodeId="1372710005745">
 													<placeholders>
 														<placeholder>dock.single.Messages</placeholder>
 														<placeholder>dock.single.Generation\ Messages</placeholder>
@@ -1093,16 +1093,6 @@
 								</layout>
 							</adjacent>
 							<children ignore="false">
-								<child>
-									<layout factory="predefined" placeholder="dock.single.System\ Contents">
-										<replacement id="dockablesingle System Contents"/>
-										<delegate id="delegate_ccontrol backup factory id">
-											<id>System Contents</id>
-											<area/>
-										</delegate>
-									</layout>
-									<children ignore="false"/>
-								</child>
 								<child>
 									<layout factory="predefined" placeholder="dock.single.Messages">
 										<replacement id="dockablesingle Messages"/>
@@ -1177,6 +1167,16 @@
 										<replacement id="dockablesingle Parameters"/>
 										<delegate id="delegate_ccontrol backup factory id">
 											<id>Parameters</id>
+											<area/>
+										</delegate>
+									</layout>
+									<children ignore="false"/>
+								</child>
+								<child>
+									<layout factory="predefined" placeholder="dock.single.System\ Contents">
+										<replacement id="dockablesingle System Contents"/>
+										<delegate id="delegate_ccontrol backup factory id">
+											<id>System Contents</id>
 											<area/>
 										</delegate>
 									</layout>
