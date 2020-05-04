@@ -38,6 +38,8 @@ add wave -noupdate -radix unsigned -childformat {{{/NMR_Controller_tb/uut/ADC_AC
 add wave -noupdate -radix unsigned /NMR_Controller_tb/uut/ADC_ACQ_WINGEN1/SAMPLES_PER_ECHO
 add wave -noupdate /NMR_Controller_tb/uut/ADC_ACQ_WINGEN1/ACQ_EN
 add wave -noupdate /NMR_Controller_tb/uut/ADC_ACQ_WINGEN1/ACQ_WND
+add wave -noupdate /NMR_Controller_tb/uut/TX_SD
+add wave -noupdate /NMR_Controller_tb/uut/EN_QSW
 add wave -noupdate /NMR_Controller_tb/uut/ACQ_WND_PULSED
 add wave -noupdate /NMR_Controller_tb/uut/ACQ_WND_DLY
 add wave -noupdate /NMR_Controller_tb/uut/ADC_ACQ_WINGEN1/CLK
@@ -45,7 +47,7 @@ add wave -noupdate /NMR_Controller_tb/uut/ADC_ACQ_WINGEN1/RESET
 add wave -noupdate -radix hexadecimal /NMR_Controller_tb/uut/ADC_ACQ_WINGEN1/State
 add wave -noupdate /NMR_Controller_tb/uut/ADC_ACQ_WINGEN1/TOKEN
 TreeUpdate [SetDefaultTree]
-WaveRestoreCursors {{Cursor 1} {2637893 ps} 0}
+WaveRestoreCursors {{Cursor 1} {16345050 ps} 0}
 quietly wave cursor active 1
 configure wave -namecolwidth 378
 configure wave -valuecolwidth 100
@@ -61,4 +63,4 @@ configure wave -griddelta 40
 configure wave -timeline 0
 configure wave -timelineunits us
 update
-WaveRestoreZoom {686813 ps} {5978590 ps}
+WaveRestoreZoom {0 ps} {105 us}

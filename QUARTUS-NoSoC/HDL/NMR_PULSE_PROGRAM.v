@@ -12,6 +12,7 @@ module NMR_PULSE_PROGRAM
 	// nmr control signals
 	input		PHASE_CYC,
 	output reg	ACQ_WND,
+	output reg	OUT_EN,		// tx output enable
 	
 	// nmr parameters
 	input [PULSE_AND_DELAY_WIDTH-1:0]	T1_PULSE180,
@@ -52,7 +53,7 @@ module NMR_PULSE_PROGRAM
 	wire TX_CLK_Y; // tx phase 90 output
 
 	reg	PHASE;		// select the output tx phase
-	reg	OUT_EN;		// tx output enable
+	
 	
 	
 	// register for NMR main timer

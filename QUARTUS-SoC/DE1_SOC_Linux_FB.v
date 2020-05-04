@@ -177,6 +177,10 @@ module DE1_SOC_Linux_FB(
 	wire			dac_grad_CLR_n;
 	wire			qsw_en;
 	wire			dup_en;
+	wire			tx_sd;						// shutdown signal for the TX devices
+	wire			tx_sd_msk;					// override/mask the effect of shutdown signal (put 0 to disable tx_sd output)
+	wire			tx_en;						// the transmitter always enable signal
+	
 
 	// control input signal
 	wire			pll_nmr_sys_locked;
@@ -410,6 +414,8 @@ module DE1_SOC_Linux_FB(
 			pll_nmr_sys_locked		// PLL lock status for the NMR pulse programmer
 		}),
 		.ctrl_out_export({
+			tx_sd_msk,
+			tx_en, 					// the transmitter enable signal (active low)
 			dconv_fir_rst_reset_n,
 			dconv_fir_q_rst_reset_n,
 			nmr_controller_reset,
@@ -424,14 +430,14 @@ module DE1_SOC_Linux_FB(
 			dac_preamp_CLR_n		// NOT USED IN v6. dac clear -> active low 
 		}),
 		.aux_cnt_out_export ({
+			GPIO_0[9],
+			GPIO_0[8],
 			GPIO_0[7],
 			GPIO_0[6],
 			GPIO_0[5],
 			GPIO_0[4],
 			GPIO_0[3],
-			GPIO_0[2],
-			GPIO_0[1],
-			GPIO_0[0]
+			GPIO_0[2]
 		}),
 
 		// I2C onboard
@@ -661,7 +667,9 @@ module DE1_SOC_Linux_FB(
 		.EN_RX				(enable_rx),
 		.EN_ADC				(enable_adc),
 		.ACQ_WND_DLY		(dup_en),
+		.TX_SD				(tx_sd),
 		.EN_QSW				(qsw_en),
+		
 		
 		// ADC bus
 		.Q_IN				(adc_data_in[ADC_PHYS_WIDTH-1:0]),
@@ -755,6 +763,7 @@ module DE1_SOC_Linux_FB(
 	assign GPIO_0[29] = enable_rx;
 	assign GPIO_0[27] = dup_en;
 	assign GPIO_0[25] = enable_adc;
+	assign GPIO_0[0]	= tx_en & ( !(tx_sd_msk && tx_sd) ); // The transmitter is enabled when the pin is state 'high'. tx_en and tx_sd (transmit shutdown) is active high signal. PUt tx_sd_msk to 0 to disable tx_sd effect on the output.
 
 	
 

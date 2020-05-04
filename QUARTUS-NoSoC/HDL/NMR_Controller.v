@@ -38,8 +38,9 @@ module NMR_Controller
 	input PHASE_CYCLE, 	// phase cycle control bit
 	output EN_ADC,		// enable adc
 	output EN_RX,		// enable receiver signal
-	output reg ACQ_WND_DLY,	// delayed acquisition window for broadband board, mainly used for DUP_EN or RX_EN
-	output reg EN_QSW,	// enable Q-switch
+	output ACQ_WND_DLY,	// delayed acquisition window for broadband board, mainly used for DUP_EN or RX_EN
+	output TX_SD, // shutdown the transmitter during reception (minimize noise during reception)
+	output EN_QSW,	// enable Q-switch
 	
 	// ADC bus
 	input [ADC_PHYS_WIDTH-1:0] Q_IN,
@@ -59,6 +60,7 @@ module NMR_Controller
 	wire ACQ_EN;
 	wire START_SYNC /* synthesis keep = 1 */;
 	wire ACQ_WND_PULSED;
+	wire TX_PULSE_EN;
 	
 	CDC_Input_Synchronizer
 	#(
@@ -87,6 +89,7 @@ module NMR_Controller
 		// nmr control signals
 		.PHASE_CYC		(PHASE_CYCLE),
 		.ACQ_WND 		(ACQ_WND),
+		.OUT_EN			(TX_PULSE_EN),
 		
 		// nmr parameters
 		.T1_PULSE180	(T1_PULSE180),
@@ -159,147 +162,49 @@ module NMR_Controller
 	assign EN_RX = ACQ_WND;
 	
 	
-	
-	
-	
-	// this is to compute delay for RX_EN/DUP_EN control signal, which is named as ACQ_WND_DLY
-	GNRL_delayed_pulser
-	#(
-		.DELAY_WIDTH (32)
+	// generate the RX enable or DUP enable with specific delay from the transmit signal
+	NMR_RXDUP_EN_WINGEN
+	# (
+		.ADC_INIT_DELAY_WIDTH (ADC_INIT_DELAY_WIDTH)
 	)
-	DELAYED_EN_RX1
+	NMR_RXDUP_EN_WINGEN1
 	(
-		// signals
-		.SIG_IN	(ACQ_WND),
-		.SIG_OUT(ACQ_WND_PULSED),
+		// control signals
+		.ACQ_WND (ACQ_WND),
+		.ACQ_EN (ACQ_EN),
+		.ACQ_WND_DLY (ACQ_WND_DLY),
+		.ACQ_WND_PULSED (ACQ_WND_PULSED),
 		
-		// parameters
-		.DELAY	(RX_DELAY),
+		.RX_DELAY (RX_DELAY),
 		
-		// system
-		.CLK	(ADC_CLK),
-		.RESET	(RESET)
-		
+		.ADC_CLK (ADC_CLK),
+		.RESET (RESET)
 	);
 	
-	reg [9:0] State;
-	localparam [9:0]
-		S0 = 10'b0000000001,
-		S1 = 10'b0000000010,
-		S2 = 10'b0000000100,
-		S3 = 10'b0000001000,
-		S4 = 10'b0000010000,
-		S5 = 10'b0000100000,
-		S6 = 10'b0001000000,
-		S7 = 10'b0010000000,
-		S8 = 10'b0100000000,
-		S9 = 10'b1000000000;
-	always @(posedge ADC_CLK, posedge RESET)
-	begin
-		if (RESET)
-		begin
-			
-			State <= S0;
-			ACQ_WND_DLY <= 1'b0;
-			
-		end
-		else
-		begin
+	// generate the Q-switch enable signal
+	NMR_QSW_EN_WINGEN NMR_QSW_EN_WINGEN1 (
 		
-			case (State)
-			
-				S0 :
-				begin
-								
-					// Wait for the Start signal
-					if (ACQ_WND_PULSED)
-						State <= S1;
-				
-				end
-				
-				S1 : 
-				begin
-					
-					ACQ_WND_DLY <= 1'b1;
-					
-					if (ACQ_EN) State <= S3;
-					else State <= S2;
-						
-					
-				end
-				
-				S2 : 
-				begin
-				
-					if (ACQ_EN) State <= S3;
-					
-				end
-				
-				S3 : 
-				begin
-				
-					if (!ACQ_EN) State <= S4;
-					
-				end
-				
-				S4 : 
-				begin
-				
-					ACQ_WND_DLY <= 1'b0;
-					State <= S0;
-					
-				end
-			endcase
-		end
-				
-	end
+		// control signal
+		.ACQ_WND_PULSED	(ACQ_WND_PULSED),
+		.ACQ_WND				(ACQ_WND),
+		.EN_QSW				(EN_QSW),
+		.RESET				(RESET),
+		.ADC_CLK				(ADC_CLK)
 	
+	);
 	
-	// this is to generate Qswitch enable signal
-	reg [9:0] StateX;
-	localparam [9:0]
-		Sx0 = 3'b001,
-		Sx1 = 3'b010,
-		Sx2 = 3'b100;
-	always @(posedge ADC_CLK, posedge RESET)
-	begin
-		if (RESET)
-		begin
+	// generate the TX shutdown signal (to minimize noise during reception)
+	NMR_TX_SD_WINGEN NMR_TX_SD_WINGEN1
+	(
 			
-			StateX <= Sx0;
-			EN_QSW <= 1'b0;
-			
-		end
-		else
-		begin
+		// control signal
+		.ACQ_EN	(ACQ_EN),
+		.ACQ_WND	(ACQ_WND),
 		
-			case (StateX)
-			
-				Sx0 : // find logic low of ACQ_WND
-				begin
-				
-					EN_QSW <= 1'b0;
-					if ( !ACQ_WND ) StateX = Sx1;
-					
-				end
-				
-				Sx1 : // find rising edge of ACQ_WND
-				begin
-				
-					if ( ACQ_WND ) StateX = Sx2;
-				
-				end
-				
-				Sx2 : // find rising edge of ACQ_WND_PULSED
-				begin
-					
-					EN_QSW <= 1'b1;
-					if ( ACQ_WND_PULSED ) StateX = Sx0;
-				
-				end
-				
-			endcase
-		end
-	end
+		.TX_SD	(TX_SD),
+		.RESET	(RESET),
+		.ADC_CLK	(ADC_CLK)
+		
+	);
 
 endmodule
