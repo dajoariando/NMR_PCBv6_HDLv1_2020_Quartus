@@ -4,11 +4,7 @@
 
 module NMR_Controller
 #(
-	parameter PULSE_AND_DELAY_WIDTH = 32,
-	parameter ECHO_PER_SCAN_WIDTH = 32,
-	parameter ADC_INIT_DELAY_WIDTH = 32,
-	parameter SAMPLES_PER_ECHO_WIDTH = 32,
-	parameter NMR_MAIN_TIMER_WIDTH = 32,
+	parameter DATABUS_WIDTH = 32,
 	parameter ADC_DATA_WIDTH = 16,	// ADC interface to FIFO width
 	parameter ADC_PHYS_WIDTH = 14, 	// ADC physical data width
 	parameter ADC_LATENCY = 5		// check the datasheet of LTC1746 for this
@@ -19,16 +15,16 @@ module NMR_Controller
 	output 	FSMSTAT /* synthesis keep = 1 */,
 	
 	// nmr parameters
-	input [PULSE_AND_DELAY_WIDTH-1:0]	T1_PULSE180,
-	input [PULSE_AND_DELAY_WIDTH-1:0]	T1_DELAY,
-	input [PULSE_AND_DELAY_WIDTH-1:0]	PULSE90,
-	input [PULSE_AND_DELAY_WIDTH-1:0]	DELAY_NO_ACQ,
-	input [PULSE_AND_DELAY_WIDTH-1:0]	PULSE180,
-	input [PULSE_AND_DELAY_WIDTH-1:0]	DELAY_WITH_ACQ,
-	input [ECHO_PER_SCAN_WIDTH-1:0]		ECHO_PER_SCAN,	// echo per scan integer number
-	input [SAMPLES_PER_ECHO_WIDTH-1:0]	SAMPLES_PER_ECHO,
-	input [ADC_INIT_DELAY_WIDTH-1:0]	ADC_INIT_DELAY,
-	input [ADC_INIT_DELAY_WIDTH-1:0]	RX_DELAY, 
+	input [DATABUS_WIDTH-1:0]	T1_PULSE180,
+	input [DATABUS_WIDTH-1:0]	T1_DELAY,
+	input [DATABUS_WIDTH-1:0]	PULSE90,
+	input [DATABUS_WIDTH-1:0]	DELAY_NO_ACQ,
+	input [DATABUS_WIDTH-1:0]	PULSE180,
+	input [DATABUS_WIDTH-1:0]	DELAY_WITH_ACQ,
+	input [DATABUS_WIDTH-1:0]	ECHO_PER_SCAN,	// echo per scan integer number
+	input [DATABUS_WIDTH-1:0]	SAMPLES_PER_ECHO,
+	input [DATABUS_WIDTH-1:0]	ADC_INIT_DELAY,
+	input [DATABUS_WIDTH-1:0]	RX_DELAY, 
 	
 	// nmr rf tx-output (differential)
 	output RF_OUT_P,
@@ -75,9 +71,7 @@ module NMR_Controller
 	
 	NMR_PULSE_PROGRAM
 	#(
-		.PULSE_AND_DELAY_WIDTH (PULSE_AND_DELAY_WIDTH),
-		.ECHO_PER_SCAN_WIDTH (ECHO_PER_SCAN_WIDTH),
-		.NMR_MAIN_TIMER_WIDTH (NMR_MAIN_TIMER_WIDTH)
+		.DATABUS_WIDTH (DATABUS_WIDTH)
 
 	)
 	NMR_PULSE_PROGRAM1
@@ -114,8 +108,7 @@ module NMR_Controller
 	
 	ADC_ACQ_WINGEN
 	# (
-		.SAMPLES_PER_ECHO_WIDTH (SAMPLES_PER_ECHO_WIDTH),
-		.ADC_INIT_DELAY_WIDTH (ADC_INIT_DELAY_WIDTH) 
+		.DATABUS_WIDTH (DATABUS_WIDTH) 
 	)
 	ADC_ACQ_WINGEN1
 	(
@@ -165,7 +158,7 @@ module NMR_Controller
 	// generate the RX enable or DUP enable with specific delay from the transmit signal
 	NMR_RXDUP_EN_WINGEN
 	# (
-		.ADC_INIT_DELAY_WIDTH (ADC_INIT_DELAY_WIDTH)
+		.DATABUS_WIDTH (DATABUS_WIDTH)
 	)
 	NMR_RXDUP_EN_WINGEN1
 	(

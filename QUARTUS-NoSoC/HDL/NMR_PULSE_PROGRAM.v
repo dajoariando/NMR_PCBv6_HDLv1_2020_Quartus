@@ -1,8 +1,7 @@
 module NMR_PULSE_PROGRAM
 #(
-	parameter PULSE_AND_DELAY_WIDTH = 32,
-	parameter ECHO_PER_SCAN_WIDTH = 32,
-	parameter NMR_MAIN_TIMER_WIDTH = 32
+	parameter DATABUS_WIDTH = 32,
+	parameter NMR_MAIN_TIMER_WIDTH = 4
 )
 (
 	// control signals
@@ -15,13 +14,13 @@ module NMR_PULSE_PROGRAM
 	output reg	OUT_EN,		// tx output enable
 	
 	// nmr parameters
-	input [PULSE_AND_DELAY_WIDTH-1:0]	T1_PULSE180,
-	input [PULSE_AND_DELAY_WIDTH-1:0]	T1_DELAY,
-	input [PULSE_AND_DELAY_WIDTH-1:0]	PULSE90,
-	input [PULSE_AND_DELAY_WIDTH-1:0]	DELAY_NO_ACQ,
-	input [PULSE_AND_DELAY_WIDTH-1:0]	PULSE180,
-	input [PULSE_AND_DELAY_WIDTH-1:0]	DELAY_WITH_ACQ,
-	input [ECHO_PER_SCAN_WIDTH-1:0]		ECHO_PER_SCAN,	// echo per scan integer number
+	input [DATABUS_WIDTH-1:0]	T1_PULSE180,
+	input [DATABUS_WIDTH-1:0]	T1_DELAY,
+	input [DATABUS_WIDTH-1:0]	PULSE90,
+	input [DATABUS_WIDTH-1:0]	DELAY_NO_ACQ,
+	input [DATABUS_WIDTH-1:0]	PULSE180,
+	input [DATABUS_WIDTH-1:0]	DELAY_WITH_ACQ,
+	input [DATABUS_WIDTH-1:0]	ECHO_PER_SCAN,	// echo per scan integer number
 	
 	// adc clock generator
 	output ADC_CLK,
@@ -36,17 +35,17 @@ module NMR_PULSE_PROGRAM
 );
 
 	// rollover counter reg
-	reg [PULSE_AND_DELAY_WIDTH-1:0]	T1_PULSE180_CNT;
-	reg [PULSE_AND_DELAY_WIDTH-1:0]	T1_DELAY_CNT;
-	wire [PULSE_AND_DELAY_WIDTH-1:0]	JUMP_TO_S4;
-	reg [PULSE_AND_DELAY_WIDTH-1:0]	PULSE90_CNT;
-	reg [PULSE_AND_DELAY_WIDTH-1:0]	DELAY_NO_ACQ_CNT;
-	wire [PULSE_AND_DELAY_WIDTH-1:0]	JUMP_TO_S6;
-	reg [PULSE_AND_DELAY_WIDTH-1:0]	PULSE180_CNT;
-	reg [PULSE_AND_DELAY_WIDTH-1:0]	DELAY_WITH_ACQ_CNT;
-	wire [PULSE_AND_DELAY_WIDTH-1:0]	JUMP_TO_S7;
-	reg [ECHO_PER_SCAN_WIDTH-1:0]	ECHO_PER_SCAN_CNT;
-	reg [PULSE_AND_DELAY_WIDTH-1:0]	TAIL_DELAY_CNT;
+	reg 	[DATABUS_WIDTH-1:0]	T1_PULSE180_CNT;
+	reg 	[DATABUS_WIDTH-1:0]	T1_DELAY_CNT;
+	wire 	[DATABUS_WIDTH-1:0]	JUMP_TO_S4;
+	reg 	[DATABUS_WIDTH-1:0]	PULSE90_CNT;
+	reg 	[DATABUS_WIDTH-1:0]	DELAY_NO_ACQ_CNT;
+	wire 	[DATABUS_WIDTH-1:0]	JUMP_TO_S6;
+	reg 	[DATABUS_WIDTH-1:0]	PULSE180_CNT;
+	reg 	[DATABUS_WIDTH-1:0]	DELAY_WITH_ACQ_CNT;
+	wire 	[DATABUS_WIDTH-1:0]	JUMP_TO_S7;
+	reg 	[DATABUS_WIDTH-1:0]	ECHO_PER_SCAN_CNT;
+	reg 	[DATABUS_WIDTH-1:0]	TAIL_DELAY_CNT;
 	
 	// nmr tx clock generator
 	wire TX_CLK_X; // tx phase 0 output
@@ -73,9 +72,9 @@ module NMR_PULSE_PROGRAM
 		S9 	= 11'b01000000000,
 		S10 	= 11'b10000000000;
 	
-	assign JUMP_TO_S4	= {1'b1,{ (PULSE_AND_DELAY_WIDTH-1) {1'b0} }} - T1_PULSE180; // only MSB is used to define whether skipping/not is required
-	assign JUMP_TO_S6	= {1'b1,{ (PULSE_AND_DELAY_WIDTH-1) {1'b0} }} - PULSE90; // only MSB is used to define whether skipping/not is required
-	assign JUMP_TO_S7	= {1'b1,{ (PULSE_AND_DELAY_WIDTH-1) {1'b0} }} - PULSE180; // only MSB is used to define whether skipping/not is required
+	assign JUMP_TO_S4	= {1'b1,{ (DATABUS_WIDTH-1) {1'b0} }} - T1_PULSE180; // only MSB is used to define whether skipping/not is required
+	assign JUMP_TO_S6	= {1'b1,{ (DATABUS_WIDTH-1) {1'b0} }} - PULSE90; // only MSB is used to define whether skipping/not is required
+	assign JUMP_TO_S7	= {1'b1,{ (DATABUS_WIDTH-1) {1'b0} }} - PULSE180; // only MSB is used to define whether skipping/not is required
 	
 	initial
 	begin
@@ -108,7 +107,7 @@ module NMR_PULSE_PROGRAM
 				S0 :
 				begin
 					
-					ECHO_PER_SCAN_CNT	<= {1'b1,{ (ECHO_PER_SCAN_WIDTH-1) {1'b0} }} - 	ECHO_PER_SCAN + 1;
+					ECHO_PER_SCAN_CNT	<= {1'b1,{ (DATABUS_WIDTH-1) {1'b0} }} - 	ECHO_PER_SCAN + 1;
 					
 					// Wait for the Start signal
 					if (START)
@@ -119,13 +118,13 @@ module NMR_PULSE_PROGRAM
 				S1 : 
 				begin
 					
-					T1_PULSE180_CNT		<= {1'b1,{ (PULSE_AND_DELAY_WIDTH-1) {1'b0} }} - T1_PULSE180 + 1'b1;
-					T1_DELAY_CNT		<= {1'b1,{ (PULSE_AND_DELAY_WIDTH-1) {1'b0} }} - T1_DELAY + 1'b1;
-					PULSE90_CNT 		<= {1'b1,{ (PULSE_AND_DELAY_WIDTH-1) {1'b0} }} - PULSE90 + 1'b1;
-					DELAY_NO_ACQ_CNT 	<= {1'b1,{ (PULSE_AND_DELAY_WIDTH-1) {1'b0} }} - DELAY_NO_ACQ + 1'b1;
-					PULSE180_CNT		<= {1'b1,{ (PULSE_AND_DELAY_WIDTH-1) {1'b0} }} - PULSE180 + 1'b1;
-					DELAY_WITH_ACQ_CNT	<= {1'b1,{ (PULSE_AND_DELAY_WIDTH-1) {1'b0} }} - DELAY_WITH_ACQ + 1'b1 + 1'b1; // another (+1'b1) compensate for S6 state 1 clock cycle 
-					TAIL_DELAY_CNT		<= {1'b1,{ (PULSE_AND_DELAY_WIDTH-1) {1'b0} }} - ((PULSE180+DELAY_WITH_ACQ)<<5) + 1'b1; // tail delay to extend the ADC_CLK window. The delay is (echo_period*32) or (echo_period << 5
+					T1_PULSE180_CNT		<= {1'b1,{ (DATABUS_WIDTH-1) {1'b0} }} - T1_PULSE180 + 1'b1;
+					T1_DELAY_CNT		<= {1'b1,{ (DATABUS_WIDTH-1) {1'b0} }} - T1_DELAY + 1'b1;
+					PULSE90_CNT 		<= {1'b1,{ (DATABUS_WIDTH-1) {1'b0} }} - PULSE90 + 1'b1;
+					DELAY_NO_ACQ_CNT 	<= {1'b1,{ (DATABUS_WIDTH-1) {1'b0} }} - DELAY_NO_ACQ + 1'b1;
+					PULSE180_CNT		<= {1'b1,{ (DATABUS_WIDTH-1) {1'b0} }} - PULSE180 + 1'b1;
+					DELAY_WITH_ACQ_CNT	<= {1'b1,{ (DATABUS_WIDTH-1) {1'b0} }} - DELAY_WITH_ACQ + 1'b1 + 1'b1; // another (+1'b1) compensate for S6 state 1 clock cycle 
+					TAIL_DELAY_CNT		<= {1'b1,{ (DATABUS_WIDTH-1) {1'b0} }} - ((PULSE180+DELAY_WITH_ACQ)<<5) + 1'b1; // tail delay to extend the ADC_CLK window. The delay is (echo_period*32) or (echo_period << 5
 					
 					FSMSTAT <= 1'b1;
 					
@@ -134,11 +133,11 @@ module NMR_PULSE_PROGRAM
 					//    By skipping PULSE90, and with a single ECHO_PER_SCAN, FID measurement can be performed.
 					// 2. If the inversion recovery is not intended, set the T1_PULSE180 to 0 to skip S2 and S3.					
 					// 3. To do noise measurement, set the ECHO_PER_SCAN to be 1, and then set PULSE180 to be 0, effectively jumping all states before S7
-					if (JUMP_TO_S7[PULSE_AND_DELAY_WIDTH-1])
+					if (JUMP_TO_S7[DATABUS_WIDTH-1])
 						State <= S7;
-					else if (JUMP_TO_S6[PULSE_AND_DELAY_WIDTH-1])
+					else if (JUMP_TO_S6[DATABUS_WIDTH-1])
 						State <= S6;
-					else if (JUMP_TO_S4[PULSE_AND_DELAY_WIDTH-1])
+					else if (JUMP_TO_S4[DATABUS_WIDTH-1])
 						State <= S4;
 					else
 						State <= S2;
@@ -154,7 +153,7 @@ module NMR_PULSE_PROGRAM
 					
 					T1_PULSE180_CNT <= T1_PULSE180_CNT + 1'b1;
 					
-					if (T1_PULSE180_CNT[PULSE_AND_DELAY_WIDTH-1])
+					if (T1_PULSE180_CNT[DATABUS_WIDTH-1])
 						State <= S3;
 				
 				end
@@ -167,7 +166,7 @@ module NMR_PULSE_PROGRAM
 					
 					T1_DELAY_CNT <= T1_DELAY_CNT + 1'b1;
 					
-					if (T1_DELAY_CNT[PULSE_AND_DELAY_WIDTH-1])
+					if (T1_DELAY_CNT[DATABUS_WIDTH-1])
 						State <= S4;
 					
 				end
@@ -181,7 +180,7 @@ module NMR_PULSE_PROGRAM
 					
 					PULSE90_CNT <= PULSE90_CNT + 1'b1;
 					
-					if (PULSE90_CNT[PULSE_AND_DELAY_WIDTH-1])
+					if (PULSE90_CNT[DATABUS_WIDTH-1])
 						State <= S5;
 					
 				end
@@ -193,7 +192,7 @@ module NMR_PULSE_PROGRAM
 					ACQ_WND <= 1'b0;
 					DELAY_NO_ACQ_CNT <= DELAY_NO_ACQ_CNT + 1'b1;
 					
-					if (DELAY_NO_ACQ_CNT[PULSE_AND_DELAY_WIDTH-1])
+					if (DELAY_NO_ACQ_CNT[DATABUS_WIDTH-1])
 						State <= S6;
 					
 				end
@@ -207,7 +206,7 @@ module NMR_PULSE_PROGRAM
 					
 					PULSE180_CNT <= PULSE180_CNT + 1'b1;
 					
-					if (PULSE180_CNT[PULSE_AND_DELAY_WIDTH-1])
+					if (PULSE180_CNT[DATABUS_WIDTH-1])
 						State <= S7;
 					
 				end
@@ -220,7 +219,7 @@ module NMR_PULSE_PROGRAM
 					
 					DELAY_WITH_ACQ_CNT <= DELAY_WITH_ACQ_CNT + 1'b1;
 					
-					if (DELAY_WITH_ACQ_CNT[PULSE_AND_DELAY_WIDTH-1])
+					if (DELAY_WITH_ACQ_CNT[DATABUS_WIDTH-1])
 						State <= S8;
 					
 				end
@@ -228,12 +227,12 @@ module NMR_PULSE_PROGRAM
 				S8 : // check echo per scan rollover counter
 				begin
 					
-					PULSE180_CNT		<= {1'b1,{ (PULSE_AND_DELAY_WIDTH-1) {1'b0} }} - PULSE180 + 1'b1;
-					DELAY_WITH_ACQ_CNT	<= {1'b1,{ (PULSE_AND_DELAY_WIDTH-1) {1'b0} }} - DELAY_WITH_ACQ + 1'b1 + 1'b1; // another (+1'b1) compensate for S6 state 1 clock cycle 
+					PULSE180_CNT		<= {1'b1,{ (DATABUS_WIDTH-1) {1'b0} }} - PULSE180 + 1'b1;
+					DELAY_WITH_ACQ_CNT	<= {1'b1,{ (DATABUS_WIDTH-1) {1'b0} }} - DELAY_WITH_ACQ + 1'b1 + 1'b1; // another (+1'b1) compensate for S6 state 1 clock cycle 
 					
 					ECHO_PER_SCAN_CNT <= ECHO_PER_SCAN_CNT + 1'b1;
 					
-					if (ECHO_PER_SCAN_CNT[ECHO_PER_SCAN_WIDTH-1])
+					if (ECHO_PER_SCAN_CNT[DATABUS_WIDTH-1])
 						State <= S9;
 					else
 						State <= S6;
@@ -247,7 +246,7 @@ module NMR_PULSE_PROGRAM
 					ACQ_WND <= 1'b0;
 					TAIL_DELAY_CNT <= TAIL_DELAY_CNT + 1'b1;
 					
-					if (TAIL_DELAY_CNT[PULSE_AND_DELAY_WIDTH-1])
+					if (TAIL_DELAY_CNT[DATABUS_WIDTH-1])
 						State <= S10;
 					
 				end

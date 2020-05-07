@@ -1,3 +1,5 @@
+// this module output is delayed by one due to the clock domain crossing
+
 module NMR_QSW_EN_WINGEN 
 (
 		
@@ -11,7 +13,12 @@ module NMR_QSW_EN_WINGEN
 	
 );
 
-
+	// clock domain crossing
+	reg ACQ_WND_REG;
+	always @(ADC_CLK)
+	begin
+		ACQ_WND_REG <= ACQ_WND;
+	end
 
 // this is to generate Qswitch enable signal
 	reg [2:0] State;
@@ -33,18 +40,18 @@ module NMR_QSW_EN_WINGEN
 		
 			case (State)
 			
-				S0 : // find logic low of ACQ_WND
+				S0 : // find logic low of ACQ_WND_REG
 				begin
 				
 					EN_QSW <= 1'b0;
-					if ( !ACQ_WND ) State = S1;
+					if ( !ACQ_WND_REG ) State = S1;
 					
 				end
 				
-				S1 : // find rising edge of ACQ_WND
+				S1 : // find rising edge of ACQ_WND_REG
 				begin
 				
-					if ( ACQ_WND ) State = S2;
+					if ( ACQ_WND_REG ) State = S2;
 				
 				end
 				

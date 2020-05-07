@@ -149,11 +149,7 @@ module DE1_SOC_Linux_FB(
 	output			VGA_VS
 );
 
-	localparam PULSE_AND_DELAY_WIDTH = 32;
-	localparam ECHOES_PER_SCAN_WIDTH = 32;
-	localparam ADC_INIT_DELAY_WIDTH = 32;
-	localparam SAMPLES_PER_ECHO_WIDTH = 32;
-	localparam NMR_MAIN_TIMER_WIDTH = 32;
+	localparam DATABUS_WIDTH = 32;
 	localparam ADC_DATA_WIDTH = 16;
 	localparam ADC_PHYS_WIDTH = 14; // ADC physical data width
 	localparam ADC_LATENCY = 5;
@@ -202,17 +198,17 @@ module DE1_SOC_Linux_FB(
 	wire			nmr_controller_reset;
 
 	// parameters
-	wire	[PULSE_AND_DELAY_WIDTH-1:0]		pulse_90deg;
-	wire	[PULSE_AND_DELAY_WIDTH-1:0]		pulse_180deg;
-	wire	[PULSE_AND_DELAY_WIDTH-1:0]		delay_nosig;
-	wire	[PULSE_AND_DELAY_WIDTH-1:0]		delay_sig;
-	wire	[PULSE_AND_DELAY_WIDTH-1:0]		pulse_t1;
-	wire	[PULSE_AND_DELAY_WIDTH-1:0]		delay_t1;
-	wire	[SAMPLES_PER_ECHO_WIDTH-1:0]	samples_per_echo;
-	wire	[ECHOES_PER_SCAN_WIDTH-1:0]		echoes_per_scan;
-	wire	[ADC_INIT_DELAY_WIDTH-1:0]		init_delay;
-	wire	[ADC_INIT_DELAY_WIDTH-1:0]		rx_delay;
-	wire	[31:0]							adc_val_sub;
+	wire	[DATABUS_WIDTH-1:0]		pulse_90deg;
+	wire	[DATABUS_WIDTH-1:0]		pulse_180deg;
+	wire	[DATABUS_WIDTH-1:0]		delay_nosig;
+	wire	[DATABUS_WIDTH-1:0]		delay_sig;
+	wire	[DATABUS_WIDTH-1:0]		pulse_t1;
+	wire	[DATABUS_WIDTH-1:0]		delay_t1;
+	wire	[DATABUS_WIDTH-1:0]		samples_per_echo;
+	wire	[DATABUS_WIDTH-1:0]		echoes_per_scan;
+	wire	[DATABUS_WIDTH-1:0]		init_delay;
+	wire	[DATABUS_WIDTH-1:0]		rx_delay;
+	wire	[DATABUS_WIDTH-1:0]		adc_val_sub;
 	wire	[15:0]							dec_fact;
 
 	// adc data
@@ -277,6 +273,43 @@ module DE1_SOC_Linux_FB(
 	// wire i2c_ext_scl_in;
 	// wire i2c_ext_sda_oe;
 	// wire i2c_ext_scl_oe;
+	
+	// Clock Domain Crossing!!!
+	reg	[DATABUS_WIDTH-1:0]		pulse_90deg_reg;
+	reg	[DATABUS_WIDTH-1:0]		pulse_180deg_reg;
+	reg	[DATABUS_WIDTH-1:0]		delay_nosig_reg;
+	reg	[DATABUS_WIDTH-1:0]		delay_sig_reg;
+	reg	[DATABUS_WIDTH-1:0]		pulse_t1_reg;
+	reg	[DATABUS_WIDTH-1:0]		delay_t1_reg;
+	reg	[DATABUS_WIDTH-1:0]		samples_per_echo_reg;
+	reg	[DATABUS_WIDTH-1:0]		echoes_per_scan_reg;
+	reg	[DATABUS_WIDTH-1:0]		init_delay_reg;
+	reg	[DATABUS_WIDTH-1:0]		rx_delay_reg;
+	reg	[DATABUS_WIDTH-1:0]		adc_val_sub_reg;
+	reg 	[15:0]						dec_fact_reg;
+	reg 	[ADC_DATA_WIDTH-1:0] 	adc_data_in__adc_clkreg;
+	reg									fsmstat__adc_clkreg;
+	always @(posedge pulseprog_clk)
+	begin
+		pulse_90deg_reg      <= pulse_90deg;
+		pulse_180deg_reg     <= pulse_180deg;
+		delay_nosig_reg      <= delay_nosig;
+		delay_sig_reg        <= delay_sig;
+		pulse_t1_reg         <= pulse_t1;
+		delay_t1_reg         <= delay_t1;
+		echoes_per_scan_reg  <= echoes_per_scan;
+	end
+	always @(posedge adc_clk)
+	begin
+		init_delay_reg       <= init_delay;
+		adc_val_sub_reg		<= adc_val_sub;
+		samples_per_echo_reg <= samples_per_echo;
+		rx_delay_reg		 	<= rx_delay;
+		dec_fact_reg		<= dec_fact;
+		
+		fsmstat__adc_clkreg		<= fsmstat;
+		adc_data_in__adc_clkreg <= adc_data_in;
+	end
 
  
 //=======================================================
@@ -429,16 +462,17 @@ module DE1_SOC_Linux_FB(
 			dac_preamp_LDAC_n,	// NOT USED IN v6. dac_ldac -> active low
 			dac_preamp_CLR_n		// NOT USED IN v6. dac clear -> active low 
 		}),
-		.aux_cnt_out_export ({
-			GPIO_0[9],
-			GPIO_0[8],
-			GPIO_0[7],
-			GPIO_0[6],
-			GPIO_0[5],
-			GPIO_0[4],
-			GPIO_0[3],
-			GPIO_0[2]
-		}),
+		
+		//.aux_cnt_out_export ({
+		//	GPIO_0[9],
+		//	GPIO_0[8],
+		//	GPIO_0[7],
+		//	GPIO_0[6],
+		//	GPIO_0[5],
+		//	GPIO_0[4],
+		//	GPIO_0[3],
+		//	GPIO_0[2]
+		//}),
 
 		// I2C onboard
 		.i2c_int_sda_in                            (i2c_int_sda_in),                            //                     i2c_int.sda_in
@@ -515,7 +549,7 @@ module DE1_SOC_Linux_FB(
 		
 		// downconversion data-i
 		.dconv_fir_in_data		(data_i),                         //                dconv_fir_in.data
-		.dconv_fir_in_valid		(fsmstat),                        //                            .valid
+		.dconv_fir_in_valid		(fsmstat__adc_clkreg),                        //                            .valid
 		.dconv_fir_in_error		(),                        //                            .error
 		.dconv_fir_out_data		(dconv_fir_out_data),                        //               dconv_fir_out.data
 		.dconv_fir_out_valid	(dconv_fir_out_valid),                       //                            .valid
@@ -529,7 +563,7 @@ module DE1_SOC_Linux_FB(
 		
 		// downconversion data-q
 		.dconv_fir_q_in_data	(data_q),                       //              dconv_fir_q_in.data
-		.dconv_fir_q_in_valid	(fsmstat),                      //                            .valid
+		.dconv_fir_q_in_valid	(fsmstat__adc_clkreg),                      //                            .valid
 		.dconv_fir_q_in_error	(),                      //                            .error
 		.dconv_fir_q_out_data	(dconv_fir_q_out_data),                      //             dconv_fir_q_out.data
 		.dconv_fir_q_out_valid	(dconv_fir_q_out_valid),                     //                            .valid
@@ -549,37 +583,10 @@ module DE1_SOC_Linux_FB(
 		.spi_mtch_ntwrk_SS_n		(spi_mtch_ntwrk_SS_n) 	//               .SS_n
 	);
 
-	// Clock Domain Crossing!!!
-	reg	[PULSE_AND_DELAY_WIDTH-1:0]		pulse_90deg_reg;
-	reg	[PULSE_AND_DELAY_WIDTH-1:0]		pulse_180deg_reg;
-	reg	[PULSE_AND_DELAY_WIDTH-1:0]		delay_nosig_reg;
-	reg	[PULSE_AND_DELAY_WIDTH-1:0]		delay_sig_reg;
-	reg	[PULSE_AND_DELAY_WIDTH-1:0]		pulse_t1_reg;
-	reg	[PULSE_AND_DELAY_WIDTH-1:0]		delay_t1_reg;
-	reg	[SAMPLES_PER_ECHO_WIDTH-1:0]	samples_per_echo_reg;
-	reg	[ECHOES_PER_SCAN_WIDTH-1:0]		echoes_per_scan_reg;
-	reg	[ADC_INIT_DELAY_WIDTH-1:0]		init_delay_reg;
-	reg	[ADC_INIT_DELAY_WIDTH-1:0]		rx_delay_reg;
-	reg	[31:0]							adc_val_sub_reg;
-	reg [15:0]							dec_fact_reg;
-	always @(posedge pulseprog_clk)
-	begin
-		pulse_90deg_reg      <= pulse_90deg;
-		pulse_180deg_reg     <= pulse_180deg;
-		delay_nosig_reg      <= delay_nosig;
-		delay_sig_reg        <= delay_sig;
-		pulse_t1_reg         <= pulse_t1;
-		delay_t1_reg         <= delay_t1;
-		samples_per_echo_reg <= samples_per_echo;
-		echoes_per_scan_reg  <= echoes_per_scan;
-		init_delay_reg       <= init_delay;
-		rx_delay_reg		 <= rx_delay;
-		adc_val_sub_reg		<= adc_val_sub;
-		dec_fact_reg		<= dec_fact;
-	end
+	
+	
 
-
-
+	
 
 	GNRL_dconv_nofilter // POSSIBLE ISSUE: the counter is synchronized with the conv_en. If fsmstat delay to first pulse is changing, this code might need to be changed.
 	# (
@@ -588,14 +595,14 @@ module DE1_SOC_Linux_FB(
 	(
 
 		// data interface
-		.adc_data_in	(adc_data_in[ADC_PHYS_WIDTH-1:0]), // unsigned integer data in, remove overflow sign
+		.adc_data_in	(adc_data_in__adc_clkreg[ADC_PHYS_WIDTH-1:0]), // unsigned integer data in, remove overflow sign
 		.data_i			(data_i), // in-phase signed integer data (wider by 1 bit)
 		.data_q			(data_q), // quadrature signed integer data (wider by 1 bit)
 
 		// parameters
 		.adc_dcval_subtractor	(adc_val_sub_reg[ADC_PHYS_WIDTH:0]), // signed integer subtractor to remove dc value
 
-		.conv_en			(fsmstat),
+		.conv_en			(fsmstat__adc_clkreg),
 
 		// system signal
 		.CLK			(adc_clk),
@@ -631,20 +638,16 @@ module DE1_SOC_Linux_FB(
 
 	NMR_Controller
 	#(
-		.PULSE_AND_DELAY_WIDTH 	(PULSE_AND_DELAY_WIDTH),
-		.ECHO_PER_SCAN_WIDTH	(ECHOES_PER_SCAN_WIDTH),
-		.ADC_INIT_DELAY_WIDTH	(ADC_INIT_DELAY_WIDTH),
-		.SAMPLES_PER_ECHO_WIDTH (SAMPLES_PER_ECHO_WIDTH),
-		.NMR_MAIN_TIMER_WIDTH	(NMR_MAIN_TIMER_WIDTH),
-		.ADC_DATA_WIDTH			(ADC_DATA_WIDTH),	// ADC interface to FIFO width
-		.ADC_PHYS_WIDTH			(ADC_PHYS_WIDTH), 	// ADC physical data width
-		.ADC_LATENCY			(ADC_LATENCY)			// check the datasheet of LTC1746 for this
+		.DATABUS_WIDTH 	(DATABUS_WIDTH),
+		.ADC_DATA_WIDTH	(ADC_DATA_WIDTH),	// ADC interface to FIFO width
+		.ADC_PHYS_WIDTH	(ADC_PHYS_WIDTH), 	// ADC physical data width
+		.ADC_LATENCY		(ADC_LATENCY)			// check the datasheet of LTC1746 for this
 	)
 	NMR_Controller1
 	(
 		// control signals
 		.START		(fsm_start),
-		.FSMSTAT	(fsmstat),
+		.FSMSTAT		(fsmstat),
 		
 		// nmr parameters
 		.T1_PULSE180		(pulse_t1_reg),
@@ -696,7 +699,7 @@ module DE1_SOC_Linux_FB(
 	assign GPIO_1[3] = dac_preamp_SS_n;
 	// assign dac_preamp_MISO = GPIO_1[]; // not being used in v6
 	
-
+	// DAC gradient driver
 	assign dac_grad_MISO = GPIO_1[19];
 	assign GPIO_1[17] = dac_grad_SCLK;
 	assign GPIO_1[14] = dac_grad_SS_n;
@@ -761,7 +764,7 @@ module DE1_SOC_Linux_FB(
 	assign GPIO_1[0] = nmr_clk_gate_avln_cnt ? nmr_rfout_n : pll_analyzer_clk2;
 
 	assign GPIO_0[29] = enable_rx;
-	assign GPIO_0[27] = dup_en;
+	// assign GPIO_0[27] = dup_en;
 	assign GPIO_0[25] = enable_adc;
 	assign GPIO_0[0]	= tx_en & ( !(tx_sd_msk && tx_sd) ); // The transmitter is enabled when the pin is state 'high'. tx_en and tx_sd (transmit shutdown) is active high signal. PUt tx_sd_msk to 0 to disable tx_sd effect on the output.
 

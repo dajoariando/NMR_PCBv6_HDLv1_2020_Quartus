@@ -1,7 +1,9 @@
+
+
 module NMR_RXDUP_EN_WINGEN
 #(
 
-	parameter ADC_INIT_DELAY_WIDTH = 32
+	parameter DATABUS_WIDTH = 32
 
 )
 (
@@ -11,14 +13,19 @@ module NMR_RXDUP_EN_WINGEN
 	output reg ACQ_WND_DLY,
 	output ACQ_WND_PULSED,
 	
-	input [ADC_INIT_DELAY_WIDTH-1:0]	RX_DELAY,
+	input [DATABUS_WIDTH-1:0]	RX_DELAY,
 	
 	input ADC_CLK,
 	input RESET
 
 );	
 
-	
+	// clock domain crossing
+	reg ACQ_WND_REG;
+	always @(ADC_CLK)
+	begin
+		ACQ_WND_REG <= ACQ_WND;
+	end
 	
 	
 	// this is to compute delay for RX_EN/DUP_EN control signal, which is named as ACQ_WND_DLY and also to generate the disable TX during reception (TX_SD)
@@ -29,11 +36,11 @@ module NMR_RXDUP_EN_WINGEN
 	DELAYED_EN_RX1
 	(
 		// signals
-		.SIG_IN	(ACQ_WND),
-		.SIG_OUT(ACQ_WND_PULSED),
+		.SIG_IN	(ACQ_WND_REG),
+		.SIG_OUT(ACQ_WND_PULSED), 
 		
 		// parameters
-		.DELAY	(RX_DELAY),
+		.DELAY	(RX_DELAY-1'b1), // minus 1 clock cycle due to clock domain crossing of the ACQ_WND.
 		
 		// system
 		.CLK	(ADC_CLK),

@@ -980,11 +980,7 @@
    internal="analyzer_pll.reset"
    type="reset"
    dir="end" />
- <interface
-   name="aux_cnt_out"
-   internal="aux_cnt_out.external_connection"
-   type="conduit"
-   dir="end" />
+ <interface name="aux_cnt_out" internal="aux_cnt_out.external_connection" />
  <interface name="clk" internal="clk_0.clk_in" type="clock" dir="end" />
  <interface
    name="ctrl_in"
@@ -1459,7 +1455,7 @@
    name="aux_cnt_out"
    kind="altera_avalon_pio"
    version="17.1"
-   enabled="1">
+   enabled="0">
   <parameter name="bitClearingEdgeCapReg" value="false" />
   <parameter name="bitModifyingOutReg" value="false" />
   <parameter name="captureEdge" value="false" />

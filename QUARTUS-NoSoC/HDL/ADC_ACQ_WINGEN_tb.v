@@ -5,12 +5,11 @@ module ADC_ACQ_WINGEN_tb;
 	parameter CLK_RATE_HZ = 4.3; // in MHz
 	localparam integer clockticks = (timescale_ref / CLK_RATE_HZ) / 2.0;
 	
-	localparam SAMPLES_PER_ECHO_WIDTH = 32;
-	localparam ADC_INIT_DELAY_WIDTH = 32;
+	localparam DATABUS_WIDTH = 32;
 	
 	// parameters
-	reg [ADC_INIT_DELAY_WIDTH-1:0] ADC_INIT_DELAY;
-	reg [SAMPLES_PER_ECHO_WIDTH-1:0] SAMPLES_PER_ECHO;
+	reg [DATABUS_WIDTH-1:0] ADC_INIT_DELAY;
+	reg [DATABUS_WIDTH-1:0] SAMPLES_PER_ECHO;
 
 	// control signal
 	reg ACQ_WND;
@@ -22,8 +21,7 @@ module ADC_ACQ_WINGEN_tb;
 
 	ADC_ACQ_WINGEN
 	# (
-		.SAMPLES_PER_ECHO_WIDTH (SAMPLES_PER_ECHO_WIDTH),
-		.ADC_INIT_DELAY_WIDTH (ADC_INIT_DELAY_WIDTH) 
+		.DATABUS_WIDTH (DATABUS_WIDTH)
 	)
 	ADC_ACQ_WINGEN1
 	(
@@ -46,7 +44,7 @@ module ADC_ACQ_WINGEN_tb;
 	end
 	
 	initial begin
-		ADC_INIT_DELAY = 2;
+		ADC_INIT_DELAY = 3;
 		SAMPLES_PER_ECHO = 10;
 		CLK = 1'b1;
 		ACQ_WND = 1'b0;
