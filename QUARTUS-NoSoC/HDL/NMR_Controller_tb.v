@@ -1,3 +1,6 @@
+// in this testbench, the ADC_CLKOUT is just the same with ADC_CLK
+// but in reality, the ADC_CLKOUT should be out of phase by 90 degrees
+
 `timescale 1ps / 1ps
 
 module NMR_Controller_tb;
@@ -8,11 +11,7 @@ module NMR_Controller_tb;
 	localparam integer pulseprog_clk_ticks = (timescale_ref / PULSEPROG_CLK_RATE) / 2.0;
 
 	
-	localparam PULSE_AND_DELAY_WIDTH = 32;
-	localparam ECHO_PER_SCAN_WIDTH = 32;
-	localparam ADC_INIT_DELAY_WIDTH = 32;
-	localparam SAMPLES_PER_ECHO_WIDTH = 32;
-	localparam NMR_MAIN_TIMER_WIDTH = 32;
+	localparam DATABUS_WIDTH = 32;
 	localparam ADC_DATA_WIDTH = 16;
 	localparam ADC_PHYS_WIDTH = 14; 	// ADC physical data width
 	localparam ADC_LATENCY = 5;			// check the datasheet of LTC1746 for this
@@ -22,16 +21,16 @@ module NMR_Controller_tb;
 	wire FSMSTAT;
 	
 	// nmr parameters
-	reg [PULSE_AND_DELAY_WIDTH-1:0]	T1_PULSE180;
-	reg [PULSE_AND_DELAY_WIDTH-1:0]	T1_DELAY;
-	reg [PULSE_AND_DELAY_WIDTH-1:0] PULSE90;
-	reg [PULSE_AND_DELAY_WIDTH-1:0] DELAY_NO_ACQ;
-	reg [PULSE_AND_DELAY_WIDTH-1:0] PULSE180;
-	reg [PULSE_AND_DELAY_WIDTH-1:0] DELAY_WITH_ACQ;
-	reg [ECHO_PER_SCAN_WIDTH-1:0]	ECHO_PER_SCAN;
-	reg [SAMPLES_PER_ECHO_WIDTH-1:0] SAMPLES_PER_ECHO;
-	reg [ADC_INIT_DELAY_WIDTH-1:0]	ADC_INIT_DELAY;
-	reg [ADC_INIT_DELAY_WIDTH-1:0]	RX_DELAY;
+	reg [DATABUS_WIDTH-1:0]	T1_PULSE180;
+	reg [DATABUS_WIDTH-1:0]	T1_DELAY;
+	reg [DATABUS_WIDTH-1:0] PULSE90;
+	reg [DATABUS_WIDTH-1:0] DELAY_NO_ACQ;
+	reg [DATABUS_WIDTH-1:0] PULSE180;
+	reg [DATABUS_WIDTH-1:0] DELAY_WITH_ACQ;
+	reg [DATABUS_WIDTH-1:0]	ECHO_PER_SCAN;
+	reg [DATABUS_WIDTH-1:0] SAMPLES_PER_ECHO;
+	reg [DATABUS_WIDTH-1:0]	ADC_INIT_DELAY;
+	reg [DATABUS_WIDTH-1:0]	RX_DELAY;
 	
 	// nmr rf tx-output (differential)
 	wire RF_OUT_P;
@@ -60,11 +59,7 @@ module NMR_Controller_tb;
 	
 	NMR_Controller
 	#(
-		.PULSE_AND_DELAY_WIDTH (PULSE_AND_DELAY_WIDTH),
-		.ECHO_PER_SCAN_WIDTH (ECHO_PER_SCAN_WIDTH),
-		.ADC_INIT_DELAY_WIDTH (ADC_INIT_DELAY_WIDTH),
-		.SAMPLES_PER_ECHO_WIDTH (SAMPLES_PER_ECHO_WIDTH),
-		.NMR_MAIN_TIMER_WIDTH (NMR_MAIN_TIMER_WIDTH),
+		.DATABUS_WIDTH (DATABUS_WIDTH),
 		.ADC_DATA_WIDTH (ADC_DATA_WIDTH),
 		.ADC_PHYS_WIDTH (ADC_PHYS_WIDTH), 	// ADC physical data width
 		.ADC_LATENCY (ADC_LATENCY)
@@ -110,6 +105,7 @@ module NMR_Controller_tb;
 		// system signals
 		.PULSEPROG_CLK		(PULSEPROG_CLK),
 		.ADC_CLK			(ADC_CLK),
+		.ADC_CLKOUT			(ADC_CLK),
 		.RESET				(RESET)
 	);
 	

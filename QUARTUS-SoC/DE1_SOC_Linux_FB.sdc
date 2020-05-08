@@ -145,5 +145,5 @@ set_false_path -from {soc_system:u0|soc_system_ctrl_out:ctrl_out|data_out[13]} -
 set_false_path -from [get_pins {NMR_Controller1|NMR_PULSE_PROGRAM1|NMR_MAIN_TIMER_CNT[1]|q}] -to [get_registers {NMR_Controller:NMR_Controller1|NMR_PULSE_PROGRAM:NMR_PULSE_PROGRAM1|NMR_MAIN_TIMER_CNT[*]}]
 
 # clock domain crossing
-set_clock_groups -asynchronous -group {clock_50_0 } 			-group { u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk } 
-set_clock_groups -asynchronous -group [get_clocks {ADC_CLK}]	-group [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] 
+set_clock_groups -asynchronous -group {clock_50_0 } 					-group { u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk } 
+set_clock_groups -asynchronous -group [get_clocks {adc_clkout}]	-group [get_clocks {u0|nmr_sys_pll|altera_pll_i|cyclonev_pll|counter[0].output_counter|divclk}] 
