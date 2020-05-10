@@ -38,6 +38,7 @@ module NMR_Controller_tb;
 	
 	// nmr control signals
 	reg PHASE_CYCLE;
+	reg PULSE_ON_RX;
 	wire EN_ADC;
 	wire EN_RX;
 	wire ACQ_WND_DLY;
@@ -88,6 +89,7 @@ module NMR_Controller_tb;
 		
 		// nmr control signals
 		.PHASE_CYCLE	(PHASE_CYCLE),
+		.PULSE_ON_RX	(PULSE_ON_RX),
 		.EN_ADC			(EN_ADC),
 		.EN_RX			(EN_RX),		// enable receiver signal
 		.ACQ_WND_DLY	(ACQ_WND_DLY),	// delayed acquisition window for broadband board
@@ -125,6 +127,7 @@ module NMR_Controller_tb;
 		PULSEPROG_CLK = 1;
 		PHASE_CYCLE = 0;
 		Q_IN_OV = 0;
+		PULSE_ON_RX = 1;
 
 		#(pulseprog_clk_ticks*2) RESET = 1'b1;
 		#(pulseprog_clk_ticks*2) RESET = 1'b0;

@@ -173,9 +173,11 @@ module DE1_SOC_Linux_FB(
 	wire			dac_grad_CLR_n;
 	wire			qsw_en;
 	wire			dup_en;
-	wire			tx_sd;						// shutdown signal for the TX devices
-	wire			tx_sd_msk;					// override/mask the effect of shutdown signal (put 0 to disable tx_sd output)
-	wire			tx_en;						// the transmitter always enable signal
+	wire			tx_opa_sd;						// shutdown signal for the TX devices
+	wire			tx_opa_sd_msk;					// override/mask the effect of shutdown signal (put 0 to disable tx_opa_sd output)
+	wire			tx_opa_en;						// the transmitter always enable signal
+	wire			pulse_on_rx;				// enable the tx pulse during receive phase
+	wire			tx_pulse_en;				// the pulse is output'd when this signal is high
 	
 
 	// control input signal
@@ -191,6 +193,11 @@ module DE1_SOC_Linux_FB(
 	wire			pll_analyzer_clk1;
 	wire			pll_analyzer_clk2;
 	wire			pll_analyzer_clk3;
+	
+	reg			pll_analyzer_clk0_gated;
+	reg			pll_analyzer_clk1_gated;
+	reg			pll_analyzer_clk2_gated;
+	reg			pll_analyzer_clk3_gated;
 
 
 	// reset signals
@@ -452,8 +459,9 @@ module DE1_SOC_Linux_FB(
 			pll_nmr_sys_locked		// PLL lock status for the NMR pulse programmer
 		}),
 		.ctrl_out_export({
-			tx_sd_msk,
-			tx_en, 					// the transmitter enable signal (active low)
+			pulse_on_rx,
+			tx_opa_sd_msk,
+			tx_opa_en, 					// the transmitter enable signal (active low)
 			dconv_fir_rst_reset_n,
 			dconv_fir_q_rst_reset_n,
 			nmr_controller_reset,
@@ -672,11 +680,13 @@ module DE1_SOC_Linux_FB(
 		
 		// nmr control signals
 		.PHASE_CYCLE		(phase_cycle),
+		.PULSE_ON_RX		(pulse_on_rx),
 		.EN_RX				(enable_rx),
 		.EN_ADC				(enable_adc),
 		.ACQ_WND_DLY		(dup_en),
-		.TX_SD				(tx_sd),
+		.TX_SD				(tx_opa_sd),
 		.EN_QSW				(qsw_en),
+		.TX_PULSE_EN		(tx_pulse_en),
 		
 		
 		// ADC bus
@@ -765,14 +775,35 @@ module DE1_SOC_Linux_FB(
 							GPIO_1[23],		// bit 1
 							GPIO_1[20]		// bit 0
 						};
-
-	assign GPIO_1[1] = nmr_clk_gate_avln_cnt ? nmr_rfout_p : pll_analyzer_clk0;
-	assign GPIO_1[0] = nmr_clk_gate_avln_cnt ? nmr_rfout_n : pll_analyzer_clk2;
+	
+	
+	always @*
+	begin
+		if (tx_pulse_en)
+			begin
+				pll_analyzer_clk0_gated = pll_analyzer_clk0;
+				pll_analyzer_clk1_gated = pll_analyzer_clk1;
+				pll_analyzer_clk2_gated = pll_analyzer_clk2;
+				pll_analyzer_clk3_gated = pll_analyzer_clk3;
+			end
+		else
+			begin
+				pll_analyzer_clk0_gated = 1'b0;
+				pll_analyzer_clk1_gated = 1'b0;
+				pll_analyzer_clk2_gated = 1'b0;
+				pll_analyzer_clk3_gated = 1'b0;
+			end
+	end
+	
+	
+	
+	assign GPIO_1[1] = nmr_clk_gate_avln_cnt ? nmr_rfout_p : pll_analyzer_clk0_gated;
+	assign GPIO_1[0] = nmr_clk_gate_avln_cnt ? nmr_rfout_n : pll_analyzer_clk2_gated;
 
 	assign GPIO_0[29] = enable_rx;
 	// assign GPIO_0[27] = dup_en;
 	assign GPIO_0[25] = enable_adc;
-	assign GPIO_0[0]	= tx_en & ( !(tx_sd_msk && tx_sd) ); // The transmitter is enabled when the pin is state 'high'. tx_en and tx_sd (transmit shutdown) is active high signal. PUt tx_sd_msk to 0 to disable tx_sd effect on the output.
+	assign GPIO_0[0]	= tx_opa_en & ( !(tx_opa_sd_msk && tx_opa_sd) ); // The transmitter is enabled when the pin is state 'high'. tx_opa_en and tx_opa_sd (transmit shutdown) is active high signal. PUt tx_opa_sd_msk to 0 to disable tx_opa_sd effect on the output.
 
 	
 

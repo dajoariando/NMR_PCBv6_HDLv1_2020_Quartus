@@ -10,6 +10,7 @@ module NMR_PULSE_PROGRAM
 	
 	// nmr control signals
 	input		PHASE_CYC,
+	input		PULSE_ON_RX,
 	output reg	ACQ_WND,
 	output reg	OUT_EN,		// tx output enable
 	
@@ -107,6 +108,7 @@ module NMR_PULSE_PROGRAM
 				S0 :
 				begin
 					
+					OUT_EN <= 1'b0; 
 					ECHO_PER_SCAN_CNT	<= {1'b1,{ (DATABUS_WIDTH-1) {1'b0} }} - 	ECHO_PER_SCAN + 1;
 					
 					// Wait for the Start signal
@@ -214,7 +216,11 @@ module NMR_PULSE_PROGRAM
 				S7 : // delay with acquisition
 				begin
 					
-					OUT_EN <= 1'b0;
+					if (PULSE_ON_RX)
+						OUT_EN <= 1'b1;
+					else
+						OUT_EN <= 1'b0; 
+					
 					ACQ_WND <= 1'b1;
 					
 					DELAY_WITH_ACQ_CNT <= DELAY_WITH_ACQ_CNT + 1'b1;
@@ -226,6 +232,8 @@ module NMR_PULSE_PROGRAM
 				
 				S8 : // check echo per scan rollover counter
 				begin
+					
+					OUT_EN <= 1'b0; 
 					
 					PULSE180_CNT		<= {1'b1,{ (DATABUS_WIDTH-1) {1'b0} }} - PULSE180 + 1'b1;
 					DELAY_WITH_ACQ_CNT	<= {1'b1,{ (DATABUS_WIDTH-1) {1'b0} }} - DELAY_WITH_ACQ + 1'b1 + 1'b1; // another (+1'b1) compensate for S6 state 1 clock cycle 

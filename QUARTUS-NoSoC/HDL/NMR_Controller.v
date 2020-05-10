@@ -32,11 +32,13 @@ module NMR_Controller
 	
 	// nmr control signals
 	input PHASE_CYCLE, 	// phase cycle control bit
+	input PULSE_ON_RX,	// enable the transmit pulse on receive
 	output EN_ADC,		// enable adc
 	output EN_RX,		// enable receiver signal
 	output ACQ_WND_DLY,	// delayed acquisition window for broadband board, mainly used for DUP_EN or RX_EN
 	output TX_SD, // shutdown the transmitter during reception (minimize noise during reception)
 	output EN_QSW,	// enable Q-switch
+	output TX_PULSE_EN, // the pulse enable signal (RF pulse is output'd when this is high)
 	
 	// ADC bus
 	input [ADC_PHYS_WIDTH-1:0] Q_IN,
@@ -57,7 +59,6 @@ module NMR_Controller
 	wire ACQ_EN;
 	wire START_SYNC /* synthesis keep = 1 */;
 	wire ACQ_WND_PULSED;
-	wire TX_PULSE_EN;
 	
 	CDC_Input_Synchronizer
 	#(
@@ -83,6 +84,7 @@ module NMR_Controller
 		
 		// nmr control signals
 		.PHASE_CYC		(PHASE_CYCLE),
+		.PULSE_ON_RX	(PULSE_ON_RX),
 		.ACQ_WND 		(ACQ_WND),
 		.OUT_EN			(TX_PULSE_EN),
 		
