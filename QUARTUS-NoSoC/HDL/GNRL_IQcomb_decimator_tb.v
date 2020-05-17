@@ -53,7 +53,7 @@ module GNRL_IQcomb_decimator_tb;
 	initial begin
 		CLK = 1'b1;
 		RESET = 1'b0;
-		dec_fact = 3;
+		dec_fact = 16;
 		
 		#(clockticks*2) RESET = 1'b1;
 		#(clockticks*2) RESET = 1'b0;
@@ -61,7 +61,7 @@ module GNRL_IQcomb_decimator_tb;
 		
 		
 		#(clockticks * 4) in_valid = 1;
-		#(clockticks * 400) in_valid = 0;
+		#(clockticks * 132) in_valid = 0;
 		
 		#(clockticks * 100) in_valid = 1;
 		#(clockticks * 400) in_valid = 0;

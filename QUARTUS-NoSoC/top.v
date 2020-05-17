@@ -153,50 +153,7 @@ module top(
 	
 
 
-//=======================================================
-//  Structural coding
-//=======================================================
 
-	system u0 (
-		.clk_clk        (CLOCK_50),        	// clk.clk
-		.reset_reset_n  (KEY[0]),  			// reset.reset_n
-		.i2c_int_sda_in (i2c_int_sda_in), 	// i2c_int.sda_in
-		.i2c_int_scl_in (i2c_int_scl_in), 	// .scl_in
-		.i2c_int_sda_oe (i2c_int_sda_oe), 	// .sda_oe
-		.i2c_int_scl_oe (i2c_int_scl_oe), 	// .scl_oe
-		.i2c_ext_sda_in (i2c_ext_sda_in), 	// i2c_ext.sda_in
-		.i2c_ext_scl_in (i2c_ext_scl_in), 	// .scl_in
-		.i2c_ext_sda_oe (i2c_ext_sda_oe), 	// .sda_oe
-		.i2c_ext_scl_oe (i2c_ext_scl_oe),  	// .scl_oe
-		.led_export     (LEDR),				// .led_export
-		
-		.dac_preamp_MISO (),			// dac_preamp.MISO
-        .dac_preamp_MOSI (DAC_SDIN),	// .MOSI
-        .dac_preamp_SCLK (DAC_SCLK),	// .SCLK
-        .dac_preamp_SS_n (DAC_SYNC),	// .SS_n
-		
-		.delay_nosig_export      (delay_nosig),			// delay_nosig.export
-        .delay_sig_export        (delay_sig),			// delay_sig.export
-        .delay_t1_export         (delay_t1),			// delay_t1.export
-        .echoes_per_scan_export  (echoes_per_scan),		// echoes_per_scan.export
-        .init_delay_export       (init_delay),			// init_delay.export
-        .pulse_180deg_export     (pulse_180deg),		// pulse_180deg.export
-        .pulse_90deg_export      (pulse_90deg),			// pulse_90deg.export
-        .pulse_t1_export         (pulse_t1),			// pulse_t1.export
-        .samples_per_echo_export (samples_per_echo),	// samples_per_echo.export
-		.nmr_sys_pll_outclk0_clk (pulseprog_clk),  		// nmr_sys_pll_outclk0.clk
-		
-		.issp_source             (fsm_start_issp)
-	);
-	assign DAC_LDAC = 1'b0; // always load the DAC output
-	assign DAC_CLR = 1'b1;	// never reset the DAC
-	
-	altiobuf i2c_int_io (
-		.datain		( 2'b00 ),
-		.oe			( {i2c_int_sda_oe , i2c_int_scl_oe} ),
-		.dataio		( {GPIO_1[2],GPIO_1[3]} ),
-		.dataout	( {i2c_int_sda_in , i2c_int_scl_in} )
-	);
 	
 	altiobuf i2c_ext_io (
 		.datain		( 2'b00 ),
@@ -205,55 +162,6 @@ module top(
 		.dataout	( {i2c_ext_sda_in , i2c_ext_scl_in} )
 	);
 	
-	NMR_Controller
-	#(
-		.PULSE_AND_DELAY_WIDTH 	(PULSE_AND_DELAY_WIDTH),
-		.ECHO_PER_SCAN_WIDTH	(ECHOES_PER_SCAN_WIDTH),
-		.ADC_INIT_DELAY_WIDTH	(ADC_INIT_DELAY_WIDTH),
-		.SAMPLES_PER_ECHO_WIDTH (SAMPLES_PER_ECHO_WIDTH),
-		.NMR_MAIN_TIMER_WIDTH	(NMR_MAIN_TIMER_WIDTH),
-		.ADC_DATA_WIDTH			(ADC_DATA_WIDTH),	// ADC interface to FIFO width
-		.ADC_PHYS_WIDTH			(ADC_PHYS_WIDTH), 	// ADC physical data width
-		.ADC_LATENCY			(ADC_LATENCY)			// check the datasheet of LTC1746 for this
-	)
-	NMR_Controller1
-	(
-		// control signals
-		.START		(fsm_start),
-		.FSMSTAT	(fsmstat),
-		
-		// nmr parameters
-		.T1_PULSE180		(pulse_t1),
-		.T1_DELAY			(delay_t1),
-		.PULSE90			(pulse_90deg),
-		.DELAY_NO_ACQ		(delay_nosig),
-		.PULSE180			(pulse_180deg),
-		.DELAY_WITH_ACQ		(delay_sig),
-		.ECHO_PER_SCAN		(echoes_per_scan),	// echo per scan integer number
-		.SAMPLES_PER_ECHO	(samples_per_echo),
-		.ADC_INIT_DELAY		(init_delay), 
-		
-		// nmr rf tx-output (differential)
-		.RF_OUT_P			(nmr_rfout_p),
-		.RF_OUT_N			(nmr_rfout_n),
-		
-		// nmr control signals
-		.PHASE_CYCLE		(phase_cycle),
-		
-		// ADC bus
-		.Q_IN				(adc_data_in[ADC_PHYS_WIDTH-1:0]),
-		.Q_IN_OV			(adc_data_in[ADC_PHYS_WIDTH]),
-		
-		// data output
-		.ADC_OUT_DATA		(adc_data_out),
-		.ADC_DATA_VALID		(adc_data_valid),
-		
-		// system signals
-		.PULSEPROG_CLK		(pulseprog_clk),
-		.ADC_CLK			(adc_clk),
-		.RESET				(nmr_controller_reset)
-	);
-	assign phase_cycle = 1'b0;
 	
 	assign GPIO_1[5]	= SW[0];
 	assign GPIO_1[16]	= SW[1];

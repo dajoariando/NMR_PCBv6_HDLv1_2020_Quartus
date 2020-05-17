@@ -33,9 +33,13 @@ module GNRL_IQcomb_decimator
 );
 	
 	reg [DEC_WIDTH-1:0] DEC_CNT;
+	reg [DEC_WIDTH-1:0] BITSEL_DLY_CNT;
 	reg bit_sel; // selected bit
-	wire [DATA_WIDTH-1:0] dataI_dly;
-	wire [DATA_WIDTH-1:0] dataQ_dly;
+	// wire [DATA_WIDTH-1:0] dataI_dly;
+	// wire [DATA_WIDTH-1:0] dataQ_dly;
+	reg [DATA_WIDTH-1:0] dataI_sum;
+	reg [DATA_WIDTH-1:0] dataQ_sum;
+	wire [DATA_WIDTH-1:0] dataQ_sum_dly;
 	
 
 	reg [4:0] State;
@@ -60,6 +64,7 @@ module GNRL_IQcomb_decimator
 		// state machine 1
 		dataout <= {(DATA_WIDTH){1'b0}};
 		DEC_CNT <= {(DEC_WIDTH){1'b0}};
+		BITSEL_DLY_CNT <= {(DEC_WIDTH){1'b0}};
 		State <= S0;
 		
 		// state machine 2
@@ -69,13 +74,14 @@ module GNRL_IQcomb_decimator
 		
 	end
 	
+	// capture the sum data every dconv_fact clock cycles
 	always @(posedge CLK, posedge RESET)
 	begin
 	
 		if (RESET)
 			begin
 												
-				State <= S0;
+				State <= S0; // set state to S3 to initialize the BITSEL_DLY_CNT
 				out_valid <= 1'b0;
 				dataout <= {(DATA_WIDTH){1'b0}};
 				
@@ -89,31 +95,45 @@ module GNRL_IQcomb_decimator
 						begin
 							
 							out_valid <= 1'b0;
+							BITSEL_DLY_CNT <= {1'b1,{(DEC_WIDTH-1){1'b0}}} - dec_fact + 4'd2;
 							
 							if (bit_sel)
 								State <= S1;
 						
 						end
+
+					S1 : 
+						begin
+
+							out_valid <= 1'b0;
+							BITSEL_DLY_CNT = BITSEL_DLY_CNT + 1'b1; 
+							if (BITSEL_DLY_CNT[DEC_WIDTH-1])
+								State <= S2;		
+
+						end
 						
-					S1	: // 
+					S2	: // 
 						
 						begin
 							
 							out_valid	<= 1'b1;
-							dataout		<= dataI_dly;
+							dataout		<= dataI_sum;
 							
-							State <= S2;
+							State <= S3;
 						
 						end
 						
-					S2	: // output data 0
+					S3	: // output data 0
 						
 						begin
 							
 							out_valid	<= 1'b1;
-							dataout		<= dataQ_dly;
+							dataout		<= dataQ_sum_dly;
+							BITSEL_DLY_CNT <= {1'b1,{(DEC_WIDTH-1){1'b0}}} - dec_fact + 4'd2;
 							
-							State <= S0;
+							if (bit_sel) // skip S0 if bit_sel is 1						
+								State <= S1;
+							else State <= S0;
 						
 						end
 				
@@ -123,6 +143,8 @@ module GNRL_IQcomb_decimator
 			
 	end
 	
+	// pulse generator for every dconv_fact clock cycles
+	// also data sum function
 	always @(posedge CLK)
 	begin
 		if (in_valid)
@@ -131,9 +153,12 @@ module GNRL_IQcomb_decimator
 			
 				SS0 :
 				begin
-					
+					dataI_sum <= dataI_sum + dataI;
+					dataQ_sum <= dataQ_sum + dataQ;
+
 					DEC_CNT <= {1'b1,{(DEC_WIDTH-1){1'b0}}} - dec_fact + 1'b1 + 1'b1;
 					bit_sel <= 1'b0;
+					
 					
 					SState <= SS1;
 				
@@ -142,6 +167,9 @@ module GNRL_IQcomb_decimator
 				SS1 : // add delay
 				begin
 					
+					dataI_sum <= dataI_sum + dataI;
+					dataQ_sum <= dataQ_sum + dataQ;
+
 					DEC_CNT = DEC_CNT + 1'b1; 
 					
 					if (DEC_CNT[DEC_WIDTH-1])
@@ -151,7 +179,10 @@ module GNRL_IQcomb_decimator
 				
 				SS2 : // assert signal
 				begin
-				
+					
+					dataI_sum <= dataI;
+					dataQ_sum <= dataQ;
+
 					bit_sel <= 1'b1;
 					
 					SState <= SS0;
@@ -169,7 +200,7 @@ module GNRL_IQcomb_decimator
 			end
 	end
 	
-	// delay modules for dataI and dataQ
+	// 1 clock delay module for the Q data
 	genvar i;
 	generate
 	begin
@@ -177,32 +208,19 @@ module GNRL_IQcomb_decimator
 		begin : test1
 			CDC_Input_Synchronizer
 			#(
-				.SYNC_REG_LEN (1)
+				.SYNC_REG_LEN (0)
 			)
 			I_delay
 			(
-				.ASYNC_IN (dataI[i]),
-				.SYNC_OUT (dataI_dly[i]),
-				.CLK (CLK)
-			);
-			
-			CDC_Input_Synchronizer
-			#(
-				.SYNC_REG_LEN (2)
-			)
-			Q_delay
-			(
-				.ASYNC_IN (dataQ[i]),
-				.SYNC_OUT (dataQ_dly[i]),
+				.ASYNC_IN (dataQ_sum[i]),
+				.SYNC_OUT (dataQ_sum_dly[i]),
 				.CLK (CLK)
 			);
 			
 		end
 	end
 	endgenerate
-	
-	
-	
+
 	
 	
 	
