@@ -60,6 +60,8 @@ module NMR_Controller
 	wire START_SYNC /* synthesis keep = 1 */;
 	wire ACQ_WND_PULSED;
 	
+
+	
 	CDC_Input_Synchronizer
 	#(
 		.SYNC_REG_LEN (4)
@@ -108,6 +110,8 @@ module NMR_Controller
 		.CLK			(PULSEPROG_CLK),
 		.RESET			(RESET)
 	);
+	
+	
 	
 	ADC_ACQ_WINGEN
 	# (

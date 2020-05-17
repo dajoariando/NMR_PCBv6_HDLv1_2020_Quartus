@@ -1,5 +1,7 @@
 // search for keyword: POSSIBLE ISSUE if there's a problem, e.g. in timing
 
+// ANY RESET SIGNAL THAT'S TRIGGERED BY adc_clkout won't be working cause adc_clkout is not present before the sequence!!!!!!!!!!!!!!!!!!!!!!
+
 `define ENABLE_HPS
 
 module DE1_SOC_Linux_FB(
@@ -204,7 +206,8 @@ module DE1_SOC_Linux_FB(
 	wire			pll_nmr_sys_reset;
 	wire			pll_analyzer_reset;
 	wire			nmr_controller_reset;
-
+	wire			FSM_GNRTD_RST__adc_clk;
+	
 	// parameters
 	wire	[DATABUS_WIDTH-1:0]		pulse_90deg;
 	wire	[DATABUS_WIDTH-1:0]		pulse_180deg;
@@ -297,6 +300,7 @@ module DE1_SOC_Linux_FB(
 	reg 	[15:0]						dec_fact_reg;
 	reg 	[ADC_DATA_WIDTH-1:0] 	adc_data_in__adc_clkreg;
 	reg									fsmstat__adc_clkreg;
+
 	always @(posedge pulseprog_clk)
 	begin
 		pulse_90deg_reg      <= pulse_90deg;
@@ -597,7 +601,25 @@ module DE1_SOC_Linux_FB(
 	);
 
 	
+	// generating a reset single pulse using FSMSTAT that is synchronized with ADC_CLKOUT
+	GNRL_delayed_pulser
+	#(
+		.DELAY_WIDTH (4)
+	)
+	GNRL_delayed_pulser_FSM_GNRTD_RESET_PULSE
+	(
+		// signals
+		.SIG_IN		(fsmstat__adc_clkreg),
+		.SIG_OUT		(FSM_GNRTD_RST__adc_clk),
+		
+		// parameters
+		.DELAY		(5'd2), // set the delay to 2 (minimum)
+		
+		// system
+		.CLK			(adc_clkout),
+		.RESET		(nmr_controller_reset) // this is unsynchronized reset so it could be unrelated to the CLK used.
 	
+	);
 
 	
 
@@ -619,7 +641,7 @@ module DE1_SOC_Linux_FB(
 
 		// system signal
 		.CLK			(adc_clkout),
-		.RESET			(nmr_controller_reset)
+		.RESET			(FSM_GNRTD_RST__adc_clk)
 	);
 	
 	// decimator module
@@ -644,7 +666,7 @@ module DE1_SOC_Linux_FB(
 		
 		// system
 		.CLK (adc_clkout),
-		.RESET (nmr_controller_reset)
+		.RESET (FSM_GNRTD_RST__adc_clk)
 		
 	);
 	
@@ -705,7 +727,7 @@ module DE1_SOC_Linux_FB(
 	);
 
 
-	
+
 	
 	// PIN ASSIGNMENT
 	

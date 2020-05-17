@@ -36,9 +36,9 @@ module GNRL_delayed_pulser
 		
 	initial
 	begin
-		
+		DELAY_CNT <= {DELAY_WIDTH{1'b0}};
 		SIG_OUT <= 1'b0;
-		
+		State <= S0;
 	end
 	
 	always @(posedge CLK, posedge RESET)
