@@ -38,24 +38,27 @@ module GNRL_dconv_nofilter
 		data_q <= adc_data_ac;
 	end
 	
+	// multiply by local oscillator. The magnitude of 45,135,225,315 are the same,
+	// so it can be multiplied by one instead, and then later multiplied by the value (0.707 or -0.707)
+	// using high-level processing.
 	always @(*)
 	begin
 		case (counter)
 			2'h0: begin
-				data_i <= 0; 
-				data_q <= adc_data_ac;
+				data_i <= adc_data_ac; 		// *sin 45
+				data_q <= adc_data_ac;		// *cos 45
 			end
 			2'h1: begin
-				data_i <= adc_data_ac; 
-				data_q <= 0;
+				data_i <= adc_data_ac; 				// *sin 135
+				data_q <= ~(adc_data_ac)+1'b1;	// *cos 135
 			end
 			2'h2: begin
-				data_i <= 0;
-				data_q <= ~(adc_data_ac)+1'b1; 
+				data_i <= ~(adc_data_ac)+1'b1;	// *sin 225
+				data_q <= ~(adc_data_ac)+1'b1; 	// *cos 225
 			end
 			2'h3: begin
-				data_i <= ~(adc_data_ac)+1'b1; 
-				data_q <= 0;
+				data_i <= ~(adc_data_ac)+1'b1; 	// *sin 315
+				data_q <= adc_data_ac;				// *cos 315
 			end
 		endcase
 	end

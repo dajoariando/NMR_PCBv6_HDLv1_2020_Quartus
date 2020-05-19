@@ -44,7 +44,7 @@ module GNRL_dconv_nofilter_tb;
 		#(clockticks*2) RESET = 1'b0;
 		
 		
-		#(clockticks * 4)adc_dcval_subtractor =  1024;
+		#(clockticks * 4)adc_dcval_subtractor =  9400;
 		
 		#(clockticks * 4) conv_en = 1;
 		#(clockticks * 4000) conv_en = 0;
