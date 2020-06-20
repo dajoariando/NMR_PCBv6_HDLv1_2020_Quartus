@@ -31,6 +31,7 @@ module NMR_Controller_tb;
 	reg [DATABUS_WIDTH-1:0] SAMPLES_PER_ECHO;
 	reg [DATABUS_WIDTH-1:0]	ADC_INIT_DELAY;
 	reg [DATABUS_WIDTH-1:0]	RX_DELAY;
+	reg [DATABUS_WIDTH-1:0]	ECHO_SKIP;
 	
 	// nmr rf tx-output (differential)
 	wire RF_OUT_P;
@@ -81,7 +82,8 @@ module NMR_Controller_tb;
 		.ECHO_PER_SCAN		(ECHO_PER_SCAN),	// echo per scan integer number
 		.SAMPLES_PER_ECHO	(SAMPLES_PER_ECHO),
 		.ADC_INIT_DELAY		(ADC_INIT_DELAY),
-		.RX_DELAY			(RX_DELAY), 
+		.RX_DELAY			(RX_DELAY),
+		.ECHO_SKIP			(ECHO_SKIP),
 		
 		// nmr rf tx-output (differential)
 		.RF_OUT_P	(RF_OUT_P),
@@ -120,7 +122,7 @@ module NMR_Controller_tb;
 		DELAY_NO_ACQ = 64;
 		PULSE180 = 128;
 		DELAY_WITH_ACQ = 512;
-		ECHO_PER_SCAN = 5;
+		ECHO_PER_SCAN = 16;
 		SAMPLES_PER_ECHO = 30;
 		ADC_INIT_DELAY = 30;
 		RX_DELAY = 20;
@@ -128,6 +130,7 @@ module NMR_Controller_tb;
 		PHASE_CYCLE = 0;
 		Q_IN_OV = 0;
 		PULSE_ON_RX = 1;
+		ECHO_SKIP = 2;
 
 		#(pulseprog_clk_ticks*2) RESET = 1'b1;
 		#(pulseprog_clk_ticks*2) RESET = 1'b0;

@@ -49,6 +49,14 @@
          type = "int";
       }
    }
+   element echo_skip
+   {
+      datum _sortIndex
+      {
+         value = "12";
+         type = "int";
+      }
+   }
    element echoes_per_scan
    {
       datum _sortIndex
@@ -202,6 +210,18 @@
    type="reset"
    dir="end" />
  <interface name="delay_t1_s1" internal="delay_t1.s1" type="avalon" dir="end" />
+ <interface name="echo_skip_clk" internal="echo_skip.clk" type="clock" dir="end" />
+ <interface
+   name="echo_skip_external_connection"
+   internal="echo_skip.external_connection"
+   type="conduit"
+   dir="end" />
+ <interface
+   name="echo_skip_reset"
+   internal="echo_skip.reset"
+   type="reset"
+   dir="end" />
+ <interface name="echo_skip_s1" internal="echo_skip.s1" type="avalon" dir="end" />
  <interface
    name="echoes_per_scan_clk"
    internal="echoes_per_scan.clk"
@@ -396,6 +416,20 @@
   <parameter name="generateIRQ" value="false" />
   <parameter name="irqType" value="LEVEL" />
   <parameter name="resetValue" value="0" />
+  <parameter name="simDoTestBenchWiring" value="false" />
+  <parameter name="simDrivenValue" value="0" />
+  <parameter name="width" value="32" />
+ </module>
+ <module name="echo_skip" kind="altera_avalon_pio" version="17.1" enabled="1">
+  <parameter name="bitClearingEdgeCapReg" value="false" />
+  <parameter name="bitModifyingOutReg" value="false" />
+  <parameter name="captureEdge" value="false" />
+  <parameter name="clockRate" value="0" />
+  <parameter name="direction" value="Output" />
+  <parameter name="edgeType" value="RISING" />
+  <parameter name="generateIRQ" value="false" />
+  <parameter name="irqType" value="LEVEL" />
+  <parameter name="resetValue" value="1" />
   <parameter name="simDoTestBenchWiring" value="false" />
   <parameter name="simDrivenValue" value="0" />
   <parameter name="width" value="32" />

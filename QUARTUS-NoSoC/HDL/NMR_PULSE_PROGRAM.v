@@ -22,6 +22,7 @@ module NMR_PULSE_PROGRAM
 	input [DATABUS_WIDTH-1:0]	PULSE180,
 	input [DATABUS_WIDTH-1:0]	DELAY_WITH_ACQ,
 	input [DATABUS_WIDTH-1:0]	ECHO_PER_SCAN,	// echo per scan integer number
+	input [DATABUS_WIDTH-1:0]	ECHO_SKIP,
 	
 	// adc clock generator
 	output ADC_CLK,
@@ -47,6 +48,7 @@ module NMR_PULSE_PROGRAM
 	wire 	[DATABUS_WIDTH-1:0]	JUMP_TO_S7;
 	reg 	[DATABUS_WIDTH-1:0]	ECHO_PER_SCAN_CNT;
 	reg 	[DATABUS_WIDTH-1:0]	TAIL_DELAY_CNT;
+	reg		[DATABUS_WIDTH-1:0] ECHO_SKIP_CNT;
 	
 	// nmr tx clock generator
 	wire TX_CLK_X; // tx phase 0 output
@@ -127,6 +129,7 @@ module NMR_PULSE_PROGRAM
 					PULSE180_CNT		<= {1'b1,{ (DATABUS_WIDTH-1) {1'b0} }} - PULSE180 + 1'b1;
 					DELAY_WITH_ACQ_CNT	<= {1'b1,{ (DATABUS_WIDTH-1) {1'b0} }} - DELAY_WITH_ACQ + 1'b1 + 1'b1; // another (+1'b1) compensate for S6 state 1 clock cycle 
 					TAIL_DELAY_CNT		<= {1'b1,{ (DATABUS_WIDTH-1) {1'b0} }} - ((PULSE180+DELAY_WITH_ACQ)<<5) + 1'b1; // tail delay to extend the ADC_CLK window. The delay is (echo_period*32) or (echo_period << 5
+					ECHO_SKIP_CNT		<= {1'b1,{ (DATABUS_WIDTH-1) {1'b0} }} - ECHO_SKIP + 1'd1;
 					
 					FSMSTAT <= 1'b1;
 					
@@ -206,7 +209,8 @@ module NMR_PULSE_PROGRAM
 					PHASE <= 1'b1;
 					ACQ_WND <= 1'b0;
 					
-					PULSE180_CNT <= PULSE180_CNT + 1'b1;
+					PULSE180_CNT <= PULSE180_CNT + 1'b1;						
+
 					
 					if (PULSE180_CNT[DATABUS_WIDTH-1])
 						State <= S7;
@@ -221,7 +225,12 @@ module NMR_PULSE_PROGRAM
 					else
 						OUT_EN <= 1'b0; 
 					
-					ACQ_WND <= 1'b1;
+					
+					if (ECHO_SKIP_CNT[DATABUS_WIDTH-1])
+					begin
+						ACQ_WND <= 1'b1;
+						ECHO_SKIP_CNT		<= {1'b1,{ (DATABUS_WIDTH-1) {1'b0} }} - ECHO_SKIP;
+					end
 					
 					DELAY_WITH_ACQ_CNT <= DELAY_WITH_ACQ_CNT + 1'b1;
 					
@@ -238,6 +247,7 @@ module NMR_PULSE_PROGRAM
 					PULSE180_CNT		<= {1'b1,{ (DATABUS_WIDTH-1) {1'b0} }} - PULSE180 + 1'b1;
 					DELAY_WITH_ACQ_CNT	<= {1'b1,{ (DATABUS_WIDTH-1) {1'b0} }} - DELAY_WITH_ACQ + 1'b1 + 1'b1; // another (+1'b1) compensate for S6 state 1 clock cycle 
 					
+					ECHO_SKIP_CNT <= ECHO_SKIP_CNT + 1'b1;
 					ECHO_PER_SCAN_CNT <= ECHO_PER_SCAN_CNT + 1'b1;
 					
 					if (ECHO_PER_SCAN_CNT[DATABUS_WIDTH-1])

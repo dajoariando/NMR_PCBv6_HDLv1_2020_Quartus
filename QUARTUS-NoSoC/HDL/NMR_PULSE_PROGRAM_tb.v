@@ -9,20 +9,20 @@ module NMR_PULSE_PROGRAM_tb;
 	reg START;
 	wire FSMSTAT;
 	//wire PHASE;
-	//wire OUT_EN;
+	wire OUT_EN;
 	wire ACQ_WND;
 	
-	localparam PULSE_AND_DELAY_WIDTH = 32;
-	localparam ECHO_PER_SCAN_WIDTH = 32;
+	localparam DATABUS_WIDTH = 32;
 	localparam NMR_MAIN_TIMER_WIDTH = 32;
 
-	reg [PULSE_AND_DELAY_WIDTH-1:0]	T1_PULSE180;
-	reg [PULSE_AND_DELAY_WIDTH-1:0]	T1_DELAY;
-	reg [PULSE_AND_DELAY_WIDTH-1:0] PULSE90;
-	reg [PULSE_AND_DELAY_WIDTH-1:0] DELAY_NO_ACQ;
-	reg [PULSE_AND_DELAY_WIDTH-1:0] PULSE180;
-	reg [PULSE_AND_DELAY_WIDTH-1:0] DELAY_WITH_ACQ;
-	reg [ECHO_PER_SCAN_WIDTH-1:0]	ECHO_PER_SCAN;
+	reg [DATABUS_WIDTH-1:0]	T1_PULSE180;
+	reg [DATABUS_WIDTH-1:0]	T1_DELAY;
+	reg [DATABUS_WIDTH-1:0] PULSE90;
+	reg [DATABUS_WIDTH-1:0] DELAY_NO_ACQ;
+	reg [DATABUS_WIDTH-1:0] PULSE180;
+	reg [DATABUS_WIDTH-1:0] DELAY_WITH_ACQ;
+	reg [DATABUS_WIDTH-1:0]	ECHO_PER_SCAN;
+	reg [DATABUS_WIDTH-1:0]	ECHO_SKIP;
 	
 	// adc clock generator
 	wire ADC_CLK;
@@ -32,6 +32,7 @@ module NMR_PULSE_PROGRAM_tb;
 	wire TX_OUT_N;
 	
 	reg PHASE_CYC;
+	reg PULSE_ON_RX;
 	
 	// nmr tx clock generator
 	// wire TX_CLK_0;
@@ -46,11 +47,6 @@ module NMR_PULSE_PROGRAM_tb;
 	localparam integer clockticks = (timescale_ref / CLK_RATE_HZ) / 2.0;
 	
 	NMR_PULSE_PROGRAM
-	#(
-		.PULSE_AND_DELAY_WIDTH (PULSE_AND_DELAY_WIDTH),
-		.ECHO_PER_SCAN_WIDTH (PULSE_AND_DELAY_WIDTH),
-		.NMR_MAIN_TIMER_WIDTH (NMR_MAIN_TIMER_WIDTH)
-	)
 	uut
 	(
 		// control signals
@@ -59,7 +55,9 @@ module NMR_PULSE_PROGRAM_tb;
 		
 		// nmr control signals
 		.PHASE_CYC	(PHASE_CYC),
+		.PULSE_ON_RX (PULSE_ON_RX),
 		.ACQ_WND 	(ACQ_WND),
+		.OUT_EN		(OUT_EN),
 		
 		// nmr parameters
 		.T1_PULSE180	(T1_PULSE180),
@@ -69,6 +67,7 @@ module NMR_PULSE_PROGRAM_tb;
 		.PULSE180 		(PULSE180),
 		.DELAY_WITH_ACQ	(DELAY_WITH_ACQ),
 		.ECHO_PER_SCAN 	(ECHO_PER_SCAN),
+		.ECHO_SKIP		(ECHO_SKIP),
 		
 		// adc clock generator
 		.ADC_CLK		(ADC_CLK),
@@ -87,11 +86,12 @@ module NMR_PULSE_PROGRAM_tb;
 		START = 1'b0;
 		T1_PULSE180 = 0;
 		T1_DELAY = 0;
-		PULSE90 = 128;
+		PULSE90 = 32;
 		DELAY_NO_ACQ = 512;
 		PULSE180 = 256;
 		DELAY_WITH_ACQ = 512;
-		ECHO_PER_SCAN = 3;
+		ECHO_PER_SCAN = 8;
+		ECHO_SKIP = 3;
 		CLK = 0;
 		PHASE_CYC = 1'b1;
 

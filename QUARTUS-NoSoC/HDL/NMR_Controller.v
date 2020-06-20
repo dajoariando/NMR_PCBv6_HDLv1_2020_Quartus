@@ -24,7 +24,8 @@ module NMR_Controller
 	input [DATABUS_WIDTH-1:0]	ECHO_PER_SCAN,	// echo per scan integer number
 	input [DATABUS_WIDTH-1:0]	SAMPLES_PER_ECHO,
 	input [DATABUS_WIDTH-1:0]	ADC_INIT_DELAY,
-	input [DATABUS_WIDTH-1:0]	RX_DELAY, 
+	input [DATABUS_WIDTH-1:0]	RX_DELAY,
+	input [DATABUS_WIDTH-1:0]	ECHO_SKIP,
 	
 	// nmr rf tx-output (differential)
 	output RF_OUT_P,
@@ -98,6 +99,7 @@ module NMR_Controller
 		.PULSE180 		(PULSE180),
 		.DELAY_WITH_ACQ	(DELAY_WITH_ACQ),
 		.ECHO_PER_SCAN 	(ECHO_PER_SCAN),
+		.ECHO_SKIP		(ECHO_SKIP),
 		
 		// adc clock generator
 		.ADC_CLK		(ADC_CLK),

@@ -689,6 +689,14 @@
          type = "String";
       }
    }
+   element nmr_parameters.echo_skip_s1
+   {
+      datum baseAddress
+      {
+         value = "64";
+         type = "String";
+      }
+   }
    element nmr_parameters.echoes_per_scan_s1
    {
       datum _lockedAddress
@@ -1047,6 +1055,11 @@
  <interface
    name="delay_t1"
    internal="nmr_parameters.delay_t1_external_connection"
+   type="conduit"
+   dir="end" />
+ <interface
+   name="echo_skip"
+   internal="nmr_parameters.echo_skip_external_connection"
    type="conduit"
    dir="end" />
  <interface
@@ -2640,6 +2653,9 @@
   <parameter name="AUTO_ECHOES_PER_SCAN_CLK_CLOCK_DOMAIN" value="6" />
   <parameter name="AUTO_ECHOES_PER_SCAN_CLK_CLOCK_RATE" value="50000000" />
   <parameter name="AUTO_ECHOES_PER_SCAN_CLK_RESET_DOMAIN" value="6" />
+  <parameter name="AUTO_ECHO_SKIP_CLK_CLOCK_DOMAIN" value="6" />
+  <parameter name="AUTO_ECHO_SKIP_CLK_CLOCK_RATE" value="50000000" />
+  <parameter name="AUTO_ECHO_SKIP_CLK_RESET_DOMAIN" value="6" />
   <parameter name="AUTO_GENERATION_ID" value="0" />
   <parameter name="AUTO_INIT_DELAY_CLK_CLOCK_DOMAIN" value="6" />
   <parameter name="AUTO_INIT_DELAY_CLK_CLOCK_RATE" value="50000000" />
@@ -3193,6 +3209,15 @@
    kind="avalon"
    version="17.1"
    start="hps_0.h2f_lw_axi_master"
+   end="nmr_parameters.echo_skip_s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x0040" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="17.1"
+   start="hps_0.h2f_lw_axi_master"
    end="nmr_parameters.echoes_per_scan_s1">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x0400" />
@@ -3475,6 +3500,15 @@
    end="nmr_parameters.delay_t1_s1">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x0410" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="17.1"
+   start="master_non_sec.master"
+   end="nmr_parameters.echo_skip_s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x0040" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -3844,6 +3878,11 @@
    kind="clock"
    version="17.1"
    start="clk_0.clk"
+   end="nmr_parameters.echo_skip_clk" />
+ <connection
+   kind="clock"
+   version="17.1"
+   start="clk_0.clk"
    end="nmr_parameters.echoes_per_scan_clk" />
  <connection
    kind="clock"
@@ -4125,6 +4164,11 @@
    version="17.1"
    start="clk_0.clk_reset"
    end="nmr_parameters.delay_t1_reset" />
+ <connection
+   kind="reset"
+   version="17.1"
+   start="clk_0.clk_reset"
+   end="nmr_parameters.echo_skip_reset" />
  <connection
    kind="reset"
    version="17.1"

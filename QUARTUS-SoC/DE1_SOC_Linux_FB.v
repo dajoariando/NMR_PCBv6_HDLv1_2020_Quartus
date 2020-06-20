@@ -221,6 +221,7 @@ module DE1_SOC_Linux_FB(
 	wire	[DATABUS_WIDTH-1:0]		rx_delay;
 	wire	[DATABUS_WIDTH-1:0]		adc_val_sub;
 	wire	[15:0]							dec_fact;
+	wire	[DATABUS_WIDTH-1:0]		echo_skip;
 
 	// adc data
 	wire	[ADC_DATA_WIDTH-1:0]			adc_data_in/* synthesis keep = 1 */;
@@ -294,6 +295,7 @@ module DE1_SOC_Linux_FB(
 	reg	[DATABUS_WIDTH-1:0]		delay_t1_reg;
 	reg	[DATABUS_WIDTH-1:0]		samples_per_echo_reg;
 	reg	[DATABUS_WIDTH-1:0]		echoes_per_scan_reg;
+	reg	[DATABUS_WIDTH-1:0]		echo_skip_reg;
 	reg	[DATABUS_WIDTH-1:0]		init_delay_reg;
 	reg	[DATABUS_WIDTH-1:0]		rx_delay_reg;
 	reg	[DATABUS_WIDTH-1:0]		adc_val_sub_reg;
@@ -310,6 +312,7 @@ module DE1_SOC_Linux_FB(
 		pulse_t1_reg         <= pulse_t1;
 		delay_t1_reg         <= delay_t1;
 		echoes_per_scan_reg  <= echoes_per_scan;
+		echo_skip_reg			<= echo_skip;
 		
 		// POSSIBLE ISSUE: these lines should be put in adc_clkout CDC, but adc_clkout is not present at the beginning,
 		// making these registers not updated at the right time. So it is put here with the consideration that these logic
@@ -454,7 +457,7 @@ module DE1_SOC_Linux_FB(
 		.delay_t1_export			(delay_t1),
 		.adc_val_sub_export			(adc_val_sub),                         //                 adc_val_sub.export
 		.dec_fact_export            (dec_fact),
-		
+		.echo_skip_export				(echo_skip),
 		
 		// Control Signals from/to HPS
 		.ctrl_in_export ({
@@ -694,7 +697,8 @@ module DE1_SOC_Linux_FB(
 		.ECHO_PER_SCAN		(echoes_per_scan_reg),	// echo per scan integer number
 		.SAMPLES_PER_ECHO	(samples_per_echo_reg),
 		.ADC_INIT_DELAY		(init_delay_reg),
-		.RX_DELAY			(rx_delay_reg),		
+		.RX_DELAY			(rx_delay_reg),
+		.ECHO_SKIP			(echo_skip_reg),		
 		
 		// nmr rf tx-output (differential)
 		.RF_OUT_P			(nmr_rfout_p),
