@@ -57,7 +57,9 @@ module NMR_Controller
 );
 
 	wire ACQ_WND /* synthesis keep = 1 */;
+	wire ACQ_WND_ALWAYS_ON /* synthesis keep = 1 */;
 	wire ACQ_EN;
+	wire ACQ_EN_ALWAYS_ON;
 	wire START_SYNC /* synthesis keep = 1 */;
 	wire ACQ_WND_PULSED;
 	
@@ -89,6 +91,7 @@ module NMR_Controller
 		.PHASE_CYC		(PHASE_CYCLE),
 		.PULSE_ON_RX	(PULSE_ON_RX),
 		.ACQ_WND 		(ACQ_WND),
+		.ACQ_WND_ALWAYS_ON (ACQ_WND_ALWAYS_ON),
 		.OUT_EN			(TX_PULSE_EN),
 		
 		// nmr parameters
@@ -135,6 +138,26 @@ module NMR_Controller
 		.RESET (RESET)
 	);
 	
+	ADC_ACQ_WINGEN
+	# (
+		.DATABUS_WIDTH (DATABUS_WIDTH) 
+	)
+	ADC_ACQ_WINGEN_ALWAYS_ON
+	(
+
+		// parameters
+		.ADC_INIT_DELAY (ADC_INIT_DELAY),
+		.SAMPLES_PER_ECHO (SAMPLES_PER_ECHO),
+		
+		// control signal
+		.ACQ_WND (ACQ_WND_ALWAYS_ON),
+		.ACQ_EN (ACQ_EN_ALWAYS_ON),
+		
+		// system signal
+		.CLK (ADC_CLKOUT),
+		.RESET (RESET)
+	);
+	
 	ADC_LTC1746_DRV 
 	# (
 		.ADC_WIDTH		(ADC_PHYS_WIDTH), 	// ADC width given by the datasheet
@@ -171,8 +194,8 @@ module NMR_Controller
 	NMR_RXDUP_EN_WINGEN1
 	(
 		// control signals
-		.ACQ_WND (ACQ_WND),
-		.ACQ_EN (ACQ_EN),
+		.ACQ_WND (ACQ_WND_ALWAYS_ON),
+		.ACQ_EN (ACQ_EN_ALWAYS_ON),
 		.ACQ_WND_DLY (ACQ_WND_DLY),
 		.ACQ_WND_PULSED (ACQ_WND_PULSED),
 		
@@ -187,7 +210,7 @@ module NMR_Controller
 		
 		// control signal
 		.ACQ_WND_PULSED	(ACQ_WND_PULSED),
-		.ACQ_WND				(ACQ_WND),
+		.ACQ_WND				(ACQ_WND_ALWAYS_ON),
 		.EN_QSW				(EN_QSW),
 		.RESET				(RESET),
 		.ADC_CLK				(ADC_CLKOUT)
@@ -199,8 +222,8 @@ module NMR_Controller
 	(
 			
 		// control signal
-		.ACQ_EN	(ACQ_EN),
-		.ACQ_WND	(ACQ_WND),
+		.ACQ_EN	(ACQ_EN_ALWAYS_ON),
+		.ACQ_WND	(ACQ_WND_ALWAYS_ON),
 		
 		.TX_SD	(TX_SD),
 		.RESET	(RESET),

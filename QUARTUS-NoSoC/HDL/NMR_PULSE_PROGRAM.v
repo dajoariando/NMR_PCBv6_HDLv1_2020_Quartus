@@ -12,6 +12,7 @@ module NMR_PULSE_PROGRAM
 	input		PHASE_CYC,
 	input		PULSE_ON_RX,
 	output reg	ACQ_WND,
+	output reg	ACQ_WND_ALWAYS_ON, // the same with ACQ_WND, but this keeps on all the time not depending on ECHO_SKIP
 	output reg	OUT_EN,		// tx output enable
 	
 	// nmr parameters
@@ -85,6 +86,7 @@ module NMR_PULSE_PROGRAM
 		PHASE	<= 1'b0;
 		OUT_EN	<= 1'b0;
 		ACQ_WND	<= 1'b0;
+		ACQ_WND_ALWAYS_ON	<= 1'b0;
 		State	<= S0;
 	end
 	
@@ -99,6 +101,7 @@ module NMR_PULSE_PROGRAM
 			PHASE	<= 1'b0;
 			OUT_EN	<= 1'b0;
 			ACQ_WND	<= 1'b0;
+			ACQ_WND_ALWAYS_ON	<= 1'b0;
 			State	<= S0;
 			
 		end
@@ -155,6 +158,7 @@ module NMR_PULSE_PROGRAM
 					OUT_EN <= 1'b1;
 					PHASE <= 1'b0;
 					ACQ_WND <= 1'b0;
+					ACQ_WND_ALWAYS_ON <= 1'b0;
 					
 					T1_PULSE180_CNT <= T1_PULSE180_CNT + 1'b1;
 					
@@ -168,6 +172,7 @@ module NMR_PULSE_PROGRAM
 					
 					OUT_EN <= 1'b0;
 					ACQ_WND <= 1'b0;
+					ACQ_WND_ALWAYS_ON <= 1'b0;
 					
 					T1_DELAY_CNT <= T1_DELAY_CNT + 1'b1;
 					
@@ -182,6 +187,7 @@ module NMR_PULSE_PROGRAM
 					OUT_EN <= 1'b1;
 					PHASE <= 1'b0;
 					ACQ_WND <= 1'b0;
+					ACQ_WND_ALWAYS_ON <= 1'b0;
 					
 					PULSE90_CNT <= PULSE90_CNT + 1'b1;
 					
@@ -195,6 +201,7 @@ module NMR_PULSE_PROGRAM
 					
 					OUT_EN <= 1'b0;
 					ACQ_WND <= 1'b0;
+					ACQ_WND_ALWAYS_ON <= 1'b0;
 					DELAY_NO_ACQ_CNT <= DELAY_NO_ACQ_CNT + 1'b1;
 					
 					if (DELAY_NO_ACQ_CNT[DATABUS_WIDTH-1])
@@ -208,6 +215,7 @@ module NMR_PULSE_PROGRAM
 					OUT_EN <= 1'b1;
 					PHASE <= 1'b1;
 					ACQ_WND <= 1'b0;
+					ACQ_WND_ALWAYS_ON <= 1'b0;
 					
 					PULSE180_CNT <= PULSE180_CNT + 1'b1;						
 
@@ -231,6 +239,7 @@ module NMR_PULSE_PROGRAM
 						ACQ_WND <= 1'b1;
 						ECHO_SKIP_CNT		<= {1'b1,{ (DATABUS_WIDTH-1) {1'b0} }} - ECHO_SKIP;
 					end
+					ACQ_WND_ALWAYS_ON <= 1'b1;
 					
 					DELAY_WITH_ACQ_CNT <= DELAY_WITH_ACQ_CNT + 1'b1;
 					
@@ -262,6 +271,7 @@ module NMR_PULSE_PROGRAM
 					
 					
 					ACQ_WND <= 1'b0;
+					ACQ_WND_ALWAYS_ON <= 1'b0;
 					TAIL_DELAY_CNT <= TAIL_DELAY_CNT + 1'b1;
 					
 					if (TAIL_DELAY_CNT[DATABUS_WIDTH-1])

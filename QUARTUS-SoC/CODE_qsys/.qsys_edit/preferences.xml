@@ -17,7 +17,7 @@
   </columns>
  </clocktable>
  <window width="1942" height="1042" x="-11" y="-11" />
- <library expandedCategories="Library,Project" />
+ <library expandedCategories="Project,Library" />
  <hdlexample language="VERILOG" />
  <generation
    block_symbol_file="0"

@@ -519,7 +519,7 @@ module DE1_SOC_Linux_FB(
 		.dac_grad_SS_n                           (dac_grad_SS_n),
 		
 		// FIFO
-		.adc_fifo_in_data			(adc_data_out),
+		.adc_fifo_in_data			({ {16{1'b0}},adc_data_out}),
 		.adc_fifo_in_valid			(adc_data_valid),
 		.adc_fifo_in_ready			(),
 		.fifo_clk_bridge_in_clk		(adc_clkout),

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EnsembleReport name="soc_system" kind="soc_system" version="1.0" fabric="QSYS">
  <!-- Format version 17.1 590 (Future versions may contain additional information.) -->
- <!-- 2020.06.19.20:39:55 -->
+ <!-- 2020.06.20.03:36:03 -->
  <!-- A collection of modules and connections -->
  <parameter name="AUTO_GENERATION_ID">
   <type>java.lang.Integer</type>
-  <value>1592613593</value>
+  <value>1592638561</value>
   <derived>false</derived>
   <enabled>true</enabled>
   <visible>false</visible>
@@ -142,7 +142,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="BITS_PER_SYMBOL">
    <type>int</type>
-   <value>16</value>
+   <value>32</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -454,7 +454,7 @@ parameters are a RESULT of the module parameters. -->
    </parameter>
    <parameter name="dataBitsPerSymbol">
     <type>int</type>
-    <value>16</value>
+    <value>32</value>
     <derived>false</derived>
     <enabled>true</enabled>
     <visible>true</visible>
@@ -545,7 +545,7 @@ parameters are a RESULT of the module parameters. -->
    <port>
     <name>in_data</name>
     <direction>Input</direction>
-    <width>16</width>
+    <width>32</width>
     <role>data</role>
    </port>
    <port>
@@ -591,7 +591,7 @@ parameters are a RESULT of the module parameters. -->
    </parameter>
    <parameter name="dataBitsPerSymbol">
     <type>int</type>
-    <value>16</value>
+    <value>32</value>
     <derived>false</derived>
     <enabled>true</enabled>
     <visible>true</visible>
@@ -682,7 +682,7 @@ parameters are a RESULT of the module parameters. -->
    <port>
     <name>out_data</name>
     <direction>Output</direction>
-    <width>16</width>
+    <width>32</width>
     <role>data</role>
    </port>
    <port>
@@ -716,7 +716,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.BITS_PER_SYMBOL</name>
-   <value>16</value>
+   <value>32</value>
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.CHANNEL_WIDTH</name>
@@ -736,7 +736,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.SYMBOLS_PER_BEAT</name>
-   <value>2</value>
+   <value>1</value>
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.USE_AVALONMM_READ_SLAVE</name>
@@ -796,7 +796,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="bitsPerSymbol">
    <type>int</type>
-   <value>16</value>
+   <value>32</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -868,7 +868,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="symbolsPerBeat">
    <type>int</type>
-   <value>2</value>
+   <value>1</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -1107,7 +1107,7 @@ parameters are a RESULT of the module parameters. -->
    </parameter>
    <parameter name="dataBitsPerSymbol">
     <type>int</type>
-    <value>16</value>
+    <value>32</value>
     <derived>false</derived>
     <enabled>true</enabled>
     <visible>true</visible>
@@ -1171,7 +1171,7 @@ parameters are a RESULT of the module parameters. -->
    </parameter>
    <parameter name="symbolsPerBeat">
     <type>int</type>
-    <value>2</value>
+    <value>1</value>
     <derived>false</derived>
     <enabled>true</enabled>
     <visible>false</visible>
@@ -102501,7 +102501,7 @@ parameters are a RESULT of the module parameters. -->
 the requested settings for a module instance. -->
   <parameter name="AUTO_GENERATION_ID">
    <type>java.lang.Integer</type>
-   <value>1592613593</value>
+   <value>1592638561</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>false</visible>
@@ -128061,7 +128061,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.CMacro.TIMESTAMP</name>
-   <value>1592613593</value>
+   <value>1592638561</value>
   </assignment>
   <assignment>
    <name>embeddedsw.dts.compatible</name>
@@ -128081,7 +128081,7 @@ the requested settings for a module instance. -->
   </assignment>
   <assignment>
    <name>embeddedsw.dts.params.timestamp</name>
-   <value>1592613593</value>
+   <value>1592638561</value>
   </assignment>
   <assignment>
    <name>embeddedsw.dts.vendor</name>
@@ -128097,7 +128097,7 @@ the requested settings for a module instance. -->
   </parameter>
   <parameter name="timestamp">
    <type>int</type>
-   <value>1592613593</value>
+   <value>1592638561</value>
    <derived>true</derived>
    <enabled>false</enabled>
    <visible>false</visible>

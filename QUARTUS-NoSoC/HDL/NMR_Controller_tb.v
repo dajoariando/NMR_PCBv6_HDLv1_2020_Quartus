@@ -45,6 +45,7 @@ module NMR_Controller_tb;
 	wire ACQ_WND_DLY;
 	wire TX_SD;
 	wire EN_QSW;
+	wire TX_PULSE_EN;
 	
 	// adc bus
 	reg [ADC_PHYS_WIDTH-1:0] Q_IN;
@@ -97,6 +98,7 @@ module NMR_Controller_tb;
 		.ACQ_WND_DLY	(ACQ_WND_DLY),	// delayed acquisition window for broadband board
 		.TX_SD			(TX_SD), // shutdown the transmitter during reception (minimize noise during reception)
 		.EN_QSW			(EN_QSW),	// enable Q-switch
+		.TX_PULSE_EN	(TX_PULSE_EN),
 		
 		// ADC bus
 		.Q_IN (Q_IN),
